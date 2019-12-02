@@ -1,0 +1,13 @@
+<platform xmlns="http://ns.adobe.com/air/extension/32.0">
+    <description>Set minimum iOS version to 12.0</description>
+
+    <sdkVersion>12.0</sdkVersion>
+
+    <linkerOptions>
+        <option>-ios_version_min 12.0</option>
+    </linkerOptions>
+
+    <!--<packagedDependencies>-->
+        <!--<packagedDependency></packagedDependency>-->
+    <!--</packagedDependencies>-->
+</platform>
