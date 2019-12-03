@@ -10,7 +10,7 @@
     <property name="extension.id" value="com.github.airext.OpenSSL" />
 
     <property name="ios.project.dir" value="../${project.name}-xcode/${product.name}" />
-    <property name="macos.project.dir" value="../${project.name}-xcode/${product.name}" />
+    <property name="osx.project.dir" value="../${project.name}-xcode/${product.name}" />
     <property name="air.project.dir" value="../${project.name}-air/${project.name}" />
     <property name="air-debug.project.dir" value="../${project.name}-air/${project.name}-debug" />
     <property name="android.project.dir" value="../${project.name}-android/${project.name}" />
@@ -21,7 +21,7 @@
     <!--                             Build All                               -->
     <!--=====================================================================-->
 
-    <target name="all" depends="ios,air,package" description="Full build of extension">
+    <target name="all" depends="ios,osx,air,package" description="Full build of extension">
         <exec executable="java">
             <arg value="-version" />
         </exec>
@@ -42,13 +42,13 @@
         <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
             <arg line='-project ${product.name}.xcodeproj'/>
             <arg line='-sdk iphoneos' />
-            <arg line="-target ANX${product.name}"/>
+            <arg line="-target ANX${product.name}-iOS"/>
             <arg line='-configuration Release'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
 
         <!-- Copy iOS native part for iOS platform -->
-		<copy file="temp/ios/build/Release-iphoneos/libANX${product.name}.a" todir="temp/ios" overwrite="true"/>
+		<copy file="temp/ios/build/Release-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
 
         <!-- iOS-Simulator -->
 
@@ -56,7 +56,7 @@
         <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
             <arg line='-project ${product.name}.xcodeproj'/>
             <arg line='-sdk iphonesimulator' />
-            <arg line="-target ANX${product.name}"/>
+            <arg line="-target ANX${product.name}-iOS"/>
             <arg line='-configuration Debug'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
@@ -67,6 +67,36 @@
         <!-- Remove temporary directory for iOS artifacts -->
 		<delete dir="temp/ios/build/"/>
 	</target>
+
+
+    <!--=====================================================================-->
+    <!--                        Build macOS Library                          -->
+    <!--=====================================================================-->
+
+    <target name="osx" description="Build macOS Library">
+
+        <!-- Create temporary directory for iOS artifacts -->
+        <mkdir dir="temp/osx/build/"/>
+
+        <!-- iOS -->
+
+        <!-- Build iOS part of the extension -->
+        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
+            <arg line='-project ${product.name}.xcodeproj'/>
+            <arg line='-sdk macosx' />
+            <arg line="-target ANX${product.name}-macOS"/>
+            <arg line='-configuration Release'/>
+            <arg line='SYMROOT=$(PWD)/../build/temp/osx/build'/>
+        </exec>
+
+        <!-- Copy OSX build artifacts to temporary build folder -->
+        <copy todir="temp/osx/ANX${product.name}.framework">
+            <fileset dir="temp/osx/build/Release/ANX${product.name}.framework" includes="**/**" />
+        </copy>
+
+        <!-- Remove temporary directory for iOS artifacts -->
+        <delete dir="temp/osx/build/"/>
+    </target>
 
     <!--=====================================================================-->
     <!--                         Build AIR Library                           -->
@@ -111,6 +141,9 @@
 
         <!-- Copy library.swf to iOS-Simulator platform folder -->
         <copy file="temp/swc/build/library.swf" todir="temp/ios-simulator" overwrite="true"/>
+
+        <!-- Copy library.swf to macOS platform folder -->
+        <copy file="temp/swc/build/library.swf" todir="temp/osx" overwrite="true"/>
 
         <!-- Copy library.swf to Android platform folder -->
         <copy file="temp/swc/build/library.swf" todir="temp/android" overwrite="true"/>
@@ -180,6 +213,7 @@
             <arg line="-swc swc/default/${project.name}.swc"/>
             <arg line="-platform iPhone-ARM -platformoptions ../platform-ios.xml -C ios/ ."/>
             <arg line="-platform iPhone-x86 -platformoptions ../platform-ios.xml -C ios-simulator/ ."/>
+            <arg line="-platform MacOS-x86-64 -C osx/ ."/>
             <arg line="-platform default -C default/ ."/>
         </exec>
 

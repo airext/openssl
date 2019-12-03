@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AirPackageProjectParameters">
+    <option name="desktopPackageType" value="captive runtime bundle (*.app)" />
+    <option name="deselectedBCs" value="killme&#9;killme&#10;openssl-debug-simple&#9;openssl-debug-simple-mobile&#10;openssl-debug-simple&#9;openssl-debug-simple-desktop&#10;openssl-debug&#9;openssl-debug-mobile" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="" />
+    <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openssl-debug-simple/openssl-debug-simple.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL-macOS/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/extension.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/extension.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug/openssl-debug.iml" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/openssl-debug.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug/src/Main.as" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +30,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1UR5Duu1YZWGXYFAAyMhR22lGzW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -24,25 +46,34 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/openssl/src/main" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/openssl/src/default/com/github/airext" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/openssl-debug/ane" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15295815" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.2876588" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/openssl-debug/ane" />
+    </key>
     <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
       <recent name="com.github.airext" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/openssl-debug/ane" />
+      <recent name="$PROJECT_DIR$/openssl-debug/src" />
+      <recent name="$PROJECT_DIR$/openssl-debug-simple/ane" />
+      <recent name="$PROJECT_DIR$/openssl/build" />
       <recent name="$PROJECT_DIR$/openssl/src/default/com/github/airext" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flash App.openssl-debug">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -69,8 +100,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="killme" type="FlashRunConfigurationType">
+      <option name="BCName" value="killme" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="killme" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="openssl-debug-simple:desktop" type="FlashRunConfigurationType">
+      <option name="BCName" value="openssl-debug-simple-desktop" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="openssl-debug-simple" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="openssl-debug" type="FlashRunConfigurationType">
-      <option name="BCName" value="openssl-debug" />
+      <option name="BCName" value="openssl-debug-mobile" />
       <option name="IOSSimulatorDevice" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
       <option name="adlOptions" value="" />
@@ -108,6 +217,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="openssl-debug:emulator" type="FlashRunConfigurationType">
+      <option name="BCName" value="openssl-debug-simple-mobile" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="openssl-debug-simple" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -117,6 +265,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Flash App.openssl-debug:emulator" />
+      <item itemvalue="Flash App.openssl-debug-simple:desktop" />
+      <item itemvalue="Flash App.openssl-debug" />
+      <item itemvalue="Flash App.killme" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -138,7 +292,10 @@
       <option name="presentableId" value="Default" />
       <updated>1575306450707</updated>
       <workItem from="1575306454726" duration="84000" />
-      <workItem from="1575306570178" duration="936000" />
+      <workItem from="1575306570178" duration="12921000" />
+      <workItem from="1575377232336" duration="2436000" />
+      <workItem from="1575386871435" duration="3819000" />
+      <workItem from="1575397063241" duration="3142000" />
     </task>
     <servers />
   </component>
@@ -150,21 +307,87 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="880" y="398" width="1135" height="666" key="#Project_Structure/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306536277" />
-    <state x="768" y="314" key="SettingsEditor" timestamp="1575307458422">
+    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575387296015">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="768" y="314" key="SettingsEditor/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575307458422" />
+    <state x="304" y="200" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1575370871782" />
+    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575387296015" />
+    <state x="1093" y="557" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575377005267">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1093" y="557" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377005267" />
+    <state x="981" y="547" key="AirPackageDialog.DimensionServiceKey" timestamp="1575398172385">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="644" y="403" key="AirPackageDialog.DimensionServiceKey/0.23.1680.1027@0.23.1680.1027" timestamp="1575390759803" />
+    <state x="981" y="547" key="AirPackageDialog.DimensionServiceKey/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575398172385" />
+    <state x="1117" y="475" key="DetectedRootsChooserDialog" timestamp="1575377815618">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1117" y="475" key="DetectedRootsChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377815618" />
+    <state width="2518" height="500" key="GridCell.Tab.0.bottom" timestamp="1575400439950">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
+    <state width="2518" height="500" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
+    <state width="2518" height="500" key="GridCell.Tab.0.center" timestamp="1575400439949">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
+    <state width="2518" height="500" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439949" />
+    <state width="2518" height="500" key="GridCell.Tab.0.left" timestamp="1575400439948">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669354" />
+    <state width="2518" height="500" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439948" />
+    <state width="2518" height="500" key="GridCell.Tab.0.right" timestamp="1575400439949">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
+    <state width="2518" height="500" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439949" />
+    <state width="2518" height="500" key="GridCell.Tab.1.bottom" timestamp="1575400439951">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669357" />
+    <state width="2518" height="500" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439951" />
+    <state width="2518" height="500" key="GridCell.Tab.1.center" timestamp="1575400439950">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669356" />
+    <state width="2518" height="500" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
+    <state width="2518" height="500" key="GridCell.Tab.1.left" timestamp="1575400439950">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669356" />
+    <state width="2518" height="500" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
+    <state width="2518" height="500" key="GridCell.Tab.1.right" timestamp="1575400439951">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="819" height="345" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669357" />
+    <state width="2518" height="500" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439951" />
+    <state x="207" y="216" width="1321" height="834" key="SettingsEditor" timestamp="1575390732712">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="207" y="216" width="1321" height="834" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1575390732712" />
+    <state x="566" y="346" width="1579" height="834" key="SettingsEditor/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575387349697" />
     <state x="1064" y="518" key="chooseDestDirectoryDialog" timestamp="1575306929389">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1064" y="518" key="chooseDestDirectoryDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306929389" />
-    <state x="919" y="500" width="722" height="462" key="find.popup" timestamp="1575307523896">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="603" y="369" width="722" height="462" key="find.popup" timestamp="1575370409233">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state x="603" y="369" width="722" height="462" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1575370409233" />
     <state x="919" y="500" width="722" height="462" key="find.popup/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575307523896" />
-    <state x="657" y="336" key="new project wizard" timestamp="1575307382221">
+    <state x="657" y="336" key="new project wizard" timestamp="1575386890594">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="657" y="336" key="new project wizard/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575307382221" />
+    <state x="431" y="250" key="new project wizard/0.23.1680.1027@0.23.1680.1027" timestamp="1575370695522" />
+    <state x="657" y="336" key="new project wizard/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575386890594" />
+    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup" timestamp="1575375919207">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1575371060525" />
+    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575375919207" />
   </component>
 </project>

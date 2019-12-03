@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<f:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:f="library://ns.feathersui.com/mxml"
+               theme="feathers.themes.MetalWorksMobileTheme" showStats="true">
+
+    <fx:Script>
+        <![CDATA[
+        import com.github.airext.OpenSSL;
+
+        // MARK: Utils
+
+        private function log(...args): void {
+            outputText.text += args + "\n";
+            outputText.verticalScrollPosition = outputText.maxVerticalScrollPosition;
+            trace(args);
+        }
+
+        // MARK: Handlers
+
+        private function isSupportedTapped(): void {
+            log("supported: " + OpenSSL.isSupported);
+        }
+        ]]>
+    </fx:Script>
+
+
+    <f:layout>
+        <f:VerticalLayout paddingTop="44" paddingBottom="34" />
+    </f:layout>
+
+    <f:ScrollContainer>
+        <f:layoutData>
+            <f:VerticalLayoutData percentHeight="100" percentWidth="100" />
+        </f:layoutData>
+        <f:layout><f:VerticalLayout horizontalAlign="justify" gap="10" /></f:layout>
+        <f:Button label="Is Supported" triggered="isSupportedTapped()" />
+    </f:ScrollContainer>
+
+    <f:ScrollText id="outputText" height="100">
+        <f:layoutData>
+            <f:VerticalLayoutData percentWidth="100" />
+        </f:layoutData>
+    </f:ScrollText>
+
+</f:Application>
