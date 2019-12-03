@@ -6,6 +6,7 @@
 //
 
 #import "ANXOpenSSL.h"
+#import <openssl/opensslv.h>
 
 @implementation ANXOpenSSL
 
@@ -18,6 +19,12 @@ static ANXOpenSSL* _sharedInstance = nil;
 
     }
     return _sharedInstance;
+}
+
+#pragma mark - Information
+
+-(NSString*)version {
+    return @OPENSSL_VERSION_TEXT;
 }
 
 @end

@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (ANXOpenSSL*)sharedInstance;
 
+#pragma mark - Information
+
+-(NSString*)version;
+
 @end
 
 NS_ASSUME_NONNULL_END

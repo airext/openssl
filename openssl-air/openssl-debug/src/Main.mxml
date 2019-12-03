@@ -18,7 +18,15 @@
         // MARK: Handlers
 
         private function isSupportedTapped(): void {
-            log("supported: " + OpenSSL.isSupported);
+            log("Supported: " + OpenSSL.isSupported);
+        }
+
+        private function extensionVersionTapped(): void {
+            log("Extension version is: " + OpenSSL.extensionVersion);
+        }
+
+        private function nativeVersionTapped(): void {
+            log("Extension version is: " + OpenSSL.nativeVersion);
         }
         ]]>
     </fx:Script>
@@ -34,6 +42,8 @@
         </f:layoutData>
         <f:layout><f:VerticalLayout horizontalAlign="justify" gap="10" /></f:layout>
         <f:Button label="Is Supported" triggered="isSupportedTapped()" />
+        <f:Button label="Extension Version" triggered="extensionVersionTapped()" />
+        <f:Button label="OpenSSL Version" triggered="nativeVersionTapped()" />
     </f:ScrollContainer>
 
     <f:ScrollText id="outputText" height="100">

@@ -6,17 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openssl-debug-simple/openssl-debug-simple.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL-macOS/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/build.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/extension.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/extension.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openssl-debug/openssl-debug.iml" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/openssl-debug.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openssl-debug/src/Main.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug-simple/ane/com.github.airext.OpenSSL.ane" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug-simple/ane/com.github.airext.OpenSSL.ane" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug-simple/ane/com.github.airext.OpenSSL.swc" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug-simple/ane/com.github.airext.OpenSSL.swc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug/ane/com.github.airext.OpenSSL.ane" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/ane/com.github.airext.OpenSSL.ane" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug/ane/com.github.airext.OpenSSL.swc" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/ane/com.github.airext.OpenSSL.swc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl-debug/src/Main.mxml" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/src/Main.mxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl/src/default/com/github/airext/OpenSSL.as" beforeDir="false" afterPath="$PROJECT_DIR$/openssl/src/default/com/github/airext/OpenSSL.as" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl/src/main/com/github/airext/OpenSSL.as" beforeDir="false" afterPath="$PROJECT_DIR$/openssl/src/main/com/github/airext/OpenSSL.as" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +215,7 @@
       <option name="usbDebugPort" value="7936" />
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Kill all adl" />
       </method>
     </configuration>
     <configuration name="openssl-debug:emulator" type="FlashRunConfigurationType">
@@ -295,7 +296,7 @@
       <workItem from="1575306570178" duration="12921000" />
       <workItem from="1575377232336" duration="2436000" />
       <workItem from="1575386871435" duration="3819000" />
-      <workItem from="1575397063241" duration="3142000" />
+      <workItem from="1575397063241" duration="6911000" />
     </task>
     <servers />
   </component>
@@ -307,11 +308,15 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="880" y="398" width="1135" height="666" key="#Project_Structure/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306536277" />
-    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575387296015">
+    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575404594942">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="304" y="200" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1575370871782" />
-    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575387296015" />
+    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404594942" />
+    <state x="1093" y="456" key="#com.intellij.ide.util.MemberChooser" timestamp="1575404505225">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1093" y="456" key="#com.intellij.ide.util.MemberChooser/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404505225" />
     <state x="1093" y="557" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575377005267">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -325,46 +330,46 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1117" y="475" key="DetectedRootsChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377815618" />
-    <state width="2518" height="500" key="GridCell.Tab.0.bottom" timestamp="1575400439950">
+    <state width="2518" height="500" key="GridCell.Tab.0.bottom" timestamp="1575404599394">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
-    <state width="2518" height="500" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
-    <state width="2518" height="500" key="GridCell.Tab.0.center" timestamp="1575400439949">
+    <state width="2518" height="500" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599394" />
+    <state width="2518" height="500" key="GridCell.Tab.0.center" timestamp="1575404599393">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
-    <state width="2518" height="500" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439949" />
-    <state width="2518" height="500" key="GridCell.Tab.0.left" timestamp="1575400439948">
+    <state width="2518" height="500" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599393" />
+    <state width="2518" height="500" key="GridCell.Tab.0.left" timestamp="1575404599393">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669354" />
-    <state width="2518" height="500" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439948" />
-    <state width="2518" height="500" key="GridCell.Tab.0.right" timestamp="1575400439949">
+    <state width="2518" height="500" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599393" />
+    <state width="2518" height="500" key="GridCell.Tab.0.right" timestamp="1575404599394">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669355" />
-    <state width="2518" height="500" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439949" />
-    <state width="2518" height="500" key="GridCell.Tab.1.bottom" timestamp="1575400439951">
+    <state width="2518" height="500" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599394" />
+    <state width="2518" height="500" key="GridCell.Tab.1.bottom" timestamp="1575404599314">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669357" />
-    <state width="2518" height="500" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439951" />
-    <state width="2518" height="500" key="GridCell.Tab.1.center" timestamp="1575400439950">
+    <state width="2518" height="500" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599314" />
+    <state width="2518" height="500" key="GridCell.Tab.1.center" timestamp="1575404599313">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669356" />
-    <state width="2518" height="500" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
-    <state width="2518" height="500" key="GridCell.Tab.1.left" timestamp="1575400439950">
+    <state width="2518" height="500" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599313" />
+    <state width="2518" height="500" key="GridCell.Tab.1.left" timestamp="1575404599313">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669356" />
-    <state width="2518" height="500" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439950" />
-    <state width="2518" height="500" key="GridCell.Tab.1.right" timestamp="1575400439951">
+    <state width="2518" height="500" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599313" />
+    <state width="2518" height="500" key="GridCell.Tab.1.right" timestamp="1575404599314">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="819" height="345" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575390669357" />
-    <state width="2518" height="500" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575400439951" />
+    <state width="2518" height="500" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404599314" />
     <state x="207" y="216" width="1321" height="834" key="SettingsEditor" timestamp="1575390732712">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -374,6 +379,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1064" y="518" key="chooseDestDirectoryDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306929389" />
+    <state x="814" y="347" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1575404594269">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="814" y="347" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575404594268" />
     <state x="603" y="369" width="722" height="462" key="find.popup" timestamp="1575370409233">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -384,10 +393,10 @@
     </state>
     <state x="431" y="250" key="new project wizard/0.23.1680.1027@0.23.1680.1027" timestamp="1575370695522" />
     <state x="657" y="336" key="new project wizard/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575386890594" />
-    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup" timestamp="1575375919207">
+    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup" timestamp="1575407969031">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1575371060525" />
-    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575375919207" />
+    <state x="770" y="336" width="1021" height="933" key="search.everywhere.popup/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575407969031" />
   </component>
 </project>

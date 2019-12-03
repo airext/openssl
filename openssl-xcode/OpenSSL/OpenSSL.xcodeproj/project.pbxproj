@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F934B327D18FFA19FC7ED1 /* libPods-ANXOpenSSL-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */; };
 		5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */; };
 		5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
 		5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
@@ -16,6 +17,11 @@
 		5087A4532396E377006C153D /* Adobe AIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4522396E377006C153D /* Adobe AIR.framework */; };
 		5087A4552396E38C006C153D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4542396E38C006C153D /* Cocoa.framework */; };
 		5087A4572396E3B4006C153D /* Adobe AIR_64 in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4562396E3B4006C153D /* Adobe AIR_64 */; };
+		5087A45C2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */; };
+		5087A45D2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */; };
+		5087A45E2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */; };
+		5087A45F2396FA29006C153D /* Pods_ANXOpenSSL_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */; };
+		5087A4602396FA2A006C153D /* Pods_ANXOpenSSL_macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +34,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5087A4612396FA2A006C153D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5087A4602396FA2A006C153D /* Pods_ANXOpenSSL_macOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-iOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-iOS/Pods-ANXOpenSSL-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		5087A40A23958483006C153D /* libANXOpenSSL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libANXOpenSSL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087A43223959CBB006C153D /* ANXOpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ANXOpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087A43523959CBB006C153D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +61,12 @@
 		5087A4522396E377006C153D /* Adobe AIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Adobe AIR.framework"; sourceTree = "<group>"; };
 		5087A4542396E38C006C153D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5087A4562396E3B4006C153D /* Adobe AIR_64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR_64"; path = "ANXOpenSSL-macOS/Adobe AIR.framework/Versions/1.0/Adobe AIR_64"; sourceTree = "<group>"; };
+		5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLConversionRoutines.h; sourceTree = "<group>"; };
+		5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANXOpenSSLConversionRoutines.m; sourceTree = "<group>"; };
+		6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ANXOpenSSL_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ANXOpenSSL-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1AF3FB626B4AEA2CE04A2B6 /* Pods-ANXOpenSSL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-iOS/Pods-ANXOpenSSL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F934B327D18FFA19FC7ED1 /* libPods-ANXOpenSSL-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087A4572396E3B4006C153D /* Adobe AIR_64 in Frameworks */,
+				5087A45F2396FA29006C153D /* Pods_ANXOpenSSL_macOS.framework in Frameworks */,
 				5087A4532396E377006C153D /* Adobe AIR.framework in Frameworks */,
 				5087A4552396E38C006C153D /* Cocoa.framework in Frameworks */,
 			);
@@ -73,6 +100,7 @@
 				5087A43323959CBB006C153D /* ANXOpenSSL-macOS */,
 				5087A40223958200006C153D /* Products */,
 				5087A44B23967546006C153D /* Frameworks */,
+				AC4FD4CC051E0B86AFF3C688 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +128,8 @@
 				5087A43F2395A031006C153D /* ANXOpenSSL.m */,
 				5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */,
 				5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */,
+				5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */,
+				5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */,
 			);
 			path = ANXOpenSSL;
 			sourceTree = "<group>";
@@ -135,8 +165,21 @@
 			children = (
 				5087A4562396E3B4006C153D /* Adobe AIR_64 */,
 				5087A4542396E38C006C153D /* Cocoa.framework */,
+				73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */,
+				703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC4FD4CC051E0B86AFF3C688 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1AF3FB626B4AEA2CE04A2B6 /* Pods-ANXOpenSSL-iOS.debug.xcconfig */,
+				2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */,
+				6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */,
+				36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +189,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5087A45C2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h in Headers */,
 				5087A44A2396737E006C153D /* ANXOpenSSL.h in Headers */,
 				5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */,
 			);
@@ -158,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5087A41023958483006C153D /* Build configuration list for PBXNativeTarget "ANXOpenSSL-iOS" */;
 			buildPhases = (
+				6AA2988EA07DC0CAD966AA35 /* [CP] Check Pods Manifest.lock */,
 				5087A40623958483006C153D /* Sources */,
 				5087A40723958483006C153D /* Frameworks */,
 				5087A40823958483006C153D /* CopyFiles */,
@@ -175,10 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5087A43923959CBB006C153D /* Build configuration list for PBXNativeTarget "ANXOpenSSL-macOS" */;
 			buildPhases = (
+				A8F94FB80CCDA9A8CC702123 /* [CP] Check Pods Manifest.lock */,
 				5087A42D23959CBB006C153D /* Headers */,
 				5087A42E23959CBB006C153D /* Sources */,
 				5087A42F23959CBB006C153D /* Frameworks */,
 				5087A43023959CBB006C153D /* Resources */,
+				5087A4612396FA2A006C153D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,12 +281,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6AA2988EA07DC0CAD966AA35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ANXOpenSSL-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8F94FB80CCDA9A8CC702123 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ANXOpenSSL-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5087A40623958483006C153D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5087A4432395A032006C153D /* ANXOpenSSL.m in Sources */,
+				5087A45D2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
 				5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087A4442395A032006C153D /* ANXOpenSSL.m in Sources */,
+				5087A45E2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
 				5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +366,7 @@
 		};
 		5087A41123958483006C153D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1AF3FB626B4AEA2CE04A2B6 /* Pods-ANXOpenSSL-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -324,7 +421,6 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ANXOpenSSL;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -334,6 +430,7 @@
 		};
 		5087A41223958483006C153D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -381,7 +478,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ANXOpenSSL;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -392,6 +488,7 @@
 		};
 		5087A43723959CBB006C153D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -470,6 +567,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-weak_framework",
 					"\"Adobe AIR\"",
 				);
@@ -485,6 +583,7 @@
 		};
 		5087A43823959CBB006C153D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -557,6 +656,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-weak_framework",
 					"\"Adobe AIR\"",
 				);

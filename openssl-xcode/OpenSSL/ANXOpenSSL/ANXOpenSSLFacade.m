@@ -8,6 +8,7 @@
 #import "ANXOpenSSLFacade.h"
 #import "FlashRuntimeExtensions.h"
 #import "ANXOpenSSL.h"
+#import "ANXOpenSSLConversionRoutines.h"
 
 @implementation ANXOpenSSLFacade
 
@@ -22,12 +23,17 @@ FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t
     return result;
 }
 
+FREObject ANXOpenSSLVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLVersion");
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:ANXOpenSSL.sharedInstance.version];
+}
+
 #pragma mark ContextInitialize/ContextFinalizer
 
 void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     NSLog(@"ANXOpenSSLContextInitializer");
 
-    *numFunctionsToSet = 1;
+    *numFunctionsToSet = 2;
 
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToSet));
 
@@ -36,6 +42,10 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     func[0].name = (const uint8_t*) "isSupported";
     func[0].functionData = NULL;
     func[0].function = &ANXOpenSSLIsSupported;
+
+    func[1].name = (const uint8_t*) "version";
+    func[1].functionData = NULL;
+    func[1].function = &ANXOpenSSLVersion;
 
     *functionsToSet = func;
 

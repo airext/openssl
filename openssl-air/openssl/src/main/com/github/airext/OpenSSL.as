@@ -101,6 +101,14 @@ public class OpenSSL extends EventDispatcher {
         return _extensionVersion;
     }
 
+    //-------------------------------------
+    //  nativeVersion
+    //-------------------------------------
+
+    public static function get nativeVersion(): String {
+        return context.call("version") as String;
+    }
+
     //--------------------------------------------------------------------------
     //
     //  Constructor
