@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18F934B327D18FFA19FC7ED1 /* libPods-ANXOpenSSL-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */; };
+		3D29DF9803DB3FB191CCABB8 /* Pods_ANXOpenSSLTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8487252132414FD455D44D /* Pods_ANXOpenSSLTest.framework */; };
 		5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */; };
 		5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
 		5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
@@ -22,6 +23,16 @@
 		5087A45E2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */; };
 		5087A45F2396FA29006C153D /* Pods_ANXOpenSSL_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */; };
 		5087A4602396FA2A006C153D /* Pods_ANXOpenSSL_macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5087A46A2397C3D8006C153D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4692397C3D8006C153D /* AppDelegate.m */; };
+		5087A46D2397C3D8006C153D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A46C2397C3D8006C153D /* ViewController.m */; };
+		5087A46F2397C3DB006C153D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5087A46E2397C3DB006C153D /* Assets.xcassets */; };
+		5087A4722397C3DB006C153D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5087A4702397C3DB006C153D /* Main.storyboard */; };
+		5087A4752397C3DB006C153D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4742397C3DB006C153D /* main.m */; };
+		5087A47F2397C461006C153D /* ANXOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43F2395A031006C153D /* ANXOpenSSL.m */; };
+		5087A4822397C5D3006C153D /* TestRSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4812397C5D3006C153D /* TestRSA.m */; };
+		5087A48523980CDF006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
+		5087A48623980D95006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
+		5087A48723980D95006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,10 +74,27 @@
 		5087A4562396E3B4006C153D /* Adobe AIR_64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR_64"; path = "ANXOpenSSL-macOS/Adobe AIR.framework/Versions/1.0/Adobe AIR_64"; sourceTree = "<group>"; };
 		5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLConversionRoutines.h; sourceTree = "<group>"; };
 		5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANXOpenSSLConversionRoutines.m; sourceTree = "<group>"; };
+		5087A4662397C3D8006C153D /* ANXOpenSSLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ANXOpenSSLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5087A4682397C3D8006C153D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5087A4692397C3D8006C153D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5087A46B2397C3D8006C153D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5087A46C2397C3D8006C153D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5087A46E2397C3DB006C153D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5087A4712397C3DB006C153D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5087A4732397C3DB006C153D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5087A4742397C3DB006C153D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5087A4762397C3DB006C153D /* ANXOpenSSLTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ANXOpenSSLTest.entitlements; sourceTree = "<group>"; };
+		5087A4802397C5D3006C153D /* TestRSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRSA.h; sourceTree = "<group>"; };
+		5087A4812397C5D3006C153D /* TestRSA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRSA.m; sourceTree = "<group>"; };
+		5087A48323980CDF006C153D /* ANXOpenSSLUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLUtils.h; sourceTree = "<group>"; };
+		5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ANXOpenSSLUtils.c; sourceTree = "<group>"; };
 		6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ANXOpenSSL_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ANXOpenSSL-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9673B0773E0D3FD594C87C73 /* Pods-ANXOpenSSLTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSLTest.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSLTest/Pods-ANXOpenSSLTest.release.xcconfig"; sourceTree = "<group>"; };
+		CA8487252132414FD455D44D /* Pods_ANXOpenSSLTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ANXOpenSSLTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AF3FB626B4AEA2CE04A2B6 /* Pods-ANXOpenSSL-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-iOS/Pods-ANXOpenSSL-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F75D13451E1956114F3582DF /* Pods-ANXOpenSSLTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSLTest.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSLTest/Pods-ANXOpenSSLTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +117,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5087A4632397C3D8006C153D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D29DF9803DB3FB191CCABB8 /* Pods_ANXOpenSSLTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +134,7 @@
 				5087A41B2395850A006C153D /* ANXOpenSSL */,
 				5087A40B23958483006C153D /* ANXOpenSSL-iOS */,
 				5087A43323959CBB006C153D /* ANXOpenSSL-macOS */,
+				5087A4672397C3D8006C153D /* ANXOpenSSLTest */,
 				5087A40223958200006C153D /* Products */,
 				5087A44B23967546006C153D /* Frameworks */,
 				AC4FD4CC051E0B86AFF3C688 /* Pods */,
@@ -109,6 +146,7 @@
 			children = (
 				5087A40A23958483006C153D /* libANXOpenSSL.a */,
 				5087A43223959CBB006C153D /* ANXOpenSSL.framework */,
+				5087A4662397C3D8006C153D /* ANXOpenSSLTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +168,8 @@
 				5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */,
 				5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */,
 				5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */,
+				5087A48323980CDF006C153D /* ANXOpenSSLUtils.h */,
+				5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */,
 			);
 			path = ANXOpenSSL;
 			sourceTree = "<group>";
@@ -167,8 +207,27 @@
 				5087A4542396E38C006C153D /* Cocoa.framework */,
 				73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */,
 				703FC9B4F7B60F03CDD63932 /* Pods_ANXOpenSSL_macOS.framework */,
+				CA8487252132414FD455D44D /* Pods_ANXOpenSSLTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5087A4672397C3D8006C153D /* ANXOpenSSLTest */ = {
+			isa = PBXGroup;
+			children = (
+				5087A4682397C3D8006C153D /* AppDelegate.h */,
+				5087A4692397C3D8006C153D /* AppDelegate.m */,
+				5087A46B2397C3D8006C153D /* ViewController.h */,
+				5087A46C2397C3D8006C153D /* ViewController.m */,
+				5087A46E2397C3DB006C153D /* Assets.xcassets */,
+				5087A4702397C3DB006C153D /* Main.storyboard */,
+				5087A4732397C3DB006C153D /* Info.plist */,
+				5087A4742397C3DB006C153D /* main.m */,
+				5087A4762397C3DB006C153D /* ANXOpenSSLTest.entitlements */,
+				5087A4802397C5D3006C153D /* TestRSA.h */,
+				5087A4812397C5D3006C153D /* TestRSA.m */,
+			);
+			path = ANXOpenSSLTest;
 			sourceTree = "<group>";
 		};
 		AC4FD4CC051E0B86AFF3C688 /* Pods */ = {
@@ -178,6 +237,8 @@
 				2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */,
 				6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */,
 				36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */,
+				F75D13451E1956114F3582DF /* Pods-ANXOpenSSLTest.debug.xcconfig */,
+				9673B0773E0D3FD594C87C73 /* Pods-ANXOpenSSLTest.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -236,6 +297,24 @@
 			productReference = 5087A43223959CBB006C153D /* ANXOpenSSL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		5087A4652397C3D8006C153D /* ANXOpenSSLTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5087A4792397C3DB006C153D /* Build configuration list for PBXNativeTarget "ANXOpenSSLTest" */;
+			buildPhases = (
+				153E0FC09053B295F71D8FF4 /* [CP] Check Pods Manifest.lock */,
+				5087A4622397C3D8006C153D /* Sources */,
+				5087A4632397C3D8006C153D /* Frameworks */,
+				5087A4642397C3D8006C153D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ANXOpenSSLTest;
+			productName = ANXOpenSSLTest;
+			productReference = 5087A4662397C3D8006C153D /* ANXOpenSSLTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,6 +327,9 @@
 						CreatedOnToolsVersion = 11.2.1;
 					};
 					5087A43123959CBB006C153D = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					5087A4652397C3D8006C153D = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
 				};
@@ -267,6 +349,7 @@
 			targets = (
 				5087A40923958483006C153D /* ANXOpenSSL-iOS */,
 				5087A43123959CBB006C153D /* ANXOpenSSL-macOS */,
+				5087A4652397C3D8006C153D /* ANXOpenSSLTest */,
 			);
 		};
 /* End PBXProject section */
@@ -279,9 +362,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5087A4642397C3D8006C153D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5087A46F2397C3DB006C153D /* Assets.xcassets in Resources */,
+				5087A4722397C3DB006C153D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		153E0FC09053B295F71D8FF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ANXOpenSSLTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6AA2988EA07DC0CAD966AA35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +449,7 @@
 			files = (
 				5087A4432395A032006C153D /* ANXOpenSSL.m in Sources */,
 				5087A45D2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
+				5087A48723980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,11 +460,36 @@
 			files = (
 				5087A4442395A032006C153D /* ANXOpenSSL.m in Sources */,
 				5087A45E2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
+				5087A48623980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5087A4622397C3D8006C153D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5087A46D2397C3D8006C153D /* ViewController.m in Sources */,
+				5087A4752397C3DB006C153D /* main.m in Sources */,
+				5087A4822397C5D3006C153D /* TestRSA.m in Sources */,
+				5087A47F2397C461006C153D /* ANXOpenSSL.m in Sources */,
+				5087A48523980CDF006C153D /* ANXOpenSSLUtils.c in Sources */,
+				5087A46A2397C3D8006C153D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5087A4702397C3DB006C153D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5087A4712397C3DB006C153D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5087A3FB239581A4006C153D /* Debug */ = {
@@ -670,6 +810,143 @@
 			};
 			name = Release;
 		};
+		5087A4772397C3DB006C153D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F75D13451E1956114F3582DF /* Pods-ANXOpenSSLTest.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = ANXOpenSSLTest/ANXOpenSSLTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GL9F4DL9W9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ANXOpenSSLTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.airext.ANXOpenSSLTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5087A4782397C3DB006C153D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9673B0773E0D3FD594C87C73 /* Pods-ANXOpenSSLTest.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = ANXOpenSSLTest/ANXOpenSSLTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GL9F4DL9W9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ANXOpenSSLTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.airext.ANXOpenSSLTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -696,6 +973,15 @@
 			buildConfigurations = (
 				5087A43723959CBB006C153D /* Debug */,
 				5087A43823959CBB006C153D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5087A4792397C3DB006C153D /* Build configuration list for PBXNativeTarget "ANXOpenSSLTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5087A4772397C3DB006C153D /* Debug */,
+				5087A4782397C3DB006C153D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

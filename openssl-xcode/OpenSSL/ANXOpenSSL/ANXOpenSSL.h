@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSString*)version;
 
+#pragma mark
+
+- (void)rsaEncryptString:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char *)key output:(unsigned char*)output;
+- (void)rsaDecryptString:(nonnull const unsigned char *)input withPublicKey:(const unsigned char*)key output:(unsigned char*)output;
+
 @end
 
 NS_ASSUME_NONNULL_END

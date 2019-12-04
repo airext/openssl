@@ -15,3 +15,11 @@ target 'ANXOpenSSL-macOS' do
   pod 'OpenSSL-Universal'
 
 end
+
+target 'ANXOpenSSLTest' do
+  platform :macos, '10.15'
+  use_frameworks!
+
+  pod 'OpenSSL-Universal'
+
+end
