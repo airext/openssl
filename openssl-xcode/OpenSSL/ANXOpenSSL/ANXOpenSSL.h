@@ -6,6 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <openssl/opensslv.h>
+#import <openssl/pem.h>
+#import <openssl/ssl.h>
+#import <openssl/rsa.h>
+#import <openssl/evp.h>
+#import <openssl/bio.h>
+#import <openssl/err.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,10 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSString*)version;
 
-#pragma mark
+#pragma mark RSA
 
-- (void)rsaEncryptString:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char *)key output:(unsigned char*)output;
-- (void)rsaDecryptString:(nonnull const unsigned char *)input withPublicKey:(const unsigned char*)key output:(unsigned char*)output;
+- (int)rsaEncryptString:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char *)key output:(unsigned char*)output;
+
+- (unsigned char*)rsaEncryptBytes:(nonnull const unsigned char *)input withPublicKey:(const unsigned char*)key outLength:(int*)outLength;
+- (unsigned char*)rsaDecryptBytes:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char*)key outLength:(int*)outLength;
 
 @end
 

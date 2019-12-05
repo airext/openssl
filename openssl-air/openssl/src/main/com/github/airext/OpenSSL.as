@@ -10,6 +10,7 @@ import flash.external.ExtensionContext;
 import flash.filesystem.File;
 import flash.filesystem.FileMode;
 import flash.filesystem.FileStream;
+import flash.utils.ByteArray;
 
 use namespace openssl;
 
@@ -127,6 +128,29 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
+    //-------------------------------------
+    //  RSA
+    //-------------------------------------
+
+    public function rsaEncryptWithPrivateKey(input: ByteArray): ByteArray {
+        return context.call("rsaEncryptWithPrivateKey", input) as ByteArray;
+    }
+
+    public function rsaEncrypt(data: ByteArray, publicKey: String): ByteArray {
+        return context.call("rsaEncryptWithPublicKey", data, publicKey) as ByteArray;
+    }
+
+    public function rsaDecrypt(data: ByteArray, privateKey: String): ByteArray {
+        return context.call("rsaDecryptWithPrivateKey", data, privateKey) as ByteArray;
+    }
+
+    //-------------------------------------
+    //  Debug Utils
+    //-------------------------------------
+    
+    public function test(bytes: ByteArray): ByteArray {
+        return context.call("test", bytes) as ByteArray;
+    }
 
     //--------------------------------------------------------------------------
     //

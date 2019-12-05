@@ -72,11 +72,26 @@ static TestRSA* _sharedInstance = nil;
     "uJSUVL5+CVjKLjZEJ6Qc2WZLl94xSwL71E41H4YciVnSCQxVc4Jw\n"\
     "-----END RSA PRIVATE KEY-----\n";
 
-    unsigned char encrypted[4098]={};
-    unsigned char decrypted[4098]={};
+//    unsigned char encrypted[2048]={};
+//    unsigned char decrypted[2048]={};
+//
+//    [ANXOpenSSL.sharedInstance rsaEncryptString:(const unsigned char*)"Hello, world!" withPrivateKey:privateKey output:&encrypted];
+//    [ANXOpenSSL.sharedInstance rsaDecryptString:encrypted withPublicKey:publicKey output:&decrypted];
 
-    [ANXOpenSSL.sharedInstance rsaEncryptString:(const unsigned char*)"Hello, world!" withPrivateKey:privateKey output:&encrypted];
-    [ANXOpenSSL.sharedInstance rsaDecryptString:encrypted withPublicKey:publicKey output:&decrypted];
+    int encryptedLength;
+    int decryptedLength;
+
+    unsigned char *encryptedBuffer = [ANXOpenSSL.sharedInstance rsaEncryptBytes:(const unsigned char *)"Hello, world." withPublicKey:publicKey outLength:&encryptedLength];
+
+    unsigned char *encrypted = malloc(encryptedLength);
+    memcpy(encrypted, encryptedBuffer, encryptedLength);
+//    free(encryptedBuffer);
+
+    unsigned char *decryptedBuffer = [ANXOpenSSL.sharedInstance rsaDecryptBytes:encrypted withPrivateKey:privateKey outLength:&decryptedLength];
+
+    unsigned char *decrypted = malloc(decryptedLength);
+    memcpy(decrypted, decryptedBuffer, decryptedLength);
+//    free(decryptedBuffer);
 
     NSLog(@">>> %s", decrypted);
 }

@@ -6,6 +6,7 @@ import com.github.airext.core.openssl;
 
 import flash.events.EventDispatcher;
 import flash.system.Capabilities;
+import flash.utils.ByteArray;
 
 use namespace openssl;
 
@@ -73,5 +74,32 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
+    //-------------------------------------
+    //  RSA
+    //-------------------------------------
+
+    public function rsaEncryptWithPrivateKey(input: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function rsaEncrypt(data: ByteArray, publicKey: String): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function rsaDecrypt(data: ByteArray, privateKey: String): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
+    //  Debug Utils
+    //-------------------------------------
+
+    public function test(bytes: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
 }
 }

@@ -19,4 +19,6 @@
 RSA* anx_create_rsa_with_public_key(const unsigned char *key);
 RSA* anx_create_rsa_with_private_key(const unsigned char *key);
 
+char* anx_retrieve_openssl_error_queue (void);
+
 #endif /* ANXOpenSSLUtils_h */

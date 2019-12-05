@@ -126,5 +126,24 @@
     }
 }
 
+#pragma mark ByteArray
+
++ (FREObject)createByteArrayWithLength:(int32_t)length {
+    FREObject result;
+    if (FRENewObject((const uint8_t *)"flash.utils.ByteArray", 0, NULL, &result, NULL) != FRE_OK) {
+        return NULL;
+    }
+
+    FREObject l;
+    if (FRENewObjectFromInt32(length, &l) != FRE_OK) {
+        return NULL;
+    }
+
+    if (FRESetObjectProperty(result, (const uint8_t *)"length", l, NULL) != FRE_OK) {
+        return NULL;
+    }
+
+    return result;
+}
 
 @end

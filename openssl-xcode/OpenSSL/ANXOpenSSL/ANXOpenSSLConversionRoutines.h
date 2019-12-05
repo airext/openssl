@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSInteger)readNSIntegerFrom:(FREObject)object field:(NSString*)field withDefaultValue:(NSInteger)defaultValue;
 + (NSInteger)readNSIntegerFrom:(FREObject)object field:(NSString*)field withRawValueField:(NSString*)rawValueField withDefaultValue:(NSInteger)defaultValue;
 
++ (FREObject)createByteArrayWithLength:(int32_t)length;
+
 @end
 
 NS_ASSUME_NONNULL_END
