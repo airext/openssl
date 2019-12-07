@@ -35,7 +35,7 @@
     int length;
     unsigned char *encrypted = [self rsaEncryptBytes:input.bytes withPublicKey:publicKey outLength:&length];
 
-    anx_defer(^{
+    defer(^{
         free(encrypted);
     });
 
@@ -105,7 +105,7 @@
 
     unsigned char *decrypted = [self rsaDecryptBytes:input.bytes withPrivateKey:privateKey outLength:&length];
 
-    anx_defer(^{
+    defer(^{
         free(decrypted);
     });
 

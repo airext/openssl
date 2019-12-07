@@ -21,4 +21,7 @@ RSA* anx_create_rsa_with_private_key(const unsigned char *key);
 
 char* anx_retrieve_openssl_error_queue (void);
 
+int anx_base64_encode(const unsigned char* in, size_t in_len, char**out, size_t *out_len);
+int anx_base64_decode(const char* in, size_t in_len, unsigned char** out, size_t* out_len);
+
 #endif /* ANXOpenSSLUtils_h */

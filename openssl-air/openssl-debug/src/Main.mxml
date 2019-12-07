@@ -51,7 +51,7 @@
         }
 
         private function testTapped(): void {
-            var myByteArray:ByteArray = new ByteArray();
+            var myByteArray: ByteArray = new ByteArray();
             myByteArray.writeUTFBytes("Hello, World");
             myByteArray.position = 0;
             var bytes: ByteArray = OpenSSL.shared.test(myByteArray);
@@ -64,6 +64,21 @@
             var encrypted: ByteArray = OpenSSL.shared.rsaEncrypt(data, Constants.publicKey);
             var decrypted: ByteArray = OpenSSL.shared.rsaDecrypt(encrypted, Constants.privateKey);
             log(decrypted.readUTFBytes(decrypted.length));
+        }
+
+        private function encodeDecodeBase64StringTapped(): void {
+            var original: String = "Hello World";
+            var base64: String = OpenSSL.shared.base64FromString(original);
+            var decoded: String = OpenSSL.shared.base64ToString(base64);
+            trace(decoded, "=", original);
+        }
+
+        private function encodeDecodeBase64BytesTapped(): void {
+
+        }
+
+        private function getBuildVersionTapped(): void {
+            log(OpenSSL.shared.getBuildVersion());
         }
 
         ]]>
@@ -83,12 +98,17 @@
         <f:Button label="Extension Version" triggered="extensionVersionTapped()" />
         <f:Button label="OpenSSL Version" triggered="nativeVersionTapped()" />
         <!--    RSA    -->
-        <layout:Spacer width="280" height="1" color="#FFFFFF" alpha="0.5" />
+        <layout:Spacer width="280" height="2" />
         <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
         <f:Button label="RSA Encrypt" triggered="rsaEncryptTapped()" />
-        <layout:Spacer width="280" height="1" color="#FFFFFF" alpha="0.5" />
+        <!--    Base64    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
+        <f:Button label="Encode/Decode Base64 Bytes" triggered="encodeDecodeBase64BytesTapped()" />
+        <layout:Spacer width="280" height="2" />
         <!--   Debug   -->
         <f:Button label="Test" triggered="testTapped()" />
+        <f:Button label="Native Build Version" triggered="getBuildVersionTapped()" />
     </f:ScrollContainer>
 
     <f:ScrollText id="outputText" height="100">

@@ -709,18 +709,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-pf-tp2">
-                                <rect key="frame" x="193" y="117" width="95" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Test RSA" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aCZ-IJ-0fO">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleTestRSAButtonTap:" target="XfG-lQ-9wD" id="ehQ-5Y-SKL"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke0-ma-8OG">
+                                <rect key="frame" x="188" y="108" width="104" height="54"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-pf-tp2">
+                                        <rect key="frame" x="-6" y="26" width="116" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Test RSA" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aCZ-IJ-0fO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="handleTestRSAButtonTap:" target="XfG-lQ-9wD" id="ehQ-5Y-SKL"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hv1-QY-erP">
+                                        <rect key="frame" x="-6" y="-7" width="116" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Test Base64" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RA7-bS-81J">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="handleTestBase64ButtonTap:" target="XfG-lQ-9wD" id="OHB-YO-qGa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2eG-pf-tp2" secondAttribute="trailing" id="R4K-Th-Rd3"/>
+                                    <constraint firstItem="Hv1-QY-erP" firstAttribute="leading" secondItem="Ke0-ma-8OG" secondAttribute="leading" id="TLP-l2-DfS"/>
+                                    <constraint firstItem="2eG-pf-tp2" firstAttribute="leading" secondItem="Ke0-ma-8OG" secondAttribute="leading" id="he4-Al-KSG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hv1-QY-erP" secondAttribute="trailing" id="yMQ-Lg-k1a"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Ke0-ma-8OG" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="cZB-6i-ebc"/>
+                            <constraint firstItem="Ke0-ma-8OG" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="xxA-U9-thi"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

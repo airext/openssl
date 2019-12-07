@@ -94,10 +94,40 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  Base64
+    //-------------------------------------
+
+    public function base64FromString(string: String): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function base64ToString(base64: String): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+
+    }
+
+    public function base64FromBytes(bytes: ByteArray): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function base64ToBytes(base64: String): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
     //  Debug Utils
     //-------------------------------------
 
     public function test(bytes: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function getBuildVersion(): String {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }

@@ -8,6 +8,7 @@
 #import "ViewController.h"
 
 #import "TestRSA.h"
+#import "TestBase64.h"
 
 @implementation ViewController
 
@@ -28,6 +29,10 @@
 
 - (IBAction)handleTestRSAButtonTap:(id)sender {
     [TestRSA.sharedInstance test_ane];
+}
+
+- (IBAction)handleTestBase64ButtonTap:(id)sender {
+    [TestBase64 test_ane];
 }
 
 @end
