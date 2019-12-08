@@ -119,6 +119,20 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  Hex
+    //-------------------------------------
+
+    public function hexFromString(string: String): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function hexToString(string: String): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
     //  Debug Utils
     //-------------------------------------
 

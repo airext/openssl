@@ -164,7 +164,19 @@ public class OpenSSL extends EventDispatcher {
     public function base64ToBytes(base64: String): ByteArray {
         return context.call("base64DecodeBytes", base64) as ByteArray;
     }
-    
+
+    //-------------------------------------
+    //  Hex
+    //-------------------------------------
+
+    public function hexFromString(string: String): String {
+        return context.call("hexEncodeString", string) as String;
+    }
+
+    public function hexToString(string: String): String {
+        return context.call("hexDecodeString", string) as String;
+    }
+
     //-------------------------------------
     //  Debug Utils
     //-------------------------------------

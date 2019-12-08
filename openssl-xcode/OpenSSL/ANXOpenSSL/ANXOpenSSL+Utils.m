@@ -8,6 +8,7 @@
 #import "ANXOpenSSL+Utils.h"
 #import "ANXOpenSSLUtils.h"
 #import "ANXOpenSSLDefer.h"
+#import "ANXOpenSSLConversionRoutines.h"
 
 #import <openssl/opensslv.h>
 #import <openssl/pem.h>
@@ -88,6 +89,50 @@
     NSLog(@"[ANX] output length: %lu", outputLength);
 
     return output;
+}
+
+#pragma mark Hex
+
+- (FREObject)hexEncodeString:(FREObject)string {
+    const unsigned char* input;
+    uint32_t inputLength;
+    if (FREGetObjectAsUTF8(string, &inputLength, &input) != FRE_OK) {
+        return NULL;
+    }
+
+    NSLog(@"[ANX] input: %s", input);
+
+    NSMutableString *hex = [NSMutableString new];
+    for (NSInteger i = 0; i < inputLength; i++) {
+        [hex appendFormat:@"%02x", input[i]];
+    }
+
+    NSLog(@"[ANX converted: %@]", hex);
+
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:hex];
+}
+
+- (FREObject)hexDecodeString:(FREObject)string {
+    const unsigned char* input;
+    uint32_t inputLength;
+    if (FREGetObjectAsUTF8(string, &inputLength, &input) != FRE_OK) {
+        return NULL;
+    }
+
+    uint32_t outputLength;
+
+    unsigned char *output = [self hexDecodeString:input inputLength:inputLength outputLength:&outputLength];
+
+    defer(^{
+        free(output);
+    });
+
+    FREObject result;
+    if (FRENewObjectFromUTF8(outputLength, output, &result) != FRE_OK) {
+        return NULL;
+    }
+
+    return result;
 }
 
 @end

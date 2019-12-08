@@ -70,11 +70,18 @@
             var original: String = "Hello World";
             var base64: String = OpenSSL.shared.base64FromString(original);
             var decoded: String = OpenSSL.shared.base64ToString(base64);
-            trace(decoded, "=", original);
+            log(decoded + " = " + original);
         }
 
         private function encodeDecodeBase64BytesTapped(): void {
 
+        }
+
+        private function encodeDecodeHexStringTapped(): void {
+            var original: String = "Hello World";
+            var hex: String = OpenSSL.shared.hexFromString(original);
+            var decoded: String = OpenSSL.shared.hexToString(hex);
+            log(decoded + " = " + original);
         }
 
         private function getBuildVersionTapped(): void {
@@ -105,6 +112,9 @@
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
         <f:Button label="Encode/Decode Base64 Bytes" triggered="encodeDecodeBase64BytesTapped()" />
+        <!--    Base64    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="Encode/Decode Hex String" triggered="encodeDecodeHexStringTapped()" />
         <layout:Spacer width="280" height="2" />
         <!--   Debug   -->
         <f:Button label="Test" triggered="testTapped()" />

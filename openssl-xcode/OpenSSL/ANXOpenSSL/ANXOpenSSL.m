@@ -74,4 +74,35 @@ static ANXOpenSSL* _sharedInstance = nil;
     return output;
 }
 
+#pragma mark - Hex
+
+- (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
+
+    NSLog(@"[ANX] input: %s", input);
+
+    if (inputLength % 2 != 0) {
+        NSLog(@"[ANX] input has odd length, return NULL");
+        return NULL;
+    }
+
+    *outputLength = inputLength / 2;
+    unsigned char* output = malloc(sizeof(unsigned char*) * *outputLength + 1);
+
+    char buffer[2];
+
+    for (int i = 0, j = 0; i < *outputLength; i++, j += 2) {
+        buffer[0] = input[j];
+        buffer[1] = input[j+1];
+        int hex = 0;
+        sscanf(buffer, "%x", &hex);
+        output[i] = (unsigned char)hex;
+    }
+
+    output[*outputLength] = '\0';
+
+    NSLog(@"[ANX] output: %s", output);
+
+    return output;
+}
+
 @end

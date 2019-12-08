@@ -182,6 +182,28 @@ FREObject ANXOpenSSLBase64DecodeBytes(FREContext context, void* functionData, ui
     return NULL;
 }
 
+#pragma mark Hex
+
+FREObject ANXOpenSSLHexEncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLHexEncodeString");
+
+    if (argc < 1) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance hexEncodeString:argv[0]];
+}
+
+FREObject ANXOpenSSLHexDecodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLHexDecodeString");
+
+    if (argc < 1) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance hexDecodeString:argv[0]];
+}
+
 #pragma mark Debug
 
 FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -210,7 +232,7 @@ FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, 
 }
 
 FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"17"];
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"23"];
 }
 
 #pragma mark - ContextInitialize/ContextFinalizer
@@ -218,7 +240,7 @@ FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t a
 void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     NSLog(@"ANXOpenSSLContextInitializer");
 
-    *numFunctionsToSet = 12;
+    *numFunctionsToSet = 14;
 
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToSet));
 
@@ -264,14 +286,23 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     func[9].functionData = NULL;
     func[9].function = &ANXOpenSSLBase64DecodeBytes;
 
-
-    func[10].name = (const uint8_t*) "test";
+    func[10].name = (const uint8_t*) "hexEncodeString";
     func[10].functionData = NULL;
-    func[10].function = &ANXOpenSSLTest;
+    func[10].function = &ANXOpenSSLHexEncodeString;
 
-    func[11].name = (const uint8_t*) "buildVersion";
+    func[11].name = (const uint8_t*) "hexDecodeString";
     func[11].functionData = NULL;
-    func[11].function = &ANXOpenBuildVersion;
+    func[11].function = &ANXOpenSSLHexDecodeString;
+
+    // debug
+
+    func[12].name = (const uint8_t*) "test";
+    func[12].functionData = NULL;
+    func[12].function = &ANXOpenSSLTest;
+
+    func[13].name = (const uint8_t*) "buildVersion";
+    func[13].functionData = NULL;
+    func[13].function = &ANXOpenBuildVersion;
 
     *functionsToSet = func;
 }
