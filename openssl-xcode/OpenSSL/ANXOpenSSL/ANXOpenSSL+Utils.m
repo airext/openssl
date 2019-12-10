@@ -102,14 +102,30 @@
 
     NSLog(@"[ANX] input: %s", input);
 
-    NSMutableString *hex = [NSMutableString new];
-    for (NSInteger i = 0; i < inputLength; i++) {
-        [hex appendFormat:@"%02x", input[i]];
+    uint32_t outputLength;
+    unsigned char* output = [self hexEncodeString:input inputLength:inputLength outputLength:&outputLength];
+
+    defer(^{
+        free(output);
+    });
+
+    FREObject result;
+    if (FRENewObjectFromUTF8(outputLength, output, &result) != FRE_OK) {
+        return NULL;
     }
 
-    NSLog(@"[ANX converted: %@]", hex);
+    return result;
 
-    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:hex];
+//    NSMutableString *hex = [NSMutableString new];
+//    for (NSInteger i = 0; i < inputLength; i++) {
+//        [hex appendFormat:@"%02x", input[i]];
+//        NSLog(@"[ANX] input[i]=%c", input[i]);
+//        NSLog(@"[ANX] hex so far: %@", hex);
+//    }
+//
+//    NSLog(@"[ANX converted: %@]", hex);
+//
+//    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:hex];
 }
 
 - (FREObject)hexDecodeString:(FREObject)string {

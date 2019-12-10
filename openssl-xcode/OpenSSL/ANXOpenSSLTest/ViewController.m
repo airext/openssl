@@ -9,6 +9,7 @@
 
 #import "TestRSA.h"
 #import "TestBase64.h"
+#import "TestHex.h"
 
 @implementation ViewController
 
@@ -35,4 +36,7 @@
     [TestBase64 test_ane];
 }
 
+- (IBAction)handleTestHexButtonTap:(id)sender {
+    [TestHex test_ane];
+}
 @end

@@ -76,6 +76,54 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 #pragma mark - Hex
 
+- (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
+    NSLog(@"[ANX] input: %s", input);
+
+    *outputLength = inputLength * 2;
+    unsigned char* output = malloc(sizeof(unsigned char*) * *outputLength + 1);
+
+    char character;
+    char buffer[3];
+//    size_t bufferLength;
+//    unsigned int hex;
+
+    for (int i = 0, j = 0; i < inputLength; i++, j += 2) {
+
+
+        NSLog(@"[ANX] input[i]=%c", input[i]);
+//        NSLog(@"[ANX] &input[i]=%s", &input[i]);
+//        buffer = strtol((const char*)&input[i], NULL, 16);
+        character = input[i];
+        NSLog(@"[ANX] character:%s", &character);
+//        sscanf(&buffer, "%02x", &hex);
+        printf("vvv\n");
+        printf("%02x", input[i]);
+        printf("^^^\n");
+        size_t len = snprintf(buffer, 3, "%02x", input[i]);
+        NSLog(@"[ANX] len: %zu", len);
+        NSLog(@"[ANX] buffer: %s", buffer);
+        NSLog(@"[ANX] buffer: %c", buffer[0]);
+        NSLog(@"[ANX] buffer: %c", buffer[1]);
+//        NSLog(@"[ANX] hex: %i", hex);
+        NSLog(@"[ANX] output so far: %s", output);
+        output[j] = buffer[0];
+        output[j+1] = buffer[1];
+    }
+
+//    NSMutableString *hex = [NSMutableString new];
+//    for (NSInteger i = 0; i < inputLength; i++) {
+//        [hex appendFormat:@"%02x", input[i]];
+//        NSLog(@"[ANX] input[i]=%c", input[i]);
+//        NSLog(@"[ANX] hex so far: %@", hex);
+//    }
+
+    output[*outputLength] = '\0';
+
+    NSLog(@"[ANX] output: %s", output);
+
+    return output;
+}
+
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
 
     NSLog(@"[ANX] input: %s", input);
