@@ -10,6 +10,7 @@ import flash.external.ExtensionContext;
 import flash.filesystem.File;
 import flash.filesystem.FileMode;
 import flash.filesystem.FileStream;
+import flash.utils.ByteArray;
 
 use namespace openssl;
 
@@ -101,6 +102,14 @@ public class OpenSSL extends EventDispatcher {
         return _extensionVersion;
     }
 
+    //-------------------------------------
+    //  nativeVersion
+    //-------------------------------------
+
+    public static function get nativeVersion(): String {
+        return context.call("version") as String;
+    }
+
     //--------------------------------------------------------------------------
     //
     //  Constructor
@@ -119,6 +128,66 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
+    //-------------------------------------
+    //  RSA
+    //-------------------------------------
+
+    public function rsaEncryptWithPrivateKey(input: ByteArray): ByteArray {
+        return context.call("rsaEncryptWithPrivateKey", input) as ByteArray;
+    }
+
+    public function rsaEncrypt(data: ByteArray, publicKey: String): ByteArray {
+        return context.call("rsaEncryptWithPublicKey", data, publicKey) as ByteArray;
+    }
+
+    public function rsaDecrypt(data: ByteArray, privateKey: String): ByteArray {
+        return context.call("rsaDecryptWithPrivateKey", data, privateKey) as ByteArray;
+    }
+
+    //-------------------------------------
+    //  Base64
+    //-------------------------------------
+
+    public function base64FromString(string: String): String {
+        return context.call("base64EncodeString", string) as String;
+    }
+
+    public function base64ToString(base64: String): String {
+        return context.call("base64DecodeString", base64) as String;
+
+    }
+
+    public function base64FromBytes(bytes: ByteArray): String {
+        return context.call("base64EncodeBytes", bytes) as String;
+    }
+
+    public function base64ToBytes(base64: String): ByteArray {
+        return context.call("base64DecodeBytes", base64) as ByteArray;
+    }
+
+    //-------------------------------------
+    //  Hex
+    //-------------------------------------
+
+    public function hexFromString(string: String): String {
+        return context.call("hexEncodeString", string) as String;
+    }
+
+    public function hexToString(string: String): String {
+        return context.call("hexDecodeString", string) as String;
+    }
+
+    //-------------------------------------
+    //  Debug Utils
+    //-------------------------------------
+    
+    public function test(bytes: ByteArray): ByteArray {
+        return context.call("test", bytes) as ByteArray;
+    }
+
+    public function getBuildVersion(): String {
+        return context.call("buildVersion") as String;
+    }
 
     //--------------------------------------------------------------------------
     //

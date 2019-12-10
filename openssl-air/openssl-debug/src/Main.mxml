@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <f:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
                xmlns:f="library://ns.feathersui.com/mxml"
+               xmlns:layout="feathersx.layout.*"
                theme="feathers.themes.MetalWorksMobileTheme" showStats="true">
 
     <fx:Script>
         <![CDATA[
+        import com.airext.openssl.demo.data.Constants;
         import com.github.airext.OpenSSL;
+
+        import flash.utils.ByteArray;
 
         // MARK: Utils
 
@@ -18,8 +22,72 @@
         // MARK: Handlers
 
         private function isSupportedTapped(): void {
-            log("supported: " + OpenSSL.isSupported);
+            log("Supported: " + OpenSSL.isSupported);
         }
+
+        private function extensionVersionTapped(): void {
+            log("Extension version is: " + OpenSSL.extensionVersion);
+        }
+
+        private function nativeVersionTapped(): void {
+            log("Extension version is: " + OpenSSL.nativeVersion);
+        }
+
+        private function rsaPrivatelyEncryptTapped(): void {
+            var t: Number = getTimer();
+            var dto: Object = {
+                id: "5de575e7ab273f6b7a87b968",
+                username: "mail@example.com",
+                firstName: "Test",
+                lastName: "Test"
+            };
+            var input: ByteArray = new ByteArray();
+            input.writeObject(dto);
+            log(">>> serialization took", t - getTimer(), "ms");
+            t = getTimer();
+            var output: ByteArray = OpenSSL.shared.rsaEncryptWithPrivateKey(input);
+            log(">>> encryption took" + (getTimer() - t) + "ms");
+            log(output.readUTFBytes(output.length));
+        }
+
+        private function testTapped(): void {
+            var myByteArray: ByteArray = new ByteArray();
+            myByteArray.writeUTFBytes("Hello, World");
+            myByteArray.position = 0;
+            var bytes: ByteArray = OpenSSL.shared.test(myByteArray);
+            trace(bytes.readUTFBytes(bytes.length));
+        }
+
+        private function rsaEncryptTapped(): void {
+            var data: ByteArray = new ByteArray();
+            data.writeUTFBytes("Hello, world!");
+            var encrypted: ByteArray = OpenSSL.shared.rsaEncrypt(data, Constants.publicKey);
+            var decrypted: ByteArray = OpenSSL.shared.rsaDecrypt(encrypted, Constants.privateKey);
+            log(decrypted.readUTFBytes(decrypted.length));
+        }
+
+        private function encodeDecodeBase64StringTapped(): void {
+            var original: String = "Hello World";
+            var base64: String = OpenSSL.shared.base64FromString(original);
+            var decoded: String = OpenSSL.shared.base64ToString(base64);
+            log(decoded + " = " + original);
+        }
+
+        private function encodeDecodeBase64BytesTapped(): void {
+
+        }
+
+        private function encodeDecodeHexStringTapped(): void {
+            var original: String = "Hello World";
+            var hex: String = OpenSSL.shared.hexFromString(original);
+            var decoded: String = OpenSSL.shared.hexToString(hex);
+            log(decoded + " = " + original);
+        }
+
+        private function getBuildVersionTapped(): void {
+            log(OpenSSL.shared.getBuildVersion());
+        }
+
         ]]>
     </fx:Script>
 
@@ -34,6 +102,23 @@
         </f:layoutData>
         <f:layout><f:VerticalLayout horizontalAlign="justify" gap="10" /></f:layout>
         <f:Button label="Is Supported" triggered="isSupportedTapped()" />
+        <f:Button label="Extension Version" triggered="extensionVersionTapped()" />
+        <f:Button label="OpenSSL Version" triggered="nativeVersionTapped()" />
+        <!--    RSA    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
+        <f:Button label="RSA Encrypt" triggered="rsaEncryptTapped()" />
+        <!--    Base64    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
+        <f:Button label="Encode/Decode Base64 Bytes" triggered="encodeDecodeBase64BytesTapped()" />
+        <!--    Base64    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="Encode/Decode Hex String" triggered="encodeDecodeHexStringTapped()" />
+        <layout:Spacer width="280" height="2" />
+        <!--   Debug   -->
+        <f:Button label="Test" triggered="testTapped()" />
+        <f:Button label="Native Build Version" triggered="getBuildVersionTapped()" />
     </f:ScrollContainer>
 
     <f:ScrollText id="outputText" height="100">

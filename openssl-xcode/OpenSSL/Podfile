@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'ANXOpenSSL-iOS' do
+  platform :ios, '12.0'
+
+  pod 'OpenSSL-Universal'
+
+end
+
+target 'ANXOpenSSL-macOS' do
+  platform :macos, '10.9'
+  use_frameworks!
+
+  pod 'OpenSSL-Universal'
+
+end
+
+target 'ANXOpenSSLTest' do
+  platform :macos, '10.15'
+  use_frameworks!
+
+  pod 'OpenSSL-Universal'
+
+end

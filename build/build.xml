@@ -40,9 +40,9 @@
 
         <!-- Build iOS part of the extension -->
         <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
-            <arg line='-project ${product.name}.xcodeproj'/>
+            <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphoneos' />
-            <arg line="-target ANX${product.name}-iOS"/>
+            <arg line="-scheme ANX${product.name}-iOS"/>
             <arg line='-configuration Release'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
@@ -54,9 +54,9 @@
 
         <!-- Build iOS-simulator part of the extension -->
         <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
-            <arg line='-project ${product.name}.xcodeproj'/>
+            <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphonesimulator' />
-            <arg line="-target ANX${product.name}-iOS"/>
+            <arg line="-scheme ANX${product.name}-iOS"/>
             <arg line='-configuration Debug'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
@@ -82,9 +82,9 @@
 
         <!-- Build iOS part of the extension -->
         <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
-            <arg line='-project ${product.name}.xcodeproj'/>
+            <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
-            <arg line="-target ANX${product.name}-macOS"/>
+            <arg line="-scheme ANX${product.name}-macOS"/>
             <arg line='-configuration Release'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/osx/build'/>
         </exec>
