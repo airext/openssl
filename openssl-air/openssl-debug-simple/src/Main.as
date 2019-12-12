@@ -7,8 +7,12 @@ import flash.display.Sprite;
 public class Main extends Sprite {
     public function Main() {
 
-        new PlainButton(this, {label:"Is Supported"}, function(): void {
+        new PlainButton(this, {label:"Is Supported", y: 0, w: 200}, function(): void {
             trace(OpenSSL.isSupported);
+        });
+
+        new PlainButton(this, {label:"Extension Version", y: 50, w: 200}, function(): void {
+            trace(OpenSSL.extensionVersion);
         });
 
     }
