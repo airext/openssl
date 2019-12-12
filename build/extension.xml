@@ -23,6 +23,20 @@
         <finalizer>ANXOpenSSLFinalizer</finalizer>
       </applicationDeployment>
     </platform>
+    <platform name="Windows-x86">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="Windows-x86-64">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
     <platform name="default">
       <applicationDeployment/>
     </platform>
