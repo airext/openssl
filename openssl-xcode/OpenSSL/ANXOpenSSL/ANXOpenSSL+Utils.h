@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (FREObject)hexEncodeString:(FREObject)string;
 - (FREObject)hexDecodeString:(FREObject)string;
 
+- (FREObject)hexEncodeBytes:(FREObject)bytes;
+- (FREObject)hexDecodeBytes:(FREObject)string;
+
 @end
 
 NS_ASSUME_NONNULL_END
