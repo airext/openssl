@@ -90,6 +90,16 @@
             log(decoded + " = " + original);
         }
 
+        private function encodeDecodeHexBytesTapped(): void {
+            var original: String = "Hello World";
+            var input: ByteArray = new ByteArray();
+            input.writeUTFBytes(original);
+            var hex: String = OpenSSL.shared.hexFromBytes(input);
+            var output: ByteArray = OpenSSL.shared.hexToBytes(hex);
+            var decoded: String = output.readUTFBytes(output.length);
+            log(decoded + " = " + original);
+        }
+
         private function getBuildVersionTapped(): void {
             log(OpenSSL.shared.getBuildVersion());
         }
@@ -120,6 +130,7 @@
         <!--    Base64    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Hex String" triggered="encodeDecodeHexStringTapped()" />
+        <f:Button label="Encode/Decode Hex Bytes" triggered="encodeDecodeHexBytesTapped()" />
         <layout:Spacer width="280" height="2" />
         <!--   Debug   -->
         <f:Button label="Test" triggered="testTapped()" />

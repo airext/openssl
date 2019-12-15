@@ -6,9 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../build/extension.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/extension.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openssl-debug/src/Main.mxml" beforeDir="false" afterPath="$PROJECT_DIR$/openssl-debug/src/Main.mxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl/src/default/com/github/airext/OpenSSL.as" beforeDir="false" afterPath="$PROJECT_DIR$/openssl/src/default/com/github/airext/OpenSSL.as" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openssl/src/main/com/github/airext/OpenSSL.as" beforeDir="false" afterPath="$PROJECT_DIR$/openssl/src/main/com/github/airext/OpenSSL.as" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSL+Utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSL+Utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSL+Utils.m" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSL+Utils.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSLFacade.m" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-xcode/OpenSSL/ANXOpenSSL/ANXOpenSSLFacade.m" afterDir="false" />
@@ -296,7 +297,7 @@
       <workItem from="1575397063241" duration="18306000" />
       <workItem from="1575527419474" duration="18255000" />
       <workItem from="1575716089874" duration="17822000" />
-      <workItem from="1576429818603" duration="564000" />
+      <workItem from="1576429818603" duration="1693000" />
     </task>
     <servers />
   </component>
@@ -330,46 +331,46 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1117" y="475" key="DetectedRootsChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377815618" />
-    <state width="2518" height="720" key="GridCell.Tab.0.bottom" timestamp="1576430351711">
+    <state width="2518" height="720" key="GridCell.Tab.0.bottom" timestamp="1576431670273">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
-    <state width="2518" height="720" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430351711" />
-    <state width="2518" height="720" key="GridCell.Tab.0.center" timestamp="1576430351695">
+    <state width="2518" height="720" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431670273" />
+    <state width="2518" height="720" key="GridCell.Tab.0.center" timestamp="1576431670272">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
-    <state width="2518" height="720" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430351695" />
-    <state width="2518" height="720" key="GridCell.Tab.0.left" timestamp="1576430351694">
+    <state width="2518" height="720" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431670272" />
+    <state width="2518" height="720" key="GridCell.Tab.0.left" timestamp="1576431670272">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
-    <state width="2518" height="720" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430351694" />
-    <state width="2518" height="720" key="GridCell.Tab.0.right" timestamp="1576430351696">
+    <state width="2518" height="720" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431670272" />
+    <state width="2518" height="720" key="GridCell.Tab.0.right" timestamp="1576431670273">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
-    <state width="2518" height="720" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430351696" />
-    <state width="2518" height="720" key="GridCell.Tab.1.bottom" timestamp="1576430365739">
+    <state width="2518" height="720" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431670273" />
+    <state width="2518" height="720" key="GridCell.Tab.1.bottom" timestamp="1576431682748">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510004" />
-    <state width="2518" height="720" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430365739" />
-    <state width="2518" height="720" key="GridCell.Tab.1.center" timestamp="1576430365738">
+    <state width="2518" height="720" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431682748" />
+    <state width="2518" height="720" key="GridCell.Tab.1.center" timestamp="1576431682747">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
-    <state width="2518" height="720" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430365738" />
-    <state width="2518" height="720" key="GridCell.Tab.1.left" timestamp="1576430365738">
+    <state width="2518" height="720" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431682747" />
+    <state width="2518" height="720" key="GridCell.Tab.1.left" timestamp="1576431682746">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
-    <state width="2518" height="720" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430365738" />
-    <state width="2518" height="720" key="GridCell.Tab.1.right" timestamp="1576430365739">
+    <state width="2518" height="720" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431682746" />
+    <state width="2518" height="720" key="GridCell.Tab.1.right" timestamp="1576431682748">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1638" height="500" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
-    <state width="2518" height="720" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576430365739" />
+    <state width="2518" height="720" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1576431682748" />
     <state x="207" y="216" width="1321" height="834" key="SettingsEditor" timestamp="1575390732712">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -408,16 +409,14 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="flex">
           <url>file://$PROJECT_DIR$/openssl-debug/src/Main.mxml</url>
-          <line>82</line>
-          <option name="timeStamp" value="2" />
+          <line>99</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="FlashRunConfigurationType">
-        <watch expression="encrypted.readUTFBytes(encrypted.length)" language="Mxml" />
-        <watch expression="decoded.length" language="Mxml" />
-        <watch expression="original.length" language="Mxml" />
+        <watch expression="base64.length" language="Mxml" />
       </configuration>
     </watches-manager>
   </component>
