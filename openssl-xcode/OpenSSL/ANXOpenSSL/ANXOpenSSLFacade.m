@@ -169,7 +169,7 @@ FREObject ANXOpenSSLBase64EncodeBytes(FREContext context, void* functionData, ui
         return NULL;
     }
 
-    return NULL;
+    return [ANXOpenSSL.sharedInstance base64EncodeBytes:argv[0]];
 }
 
 FREObject ANXOpenSSLBase64DecodeBytes(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -179,7 +179,7 @@ FREObject ANXOpenSSLBase64DecodeBytes(FREContext context, void* functionData, ui
         return NULL;
     }
 
-    return NULL;
+    return [ANXOpenSSL.sharedInstance base64DecodeBytes:argv[0]];
 }
 
 #pragma mark Hex
@@ -232,7 +232,7 @@ FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, 
 }
 
 FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"25"];
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"27"];
 }
 
 #pragma mark - ContextInitialize/ContextFinalizer

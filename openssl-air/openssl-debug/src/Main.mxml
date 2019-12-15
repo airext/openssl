@@ -74,7 +74,13 @@
         }
 
         private function encodeDecodeBase64BytesTapped(): void {
-
+            var original: String = "Hello World";
+            var input: ByteArray = new ByteArray();
+            input.writeUTFBytes(original);
+            var base64: String = OpenSSL.shared.base64FromBytes(input);
+            var output: ByteArray = OpenSSL.shared.base64ToBytes(base64);
+            var decoded: String = output.readUTFBytes(output.length);
+            log(decoded + " = " + original);
         }
 
         private function encodeDecodeHexStringTapped(): void {
@@ -87,7 +93,6 @@
         private function getBuildVersionTapped(): void {
             log(OpenSSL.shared.getBuildVersion());
         }
-
         ]]>
     </fx:Script>
 
