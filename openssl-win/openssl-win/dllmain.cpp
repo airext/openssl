@@ -1,6 +1,8 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "pch.h"
 #include "FlashRuntimeExtensions.h"
+#include "ANXOpenSSLConversionRoutines.h"
+#include "ANXOpenSSL.h"
 
 extern "C" {
 
@@ -13,13 +15,19 @@ extern "C" {
         return result;
     }
 
+    FREObject ANXOpenSSLVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        OutputDebugString(L"ANXOpenSSLVersion");
+        return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject(ANXOpenSSL::getInstance().version());
+    }
+
     #pragma mark - ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
         OutputDebugString(L"ANXOpenSSLContextInitializer");
 
         static FRENamedFunction functions[] = {
-            { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported }
+            { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
+            { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion }
         };
 
         *numFunctionsToSet = sizeof(functions) / sizeof(FRENamedFunction);
@@ -46,5 +54,4 @@ extern "C" {
         OutputDebugString(L"ANXOpenSSLFinalizer");
     }
 }
-
 

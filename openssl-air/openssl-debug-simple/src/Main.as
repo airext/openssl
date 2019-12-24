@@ -15,6 +15,10 @@ public class Main extends Sprite {
             trace(OpenSSL.extensionVersion);
         });
 
+        new PlainButton(this, {label:"OpenSSL Version", y: 100, w: 200}, function(): void {
+            trace(OpenSSL.nativeVersion);
+        });
+
     }
 }
 }
