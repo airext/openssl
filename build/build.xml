@@ -107,11 +107,19 @@
     </target>
 
     <target name="win32">
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Build "Debug-x86|x86"' />
+        </exec>
+
         <copy file="${win.project.dir}/Debug-x86/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
     </target>
 
     <target name="win64">
-        <copy file="${win.project.dir}/x64/Debug-x64/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Build "Debug|x64"' />
+        </exec>
+        <copy file="${win.project.dir}/x64/Debug/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
+
     </target>
 
     <!--=====================================================================-->
@@ -253,6 +261,12 @@
 
         <!-- Remove temporary directory -->
          <delete dir="temp"/>
+    </target>
+
+    <target name="test">
+        <exec executable="java">
+            <arg line="-version" />
+        </exec>
     </target>
 
     <target name="package.on.win" description="Create the extension package" depends="air, win">
