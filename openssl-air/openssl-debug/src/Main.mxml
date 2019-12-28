@@ -96,7 +96,7 @@
         <f:VerticalLayout paddingTop="44" paddingBottom="34" />
     </f:layout>
 
-    <f:ScrollContainer>
+    <f:ScrollContainer>88uui
         <f:layoutData>
             <f:VerticalLayoutData percentHeight="100" percentWidth="100" />
         </f:layoutData>

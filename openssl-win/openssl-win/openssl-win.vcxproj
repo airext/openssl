@@ -291,6 +291,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ANXOpenSSL.h" />
+    <ClInclude Include="ANXOpenSSLBase64.h" />
     <ClInclude Include="ANXOpenSSLConversionRoutines.h" />
     <ClInclude Include="ANXOpenSSLDefer.h" />
     <ClInclude Include="ANXOpenSSLRSA.h" />
@@ -301,6 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ANXOpenSSL.cpp" />
+    <ClCompile Include="ANXOpenSSLBase64.cpp" />
     <ClCompile Include="ANXOpenSSLConversionRoutines.cpp" />
     <ClCompile Include="ANXOpenSSLRSA.cpp" />
     <ClCompile Include="ANXOpenSSLUtils.cpp" />
