@@ -4,6 +4,7 @@
 #include "ANXOpenSSLConversionRoutines.h"
 #include "ANXOpenSSL.h"
 #include "ANXOpenSSLRSA.h"
+#include "ANXOpenSSLBase64.h"
 
 extern "C" {
 
@@ -47,6 +48,51 @@ extern "C" {
 
     #pragma endregion
 
+
+    #pragma region Base64
+
+    FREObject ANXOpenSSLBase64EncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLBase64EncodeString");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLBase64::base64EncodeString(argv[0]);
+    }
+
+    FREObject ANXOpenSSLBase64DecodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLBase64DecodeString");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLBase64::base64DecodeString(argv[0]);
+    }
+
+    FREObject ANXOpenSSLBase64EncodeBytes(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLBase64EncodeBytes");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLBase64::base64EncodeBytes(argv[0]);
+    }
+
+    FREObject ANXOpenSSLBase64DecodeBytes(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLBase64DecodeBytes");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLBase64::base64DecodeBytes(argv[0]);
+    }
+
+    #pragma endregion
+
     #pragma region ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
@@ -57,6 +103,10 @@ extern "C" {
             { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
             { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
             { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
+            { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
+            { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
+            { (const uint8_t*)"base64EncodeBytes", NULL, &ANXOpenSSLBase64EncodeBytes },
+            { (const uint8_t*)"base64DecodeBytes", NULL, &ANXOpenSSLBase64DecodeBytes },
         };
 
         *numFunctionsToSet = sizeof(functions) / sizeof(FRENamedFunction);
