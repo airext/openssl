@@ -3,10 +3,11 @@
 #include "FlashRuntimeExtensions.h"
 #include "ANXOpenSSLConversionRoutines.h"
 #include "ANXOpenSSL.h"
+#include "ANXOpenSSLRSA.h"
 
 extern "C" {
 
-    #pragma mark API
+    #pragma region Common
 
     FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         OutputDebugString(L"ANXOpenSSLIsSupported");
@@ -20,14 +21,42 @@ extern "C" {
         return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject(ANXOpenSSL::getInstance().version());
     }
 
-    #pragma mark - ContextInitialize/ContextFinalizer
+    #pragma endregion
+
+    #pragma region RSA
+
+    FREObject ANXOpenSSLEncryptWithPublicKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        OutputDebugString(L"ANXOpenSSLEncryptWithPublicKey");
+
+        if (argc < 2) {
+            return NULL;
+        }
+
+        return ANXOpenSSLRSA::rsaEncryptWithPublicKey(argv[0], argv[1]);
+    }
+
+    FREObject ANXOpenSSLDecryptWithPrivateKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        OutputDebugString(L"ANXOpenSSLDecryptWithPrivateKey");
+
+        if (argc < 2) {
+            return NULL;
+        }
+
+        return ANXOpenSSLRSA::rsaDecryptWithPrivateKey(argv[0], argv[1]);
+    }
+
+    #pragma endregion
+
+    #pragma region ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
         OutputDebugString(L"ANXOpenSSLContextInitializer");
 
         static FRENamedFunction functions[] = {
             { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
-            { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion }
+            { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
+            { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
+            { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
         };
 
         *numFunctionsToSet = sizeof(functions) / sizeof(FRENamedFunction);
@@ -39,7 +68,9 @@ extern "C" {
         OutputDebugString(L"ANXOpenSSLContextFinalizer");
     }
 
-    #pragma mark Initializer/Finalizer
+    #pragma endregion
+
+    #pragma region Initializer/Finalizer
 
 	__declspec(dllexport) void ANXOpenSSLInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet) {
         OutputDebugString(L"ANXOpenSSLInitializer");
@@ -53,5 +84,7 @@ extern "C" {
     __declspec(dllexport) void ANXOpenSSLFinalizer(void* extData) {
         OutputDebugString(L"ANXOpenSSLFinalizer");
     }
+
+    #pragma endregion
 }
 
