@@ -292,6 +292,9 @@
   <ItemGroup>
     <ClInclude Include="ANXOpenSSL.h" />
     <ClInclude Include="ANXOpenSSLConversionRoutines.h" />
+    <ClInclude Include="ANXOpenSSLDefer.h" />
+    <ClInclude Include="ANXOpenSSLRSA.h" />
+    <ClInclude Include="ANXOpenSSLUtils.h" />
     <ClInclude Include="FlashRuntimeExtensions.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -299,6 +302,8 @@
   <ItemGroup>
     <ClCompile Include="ANXOpenSSL.cpp" />
     <ClCompile Include="ANXOpenSSLConversionRoutines.cpp" />
+    <ClCompile Include="ANXOpenSSLRSA.cpp" />
+    <ClCompile Include="ANXOpenSSLUtils.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

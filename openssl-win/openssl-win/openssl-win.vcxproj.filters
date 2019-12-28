@@ -30,6 +30,15 @@
     <ClInclude Include="ANXOpenSSL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ANXOpenSSLRSA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ANXOpenSSLDefer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ANXOpenSSLUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -42,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ANXOpenSSL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ANXOpenSSLRSA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ANXOpenSSLUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
