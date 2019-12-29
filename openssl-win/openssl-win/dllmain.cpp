@@ -93,6 +93,19 @@ extern "C" {
 
     #pragma endregion
 
+    #pragma region Debug
+
+    FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLEncryptWithPrivateKey");
+        return NULL;
+    }
+
+    FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject("2");
+    }
+
+    #pragma endregion
+
     #pragma region ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
@@ -107,6 +120,8 @@ extern "C" {
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
             { (const uint8_t*)"base64EncodeBytes", NULL, &ANXOpenSSLBase64EncodeBytes },
             { (const uint8_t*)"base64DecodeBytes", NULL, &ANXOpenSSLBase64DecodeBytes },
+            { (const uint8_t*)"buildVersion", NULL, &ANXOpenBuildVersion },
+            { (const uint8_t*)"test", NULL, &ANXOpenSSLTest },
         };
 
         *numFunctionsToSet = sizeof(functions) / sizeof(FRENamedFunction);
