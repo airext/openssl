@@ -145,6 +145,18 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  AES
+    //-------------------------------------
+
+    public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        return context.call("aesEncrypt", data, key, iv) as ByteArray;
+    }
+
+    public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        return context.call("aesDecrypt", data, key, iv) as ByteArray;
+    }
+    
+    //-------------------------------------
     //  Base64
     //-------------------------------------
 
