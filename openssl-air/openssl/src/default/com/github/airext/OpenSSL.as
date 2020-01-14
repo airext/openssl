@@ -94,6 +94,20 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  AES
+    //-------------------------------------
+
+    public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
     //  Base64
     //-------------------------------------
 

@@ -9,6 +9,7 @@
 #import "FlashRuntimeExtensions.h"
 #import "ANXOpenSSL.h"
 #import "ANXOpenSSL+RSA.h"
+#import "ANXOpenSSL+AES.h"
 #import "ANXOpenSSL+Utils.h"
 #import "ANXOpenSSLConversionRoutines.h"
 
@@ -140,7 +141,29 @@ FREObject ANXOpenSSLDecryptWithPrivateKey(FREContext context, void* functionData
     return [ANXOpenSSL.sharedInstance rsaDecrypt:argv[0] withPrivateKey:argv[1]];
 }
 
-#pragma mark Base64
+#pragma mark - AES
+
+FREObject ANXOpenSSLAESEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLAESEncrypt");
+
+    if (argc < 3) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance aesEncrypt:argv[0] withKey:argv[1] withInitialisationVector:argv[2]];
+}
+
+FREObject ANXOpenSSLAESDecrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLAESDecrypt");
+
+    if (argc < 3) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance aesDecrypt:argv[0] withKey:argv[1] withInitialisationVector:argv[2]];
+}
+
+#pragma mark - Base64
 
 FREObject ANXOpenSSLBase64EncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
     NSLog(@"ANXOpenSSLBase64EncodeString");
@@ -261,79 +284,35 @@ FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t a
 void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     NSLog(@"ANXOpenSSLContextInitializer");
 
-    *numFunctionsToSet = 16;
+    static FRENamedFunction functions[] = {
+        { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
+        { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
 
-    FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToSet));
+        { (const uint8_t*)"rsaEncryptWithPrivateKey", NULL, &ANXOpenSSLEncryptWithPrivateKey },
+        { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
+        { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
+        { (const uint8_t*)"rsaDecryptWithPublicKey", NULL, &ANXOpenSSLDecryptWithPublicKey },
 
-    // functions
+        { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
+        { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
-    func[0].name = (const uint8_t*) "isSupported";
-    func[0].functionData = NULL;
-    func[0].function = &ANXOpenSSLIsSupported;
+        { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
+        { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
+        { (const uint8_t*)"base64EncodeBytes", NULL, &ANXOpenSSLBase64EncodeBytes },
+        { (const uint8_t*)"base64DecodeBytes", NULL, &ANXOpenSSLBase64DecodeBytes },
 
-    func[1].name = (const uint8_t*) "version";
-    func[1].functionData = NULL;
-    func[1].function = &ANXOpenSSLVersion;
+        { (const uint8_t*)"hexEncodeString", NULL, &ANXOpenSSLHexEncodeString },
+        { (const uint8_t*)"hexDecodeString", NULL, &ANXOpenSSLHexDecodeString },
+        { (const uint8_t*)"hexEncodeBytes", NULL, &ANXOpenSSLHexEncodeBytes },
+        { (const uint8_t*)"hexDecodeBytes", NULL, &ANXOpenSSLHexDecodeBytes },
 
-    func[2].name = (const uint8_t*) "rsaEncryptWithPrivateKey";
-    func[2].functionData = NULL;
-    func[2].function = &ANXOpenSSLEncryptWithPrivateKey;
+        { (const uint8_t*)"buildVersion", NULL, &ANXOpenBuildVersion },
+        { (const uint8_t*)"test", NULL, &ANXOpenSSLTest },
+    };
 
-    func[3].name = (const uint8_t*) "rsaDecryptWithPublicKey";
-    func[3].functionData = NULL;
-    func[3].function = &ANXOpenSSLDecryptWithPublicKey;
+    *numFunctionsToSet = sizeof(functions) / sizeof(FRENamedFunction);
 
-    func[4].name = (const uint8_t*) "rsaEncryptWithPublicKey";
-    func[4].functionData = NULL;
-    func[4].function = &ANXOpenSSLEncryptWithPublicKey;
-
-    func[5].name = (const uint8_t*) "rsaDecryptWithPrivateKey";
-    func[5].functionData = NULL;
-    func[5].function = &ANXOpenSSLDecryptWithPrivateKey;
-
-    func[6].name = (const uint8_t*) "base64EncodeString";
-    func[6].functionData = NULL;
-    func[6].function = &ANXOpenSSLBase64EncodeString;
-
-    func[7].name = (const uint8_t*) "base64DecodeString";
-    func[7].functionData = NULL;
-    func[7].function = &ANXOpenSSLBase64DecodeString;
-
-    func[8].name = (const uint8_t*) "base64EncodeBytes";
-    func[8].functionData = NULL;
-    func[8].function = &ANXOpenSSLBase64EncodeBytes;
-
-    func[9].name = (const uint8_t*) "base64DecodeBytes";
-    func[9].functionData = NULL;
-    func[9].function = &ANXOpenSSLBase64DecodeBytes;
-
-    func[10].name = (const uint8_t*) "hexEncodeString";
-    func[10].functionData = NULL;
-    func[10].function = &ANXOpenSSLHexEncodeString;
-
-    func[11].name = (const uint8_t*) "hexDecodeString";
-    func[11].functionData = NULL;
-    func[11].function = &ANXOpenSSLHexDecodeString;
-
-    func[12].name = (const uint8_t*) "hexEncodeBytes";
-    func[12].functionData = NULL;
-    func[12].function = &ANXOpenSSLHexEncodeBytes;
-
-    func[13].name = (const uint8_t*) "hexDecodeBytes";
-    func[13].functionData = NULL;
-    func[13].function = &ANXOpenSSLHexDecodeBytes;
-
-    // debug
-
-    func[14].name = (const uint8_t*) "test";
-    func[14].functionData = NULL;
-    func[14].function = &ANXOpenSSLTest;
-
-    func[15].name = (const uint8_t*) "buildVersion";
-    func[15].functionData = NULL;
-    func[15].function = &ANXOpenBuildVersion;
-
-    *functionsToSet = func;
+    *functionsToSet = functions;
 }
 
 void ANXOpenSSLContextFinalizer(FREContext ctx) {
