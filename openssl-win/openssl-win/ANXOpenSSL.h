@@ -11,11 +11,19 @@
 #pragma once
 class ANXOpenSSL
 {
+
 public:
     static ANXOpenSSL& getInstance()
     {
         static ANXOpenSSL instance; // Guaranteed to be destroyed. Instantiated on first use.
         return instance;
+    }
+
+private:
+    ANXOpenSSL() {
+        OpenSSL_add_all_algorithms();
+        OpenSSL_add_all_ciphers();
+        OpenSSL_add_all_digests();
     }
 
 public:
@@ -24,5 +32,7 @@ public:
     unsigned char* rsaEncryptBytesWithPublicKey(const unsigned char* input, const unsigned char* key, int* outLength);
 
     unsigned char* rsaDecryptBytesWithPrivateKey(const unsigned char* input, const unsigned char* key, int* outLength);
+
+    BOOL verifyCertificate(const char* certificate, const char* caCertificate);
 };
 
