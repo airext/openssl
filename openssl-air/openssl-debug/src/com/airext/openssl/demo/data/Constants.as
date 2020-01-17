@@ -2,6 +2,8 @@
  * Created by max.rozdobudko@gmail.com on 05.12.2019.
  */
 package com.airext.openssl.demo.data {
+import flash.utils.ByteArray;
+
 public class Constants {
 
     public static const publicKey: String =
@@ -43,5 +45,38 @@ public class Constants {
     "w6z2vEfRVQDq4Hm4vBzjdi3QfYLNkTiTqLcvgWZ+eX44ogXtdTDO7c+GeMKWz4XX\n" +
     "uJSUVL5+CVjKLjZEJ6Qc2WZLl94xSwL71E41H4YciVnSCQxVc4Jw\n" +
     "-----END RSA PRIVATE KEY-----\n";
+
+    [Embed(source="/../../../test/ACME/ACME-Inc.-CA-Root-Certificate.crt", mimeType="application/octet-stream")]
+    protected static const ACMERootCertificate: Class;
+
+    private static var _acmeRootCertificate: String;
+    public static function get acmeRootCertificate(): String {
+        if (_acmeRootCertificate == null) {
+            _acmeRootCertificate = (new ACMERootCertificate() as ByteArray).toString();
+        }
+        return _acmeRootCertificate;
+    }
+
+    [Embed(source="/../../../test/ACME/Server1-Certificate.crt", mimeType="application/octet-stream")]
+    protected static const ACMECertificate: Class;
+
+    private static var _acmeCertificate: String;
+    public static function get acmeCertificate(): String {
+        if (_acmeCertificate == null) {
+            _acmeCertificate = (new ACMECertificate() as ByteArray).toString();
+        }
+        return _acmeCertificate;
+    }
+
+    [Embed(source="/../../../test/ACME/Server1-Certificate-FAKE.crt", mimeType="application/octet-stream")]
+    protected static const ACMEFakeCertificate: Class;
+
+    private static var _acmeFakeCertificate: String;
+    public static function get acmeFakeCertificate(): String {
+        if (_acmeFakeCertificate == null) {
+            _acmeFakeCertificate = (new ACMEFakeCertificate() as ByteArray).toString();
+        }
+        return _acmeFakeCertificate;
+    }
 }
 }

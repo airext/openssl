@@ -26,12 +26,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSString*)version;
 
-#pragma mark RSA
+#pragma mark - RSA
 
 - (int)rsaEncryptString:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char *)key output:(unsigned char*)output;
 
 - (unsigned char*)rsaEncryptBytes:(nonnull const unsigned char *)input withPublicKey:(const unsigned char*)key outLength:(int*)outLength;
 - (unsigned char*)rsaDecryptBytes:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char*)key outLength:(int*)outLength;
+
+#pragma mark - Certificate Verification
+
+- (BOOL)verifyCertificate:(const char*)certificate withCertificateAuthorityCertificate:(const char*)caCertificate;
+
+#pragma mark - AES
+
+- (unsigned char*)aesEncryptBytes:(nonnull const unsigned char*)input withKey:(const unsigned char*)key withIV:(const unsigned char*)iv outLength:(int*)outLength;
+- (unsigned char*)aesDecryptBytes:(nonnull const unsigned char*)input withKey:(const unsigned char*)key withIV:(const unsigned char*)iv outLength:(int*)outLength;
+
+#pragma mark - HEX
 
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength;
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength;
