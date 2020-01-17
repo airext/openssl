@@ -10,6 +10,8 @@
 #import "TestRSA.h"
 #import "TestBase64.h"
 #import "TestHex.h"
+#import "TestAES.h"
+#import "TestVerify.h"
 
 @implementation ViewController
 
@@ -39,4 +41,13 @@
 - (IBAction)handleTestHexButtonTap:(id)sender {
     [TestHex test_ane];
 }
+
+- (IBAction)handleTestAESButtonTap:(id)sender {
+    [TestAES test_ane];
+}
+
+- (IBAction)handleTestVerifyButtonTap:(id)sender {
+    [TestVerify test_ane];
+}
+
 @end

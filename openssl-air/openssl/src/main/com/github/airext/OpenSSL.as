@@ -144,6 +144,22 @@ public class OpenSSL extends EventDispatcher {
         return context.call("rsaDecryptWithPrivateKey", data, privateKey) as ByteArray;
     }
 
+    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
+        return context.call("verifyCertificate", rootCertificate, certificate);
+    }
+
+    //-------------------------------------
+    //  AES
+    //-------------------------------------
+
+    public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        return context.call("aesEncrypt", data, key, iv) as ByteArray;
+    }
+
+    public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        return context.call("aesDecrypt", data, key, iv) as ByteArray;
+    }
+    
     //-------------------------------------
     //  Base64
     //-------------------------------------
@@ -175,6 +191,14 @@ public class OpenSSL extends EventDispatcher {
 
     public function hexToString(string: String): String {
         return context.call("hexDecodeString", string) as String;
+    }
+
+    public function hexFromBytes(bytes: ByteArray): String {
+        return context.call("hexEncodeBytes", bytes) as String;
+    }
+
+    public function hexToBytes(string: String): ByteArray {
+        return context.call("hexDecodeBytes", string) as ByteArray;
     }
 
     //-------------------------------------

@@ -4,7 +4,7 @@
     <configurations>
       <configuration name="killme" target-platform="Desktop" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/../out/production/killme">
         <dependencies target-player="32.0">
-          <sdk name="32.0.0" />
+          <sdk name="33.0" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop package-file-name="Main" />
@@ -19,7 +19,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="32.0.0" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="33.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

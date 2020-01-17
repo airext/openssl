@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (FREObject)rsaEncrypt:(FREObject)data withPublicKey:(FREObject)key;
 - (FREObject)rsaDecrypt:(FREObject)data withPrivateKey:(FREObject)key;
 
+- (FREObject)verifyCertificate:(FREObject)certificateObject withCertificateFromCertificateAuthority:(FREObject)caCertificateObject;
+
 @end
 
 NS_ASSUME_NONNULL_END

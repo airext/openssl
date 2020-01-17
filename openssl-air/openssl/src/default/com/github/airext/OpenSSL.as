@@ -93,6 +93,25 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
+    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
+    //  AES
+    //-------------------------------------
+
+    public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
     //-------------------------------------
     //  Base64
     //-------------------------------------
@@ -128,6 +147,16 @@ public class OpenSSL extends EventDispatcher {
     }
 
     public function hexToString(string: String): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function hexFromBytes(bytes: ByteArray): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    public function hexToBytes(string: String): ByteArray {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
