@@ -48,6 +48,7 @@
 		50A3AEC023CE63D10000ADB3 /* ANXOpenSSL+AES.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A3AEBE23CE63D10000ADB3 /* ANXOpenSSL+AES.h */; };
 		50A3AEC123CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */; };
 		50A3AEC223CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */; };
+		50A3AECE23D1CBC70000ADB3 /* TestVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AECD23D1CBC70000ADB3 /* TestVerify.m */; };
 		50F3F295239D8D400077D3DC /* TestHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F3F294239D8D400077D3DC /* TestHex.m */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,8 @@
 		509BBE9B23CDBC110001B352 /* TestAES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAES.m; sourceTree = "<group>"; };
 		50A3AEBE23CE63D10000ADB3 /* ANXOpenSSL+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+AES.h"; sourceTree = "<group>"; };
 		50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+AES.m"; sourceTree = "<group>"; };
+		50A3AECC23D1CBC70000ADB3 /* TestVerify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVerify.h; sourceTree = "<group>"; };
+		50A3AECD23D1CBC70000ADB3 /* TestVerify.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVerify.m; sourceTree = "<group>"; };
 		50F3F293239D8D400077D3DC /* TestHex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHex.h; sourceTree = "<group>"; };
 		50F3F294239D8D400077D3DC /* TestHex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHex.m; sourceTree = "<group>"; };
 		6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				50F3F294239D8D400077D3DC /* TestHex.m */,
 				509BBE9A23CDBC110001B352 /* TestAES.h */,
 				509BBE9B23CDBC110001B352 /* TestAES.m */,
+				50A3AECC23D1CBC70000ADB3 /* TestVerify.h */,
+				50A3AECD23D1CBC70000ADB3 /* TestVerify.m */,
 			);
 			path = ANXOpenSSLTest;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				5087A46D2397C3D8006C153D /* ViewController.m in Sources */,
 				509BBE9C23CDBC110001B352 /* TestAES.m in Sources */,
 				5087A49223993396006C153D /* ANXOpenSSLDefer.m in Sources */,
+				50A3AECE23D1CBC70000ADB3 /* TestVerify.m in Sources */,
 				5087A4752397C3DB006C153D /* main.m in Sources */,
 				5087A4822397C5D3006C153D /* TestRSA.m in Sources */,
 				5087A47F2397C461006C153D /* ANXOpenSSL.m in Sources */,

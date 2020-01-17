@@ -16,7 +16,9 @@ static ANXOpenSSL* _sharedInstance = nil;
 + (ANXOpenSSL*)sharedInstance {
     if (_sharedInstance == nil) {
         _sharedInstance = [[super allocWithZone:NULL] init];
-
+        OpenSSL_add_all_algorithms();
+        OpenSSL_add_all_ciphers();
+        OpenSSL_add_all_digests();
     }
     return _sharedInstance;
 }
@@ -74,6 +76,27 @@ static ANXOpenSSL* _sharedInstance = nil;
     return output;
 }
 
+- (BOOL)verifyCertificate:(const char*)certificate withCertificateAuthorityCertificate:(const char*)caCertificate {
+
+    BIO *b = BIO_new(BIO_s_mem());
+    BIO_puts(b, caCertificate);
+    X509 * issuer = PEM_read_bio_X509(b, NULL, NULL, NULL);
+    EVP_PKEY *signing_key=X509_get_pubkey(issuer);
+
+    BIO *c = BIO_new(BIO_s_mem());
+    BIO_puts(c, certificate);
+    X509 * x509 = PEM_read_bio_X509(c, NULL, NULL, NULL);
+
+    int result = X509_verify(x509, signing_key);
+
+    EVP_PKEY_free(signing_key);
+    BIO_free(b);
+    BIO_free(c);
+    X509_free(x509);
+    X509_free(issuer);
+
+    return result > 0;
+}
 
 #pragma mark - AES
 

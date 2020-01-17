@@ -151,5 +151,29 @@
     return result;
 }
 
+- (FREObject)verifyCertificate:(FREObject)certificateObject withCertificateFromCertificateAuthority:(FREObject)caCertificateObject {
+
+    NSLog(@"Attempt to read certificate");
+
+    const unsigned char *certificate;
+    uint32_t certificateLength;
+    if (FREGetObjectAsUTF8(certificateObject, &certificateLength, &certificate) != FRE_OK) {
+        return NULL;
+    }
+
+    NSLog(@"Attempt to read certificate from Certificate Authority");
+
+    const unsigned char *caCertificate;
+    uint32_t caCertificateLength;
+    if (FREGetObjectAsUTF8(caCertificateObject, &caCertificateLength, &caCertificate) != FRE_OK) {
+        return NULL;
+    }
+
+    NSLog(@"Attempt to verify certificate");
+
+    BOOL result = [self verifyCertificate:(const char*)certificate withCertificateAuthorityCertificate:(const char*)caCertificate];
+
+    return [ANXOpenSSLConversionRoutines convertBoolToFREObject:result];
+}
 
 @end

@@ -93,6 +93,11 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
+    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
     //-------------------------------------
     //  AES
     //-------------------------------------
