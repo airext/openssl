@@ -33,6 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (unsigned char*)rsaEncryptBytes:(nonnull const unsigned char *)input withPublicKey:(const unsigned char*)key outLength:(int*)outLength;
 - (unsigned char*)rsaDecryptBytes:(nonnull const unsigned char *)input withPrivateKey:(const unsigned char*)key outLength:(int*)outLength;
 
+#pragma mark - Certificate Verification
+
+- (BOOL)verifyCertificate:(const char*)certificate withCertificateAuthorityCertificate:(const char*)caCertificate;
+
 #pragma mark - AES
 
 - (unsigned char*)aesEncryptBytes:(nonnull const unsigned char*)input withKey:(const unsigned char*)key withIV:(const unsigned char*)iv outLength:(int*)outLength;

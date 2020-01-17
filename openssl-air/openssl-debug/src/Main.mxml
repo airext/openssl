@@ -134,6 +134,14 @@
             log(OpenSSL.shared.getBuildVersion());
         }
 
+        private function verifyTapped(rootCertificate: String, certificate: String): void {
+            if (OpenSSL.shared.verifyCertificate(rootCertificate, certificate)) {
+                log("certifcate is valid");
+            } else {
+                log("certifcate is invalid");
+            }
+        }
+
         ]]>
     </fx:Script>
 
@@ -158,6 +166,8 @@
         <layout:Spacer width="280" height="2" />
         <f:Button label="AES Encrypt" triggered="aesEncryptTapped()" />
         <f:Button label="AES Decrypt" triggered="aesDecryptTapped()" />
+        <f:Button label="Verify Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeCertificate)" />
+        <f:Button label="Verify Fake Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeFakeCertificate)" />
         <!--    Base64    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />

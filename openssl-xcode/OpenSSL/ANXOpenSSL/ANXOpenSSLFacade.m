@@ -120,7 +120,6 @@ FREObject ANXOpenSSLDecryptWithPublicKey(FREContext context, void* functionData,
     return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:ANXOpenSSL.sharedInstance.version];
 }
 
-
 FREObject ANXOpenSSLEncryptWithPublicKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
     NSLog(@"ANXOpenSSLEncryptWithPublicKey");
 
@@ -139,6 +138,16 @@ FREObject ANXOpenSSLDecryptWithPrivateKey(FREContext context, void* functionData
     }
 
     return [ANXOpenSSL.sharedInstance rsaDecrypt:argv[0] withPrivateKey:argv[1]];
+}
+
+FREObject ANXOpenSSLVerifyCertificate(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLVerifyCertificate");
+
+    if (argc < 2) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance verifyCertificate:argv[1] withCertificateFromCertificateAuthority:argv[0]];
 }
 
 #pragma mark - AES
@@ -292,6 +301,7 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
         { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
         { (const uint8_t*)"rsaDecryptWithPublicKey", NULL, &ANXOpenSSLDecryptWithPublicKey },
+        { (const uint8_t*)"verifyCertificate", NULL, &ANXOpenSSLVerifyCertificate },
 
         { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
         { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },

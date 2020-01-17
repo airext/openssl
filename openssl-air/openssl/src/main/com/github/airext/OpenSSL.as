@@ -144,6 +144,10 @@ public class OpenSSL extends EventDispatcher {
         return context.call("rsaDecryptWithPrivateKey", data, privateKey) as ByteArray;
     }
 
+    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
+        return context.call("verifyCertificate", rootCertificate, certificate);
+    }
+
     //-------------------------------------
     //  AES
     //-------------------------------------
