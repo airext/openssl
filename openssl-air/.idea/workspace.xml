@@ -6,7 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../build/extension.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/extension.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.h" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLConversionRoutines.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLConversionRoutines.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLRSA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLRSA.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLRSA.h" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLRSA.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/dllmain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/dllmain.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/openssl/src/main" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/openssl/build" />
@@ -71,7 +78,7 @@
       <recent name="$PROJECT_DIR$/openssl-debug-simple/ane" />
     </key>
   </component>
-  <component name="RunManager" selected="Flash App.openssl-debug">
+  <component name="RunManager" selected="Flash App.openssl-debug:desktop">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -79,21 +86,8 @@
       <module />
       <method />
     </configuration>
-    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -255,6 +249,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -268,6 +278,7 @@
       <item itemvalue="Flash App.openssl-debug:emulator" />
       <item itemvalue="Flash App.openssl-debug-simple:desktop" />
       <item itemvalue="Flash App.openssl-debug" />
+      <item itemvalue="Flash App.openssl-debug:desktop" />
       <item itemvalue="Flash App.killme" />
     </list>
   </component>
@@ -303,6 +314,7 @@
       <workItem from="1578653914239" duration="12000" />
       <workItem from="1579034887735" duration="5665000" />
       <workItem from="1579098637510" duration="39000" />
+      <workItem from="1579287217026" duration="1554000" />
     </task>
     <servers />
   </component>
@@ -314,9 +326,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="880" y="398" width="1135" height="666" key="#Project_Structure/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306536277" />
-    <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579036733247">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="463" y="241" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579290326252">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="463" y="241" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1579290326252" />
     <state x="304" y="200" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1575370871782" />
     <state x="463" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579036733247" />
     <state x="1093" y="456" key="#com.intellij.ide.util.MemberChooser" timestamp="1575404505225">
@@ -340,44 +353,52 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1117" y="475" key="DetectedRootsChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377815618" />
-    <state width="2518" height="408" key="GridCell.Tab.0.bottom" timestamp="1579078492221">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.0.bottom" timestamp="1579290737299">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1579290737299" />
     <state width="1638" height="500" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="408" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492221" />
-    <state width="2518" height="408" key="GridCell.Tab.0.center" timestamp="1579078492220">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.0.center" timestamp="1579290737298">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1579290737298" />
     <state width="1638" height="500" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
     <state width="2518" height="408" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492220" />
-    <state width="2518" height="408" key="GridCell.Tab.0.left" timestamp="1579078492219">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.0.left" timestamp="1579290737298">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1579290737298" />
     <state width="1638" height="500" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
     <state width="2518" height="408" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492219" />
-    <state width="2518" height="408" key="GridCell.Tab.0.right" timestamp="1579078492220">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.0.right" timestamp="1579290737299">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1579290737298" />
     <state width="1638" height="500" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="408" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492220" />
-    <state width="2518" height="475" key="GridCell.Tab.1.bottom" timestamp="1579078492215">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.1.bottom" timestamp="1579290736906">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1579290736906" />
     <state width="1638" height="500" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510004" />
     <state width="2518" height="475" key="GridCell.Tab.1.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492215" />
-    <state width="2518" height="475" key="GridCell.Tab.1.center" timestamp="1579078492215">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.1.center" timestamp="1579290736905">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1579290736905" />
     <state width="1638" height="500" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="475" key="GridCell.Tab.1.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492215" />
-    <state width="2518" height="475" key="GridCell.Tab.1.left" timestamp="1579078492215">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.1.left" timestamp="1579290736905">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1579290736905" />
     <state width="1638" height="500" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="475" key="GridCell.Tab.1.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492215" />
-    <state width="2518" height="475" key="GridCell.Tab.1.right" timestamp="1579078492215">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1259" height="492" key="GridCell.Tab.1.right" timestamp="1579290736906">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="1259" height="492" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1579290736906" />
     <state width="1638" height="500" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="475" key="GridCell.Tab.1.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492215" />
     <state x="566" y="346" width="1321" height="834" key="SettingsEditor" timestamp="1579036857997">
@@ -393,9 +414,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1064" y="518" key="chooseDestDirectoryDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575306929389" />
-    <state x="753" y="503" key="com.intellij.ide.util.TipDialog" timestamp="1579098665547">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="754" y="475" width="1166" height="680" key="com.intellij.ide.util.TipDialog" timestamp="1579289643094">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="754" y="475" width="1166" height="680" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1579289643094" />
     <state x="494" y="371" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1577878395103" />
     <state x="753" y="503" key="com.intellij.ide.util.TipDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579098665547" />
     <state x="814" y="347" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1575404594269">

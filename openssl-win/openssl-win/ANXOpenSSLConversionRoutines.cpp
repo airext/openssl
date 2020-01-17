@@ -1,6 +1,30 @@
 #include "pch.h"
 #include "ANXOpenSSLConversionRoutines.h"
 
+FREObject ANXOpenSSLConversionRoutines::convertBoolToFREObject(BOOL value)
+{
+    FREObject result = NULL;
+
+    if (value)
+        FRENewObjectFromBool((uint32_t)1, &result);
+    else
+        FRENewObjectFromBool((uint32_t)0, &result);
+
+    return result;
+}
+
+BOOL ANXOpenSSLConversionRoutines::convertFREObjectToBool(FREObject value)
+{
+    uint32_t tempValue;
+
+    FREResult result = FREGetObjectAsBool(value, &tempValue);
+
+    if (result != FRE_OK)
+        return false;
+
+    return tempValue > 0;
+}
+
 FREObject ANXOpenSSLConversionRoutines::convertCharArrayToFREObject(const char* utf8String)
 {
     size_t length = strlen(utf8String);

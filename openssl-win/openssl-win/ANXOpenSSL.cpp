@@ -44,3 +44,26 @@ unsigned char* ANXOpenSSL::rsaDecryptBytesWithPrivateKey(const unsigned char* in
 
     return output;
 }
+
+BOOL ANXOpenSSL::verifyCertificate(const char* certificate, const char* caCertificate)
+{
+
+    BIO* b = BIO_new(BIO_s_mem());
+    BIO_puts(b, caCertificate);
+    X509* issuer = PEM_read_bio_X509(b, NULL, NULL, NULL);
+    EVP_PKEY* signing_key = X509_get_pubkey(issuer);
+
+    BIO* c = BIO_new(BIO_s_mem());
+    BIO_puts(c, certificate);
+    X509* x509 = PEM_read_bio_X509(c, NULL, NULL, NULL);
+
+    int result = X509_verify(x509, signing_key);
+
+    EVP_PKEY_free(signing_key);
+    BIO_free(b);
+    BIO_free(c);
+    X509_free(x509);
+    X509_free(issuer);
+
+    return result > 0;
+}

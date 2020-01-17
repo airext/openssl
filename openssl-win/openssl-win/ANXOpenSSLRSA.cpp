@@ -147,3 +147,30 @@ FREObject ANXOpenSSLRSA::rsaDecryptWithPrivateKey(FREObject data, FREObject key)
 
     return result;
 }
+
+
+FREObject ANXOpenSSLRSA::verifyCertificate(FREObject certificateObject, FREObject caCertificateObject)
+{
+    _OutputDebugString(L"Attempt to read certificate");
+
+    const unsigned char* certificate;
+    uint32_t certificateLength;
+    if (FREGetObjectAsUTF8(certificateObject, &certificateLength, &certificate) != FRE_OK) {
+        return NULL;
+    }
+
+    _OutputDebugString(L"Attempt to read certificate from Certificate Authority");
+
+    const unsigned char* caCertificate;
+    uint32_t caCertificateLength;
+    if (FREGetObjectAsUTF8(caCertificateObject, &caCertificateLength, &caCertificate) != FRE_OK) {
+        return NULL;
+    }
+
+    _OutputDebugString(L"Attempt to verify certificate");
+
+    BOOL result = ANXOpenSSL::getInstance().verifyCertificate((const char*)certificate, (const char*)caCertificate);
+
+    return ANXOpenSSLConversionRoutines::convertBoolToFREObject(result);
+}
+;

@@ -46,6 +46,16 @@ extern "C" {
         return ANXOpenSSLRSA::rsaDecryptWithPrivateKey(argv[0], argv[1]);
     }
 
+    FREObject ANXOpenSSLVerifyCertificate(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLVerifyCertificate");
+
+        if (argc < 2) {
+            return NULL;
+        }
+
+        return ANXOpenSSLRSA::verifyCertificate(argv[1], argv[0]);
+    }
+
     #pragma endregion
 
 
@@ -114,12 +124,16 @@ extern "C" {
         static FRENamedFunction functions[] = {
             { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
             { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
+
             { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
             { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
+            { (const uint8_t*)"verifyCertificate", NULL, &ANXOpenSSLVerifyCertificate },
+
             { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
             { (const uint8_t*)"base64EncodeBytes", NULL, &ANXOpenSSLBase64EncodeBytes },
             { (const uint8_t*)"base64DecodeBytes", NULL, &ANXOpenSSLBase64DecodeBytes },
+
             { (const uint8_t*)"buildVersion", NULL, &ANXOpenBuildVersion },
             { (const uint8_t*)"test", NULL, &ANXOpenSSLTest },
         };
