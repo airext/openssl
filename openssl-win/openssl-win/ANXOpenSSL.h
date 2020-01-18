@@ -29,10 +29,16 @@ private:
 public:
     const char* version();
 
-    unsigned char* rsaEncryptBytesWithPublicKey(const unsigned char* input, const unsigned char* key, int* outLength);
+public:
 
+    unsigned char* rsaEncryptBytesWithPublicKey(const unsigned char* input, const unsigned char* key, int* outLength);
     unsigned char* rsaDecryptBytesWithPrivateKey(const unsigned char* input, const unsigned char* key, int* outLength);
 
     BOOL verifyCertificate(const char* certificate, const char* caCertificate);
+
+public:
+    unsigned char* aesEncryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength);
+    unsigned char* aesDecryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength);
+
 };
 

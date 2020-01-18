@@ -4,6 +4,7 @@
 #include "ANXOpenSSLConversionRoutines.h"
 #include "ANXOpenSSL.h"
 #include "ANXOpenSSLRSA.h"
+#include "ANXOpenSSLAES.h"
 #include "ANXOpenSSLBase64.h"
 
 extern "C" {
@@ -58,6 +59,29 @@ extern "C" {
 
     #pragma endregion
 
+    #pragma region AES
+
+    FREObject ANXOpenSSLAESEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLAESEncrypt");
+
+        if (argc < 3) {
+            return NULL;
+        }
+
+        return ANXOpenSSLAES::aesEncrypt(argv[0], argv[1], argv[2]);
+    }
+
+    FREObject ANXOpenSSLAESDecrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLAESDecrypt");
+
+        if (argc < 3) {
+            return NULL;
+        }
+
+        return ANXOpenSSLAES::aesDecrypt(argv[0], argv[1], argv[2]);
+    }
+
+    #pragma endregion
 
     #pragma region Base64
 
@@ -128,6 +152,10 @@ extern "C" {
             { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
             { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
             { (const uint8_t*)"verifyCertificate", NULL, &ANXOpenSSLVerifyCertificate },
+
+
+            { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
+            { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
             { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
