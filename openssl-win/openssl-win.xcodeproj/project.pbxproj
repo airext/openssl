@@ -15,6 +15,8 @@
 		50A3AFB423D345E20000ADB3 /* ANXOpenSSLRSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFAC23D345E10000ADB3 /* ANXOpenSSLRSA.cpp */; };
 		50A3AFB523D345E20000ADB3 /* ANXOpenSSLBase64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */; };
 		50A3AFB723D350830000ADB3 /* Adobe AIR_64 in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A3AFB623D350830000ADB3 /* Adobe AIR_64 */; };
+		50AE174223D47AB30096E9C1 /* ANXOpenSSLHEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50AE174023D47AB30096E9C1 /* ANXOpenSSLHEX.cpp */; };
+		50AE174423D47DFD0096E9C1 /* dllmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50AE174323D47DFD0096E9C1 /* dllmain.cpp */; };
 		CCAC41BB413633B6B7A54D57 /* Pods_openssl_win_debug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A261B7C681F1946B3605FFE /* Pods_openssl_win_debug.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,9 @@
 		50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLBase64.cpp; path = "openssl-win/ANXOpenSSLBase64.cpp"; sourceTree = "<group>"; };
 		50A3AFB123D345E20000ADB3 /* ANXOpenSSLRSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLRSA.h; path = "openssl-win/ANXOpenSSLRSA.h"; sourceTree = "<group>"; };
 		50A3AFB623D350830000ADB3 /* Adobe AIR_64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR_64"; path = "../openssl-xcode/OpenSSL/ANXOpenSSL-macOS/Adobe AIR.framework/Versions/1.0/Adobe AIR_64"; sourceTree = "<group>"; };
+		50AE174023D47AB30096E9C1 /* ANXOpenSSLHEX.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLHEX.cpp; path = "openssl-win/ANXOpenSSLHEX.cpp"; sourceTree = "<group>"; };
+		50AE174123D47AB30096E9C1 /* ANXOpenSSLHEX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLHEX.h; path = "openssl-win/ANXOpenSSLHEX.h"; sourceTree = "<group>"; };
+		50AE174323D47DFD0096E9C1 /* dllmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dllmain.cpp; path = "openssl-win/dllmain.cpp"; sourceTree = "<group>"; };
 		879A94746C4CC49EB7FA9483 /* Pods-openssl-win-debug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openssl-win-debug.release.xcconfig"; path = "Target Support Files/Pods-openssl-win-debug/Pods-openssl-win-debug.release.xcconfig"; sourceTree = "<group>"; };
 		BBA83F21355C6D81E6D09614 /* Pods-openssl-win-debug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openssl-win-debug.debug.xcconfig"; path = "Target Support Files/Pods-openssl-win-debug/Pods-openssl-win-debug.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +109,8 @@
 				50A3AFA723D345050000ADB3 /* ANXOpenSSLUtils.h */,
 				50A3AFAA23D345E10000ADB3 /* ANXOpenSSLAES.cpp */,
 				50A3AFAB23D345E10000ADB3 /* ANXOpenSSLAES.h */,
+				50AE174023D47AB30096E9C1 /* ANXOpenSSLHEX.cpp */,
+				50AE174123D47AB30096E9C1 /* ANXOpenSSLHEX.h */,
 				50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */,
 				50A3AFAE23D345E10000ADB3 /* ANXOpenSSLBase64.h */,
 				50A3AFA923D345E10000ADB3 /* ANXOpenSSLConversionRoutines.cpp */,
@@ -111,6 +118,7 @@
 				50A3AFAC23D345E10000ADB3 /* ANXOpenSSLRSA.cpp */,
 				50A3AFB123D345E20000ADB3 /* ANXOpenSSLRSA.h */,
 				50A3AFAD23D345E10000ADB3 /* ANXOpenSSLDefer.h */,
+				50AE174323D47DFD0096E9C1 /* dllmain.cpp */,
 				50A3AFA523D3444A0000ADB3 /* pch.h */,
 			);
 			name = "Windows Files";
@@ -219,6 +227,8 @@
 			files = (
 				50A3AFA423D344310000ADB3 /* ANXOpenSSL.cpp in Sources */,
 				50A3AFB423D345E20000ADB3 /* ANXOpenSSLRSA.cpp in Sources */,
+				50AE174423D47DFD0096E9C1 /* dllmain.cpp in Sources */,
+				50AE174223D47AB30096E9C1 /* ANXOpenSSLHEX.cpp in Sources */,
 				50A3AFA823D345050000ADB3 /* ANXOpenSSLUtils.cpp in Sources */,
 				50A3AFB223D345E20000ADB3 /* ANXOpenSSLConversionRoutines.cpp in Sources */,
 				50A3AF9023D341FD0000ADB3 /* main.cpp in Sources */,

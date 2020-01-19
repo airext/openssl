@@ -201,3 +201,81 @@ unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, const uns
 }
 
 #pragma endregion
+
+#pragma region HEX
+
+unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
+    _OutputDebugString(L"[ANX] input: %s", input);
+
+    *outputLength = inputLength * 2;
+    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength + 1);
+
+    char character;
+    char buffer[3];
+//    size_t bufferLength;
+//    unsigned int hex;
+
+    for (int i = 0, j = 0; i < inputLength; i++, j += 2) {
+        _OutputDebugString(L"[ANX] input[i]=%c", input[i]);
+//        _OutputDebugString(L"[ANX] &input[i]=%s", &input[i]);
+//        buffer = strtol((const char*)&input[i], NULL, 16);
+        character = input[i];
+        _OutputDebugString(L"[ANX] character:%s", &character);
+//        sscanf(&buffer, "%02x", &hex);
+        printf("vvv\n");
+        printf("%02x", input[i]);
+        printf("^^^\n");
+        size_t len = snprintf(buffer, 3, "%02x", input[i]);
+        _OutputDebugString(L"[ANX] len: %zu", len);
+        _OutputDebugString(L"[ANX] buffer: %s", buffer);
+        _OutputDebugString(L"[ANX] buffer: %c", buffer[0]);
+        _OutputDebugString(L"[ANX] buffer: %c", buffer[1]);
+//        _OutputDebugString(L"[ANX] hex: %i", hex);
+        _OutputDebugString(L"[ANX] output so far: %s", output);
+        output[j] = buffer[0];
+        output[j+1] = buffer[1];
+    }
+
+//    NSMutableString *hex = [NSMutableString new];
+//    for (NSInteger i = 0; i < inputLength; i++) {
+//        [hex appendFormat:@"%02x", input[i]];
+//        _OutputDebugString(L"[ANX] input[i]=%c", input[i]);
+//        _OutputDebugString(L"[ANX] hex so far: %@", hex);
+//    }
+
+    output[*outputLength] = '\0';
+
+    _OutputDebugString(L"[ANX] output: %s", output);
+
+    return output;
+}
+
+unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
+    _OutputDebugString(L"[ANX] input: %s", input);
+
+    if (inputLength % 2 != 0) {
+        _OutputDebugString(L"[ANX] input has odd length, return NULL");
+        return NULL;
+    }
+
+    *outputLength = inputLength / 2;
+    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength + 1);
+
+    char buffer[2];
+
+    for (int i = 0, j = 0; i < *outputLength; i++, j += 2) {
+        buffer[0] = input[j];
+        buffer[1] = input[j+1];
+        int hex = 0;
+        sscanf(buffer, "%x", &hex);
+        output[i] = (unsigned char)hex;
+    }
+
+    output[*outputLength] = '\0';
+
+    _OutputDebugString(L"[ANX] output: %s", output);
+
+    return output;
+}
+
+#pragma endregion
