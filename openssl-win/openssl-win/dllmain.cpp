@@ -6,20 +6,21 @@
 #include "ANXOpenSSLRSA.h"
 #include "ANXOpenSSLAES.h"
 #include "ANXOpenSSLBase64.h"
+#include "ANXOpenSSLHEX.h"
 
 extern "C" {
 
     #pragma region Common
 
     FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-        OutputDebugString(L"ANXOpenSSLIsSupported");
+        _OutputDebugString(L"ANXOpenSSLIsSupported");
         FREObject result;
         FRENewObjectFromBool(1, &result);
         return result;
     }
 
     FREObject ANXOpenSSLVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-        OutputDebugString(L"ANXOpenSSLVersion");
+        _OutputDebugString(L"ANXOpenSSLVersion");
         return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject(ANXOpenSSL::getInstance().version());
     }
 
@@ -28,7 +29,7 @@ extern "C" {
     #pragma region RSA
 
     FREObject ANXOpenSSLEncryptWithPublicKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-        OutputDebugString(L"ANXOpenSSLEncryptWithPublicKey");
+        _OutputDebugString(L"ANXOpenSSLEncryptWithPublicKey");
 
         if (argc < 2) {
             return NULL;
@@ -38,7 +39,7 @@ extern "C" {
     }
 
     FREObject ANXOpenSSLDecryptWithPrivateKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-        OutputDebugString(L"ANXOpenSSLDecryptWithPrivateKey");
+        _OutputDebugString(L"ANXOpenSSLDecryptWithPrivateKey");
 
         if (argc < 2) {
             return NULL;
@@ -127,6 +128,50 @@ extern "C" {
 
     #pragma endregion
 
+#pragma region HEX
+
+    FREObject ANXOpenSSLHexEncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLHexEncodeString");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLHEX::hexEncodeString(argv[0]);
+    }
+
+    FREObject ANXOpenSSLHexDecodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLHexDecodeString");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLHEX::hexDecodeString(argv[0]);
+    }
+
+    FREObject ANXOpenSSLHexEncodeBytes(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLHexEncodeBytes");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLHEX::hexEncodeBytes(argv[0]);
+    }
+
+    FREObject ANXOpenSSLHexDecodeBytes(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLHexDecodeBytes");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLHEX::hexDecodeBytes(argv[0]);
+    }
+
+#pragma endregion
+
     #pragma region Debug
 
     FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -143,7 +188,7 @@ extern "C" {
     #pragma region ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
-        OutputDebugString(L"ANXOpenSSLContextInitializer");
+        _OutputDebugString(L"ANXOpenSSLContextInitializer");
 
         static FRENamedFunction functions[] = {
             { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
@@ -153,7 +198,6 @@ extern "C" {
             { (const uint8_t*)"rsaDecryptWithPrivateKey", NULL, &ANXOpenSSLDecryptWithPrivateKey },
             { (const uint8_t*)"verifyCertificate", NULL, &ANXOpenSSLVerifyCertificate },
 
-
             { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
             { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
@@ -161,6 +205,11 @@ extern "C" {
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
             { (const uint8_t*)"base64EncodeBytes", NULL, &ANXOpenSSLBase64EncodeBytes },
             { (const uint8_t*)"base64DecodeBytes", NULL, &ANXOpenSSLBase64DecodeBytes },
+
+            { (const uint8_t*)"hexEncodeString", NULL, &ANXOpenSSLHexEncodeString },
+            { (const uint8_t*)"hexDecodeString", NULL, &ANXOpenSSLHexDecodeString },
+            { (const uint8_t*)"hexEncodeBytes", NULL, &ANXOpenSSLHexEncodeBytes },
+            { (const uint8_t*)"hexDecodeBytes", NULL, &ANXOpenSSLHexDecodeBytes },
 
             { (const uint8_t*)"buildVersion", NULL, &ANXOpenBuildVersion },
             { (const uint8_t*)"test", NULL, &ANXOpenSSLTest },
@@ -172,15 +221,17 @@ extern "C" {
     }
 
     void ANXOpenSSLContextFinalizer(FREContext ctx) {
-        OutputDebugString(L"ANXOpenSSLContextFinalizer");
+        _OutputDebugString(L"ANXOpenSSLContextFinalizer");
     }
 
     #pragma endregion
 
     #pragma region Initializer/Finalizer
 
+#if defined(_WIN32) || defined(_WIN64)
+
 	__declspec(dllexport) void ANXOpenSSLInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet) {
-        OutputDebugString(L"ANXOpenSSLInitializer");
+        _OutputDebugString(L"ANXOpenSSLInitializer");
 
         *extDataToSet = NULL;
 
@@ -189,8 +240,10 @@ extern "C" {
     }
 
     __declspec(dllexport) void ANXOpenSSLFinalizer(void* extData) {
-        OutputDebugString(L"ANXOpenSSLFinalizer");
+        _OutputDebugString(L"ANXOpenSSLFinalizer");
     }
+
+#endif
 
     #pragma endregion
 }

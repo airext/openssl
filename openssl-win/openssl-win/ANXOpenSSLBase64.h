@@ -9,4 +9,3 @@ public:
 	static FREObject base64EncodeBytes(FREObject bytes);
 	static FREObject base64DecodeBytes(FREObject bytes);
 };
-
