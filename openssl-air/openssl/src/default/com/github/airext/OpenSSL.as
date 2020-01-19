@@ -113,6 +113,15 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  SHA
+    //-------------------------------------
+
+    public function sha256Compute(data: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
     //  Base64
     //-------------------------------------
 
