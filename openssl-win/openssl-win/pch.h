@@ -7,7 +7,20 @@
 #ifndef PCH_H
 #define PCH_H
 
+#if defined(_WIN32) || defined(_WIN64)
 // add headers that you want to pre-compile here
 #include "framework.h"
+#endif
 
 #endif //PCH_H
+
+#ifdef __APPLE__
+    #ifndef NULL
+    #define NULL 0
+    #endif
+
+    #ifndef BOOL
+    #define BOOL bool
+    #endif
+#include <string.h>
+#endif

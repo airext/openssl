@@ -23,3 +23,12 @@ target 'ANXOpenSSLTest' do
   pod 'OpenSSL-Universal'
 
 end
+
+target 'openssl-win-debug' do
+  workspace 'OpenSSL.xcworkspace'
+  project '../../openssl-win/openssl-win.xcodeproj'
+  platform :macos, '10.15'
+  use_frameworks!
+
+  pod 'OpenSSL-Universal'
+end
