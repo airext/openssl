@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "FlashRuntimeExtensions.h"
 
 #pragma once

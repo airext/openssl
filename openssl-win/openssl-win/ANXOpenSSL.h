@@ -43,5 +43,8 @@ public:
 public:
     unsigned char* hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength);
     unsigned char* hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength);
+
+public:
+    unsigned char* sha256FromString(const unsigned char* string);
 };
 
