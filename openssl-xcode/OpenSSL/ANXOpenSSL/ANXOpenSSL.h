@@ -42,6 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (unsigned char*)aesEncryptBytes:(nonnull const unsigned char*)input withKey:(const unsigned char*)key withIV:(const unsigned char*)iv outLength:(int*)outLength;
 - (unsigned char*)aesDecryptBytes:(nonnull const unsigned char*)input withKey:(const unsigned char*)key withIV:(const unsigned char*)iv outLength:(int*)outLength;
 
+#pragma mark - SHA
+
+- (unsigned char*)sha256FromString:(nonnull const unsigned char*)string;
+
 #pragma mark - HEX
 
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength;

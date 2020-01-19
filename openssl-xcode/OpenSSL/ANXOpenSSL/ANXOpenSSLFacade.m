@@ -11,6 +11,7 @@
 #import "ANXOpenSSL+RSA.h"
 #import "ANXOpenSSL+AES.h"
 #import "ANXOpenSSL+Utils.h"
+#import "ANXOpenSSL+SHA.h"
 #import "ANXOpenSSLConversionRoutines.h"
 
 @implementation ANXOpenSSLFacade
@@ -172,6 +173,18 @@ FREObject ANXOpenSSLAESDecrypt(FREContext context, void* functionData, uint32_t 
     return [ANXOpenSSL.sharedInstance aesDecrypt:argv[0] withKey:argv[1] withInitialisationVector:argv[2]];
 }
 
+#pragma mark - SHA
+
+FREObject ANXOpenSSLComputeSHA256(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSLComputeSHA256");
+
+    if (argc < 1) {
+        return NULL;
+    }
+
+    return [ANXOpenSSL.sharedInstance computeSHA256:argv[0]];
+}
+
 #pragma mark - Base64
 
 FREObject ANXOpenSSLBase64EncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -305,6 +318,8 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
 
         { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
         { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
+
+        { (const uint8_t*)"sha256Compute", NULL, &ANXOpenSSLComputeSHA256 },
 
         { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
         { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
