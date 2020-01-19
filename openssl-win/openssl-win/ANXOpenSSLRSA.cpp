@@ -8,7 +8,7 @@
 
 FREObject ANXOpenSSLRSA::rsaEncryptWithPublicKey(FREObject data, FREObject key)
 {
-    OutputDebugString(L"[ANX] Attempt to read publicKey");
+    _OutputDebugString(L"[ANX] Attempt to read publicKey");
 
     const unsigned char* publicKey;
     uint32_t publicKeyLength;
@@ -17,27 +17,27 @@ FREObject ANXOpenSSLRSA::rsaEncryptWithPublicKey(FREObject data, FREObject key)
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] Attempt to acquire input byte array");
+    _OutputDebugString(L"[ANX] Attempt to acquire input byte array");
 
     FREByteArray input;
     if (FREAcquireByteArray(data, &input) != FRE_OK) {
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] Attempt to encrypt data");
+    _OutputDebugString(L"[ANX] Attempt to encrypt data");
 
     int length;
 
     unsigned char* encrypted = ANXOpenSSL::getInstance().rsaEncryptBytesWithPublicKey(input.bytes, publicKey, &length);
 
     defer {
-        OutputDebugString(L"[ANX] Freeing encrypted bytes.");
+        _OutputDebugString(L"[ANX] Freeing encrypted bytes.");
         free(encrypted);
     };
 
     _OutputDebugString(L"[ANX] data encrypted with length: %i", length);
 
-    OutputDebugString(L"[ANX] Attempt to release input byte array");
+    _OutputDebugString(L"[ANX] Attempt to release input byte array");
 
     if (FREReleaseByteArray(data) != FRE_OK) {
         return NULL;
@@ -48,31 +48,31 @@ FREObject ANXOpenSSLRSA::rsaEncryptWithPublicKey(FREObject data, FREObject key)
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] Attempt to create output byte array");
+    _OutputDebugString(L"[ANX] Attempt to create output byte array");
 
     FREObject result = ANXOpenSSLConversionRoutines::createByteArrayWithLength(length);
     if (result == NULL) {
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] Attempt to acquire output byte array");
+    _OutputDebugString(L"[ANX] Attempt to acquire output byte array");
 
     FREByteArray output;
     if (FREAcquireByteArray(result, &output) != FRE_OK) {
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] Attempt to copy encrypted data into output byte array");
+    _OutputDebugString(L"[ANX] Attempt to copy encrypted data into output byte array");
 
     memcpy(output.bytes, encrypted, length);
 
-    OutputDebugString(L"[ANX] attempt to release output byte array");
+    _OutputDebugString(L"[ANX] attempt to release output byte array");
 
     if (FREReleaseByteArray(result) != FRE_OK) {
         return NULL;
     }
 
-    OutputDebugString(L"[ANX] all operations are done");
+    _OutputDebugString(L"[ANX] all operations are done");
 
     return result;
 }
@@ -148,7 +148,6 @@ FREObject ANXOpenSSLRSA::rsaDecryptWithPrivateKey(FREObject data, FREObject key)
     return result;
 }
 
-
 FREObject ANXOpenSSLRSA::verifyCertificate(FREObject certificateObject, FREObject caCertificateObject)
 {
     _OutputDebugString(L"Attempt to read certificate");
@@ -172,5 +171,4 @@ FREObject ANXOpenSSLRSA::verifyCertificate(FREObject certificateObject, FREObjec
     BOOL result = ANXOpenSSL::getInstance().verifyCertificate((const char*)certificate, (const char*)caCertificate);
 
     return ANXOpenSSLConversionRoutines::convertBoolToFREObject(result);
-}
-;
+};

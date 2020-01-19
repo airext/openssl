@@ -6,20 +6,168 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		50A3AF9023D341FD0000ADB3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AF8F23D341FD0000ADB3 /* main.cpp */; };
+		50A3AFA423D344310000ADB3 /* ANXOpenSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFA223D344300000ADB3 /* ANXOpenSSL.cpp */; };
+		50A3AFA823D345050000ADB3 /* ANXOpenSSLUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFA623D345050000ADB3 /* ANXOpenSSLUtils.cpp */; };
+		50A3AFB223D345E20000ADB3 /* ANXOpenSSLConversionRoutines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFA923D345E10000ADB3 /* ANXOpenSSLConversionRoutines.cpp */; };
+		50A3AFB323D345E20000ADB3 /* ANXOpenSSLAES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFAA23D345E10000ADB3 /* ANXOpenSSLAES.cpp */; };
+		50A3AFB423D345E20000ADB3 /* ANXOpenSSLRSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFAC23D345E10000ADB3 /* ANXOpenSSLRSA.cpp */; };
+		50A3AFB523D345E20000ADB3 /* ANXOpenSSLBase64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */; };
+		50A3AFB723D350830000ADB3 /* Adobe AIR_64 in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A3AFB623D350830000ADB3 /* Adobe AIR_64 */; };
+		CCAC41BB413633B6B7A54D57 /* Pods_openssl_win_debug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A261B7C681F1946B3605FFE /* Pods_openssl_win_debug.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50A3AF8A23D341FD0000ADB3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1A261B7C681F1946B3605FFE /* Pods_openssl_win_debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_openssl_win_debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A3AF8C23D341FD0000ADB3 /* openssl-win-debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "openssl-win-debug"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A3AF8F23D341FD0000ADB3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		50A3AFA123D3440D0000ADB3 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "openssl-win/FlashRuntimeExtensions.h"; sourceTree = "<group>"; };
+		50A3AFA223D344300000ADB3 /* ANXOpenSSL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSL.cpp; path = "openssl-win/ANXOpenSSL.cpp"; sourceTree = "<group>"; };
+		50A3AFA323D344310000ADB3 /* ANXOpenSSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSL.h; path = "openssl-win/ANXOpenSSL.h"; sourceTree = "<group>"; };
+		50A3AFA523D3444A0000ADB3 /* pch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pch.h; path = "openssl-win/pch.h"; sourceTree = "<group>"; };
+		50A3AFA623D345050000ADB3 /* ANXOpenSSLUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLUtils.cpp; path = "openssl-win/ANXOpenSSLUtils.cpp"; sourceTree = "<group>"; };
+		50A3AFA723D345050000ADB3 /* ANXOpenSSLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLUtils.h; path = "openssl-win/ANXOpenSSLUtils.h"; sourceTree = "<group>"; };
+		50A3AFA923D345E10000ADB3 /* ANXOpenSSLConversionRoutines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLConversionRoutines.cpp; path = "openssl-win/ANXOpenSSLConversionRoutines.cpp"; sourceTree = "<group>"; };
+		50A3AFAA23D345E10000ADB3 /* ANXOpenSSLAES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLAES.cpp; path = "openssl-win/ANXOpenSSLAES.cpp"; sourceTree = "<group>"; };
+		50A3AFAB23D345E10000ADB3 /* ANXOpenSSLAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLAES.h; path = "openssl-win/ANXOpenSSLAES.h"; sourceTree = "<group>"; };
+		50A3AFAC23D345E10000ADB3 /* ANXOpenSSLRSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLRSA.cpp; path = "openssl-win/ANXOpenSSLRSA.cpp"; sourceTree = "<group>"; };
+		50A3AFAD23D345E10000ADB3 /* ANXOpenSSLDefer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLDefer.h; path = "openssl-win/ANXOpenSSLDefer.h"; sourceTree = "<group>"; };
+		50A3AFAE23D345E10000ADB3 /* ANXOpenSSLBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLBase64.h; path = "openssl-win/ANXOpenSSLBase64.h"; sourceTree = "<group>"; };
+		50A3AFAF23D345E10000ADB3 /* ANXOpenSSLConversionRoutines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLConversionRoutines.h; path = "openssl-win/ANXOpenSSLConversionRoutines.h"; sourceTree = "<group>"; };
+		50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ANXOpenSSLBase64.cpp; path = "openssl-win/ANXOpenSSLBase64.cpp"; sourceTree = "<group>"; };
+		50A3AFB123D345E20000ADB3 /* ANXOpenSSLRSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANXOpenSSLRSA.h; path = "openssl-win/ANXOpenSSLRSA.h"; sourceTree = "<group>"; };
+		50A3AFB623D350830000ADB3 /* Adobe AIR_64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR_64"; path = "../openssl-xcode/OpenSSL/ANXOpenSSL-macOS/Adobe AIR.framework/Versions/1.0/Adobe AIR_64"; sourceTree = "<group>"; };
+		879A94746C4CC49EB7FA9483 /* Pods-openssl-win-debug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openssl-win-debug.release.xcconfig"; path = "Target Support Files/Pods-openssl-win-debug/Pods-openssl-win-debug.release.xcconfig"; sourceTree = "<group>"; };
+		BBA83F21355C6D81E6D09614 /* Pods-openssl-win-debug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openssl-win-debug.debug.xcconfig"; path = "Target Support Files/Pods-openssl-win-debug/Pods-openssl-win-debug.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50A3AF8923D341FD0000ADB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A3AFB723D350830000ADB3 /* Adobe AIR_64 in Frameworks */,
+				CCAC41BB413633B6B7A54D57 /* Pods_openssl_win_debug.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		50A3AEE923D32DBF0000ADB3 = {
 			isa = PBXGroup;
 			children = (
+				50A3AFA023D343FD0000ADB3 /* Windows Files */,
+				50A3AF8E23D341FD0000ADB3 /* openssl-win-debug */,
+				50A3AF8D23D341FD0000ADB3 /* Products */,
+				F46CFE9E80BA21C8D452A1EB /* Pods */,
+				BBC09587AB83A0AB92D7DC69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
+		50A3AF8D23D341FD0000ADB3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50A3AF8C23D341FD0000ADB3 /* openssl-win-debug */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50A3AF8E23D341FD0000ADB3 /* openssl-win-debug */ = {
+			isa = PBXGroup;
+			children = (
+				50A3AF8F23D341FD0000ADB3 /* main.cpp */,
+			);
+			path = "openssl-win-debug";
+			sourceTree = "<group>";
+		};
+		50A3AFA023D343FD0000ADB3 /* Windows Files */ = {
+			isa = PBXGroup;
+			children = (
+				50A3AFA123D3440D0000ADB3 /* FlashRuntimeExtensions.h */,
+				50A3AFA223D344300000ADB3 /* ANXOpenSSL.cpp */,
+				50A3AFA323D344310000ADB3 /* ANXOpenSSL.h */,
+				50A3AFA623D345050000ADB3 /* ANXOpenSSLUtils.cpp */,
+				50A3AFA723D345050000ADB3 /* ANXOpenSSLUtils.h */,
+				50A3AFAA23D345E10000ADB3 /* ANXOpenSSLAES.cpp */,
+				50A3AFAB23D345E10000ADB3 /* ANXOpenSSLAES.h */,
+				50A3AFB023D345E10000ADB3 /* ANXOpenSSLBase64.cpp */,
+				50A3AFAE23D345E10000ADB3 /* ANXOpenSSLBase64.h */,
+				50A3AFA923D345E10000ADB3 /* ANXOpenSSLConversionRoutines.cpp */,
+				50A3AFAF23D345E10000ADB3 /* ANXOpenSSLConversionRoutines.h */,
+				50A3AFAC23D345E10000ADB3 /* ANXOpenSSLRSA.cpp */,
+				50A3AFB123D345E20000ADB3 /* ANXOpenSSLRSA.h */,
+				50A3AFAD23D345E10000ADB3 /* ANXOpenSSLDefer.h */,
+				50A3AFA523D3444A0000ADB3 /* pch.h */,
+			);
+			name = "Windows Files";
+			sourceTree = "<group>";
+		};
+		BBC09587AB83A0AB92D7DC69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50A3AFB623D350830000ADB3 /* Adobe AIR_64 */,
+				1A261B7C681F1946B3605FFE /* Pods_openssl_win_debug.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F46CFE9E80BA21C8D452A1EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BBA83F21355C6D81E6D09614 /* Pods-openssl-win-debug.debug.xcconfig */,
+				879A94746C4CC49EB7FA9483 /* Pods-openssl-win-debug.release.xcconfig */,
+			);
+			name = Pods;
+			path = "../openssl-xcode/OpenSSL/Pods";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50A3AF8B23D341FD0000ADB3 /* openssl-win-debug */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50A3AF9323D341FD0000ADB3 /* Build configuration list for PBXNativeTarget "openssl-win-debug" */;
+			buildPhases = (
+				DBB5F719DA96A98E2541F782 /* [CP] Check Pods Manifest.lock */,
+				50A3AF8823D341FD0000ADB3 /* Sources */,
+				50A3AF8923D341FD0000ADB3 /* Frameworks */,
+				50A3AF8A23D341FD0000ADB3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "openssl-win-debug";
+			productName = "openssl-win-debug";
+			productReference = 50A3AF8C23D341FD0000ADB3 /* openssl-win-debug */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		50A3AEEA23D32DBF0000ADB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1130;
+				TargetAttributes = {
+					50A3AF8B23D341FD0000ADB3 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
 			};
 			buildConfigurationList = 50A3AEED23D32DBF0000ADB3 /* Build configuration list for PBXProject "openssl-win" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -30,12 +178,56 @@
 				Base,
 			);
 			mainGroup = 50A3AEE923D32DBF0000ADB3;
+			productRefGroup = 50A3AF8D23D341FD0000ADB3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				50A3AF8B23D341FD0000ADB3 /* openssl-win-debug */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DBB5F719DA96A98E2541F782 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-openssl-win-debug-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50A3AF8823D341FD0000ADB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A3AFA423D344310000ADB3 /* ANXOpenSSL.cpp in Sources */,
+				50A3AFB423D345E20000ADB3 /* ANXOpenSSLRSA.cpp in Sources */,
+				50A3AFA823D345050000ADB3 /* ANXOpenSSLUtils.cpp in Sources */,
+				50A3AFB223D345E20000ADB3 /* ANXOpenSSLConversionRoutines.cpp in Sources */,
+				50A3AF9023D341FD0000ADB3 /* main.cpp in Sources */,
+				50A3AFB323D345E20000ADB3 /* ANXOpenSSLAES.cpp in Sources */,
+				50A3AFB523D345E20000ADB3 /* ANXOpenSSLBase64.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		50A3AEEE23D32DBF0000ADB3 /* Debug */ = {
@@ -50,6 +242,125 @@
 			};
 			name = Release;
 		};
+		50A3AF9123D341FD0000ADB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBA83F21355C6D81E6D09614 /* Pods-openssl-win-debug.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GL9F4DL9W9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		50A3AF9223D341FD0000ADB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 879A94746C4CC49EB7FA9483 /* Pods-openssl-win-debug.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GL9F4DL9W9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -58,6 +369,15 @@
 			buildConfigurations = (
 				50A3AEEE23D32DBF0000ADB3 /* Debug */,
 				50A3AEEF23D32DBF0000ADB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50A3AF9323D341FD0000ADB3 /* Build configuration list for PBXNativeTarget "openssl-win-debug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50A3AF9123D341FD0000ADB3 /* Debug */,
+				50A3AF9223D341FD0000ADB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
