@@ -202,6 +202,20 @@ unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, const uns
 
 #pragma endregion
 
+#pragma region SHA
+
+unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
+    static unsigned char buffer[SHA256_DIGEST_LENGTH];
+
+    SHA256(string, strlen((char*)string), buffer);
+
+    unsigned char *md = buffer;
+
+    return(md);
+}
+
+#pragma endregion
+
 #pragma region HEX
 
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {

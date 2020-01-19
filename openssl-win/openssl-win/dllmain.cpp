@@ -7,10 +7,11 @@
 #include "ANXOpenSSLAES.h"
 #include "ANXOpenSSLBase64.h"
 #include "ANXOpenSSLHEX.h"
+#include "ANXOpenSSLSHA.h"
 
 extern "C" {
 
-    #pragma region Common
+#pragma region Common
 
     FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLIsSupported");
@@ -24,9 +25,9 @@ extern "C" {
         return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject(ANXOpenSSL::getInstance().version());
     }
 
-    #pragma endregion
+#pragma endregion
 
-    #pragma region RSA
+#pragma region RSA
 
     FREObject ANXOpenSSLEncryptWithPublicKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLEncryptWithPublicKey");
@@ -58,9 +59,9 @@ extern "C" {
         return ANXOpenSSLRSA::verifyCertificate(argv[1], argv[0]);
     }
 
-    #pragma endregion
+#pragma endregion
 
-    #pragma region AES
+#pragma region AES
 
     FREObject ANXOpenSSLAESEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLAESEncrypt");
@@ -82,9 +83,23 @@ extern "C" {
         return ANXOpenSSLAES::aesDecrypt(argv[0], argv[1], argv[2]);
     }
 
-    #pragma endregion
+#pragma endregion
 
-    #pragma region Base64
+#pragma region SHA
+
+    FREObject ANXOpenSSLComputeSHA256(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLComputeSHA256");
+
+        if (argc < 1) {
+            return NULL;
+        }
+
+        return ANXOpenSSLSHA::computeSHA256(argv[0]);
+    }
+
+#pragma endregion
+
+#pragma region Base64
 
     FREObject ANXOpenSSLBase64EncodeString(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLBase64EncodeString");
@@ -126,7 +141,7 @@ extern "C" {
         return ANXOpenSSLBase64::base64DecodeBytes(argv[0]);
     }
 
-    #pragma endregion
+#pragma endregion
 
 #pragma region HEX
 
@@ -172,7 +187,7 @@ extern "C" {
 
 #pragma endregion
 
-    #pragma region Debug
+#pragma region Debug
 
     FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLEncryptWithPrivateKey");
@@ -183,9 +198,9 @@ extern "C" {
         return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject("2");
     }
 
-    #pragma endregion
+#pragma endregion
 
-    #pragma region ContextInitialize/ContextFinalizer
+#pragma region ContextInitialize/ContextFinalizer
 
     void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
         _OutputDebugString(L"ANXOpenSSLContextInitializer");
@@ -200,6 +215,8 @@ extern "C" {
 
             { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
             { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
+
+            { (const uint8_t*)"sha256Compute", NULL, &ANXOpenSSLComputeSHA256 },
 
             { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },
@@ -224,9 +241,9 @@ extern "C" {
         _OutputDebugString(L"ANXOpenSSLContextFinalizer");
     }
 
-    #pragma endregion
+#pragma endregion
 
-    #pragma region Initializer/Finalizer
+#pragma region Initializer/Finalizer
 
 #if defined(_WIN32) || defined(_WIN64)
 
@@ -245,6 +262,6 @@ extern "C" {
 
 #endif
 
-    #pragma endregion
+#pragma endregion
 }
 

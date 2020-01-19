@@ -222,8 +222,6 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string {
 
-
-
     static unsigned char buffer[SHA256_DIGEST_LENGTH];
 
     SHA256(string, strlen((char*)string), buffer);
@@ -234,15 +232,7 @@ static ANXOpenSSL* _sharedInstance = nil;
     }
     printf("\n");
 
-//    SHA256_CTX c;
-
-
     unsigned char *md = buffer;
-
-//    SHA256_Init(&c);
-//    SHA256_Update(&c,d,n);
-//    SHA256_Final(md,&c);
-//    OPENSSL_cleanse(&c,sizeof(c));
 
     return(md);
 }
