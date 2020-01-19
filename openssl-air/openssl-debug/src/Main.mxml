@@ -94,6 +94,15 @@
             log("AES decrypted: " + decrypted.readUTFBytes(decrypted.length));
         }
 
+        // SHA256
+
+        private function sha256Tapped(): void {
+            var data: ByteArray = new ByteArray();
+            data.writeUTFBytes("The quick brown fox jumps over the lazy dog");
+            var digest: ByteArray = OpenSSL.shared.sha256Compute(data);
+            log("SHA256 digest: " + digest.readUTFBytes(digest.length));
+        }
+
         // Base64
 
         private function encodeDecodeBase64StringTapped(): void {
@@ -162,17 +171,20 @@
         <layout:Spacer width="280" height="2" />
         <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
         <f:Button label="RSA Encrypt" triggered="rsaEncryptTapped()" />
+        <f:Button label="Verify Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeCertificate)" />
+        <f:Button label="Verify Fake Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeFakeCertificate)" />
         <!--    RSA    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="AES Encrypt" triggered="aesEncryptTapped()" />
         <f:Button label="AES Decrypt" triggered="aesDecryptTapped()" />
-        <f:Button label="Verify Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeCertificate)" />
-        <f:Button label="Verify Fake Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeFakeCertificate)" />
+        <!--    SHA    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="SHA256" triggered="sha256Tapped()" />
         <!--    Base64    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
         <f:Button label="Encode/Decode Base64 Bytes" triggered="encodeDecodeBase64BytesTapped()" />
-        <!--    Base64    -->
+        <!--    HEX    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Hex String" triggered="encodeDecodeHexStringTapped()" />
         <f:Button label="Encode/Decode Hex Bytes" triggered="encodeDecodeHexBytesTapped()" />

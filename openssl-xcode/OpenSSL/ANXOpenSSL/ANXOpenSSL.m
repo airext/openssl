@@ -218,7 +218,36 @@ static ANXOpenSSL* _sharedInstance = nil;
     return returnValue;
 }
 
-#pragma mark - Hex
+#pragma mark - SHA
+
+- (unsigned char*)sha256FromString:(nonnull const unsigned char*)string {
+
+
+
+    static unsigned char buffer[SHA256_DIGEST_LENGTH];
+
+    SHA256(string, strlen((char*)string), buffer);
+
+    int i;
+    for (i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        printf("%02x ", buffer[i]);
+    }
+    printf("\n");
+
+//    SHA256_CTX c;
+
+
+    unsigned char *md = buffer;
+
+//    SHA256_Init(&c);
+//    SHA256_Update(&c,d,n);
+//    SHA256_Final(md,&c);
+//    OPENSSL_cleanse(&c,sizeof(c));
+
+    return(md);
+}
+
+#pragma mark - HEX
 
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
     NSLog(@"[ANX] input: %s", input);
