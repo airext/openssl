@@ -216,6 +216,14 @@ unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
 
 #pragma endregion
 
+#pragma region HMAC
+
+unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLength, const void *key, int keyLength) {
+    return HMAC(EVP_sha1(), key, keyLength, bytes, bytesLength, NULL, NULL);
+}
+
+#pragma endregion
+
 #pragma region HEX
 
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
