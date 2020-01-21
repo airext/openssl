@@ -8,6 +8,7 @@
 #include "ANXOpenSSLBase64.h"
 #include "ANXOpenSSLHEX.h"
 #include "ANXOpenSSLSHA.h"
+#include "ANXOpenSSLHMAC.h"
 
 extern "C" {
 
@@ -95,6 +96,20 @@ extern "C" {
         }
 
         return ANXOpenSSLSHA::computeSHA256(argv[0]);
+    }
+
+#pragma endregion
+
+#pragma region HMAC
+
+    FREObject ANXOpenSSLHMACCompute(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+        _OutputDebugString(L"ANXOpenSSLHMACCompute");
+
+        if (argc < 3) {
+            return NULL;
+        }
+
+        return ANXOpenSSLHMAC::hmacCompute(argv[0], argv[1], argv[2]);
     }
 
 #pragma endregion
@@ -217,6 +232,7 @@ extern "C" {
             { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
             { (const uint8_t*)"sha256Compute", NULL, &ANXOpenSSLComputeSHA256 },
+            { (const uint8_t*)"hmacCompute", NULL, &ANXOpenSSLHMACCompute },
 
             { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
             { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },

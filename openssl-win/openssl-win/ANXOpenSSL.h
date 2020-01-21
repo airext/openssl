@@ -46,5 +46,8 @@ public:
 
 public:
     unsigned char* sha256FromString(const unsigned char* string);
+
+public:
+    unsigned char* hmacFromBytes(const unsigned char* bytes, int bytesLength, const void* key, int keyLength);
 };
 
