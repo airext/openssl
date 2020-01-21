@@ -46,6 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string;
 
+#pragma mark - HMAC
+
+- (unsigned char*)hmacForBytes:(nonnull const unsigned char*)bytes withLength:(int)bytesLength withKey:(const void *)key withKeyLength:(int)keyLength;
+
 #pragma mark - HEX
 
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength;

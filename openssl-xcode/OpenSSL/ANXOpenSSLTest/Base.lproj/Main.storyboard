@@ -710,10 +710,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ke0-ma-8OG">
-                                <rect key="frame" x="188" y="42" width="104" height="186"/>
+                                <rect key="frame" x="188" y="26" width="104" height="219"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2eG-pf-tp2">
-                                        <rect key="frame" x="-6" y="158" width="116" height="32"/>
+                                        <rect key="frame" x="-6" y="191" width="116" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test RSA" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aCZ-IJ-0fO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -723,7 +723,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hv1-QY-erP">
-                                        <rect key="frame" x="-6" y="125" width="116" height="32"/>
+                                        <rect key="frame" x="-6" y="158" width="116" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test Base64" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RA7-bS-81J">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -733,7 +733,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-Y3-bzh">
-                                        <rect key="frame" x="-6" y="92" width="116" height="32"/>
+                                        <rect key="frame" x="-6" y="125" width="116" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test Hex" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0WJ-gD-ZLz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -743,7 +743,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="21w-Sz-3Jw">
-                                        <rect key="frame" x="5" y="59" width="94" height="32"/>
+                                        <rect key="frame" x="5" y="92" width="94" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test AES" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xNF-yR-diw">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -753,7 +753,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eKb-oq-jNH">
-                                        <rect key="frame" x="0.0" y="26" width="105" height="32"/>
+                                        <rect key="frame" x="0.0" y="59" width="105" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test Verify" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mAy-05-lhN">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -763,13 +763,23 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-ie-HVl">
-                                        <rect key="frame" x="4" y="-7" width="96" height="32"/>
+                                        <rect key="frame" x="4" y="26" width="96" height="32"/>
                                         <buttonCell key="cell" type="push" title="Test SHA" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z1N-ID-F5u">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="handleTestSHAButtonTap:" target="XfG-lQ-9wD" id="OFr-Sd-0dS"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p5P-MD-MGK">
+                                        <rect key="frame" x="-2" y="-7" width="108" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Test HMAC" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xQq-B5-nww">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="handleTestHMACButtonTap:" target="XfG-lQ-9wD" id="p4V-2E-zkQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -788,8 +798,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
