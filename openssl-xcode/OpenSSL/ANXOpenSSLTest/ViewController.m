@@ -13,6 +13,7 @@
 #import "TestAES.h"
 #import "TestVerify.h"
 #import "TestSHA.h"
+#import "TestHMAC.h"
 
 @implementation ViewController
 
@@ -53,6 +54,10 @@
 
 - (IBAction)handleTestSHAButtonTap:(id)sender {
     [TestSHA test_ane];
+}
+
+- (IBAction)handleTestHMACButtonTap:(id)sender {
+    [TestHMAC test_ane];
 }
 
 @end

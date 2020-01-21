@@ -169,6 +169,14 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  HMAC
+    //-------------------------------------
+
+    public function hmacCompute(data: ByteArray, hashFunction: Object, key: ByteArray): ByteArray {
+        return context.call("hmacCompute", data, hashFunction, key) as ByteArray;
+    }
+
+    //-------------------------------------
     //  Base64
     //-------------------------------------
 

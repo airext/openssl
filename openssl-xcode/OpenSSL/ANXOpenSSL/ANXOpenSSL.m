@@ -247,6 +247,12 @@ static ANXOpenSSL* _sharedInstance = nil;
     return(md);
 }
 
+#pragma mark - HMAC
+
+- (unsigned char*)hmacForBytes:(nonnull const unsigned char*)bytes withLength:(int)bytesLength withKey:(const void *)key withKeyLength:(int)keyLength {
+    return HMAC(EVP_sha1(), key, keyLength, bytes, bytesLength, NULL, NULL);
+}
+
 #pragma mark - HEX
 
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {

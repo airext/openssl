@@ -103,6 +103,17 @@
             log("SHA256 digest: " + digest.readUTFBytes(digest.length));
         }
 
+        // SHA256
+
+        private function hmacTapped(): void {
+            var data: ByteArray = new ByteArray();
+            data.writeUTFBytes("The quick brown fox jumps over the lazy dog");
+            var key: ByteArray = new ByteArray();
+            key.writeUTFBytes("01234567890123456789012345678901");
+            var hmac: ByteArray = OpenSSL.shared.hmacCompute(data, null, key);
+            log("HMAC: " + hmac.readUTFBytes(hmac.length));
+        }
+
         // Base64
 
         private function encodeDecodeBase64StringTapped(): void {
@@ -150,7 +161,6 @@
                 log("certifcate is invalid");
             }
         }
-
         ]]>
     </fx:Script>
 
@@ -180,6 +190,9 @@
         <!--    SHA    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="SHA256" triggered="sha256Tapped()" />
+        <!--    HMAC    -->
+        <layout:Spacer width="280" height="2" />
+        <f:Button label="HMAC" triggered="hmacTapped()" />
         <!--    Base64    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
