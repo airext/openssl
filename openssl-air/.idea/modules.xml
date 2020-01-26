@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/openssl/openssl.iml" filepath="$PROJECT_DIR$/openssl/openssl.iml" />
       <module fileurl="file://$PROJECT_DIR$/openssl-debug/openssl-debug.iml" filepath="$PROJECT_DIR$/openssl-debug/openssl-debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/openssl-debug-simple/openssl-debug-simple.iml" filepath="$PROJECT_DIR$/openssl-debug-simple/openssl-debug-simple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openssl-tests/openssl-tests.iml" filepath="$PROJECT_DIR$/openssl-tests/openssl-tests.iml" />
     </modules>
   </component>
 </project>
