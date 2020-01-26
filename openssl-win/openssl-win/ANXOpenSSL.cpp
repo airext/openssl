@@ -237,7 +237,7 @@ unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t 
 //    size_t bufferLength;
 //    unsigned int hex;
 
-    for (int i = 0, j = 0; i < inputLength; i++, j += 2) {
+    for (unsigned int i = 0, j = 0; i < inputLength; i++, j += 2) {
         _OutputDebugString(L"[ANX] input[i]=%c", input[i]);
 //        _OutputDebugString(L"[ANX] &input[i]=%s", &input[i]);
 //        buffer = strtol((const char*)&input[i], NULL, 16);
@@ -285,11 +285,11 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
 
     char buffer[2];
 
-    for (int i = 0, j = 0; i < *outputLength; i++, j += 2) {
+    for (unsigned int i = 0, j = 0; i < *outputLength; i++, j += 2) {
         buffer[0] = input[j];
         buffer[1] = input[j+1];
         int hex = 0;
-        sscanf(buffer, "%x", &hex);
+        sscanf_s(buffer, "%x", &hex);
         output[i] = (unsigned char)hex;
     }
 

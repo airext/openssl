@@ -298,7 +298,10 @@
     <ClInclude Include="ANXOpenSSLBase64.h" />
     <ClInclude Include="ANXOpenSSLConversionRoutines.h" />
     <ClInclude Include="ANXOpenSSLDefer.h" />
+    <ClInclude Include="ANXOpenSSLHEX.h" />
+    <ClInclude Include="ANXOpenSSLHMAC.h" />
     <ClInclude Include="ANXOpenSSLRSA.h" />
+    <ClInclude Include="ANXOpenSSLSHA.h" />
     <ClInclude Include="ANXOpenSSLUtils.h" />
     <ClInclude Include="FlashRuntimeExtensions.h" />
     <ClInclude Include="framework.h" />
@@ -309,7 +312,10 @@
     <ClCompile Include="ANXOpenSSLAES.cpp" />
     <ClCompile Include="ANXOpenSSLBase64.cpp" />
     <ClCompile Include="ANXOpenSSLConversionRoutines.cpp" />
+    <ClCompile Include="ANXOpenSSLHEX.cpp" />
+    <ClCompile Include="ANXOpenSSLHMAC.cpp" />
     <ClCompile Include="ANXOpenSSLRSA.cpp" />
+    <ClCompile Include="ANXOpenSSLSHA.cpp" />
     <ClCompile Include="ANXOpenSSLUtils.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
