@@ -6,10 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd0e3f62-00d1-4e87-8e8a-7f47d30869b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../build/extension.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/extension.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.h" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSL.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/dllmain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/dllmain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLHEX.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLHEX.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLHMAC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLHMAC.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLSHA.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/ANXOpenSSLSHA.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/openssl-win.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/openssl-win.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../openssl-win/openssl-win/openssl-win.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../openssl-win/openssl-win/openssl-win.vcxproj.filters" afterDir="false" />
     </list>
@@ -315,6 +316,7 @@
       <workItem from="1579098637510" duration="39000" />
       <workItem from="1579287217026" duration="1554000" />
       <workItem from="1579346845696" duration="266000" />
+      <workItem from="1580029634861" duration="622000" />
     </task>
     <servers />
   </component>
@@ -353,28 +355,28 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1117" y="475" key="DetectedRootsChooserDialog/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1575377815618" />
-    <state width="1259" height="492" key="GridCell.Tab.0.bottom" timestamp="1579347133892">
+    <state width="1259" height="492" key="GridCell.Tab.0.bottom" timestamp="1580030662640">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1259" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1579347133892" />
+    <state width="1259" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1580030662640" />
     <state width="1638" height="500" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="408" key="GridCell.Tab.0.bottom/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492221" />
-    <state width="1259" height="492" key="GridCell.Tab.0.center" timestamp="1579347133891">
+    <state width="1259" height="492" key="GridCell.Tab.0.center" timestamp="1580030662640">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1259" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1579347133891" />
+    <state width="1259" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1580030662640" />
     <state width="1638" height="500" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
     <state width="2518" height="408" key="GridCell.Tab.0.center/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492220" />
-    <state width="1259" height="492" key="GridCell.Tab.0.left" timestamp="1579347133890">
+    <state width="1259" height="492" key="GridCell.Tab.0.left" timestamp="1580030662640">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1259" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1579347133890" />
+    <state width="1259" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1580030662640" />
     <state width="1638" height="500" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510002" />
     <state width="2518" height="408" key="GridCell.Tab.0.left/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492219" />
-    <state width="1259" height="492" key="GridCell.Tab.0.right" timestamp="1579347133892">
+    <state width="1259" height="492" key="GridCell.Tab.0.right" timestamp="1580030662640">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1259" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1579347133892" />
+    <state width="1259" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1580030662640" />
     <state width="1638" height="500" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1575666510003" />
     <state width="2518" height="408" key="GridCell.Tab.0.right/0.23.2560.1417/-1680.413.1680.1027@0.23.2560.1417" timestamp="1579078492220" />
     <state width="1259" height="492" key="GridCell.Tab.1.bottom" timestamp="1579290736906">

@@ -5,6 +5,7 @@
 //  Created by Max Rozdobudko on 19.01.2020.
 //
 
+#include "pch.h"
 #include "ANXOpenSSLSHA.h"
 #include "ANXOpenSSL.h"
 #include "ANXOpenSSLUtils.h"
