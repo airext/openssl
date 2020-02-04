@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="openssl-tests" type="FlashRunConfigurationType">
-    <option name="BCName" value="openssl-tests" />
+  <configuration default="false" name="openssl-debug-simple:desktop" type="FlashRunConfigurationType">
+    <option name="BCName" value="openssl-debug-simple-desktop" />
     <option name="IOSSimulatorDevice" value="" />
     <option name="IOSSimulatorSdkPath" value="" />
     <option name="adlOptions" value="" />
@@ -24,7 +24,7 @@
       </LauncherParameters>
     </option>
     <option name="mobileRunTarget" value="Emulator" />
-    <option name="moduleName" value="openssl-tests" />
+    <option name="moduleName" value="openssl-debug-simple" />
     <option name="overriddenMainClass" value="" />
     <option name="overriddenOutputFileName" value="" />
     <option name="overrideMainClass" value="false" />
