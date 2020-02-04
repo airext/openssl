@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="openssl-tests" type="FlexUnitRunConfigurationType" appDescriptorForEmulator="Android" class_name="com.github.airext.openssl.Tests" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+    <option name="BCName" value="openssl-tests" />
+    <option name="launcherParameters">
+      <LauncherParameters>
+        <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+        <option name="launcherType" value="OSDefault" />
+        <option name="newPlayerInstance" value="false" />
+        <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+      </LauncherParameters>
+    </option>
+    <option name="moduleName" value="openssl-tests" />
+    <option name="trusted" value="true" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
