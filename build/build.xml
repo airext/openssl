@@ -111,6 +111,9 @@
             <arg line='openssl-win.sln /Build "Debug|x86"' />
         </exec>
         <copy file="${win.project.dir}/x86/Debug/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
+        <copy todir="temp/win32">
+            <fileset dir="${win.project.dir}/vendor/win32" includes="**/**" />
+        </copy>
     </target>
 
     <target name="win64">
@@ -118,6 +121,9 @@
             <arg line='openssl-win.sln /Build "Debug|x64"' />
         </exec>
         <copy file="${win.project.dir}/x64/Debug/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
+        <copy todir="temp/win64">
+            <fileset dir="${win.project.dir}/vendor/win64" includes="**/**" />
+        </copy>
     </target>
 
     <!--=====================================================================-->
