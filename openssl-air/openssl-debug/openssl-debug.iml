@@ -50,6 +50,9 @@
         </dependencies>
         <compiler-options />
         <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="openssl-debug-desktop">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/win_dependencies/win32" path-in-package="." />
+          </files-to-package>
           <AirSigningOptions keystore-path="$USER_HOME$/cert/rozd/max.rozdobudko.dev.p12" />
         </packaging-air-desktop>
         <packaging-android />
