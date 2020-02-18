@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "pch.h"
 #include "ANXOpenSSLRSA.h"
 #include "ANXOpenSSL.h"

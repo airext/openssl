@@ -5,9 +5,8 @@
 #include <openssl/evp.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
-#include <stdint.h>
 #include "ANXOpenSSLUtils.h"
-#include "ANXOpenSSLUtils.h"
+#include "FlashRuntimeExtensions.h"
 
 #pragma once
 class ANXOpenSSL

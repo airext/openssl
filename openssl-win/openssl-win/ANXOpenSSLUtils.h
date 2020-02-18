@@ -5,9 +5,7 @@
 #include <openssl/evp.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <ctype.h>
+
 #pragma once
 extern "C" {
 	RSA* anx_create_rsa_with_public_key(const unsigned char* key);

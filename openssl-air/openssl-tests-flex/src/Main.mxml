@@ -7,6 +7,8 @@
         <![CDATA[
         import com.github.airext.openssl.test.Tests;
 
+        import mx.managers.CursorManager;
+
         import org.flexunit.internals.TraceListener;
 
         import org.flexunit.runner.FlexUnitCore;
@@ -21,7 +23,14 @@
             core.addListener(new TraceListener());
 
             core.run(Tests);
+
+            CursorManager.setBusyCursor();
         }
+
+        protected function handleTestsComplete(): void {
+            CursorManager.removeBusyCursor();
+        }
+
         ]]>
     </fx:Script>
 
@@ -29,7 +38,7 @@
         <s:VerticalLayout />
     </s:layout>
 
-    <flexUnitUIRunner:TestRunnerBase id="uiListener" width="100%" height="100%" />
+    <flexUnitUIRunner:TestRunnerBase id="uiListener" width="100%" height="100%" testsComplete="handleTestsComplete()" />
 
     <s:HGroup padding="6" horizontalAlign="right" width="100%">
         <s:Button label="Run" enabled="{uiListener}" click="startTestProcess()" />

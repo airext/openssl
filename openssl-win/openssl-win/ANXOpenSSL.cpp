@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "ANXOpenSSL.h"
-#include <version>
 
 #pragma region Common
 
