@@ -216,12 +216,11 @@ unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
     EVP_DigestFinal_ex(ctx, md_value, &md_len);
     EVP_MD_CTX_cleanup(ctx);
 
-    char* buffer = (char*)malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH);
+    char* buffer = (char*)malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH * 2);
 
-    for (int i = 0; i < md_len; i++) {
-        char buff[4];
-        sprintf(buff, "%02x", md_value[i]);
-        strcat(buffer, buff);
+    unsigned int i, j;
+    for (i = 0, j = 0; i < md_len; i++, j+=2) {
+        sprintf(buffer + j, "%02x", md_value[i]);
     }
 
     return (unsigned char*)buffer;
