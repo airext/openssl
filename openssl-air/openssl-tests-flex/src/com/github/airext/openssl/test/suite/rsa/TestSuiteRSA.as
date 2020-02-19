@@ -9,10 +9,6 @@ import com.github.airext.openssl.test.suite.rsa.theory.EncryptDecryptTheory;
 [RunWith("org.flexunit.runners.Suite")]
 public class TestSuiteRSA {
 
-    public function TestSuiteRSA() {
-        super();
-    }
-
     public var rsa: TestRSA;
 
     public var encryptDecryptTheory: EncryptDecryptTheory;

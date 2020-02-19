@@ -50,14 +50,6 @@
             log(output.readUTFBytes(output.length));
         }
 
-        private function testTapped(): void {
-            var myByteArray: ByteArray = new ByteArray();
-            myByteArray.writeUTFBytes("Hello, World");
-            myByteArray.position = 0;
-            var bytes: ByteArray = OpenSSL.shared.test(myByteArray);
-            trace(bytes.readUTFBytes(bytes.length));
-        }
-
         private function rsaEncryptTapped(): void {
             var data: ByteArray = new ByteArray();
             data.writeUTFBytes("Hello, world!");
@@ -98,7 +90,7 @@
 
         private function sha256Tapped(): void {
             var data: ByteArray = new ByteArray();
-            data.writeUTFBytes("The quick brown fox jumps over the lazy dog");
+            data.writeUTFBytes("abc123abc123abc123abc123abc123abc123abc123abc123");
             var digest: ByteArray = OpenSSL.shared.sha256Compute(data);
             log("SHA256 digest: " + digest.readUTFBytes(digest.length));
         }
@@ -203,7 +195,6 @@
         <f:Button label="Encode/Decode Hex Bytes" triggered="encodeDecodeHexBytesTapped()" />
         <layout:Spacer width="280" height="2" />
         <!--   Debug   -->
-        <f:Button label="Test" triggered="testTapped()" />
         <f:Button label="Native Build Version" triggered="getBuildVersionTapped()" />
     </f:ScrollContainer>
 

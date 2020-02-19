@@ -16,7 +16,7 @@ public class EncryptDecryptTheory {
 
     [DataPoints]
     [ArrayElementType("flash.utils.ByteArray")]
-    public static var data: Array = ByteArrayGenerator.generateMany(10000, 32, 245);
+    public static var data: Array = ByteArrayGenerator.generateMany(1000, 32, 245);
 
     [DataPoints]
     [ArrayElementType("com.github.airext.openssl.test.data.KeyPair")]
