@@ -8,10 +8,10 @@
             <entry library-id="acf5bfd7-12e9-499d-afcd-4471d1cfd58c">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-id="5250e19d-a76a-4cb2-a745-6b905a070208">
+            <entry library-name="4.0.0-air33.0-starling2.5.1-libs" library-level="application">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-id="508081d1-967e-4bc6-b425-c69a4d2e7299">
+            <entry library-name="4.0.0-air33.0-starling2.5.1-MetalWorksMobileTheme" library-level="application">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -39,10 +39,10 @@
             <entry library-id="056c1fed-cfb2-4c87-a96d-aaef21b495fa">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-id="c6ef3f17-f3df-4a41-a122-ce5647c3feaf">
+            <entry library-name="4.0.0-air33.0-starling2.5.1-MetalWorksMobileTheme" library-level="application">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-id="23848951-5bda-42e6-8fe8-211aaa637c9d">
+            <entry library-name="4.0.0-air33.0-starling2.5.1-libs" library-level="application">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -90,49 +90,7 @@
         <jarDirectory url="file://$MODULE_DIR$/ane" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="5250e19d-a76a-4cb2-a745-6b905a070208" />
-        <CLASSES>
-          <root url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/libs" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/libs" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="508081d1-967e-4bc6-b425-c69a4d2e7299" />
-        <CLASSES>
-          <root url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/themes/MetalWorksMobileTheme" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/themes/MetalWorksMobileTheme" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="c6ef3f17-f3df-4a41-a122-ce5647c3feaf" />
-        <CLASSES>
-          <root url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/libs" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/libs" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="23848951-5bda-42e6-8fe8-211aaa637c9d" />
-        <CLASSES>
-          <root url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/themes/MetalWorksMobileTheme" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/sdks/feathers/4.0.0/frameworks/themes/MetalWorksMobileTheme" recursive="false" />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" exported="" name="4.0.0-air33.0-starling2.5.1-libs" level="application" />
+    <orderEntry type="library" exported="" name="4.0.0-air33.0-starling2.5.1-MetalWorksMobileTheme" level="application" />
   </component>
 </module>

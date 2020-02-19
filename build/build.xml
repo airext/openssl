@@ -263,6 +263,9 @@
         <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.ane" force="true" />
         <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.swc" force="true" />
 
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
+
         <!-- Remove temporary directory -->
          <delete dir="temp"/>
     </target>
