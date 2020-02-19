@@ -210,17 +210,25 @@ unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
 
     const EVP_MD *md = EVP_sha256();
 
+    _OutputDebugString(L"EVP_MD created");
+
     EVP_MD_CTX* ctx = EVP_MD_CTX_create();
     EVP_DigestInit_ex(ctx, md, NULL);
     EVP_DigestUpdate(ctx, string, strlen((char*)string));
     EVP_DigestFinal_ex(ctx, md_value, &md_len);
     EVP_MD_CTX_cleanup(ctx);
 
+    _OutputDebugString(L"EVP_MD created: %s", md_value);
+
     char* buffer = (char*)malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH * 2);
+
+    _OutputDebugString(L"buffer length is: %i", strlen(buffer));
+
 
     unsigned int i, j;
     for (i = 0, j = 0; i < md_len; i++, j+=2) {
-        sprintf(buffer + j, "%02x", md_value[i]);
+        int result = sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
+        _OutputDebugString(L"written %i characters", result);
     }
 
     return (unsigned char*)buffer;
@@ -301,7 +309,7 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         buffer[0] = input[j];
         buffer[1] = input[j+1];
         int hex = 0;
-        sscanf(buffer, "%x", &hex);
+        sscanf_s(buffer, "%x", &hex);
         output[i] = (unsigned char)hex;
     }
 

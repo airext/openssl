@@ -102,8 +102,14 @@
     <!--                        Build Windows Library                          -->
     <!--=====================================================================-->
 
-    <target name="win" depends="win32, win64">
+    <target name="win" depends="win.clean, win32, win64">
 
+    </target>
+
+    <target name="win.clean">
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Clean' />
+        </exec>
     </target>
 
     <target name="win32">
