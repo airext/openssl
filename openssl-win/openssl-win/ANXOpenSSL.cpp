@@ -204,13 +204,27 @@ unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, const uns
 #pragma region SHA
 
 unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
-    static unsigned char buffer[SHA256_DIGEST_LENGTH];
 
-    SHA256(string, strlen((char*)string), buffer);
+    unsigned char md_value[SHA256_DIGEST_LENGTH];
+    unsigned int md_len;
 
-    unsigned char *md = buffer;
+    const EVP_MD *md = EVP_sha256();
 
-    return(md);
+    EVP_MD_CTX* ctx = EVP_MD_CTX_create();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, string, strlen((char*)string));
+    EVP_DigestFinal_ex(ctx, md_value, &md_len);
+    EVP_MD_CTX_cleanup(ctx);
+
+    char* buffer = (char*)malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH);
+
+    for (int i = 0; i < md_len; i++) {
+        char buff[4];
+        sprintf(buff, "%02x", md_value[i]);
+        strcat(buffer, buff);
+    }
+
+    return (unsigned char*)buffer;
 }
 
 #pragma endregion
@@ -288,7 +302,7 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         buffer[0] = input[j];
         buffer[1] = input[j+1];
         int hex = 0;
-        sscanf_s(buffer, "%x", &hex);
+        sscanf(buffer, "%x", &hex);
         output[i] = (unsigned char)hex;
     }
 

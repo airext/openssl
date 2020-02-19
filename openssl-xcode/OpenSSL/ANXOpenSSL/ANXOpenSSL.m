@@ -222,19 +222,26 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string {
 
-    static unsigned char buffer[SHA256_DIGEST_LENGTH];
+    unsigned char md_value[SHA256_DIGEST_LENGTH];
+    unsigned int md_len;
 
-    SHA256(string, strlen((char*)string), buffer);
+    const EVP_MD *md = EVP_sha256();
 
-    int i;
-    for (i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        printf("%02x ", buffer[i]);
+    EVP_MD_CTX* ctx = EVP_MD_CTX_create();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, string, strlen((char*)string));
+    EVP_DigestFinal_ex(ctx, md_value, &md_len);
+    EVP_MD_CTX_cleanup(ctx);
+
+    char* buffer = malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH);
+
+    for (int i = 0; i < md_len; i++) {
+        char buff[4];
+        sprintf(buff, "%02x", md_value[i]);
+        strcat(buffer, buff);
     }
-    printf("\n");
 
-    unsigned char *md = buffer;
-
-    return(md);
+    return (unsigned char*)buffer;
 }
 
 #pragma mark - HMAC
