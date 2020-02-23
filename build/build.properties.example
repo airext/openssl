@@ -16,3 +16,6 @@ visual.studio = C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio/2019
 
 # Location of the AIR SDK
 air.sdk = /Users/max/sdks/air/27.0.0
+
+# indicates if native part should be built in debug mode
+is.debug=true
