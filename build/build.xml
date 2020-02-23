@@ -33,6 +33,9 @@
     <!--=====================================================================-->
 
 	<target name="ios" description="Build iOS Library">
+        <condition property="ios.configuration" value="Debug" else="Release">
+            <equals arg1="${is.debug}" arg2="true" />
+        </condition>
 
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/ios/build/"/>
@@ -44,12 +47,12 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphoneos' />
             <arg line="-scheme ANX${product.name}-iOS"/>
-            <arg line='-configuration Release'/>
+            <arg line='-configuration ${ios.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
 
         <!-- Copy iOS native part for iOS platform -->
-		<copy file="temp/ios/build/Release-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
+		<copy file="temp/ios/build/${ios.configuration}-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
 
         <!-- iOS-Simulator -->
 
@@ -58,12 +61,12 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphonesimulator' />
             <arg line="-scheme ANX${product.name}-iOS"/>
-            <arg line='-configuration Debug'/>
+            <arg line='-configuration ${ios.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
 
         <!-- Copy iOS native part for iOS-Simulator platform -->
-        <copy file="temp/ios/build/Debug-iphonesimulator/libANX${product.name}.a" tofile="temp/ios-simulator/libANX${product.name}Simulator.a" overwrite="true"/>
+        <copy file="temp/ios/build/${ios.configuration}-iphonesimulator/libANX${product.name}.a" tofile="temp/ios-simulator/libANX${product.name}Simulator.a" overwrite="true"/>
 
         <!-- Remove temporary directory for iOS artifacts -->
 		<delete dir="temp/ios/build/"/>
@@ -74,6 +77,9 @@
     <!--=====================================================================-->
 
     <target name="osx" description="Build macOS Library">
+        <condition property="mac.configuration" value="Debug" else="Release">
+            <equals arg1="${is.debug}" arg2="true" />
+        </condition>
 
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/osx/build/"/>
@@ -85,13 +91,13 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
             <arg line="-scheme ANX${product.name}-macOS"/>
-            <arg line='-configuration Release'/>
+            <arg line='-configuration ${mac.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/osx/build'/>
         </exec>
 
         <!-- Copy OSX build artifacts to temporary build folder -->
         <copy todir="temp/osx/ANX${product.name}.framework">
-            <fileset dir="temp/osx/build/Release/ANX${product.name}.framework" includes="**/**" />
+            <fileset dir="temp/osx/build/${mac.configuration}/ANX${product.name}.framework" includes="**/**" />
         </copy>
 
         <!-- Remove temporary directory for iOS artifacts -->
@@ -163,7 +169,7 @@
         <!-- Compile .SWC library -->
         <exec executable="java" failonerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
-            <arg line='-debug=false' />
+            <arg line='-debug=${is.debug}' />
             <arg line='-source-path ${air.project.dir}/src/main'/>
             <arg line='-output temp/swc/ios/${project.name}.swc'/>
             <!-- <arg line='-swf-version=13'/> -->
@@ -215,7 +221,7 @@
         <!-- Compile .SWC library -->
         <exec executable="java" failonerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
-            <arg line='-debug=false' />
+            <arg line='-debug=${is.debug}' />
             <arg line='-source-path+=${air.project.dir}/src/default'/>
             <arg line='-output temp/swc/default/${project.name}.swc'/>
             <!-- <arg line='-swf-version=13'/> -->
