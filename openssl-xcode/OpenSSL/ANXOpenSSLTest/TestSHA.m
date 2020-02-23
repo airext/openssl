@@ -11,14 +11,12 @@
 @implementation TestSHA
 
 + (void)test_ane {
-    unsigned char *plaintext = (unsigned char *)"The quick brown fox jumps over the lazy dog";
+    unsigned char *plaintext = (unsigned char *)"abc123abc123abc123abc123abc123abc123abc123abc123";
 
-    unsigned char *sha = [ANXOpenSSL.sharedInstance sha256FromString:plaintext];
-
-    int length = (int)strlen((char*)sha);
-    unsigned char* digest = [ANXOpenSSL.sharedInstance hexEncodeString:sha inputLength:(int)strlen((char*)sha) outputLength:&length];
+    unsigned char *digest = [ANXOpenSSL.sharedInstance sha256FromString:plaintext];
 
     NSLog(@"digest is %s", digest);
+    NSLog(@"digest length is %lu", strlen((char*)digest));
 }
 
 @end

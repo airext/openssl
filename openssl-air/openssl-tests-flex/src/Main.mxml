@@ -5,7 +5,10 @@
                        xmlns:flexUnitUIRunner="http://www.adobe.com/2009/flexUnitUIRunner">
     <fx:Script>
         <![CDATA[
+        import com.github.airext.OpenSSL;
         import com.github.airext.openssl.test.Tests;
+
+        import mx.managers.CursorManager;
 
         import org.flexunit.internals.TraceListener;
 
@@ -21,7 +24,14 @@
             core.addListener(new TraceListener());
 
             core.run(Tests);
+
+            CursorManager.setBusyCursor();
         }
+
+        protected function handleTestsComplete(): void {
+            CursorManager.removeBusyCursor();
+        }
+
         ]]>
     </fx:Script>
 
@@ -29,9 +39,13 @@
         <s:VerticalLayout />
     </s:layout>
 
-    <flexUnitUIRunner:TestRunnerBase id="uiListener" width="100%" height="100%" />
+    <flexUnitUIRunner:TestRunnerBase id="uiListener" width="100%" height="100%" testsComplete="handleTestsComplete()" />
 
     <s:HGroup padding="6" horizontalAlign="right" width="100%">
+        <s:Label text="Extension version {OpenSSL.extensionVersion}" />
+        <s:Label text="Native version {OpenSSL.shared.getBuildVersion()}" />
+        <s:Label text="OpenSSL version {OpenSSL.nativeVersion}" />
+        <s:Spacer width="100%" />
         <s:Button label="Run" enabled="{uiListener}" click="startTestProcess()" />
     </s:HGroup>
 
