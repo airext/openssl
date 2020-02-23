@@ -210,25 +210,22 @@ unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
 
     const EVP_MD *md = EVP_sha256();
 
-    _OutputDebugString(L"EVP_MD created");
-
     EVP_MD_CTX* ctx = EVP_MD_CTX_create();
     EVP_DigestInit_ex(ctx, md, NULL);
     EVP_DigestUpdate(ctx, string, strlen((char*)string));
     EVP_DigestFinal_ex(ctx, md_value, &md_len);
     EVP_MD_CTX_cleanup(ctx);
 
-    _OutputDebugString(L"EVP_MD created: %s", md_value);
-
     char* buffer = (char*)malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH * 2);
-
-    _OutputDebugString(L"buffer length is: %i", strlen(buffer));
-
 
     unsigned int i, j;
     for (i = 0, j = 0; i < md_len; i++, j+=2) {
-        int result = sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
-        _OutputDebugString(L"written %i characters", result);
+#ifdef __APPLE__
+        sprintf(buffer + j, "%02x", md_value[i]);
+#endif
+#if defined(_WIN32) || defined(_WIN64)
+        sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
+#endif
     }
 
     return (unsigned char*)buffer;
@@ -249,47 +246,19 @@ unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLe
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
     _OutputDebugString(L"[ANX] input: %s", input);
 
+
     *outputLength = inputLength * 2;
-    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength + 1);
 
-    char character;
-    char buffer[3];
-//    size_t bufferLength;
-//    unsigned int hex;
+    char* output = (char*)malloc(sizeof(unsigned char*) * (*outputLength));
 
-    for (unsigned int i = 0, j = 0; i < inputLength; i++, j += 2) {
-        _OutputDebugString(L"[ANX] input[i]=%c", input[i]);
-//        _OutputDebugString(L"[ANX] &input[i]=%s", &input[i]);
-//        buffer = strtol((const char*)&input[i], NULL, 16);
-        character = input[i];
-        _OutputDebugString(L"[ANX] character:%s", &character);
-//        sscanf(&buffer, "%02x", &hex);
-        printf("vvv\n");
-        printf("%02x", input[i]);
-        printf("^^^\n");
-        size_t len = snprintf(buffer, 3, "%02x", input[i]);
-        _OutputDebugString(L"[ANX] len: %zu", len);
-        _OutputDebugString(L"[ANX] buffer: %s", buffer);
-        _OutputDebugString(L"[ANX] buffer: %c", buffer[0]);
-        _OutputDebugString(L"[ANX] buffer: %c", buffer[1]);
-//        _OutputDebugString(L"[ANX] hex: %i", hex);
-        _OutputDebugString(L"[ANX] output so far: %s", output);
-        output[j] = buffer[0];
-        output[j+1] = buffer[1];
+    unsigned int i, j;
+    for (i = 0, j = 0; i < inputLength; i++, j+=2) {
+        sprintf(output + j, "%02x", input[i]);
     }
-
-//    NSMutableString *hex = [NSMutableString new];
-//    for (NSInteger i = 0; i < inputLength; i++) {
-//        [hex appendFormat:@"%02x", input[i]];
-//        _OutputDebugString(L"[ANX] input[i]=%c", input[i]);
-//        _OutputDebugString(L"[ANX] hex so far: %@", hex);
-//    }
-
-    output[*outputLength] = '\0';
 
     _OutputDebugString(L"[ANX] output: %s", output);
 
-    return output;
+    return (unsigned char*)output;
 }
 
 unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
@@ -301,7 +270,7 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
     }
 
     *outputLength = inputLength / 2;
-    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength + 1);
+    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength);
 
     char buffer[2];
 
@@ -309,11 +278,13 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         buffer[0] = input[j];
         buffer[1] = input[j+1];
         int hex = 0;
+#ifdef __APPLE__
+        sscanf(buffer, "%x", &hex);
+#elif defined(_WIN32) || defined(_WIN64)
         sscanf_s(buffer, "%x", &hex);
+#endif
         output[i] = (unsigned char)hex;
     }
-
-    output[*outputLength] = '\0';
 
     _OutputDebugString(L"[ANX] output: %s", output);
 
