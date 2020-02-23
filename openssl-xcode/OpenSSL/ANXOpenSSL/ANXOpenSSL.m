@@ -222,29 +222,25 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string {
 
+    unsigned char md_value[SHA256_DIGEST_LENGTH];
+    unsigned int md_len;
 
+    const EVP_MD *md = EVP_sha256();
 
-    static unsigned char buffer[SHA256_DIGEST_LENGTH];
+    EVP_MD_CTX* ctx = EVP_MD_CTX_create();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, string, strlen((char*)string));
+    EVP_DigestFinal_ex(ctx, md_value, &md_len);
+    EVP_MD_CTX_cleanup(ctx);
 
-    SHA256(string, strlen((char*)string), buffer);
+    char* buffer = malloc(sizeof(unsigned char*) * SHA256_DIGEST_LENGTH * 2);
 
-    int i;
-    for (i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        printf("%02x ", buffer[i]);
+    unsigned int i, j;
+    for (i = 0, j = 0; i < md_len; i++, j+=2) {
+        sprintf(buffer + j, "%02x", md_value[i]);
     }
-    printf("\n");
 
-//    SHA256_CTX c;
-
-
-    unsigned char *md = buffer;
-
-//    SHA256_Init(&c);
-//    SHA256_Update(&c,d,n);
-//    SHA256_Final(md,&c);
-//    OPENSSL_cleanse(&c,sizeof(c));
-
-    return(md);
+    return (unsigned char*)buffer;
 }
 
 #pragma mark - HMAC
@@ -259,48 +255,17 @@ static ANXOpenSSL* _sharedInstance = nil;
     NSLog(@"[ANX] input: %s", input);
 
     *outputLength = inputLength * 2;
-    unsigned char* output = malloc(sizeof(unsigned char*) * *outputLength + 1);
 
-    char character;
-    char buffer[3];
-//    size_t bufferLength;
-//    unsigned int hex;
+    char* output = malloc(sizeof(unsigned char*) * (*outputLength));
 
-    for (int i = 0, j = 0; i < inputLength; i++, j += 2) {
-
-
-        NSLog(@"[ANX] input[i]=%c", input[i]);
-//        NSLog(@"[ANX] &input[i]=%s", &input[i]);
-//        buffer = strtol((const char*)&input[i], NULL, 16);
-        character = input[i];
-        NSLog(@"[ANX] character:%s", &character);
-//        sscanf(&buffer, "%02x", &hex);
-        printf("vvv\n");
-        printf("%02x", input[i]);
-        printf("^^^\n");
-        size_t len = snprintf(buffer, 3, "%02x", input[i]);
-        NSLog(@"[ANX] len: %zu", len);
-        NSLog(@"[ANX] buffer: %s", buffer);
-        NSLog(@"[ANX] buffer: %c", buffer[0]);
-        NSLog(@"[ANX] buffer: %c", buffer[1]);
-//        NSLog(@"[ANX] hex: %i", hex);
-        NSLog(@"[ANX] output so far: %s", output);
-        output[j] = buffer[0];
-        output[j+1] = buffer[1];
+    unsigned int i, j;
+    for (i = 0, j = 0; i < inputLength; i++, j+=2) {
+        sprintf(output + j, "%02x", input[i]);
     }
-
-//    NSMutableString *hex = [NSMutableString new];
-//    for (NSInteger i = 0; i < inputLength; i++) {
-//        [hex appendFormat:@"%02x", input[i]];
-//        NSLog(@"[ANX] input[i]=%c", input[i]);
-//        NSLog(@"[ANX] hex so far: %@", hex);
-//    }
-
-    output[*outputLength] = '\0';
 
     NSLog(@"[ANX] output: %s", output);
 
-    return output;
+    return (unsigned char*)output;
 }
 
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
@@ -313,7 +278,7 @@ static ANXOpenSSL* _sharedInstance = nil;
     }
 
     *outputLength = inputLength / 2;
-    unsigned char* output = malloc(sizeof(unsigned char*) * *outputLength + 1);
+    unsigned char* output = malloc(sizeof(unsigned char*) * (*outputLength));
 
     char buffer[2];
 
@@ -324,8 +289,6 @@ static ANXOpenSSL* _sharedInstance = nil;
         sscanf(buffer, "%x", &hex);
         output[i] = (unsigned char)hex;
     }
-
-    output[*outputLength] = '\0';
 
     NSLog(@"[ANX] output: %s", output);
 

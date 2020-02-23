@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="openssl-tests-flex">
     <configurations>
-      <configuration name="openssl-tests-flex" target-platform="Desktop" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/../out/production/openssl-tests-flex">
+      <configuration name="openssl-tests-flex" target-platform="Desktop" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/bin">
         <dependencies target-player="32.0">
           <entries>
             <entry library-id="c53fc32b-4fea-4b11-9fdc-abadf3ef127b">
@@ -15,7 +15,11 @@
           <sdk name="4.16.1-air33" />
         </dependencies>
         <compiler-options />
-        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="Main" />
+        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="OpenSSLTestRunner">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/win_dependencies/win32" path-in-package="." />
+          </files-to-package>
+        </packaging-air-desktop>
         <packaging-android />
         <packaging-ios />
       </configuration>

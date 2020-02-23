@@ -14,6 +14,7 @@
     <property name="air.project.dir" value="../${project.name}-air/${project.name}" />
     <property name="air-debug.project.dir" value="../${project.name}-air/${project.name}-debug" />
     <property name="android.project.dir" value="../${project.name}-android/${project.name}" />
+    <property name="win.project.dir" value="../${project.name}-win" />
 
 	<property file="build.properties"/>
 
@@ -32,6 +33,9 @@
     <!--=====================================================================-->
 
 	<target name="ios" description="Build iOS Library">
+        <condition property="ios.configuration" value="Debug" else="Release">
+            <equals arg1="${is.debug}" arg2="true" />
+        </condition>
 
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/ios/build/"/>
@@ -43,12 +47,12 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphoneos' />
             <arg line="-scheme ANX${product.name}-iOS"/>
-            <arg line='-configuration Release'/>
+            <arg line='-configuration ${ios.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
 
         <!-- Copy iOS native part for iOS platform -->
-		<copy file="temp/ios/build/Release-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
+		<copy file="temp/ios/build/${ios.configuration}-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
 
         <!-- iOS-Simulator -->
 
@@ -57,23 +61,25 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphonesimulator' />
             <arg line="-scheme ANX${product.name}-iOS"/>
-            <arg line='-configuration Debug'/>
+            <arg line='-configuration ${ios.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/ios/build'/>
         </exec>
 
         <!-- Copy iOS native part for iOS-Simulator platform -->
-        <copy file="temp/ios/build/Debug-iphonesimulator/libANX${product.name}.a" tofile="temp/ios-simulator/libANX${product.name}Simulator.a" overwrite="true"/>
+        <copy file="temp/ios/build/${ios.configuration}-iphonesimulator/libANX${product.name}.a" tofile="temp/ios-simulator/libANX${product.name}Simulator.a" overwrite="true"/>
 
         <!-- Remove temporary directory for iOS artifacts -->
 		<delete dir="temp/ios/build/"/>
 	</target>
-
 
     <!--=====================================================================-->
     <!--                        Build macOS Library                          -->
     <!--=====================================================================-->
 
     <target name="osx" description="Build macOS Library">
+        <condition property="mac.configuration" value="Debug" else="Release">
+            <equals arg1="${is.debug}" arg2="true" />
+        </condition>
 
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/osx/build/"/>
@@ -85,17 +91,56 @@
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
             <arg line="-scheme ANX${product.name}-macOS"/>
-            <arg line='-configuration Release'/>
+            <arg line='-configuration ${mac.configuration}'/>
             <arg line='SYMROOT=$(PWD)/../build/temp/osx/build'/>
         </exec>
 
         <!-- Copy OSX build artifacts to temporary build folder -->
         <copy todir="temp/osx/ANX${product.name}.framework">
-            <fileset dir="temp/osx/build/Release/ANX${product.name}.framework" includes="**/**" />
+            <fileset dir="temp/osx/build/${mac.configuration}/ANX${product.name}.framework" includes="**/**" />
         </copy>
 
         <!-- Remove temporary directory for iOS artifacts -->
         <delete dir="temp/osx/build/"/>
+    </target>
+
+    <!--=====================================================================-->
+    <!--                        Build Windows Library                        -->
+    <!--=====================================================================-->
+
+    <target name="win" depends="win.clean, win32, win64">
+
+    </target>
+
+    <target name="win.clean">
+        <condition property="win.configuration" value="Debug" else="Release">
+            <equals arg1="${is.debug}" arg2="true" />
+        </condition>
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Clean' />
+        </exec>
+    </target>
+
+    <target name="win32">
+        <echo>Building with configuration ${win.configuration}</echo>
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Build "${win.configuration}|x86"' />
+        </exec>
+        <copy file="${win.project.dir}/x86/${win.configuration}/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
+        <copy todir="temp/win32">
+            <fileset dir="${win.project.dir}/vendor/win32" includes="**/**" />
+        </copy>
+    </target>
+
+    <target name="win64">
+        <echo>Building with configuration ${win.configuration}</echo>
+        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+            <arg line='openssl-win.sln /Build "${win.configuration}|x64"' />
+        </exec>
+        <copy file="${win.project.dir}/x64/${win.configuration}/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
+        <copy todir="temp/win64">
+            <fileset dir="${win.project.dir}/vendor/win64" includes="**/**" />
+        </copy>
     </target>
 
     <!--=====================================================================-->
@@ -124,7 +169,7 @@
         <!-- Compile .SWC library -->
         <exec executable="java" failonerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
-            <arg line='-debug=false' />
+            <arg line='-debug=${is.debug}' />
             <arg line='-source-path ${air.project.dir}/src/main'/>
             <arg line='-output temp/swc/ios/${project.name}.swc'/>
             <!-- <arg line='-swf-version=13'/> -->
@@ -148,6 +193,12 @@
         <!-- Copy library.swf to Android platform folder -->
         <copy file="temp/swc/build/library.swf" todir="temp/android" overwrite="true"/>
 
+        <!-- Copy library.swf to Android platform folder -->
+        <copy file="temp/swc/build/library.swf" todir="temp/win32" overwrite="true"/>
+
+        <!-- Copy library.swf to Android platform folder -->
+        <copy file="temp/swc/build/library.swf" todir="temp/win64" overwrite="true"/>
+
         <!-- Remove temporary folder -->
         <delete dir="temp/swc/build/"/>
     </target>
@@ -170,7 +221,7 @@
         <!-- Compile .SWC library -->
         <exec executable="java" failonerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
-            <arg line='-debug=false' />
+            <arg line='-debug=${is.debug}' />
             <arg line='-source-path+=${air.project.dir}/src/default'/>
             <arg line='-output temp/swc/default/${project.name}.swc'/>
             <!-- <arg line='-swf-version=13'/> -->
@@ -229,8 +280,60 @@
         <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.ane" force="true" />
         <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.swc" force="true" />
 
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
+
         <!-- Remove temporary directory -->
          <delete dir="temp"/>
+    </target>
+
+    <target name="test">
+        <exec executable="java">
+            <arg line="-version" />
+        </exec>
+    </target>
+
+    <target name="package.on.win" description="Create the extension package" depends="air, win">
+
+        <!-- Package ANE file-->
+        <exec executable="java" failonerror="true" dir="temp">
+            <arg line="-Dhttps.protocols=TLSv1.1,TLSv1.2" />
+            <arg line='-jar ${air.sdk}/lib/adt.jar' />
+            <arg line="-package"/>
+            <arg line="-storetype"/>
+            <arg line="pkcs12"/>
+            <arg line="-keystore"/>
+            <arg line="${keystore.file}"/>
+            <arg line="-storepass"/>
+            <arg line="${keystore.password}"/>
+            <arg line="-tsa http://timestamp.entrust.net/TSS/JavaHttpTS"/>
+            <arg line="-target"/>
+            <arg line="ane"/>
+            <arg line="${project.name}.ane"/>
+            <arg line="../extension.xml"/>
+            <arg line="-swc swc/default/${project.name}.swc"/>
+            <arg line="-platform Windows-x86 -C win32/ ."/>
+            <arg line="-platform Windows-x86-64 -C win64/ ."/>
+            <arg line="-platform default -C default/ ."/>
+        </exec>
+
+        <!-- Move packaged .ANE file to /bin directory -->
+        <move file="temp/${project.name}.ane" tofile="../bin/${extension.id}.ane" force="true" />
+
+        <!-- Move default .SWC library to /bin directory -->
+        <copy file="temp/swc/default/${project.name}.swc" tofile="../bin/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug/ane/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
+
+        <!-- Remove temporary directory -->
+        <delete dir="temp"/>
     </target>
 
 </project>
