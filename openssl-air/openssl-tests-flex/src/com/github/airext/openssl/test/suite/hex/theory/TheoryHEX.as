@@ -8,7 +8,7 @@ import com.github.airext.openssl.test.helper.StringGenerator;
 import org.flexunit.asserts.assertEquals;
 
 [RunWith("org.flexunit.experimental.theories.Theories")]
-public class EncodeDecodeTheory {
+public class TheoryHEX {
 
     [DataPoints]
     [ArrayElementType("String")]
