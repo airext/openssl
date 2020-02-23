@@ -22,7 +22,7 @@ FREObject ANXOpenSSLHEX::hexEncodeString(FREObject string) {
     _OutputDebugString(L"[ANX] input: %s", input);
 
     uint32_t outputLength;
-    unsigned char* output = ANXOpenSSL::getInstance().hexDecodeString(input, inputLength, &outputLength);
+    unsigned char* output = ANXOpenSSL::getInstance().hexEncodeString(input, inputLength, &outputLength);
 
     defer {
         free(output);
