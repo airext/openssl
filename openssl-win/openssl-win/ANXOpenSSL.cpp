@@ -244,8 +244,7 @@ unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLe
 #pragma region HEX
 
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
-    _OutputDebugString(L"[ANX] input: %s", input);
-
+    _OutputDebugString(L"[ANX] input: %s with length: %i", input, inputLength);
 
     *outputLength = inputLength * 2;
 
@@ -253,10 +252,14 @@ unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t 
 
     unsigned int i, j;
     for (i = 0, j = 0; i < inputLength; i++, j+=2) {
+#ifdef __APPLE__
         sprintf(output + j, "%02x", input[i]);
+#elif defined(_WIN32) || defined(_WIN64)
+        sprintf_s(output + j, *outputLength, "%02x", input[i]);
+#endif
     }
 
-    _OutputDebugString(L"[ANX] output: %s", output);
+    _OutputDebugString(L"[ANX] output: %s with length: %i", output, *outputLength);
 
     return (unsigned char*)output;
 }
