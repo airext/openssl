@@ -220,6 +220,30 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 #pragma mark - SHA
 
+- (unsigned char*)sha256FromBytes:(nonnull unsigned const char*)input inputLength:(size_t)inputLength outputLength:(uint32_t*)outputLength {
+    unsigned char md_value[SHA256_DIGEST_LENGTH];
+    unsigned int md_len;
+
+    const EVP_MD *md = EVP_sha256();
+
+    EVP_MD_CTX* ctx = EVP_MD_CTX_create();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, input, inputLength);
+    EVP_DigestFinal_ex(ctx, md_value, &md_len);
+    EVP_MD_CTX_cleanup(ctx);
+
+    *outputLength = SHA256_DIGEST_LENGTH * 2;
+
+    char* buffer = malloc(sizeof(unsigned char*) * (*outputLength));
+
+    unsigned int i, j;
+    for (i = 0, j = 0; i < md_len; i++, j+=2) {
+        sprintf(buffer + j, "%02x", md_value[i]);
+    }
+
+    return (unsigned char*)buffer;
+}
+
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string {
 
     unsigned char md_value[SHA256_DIGEST_LENGTH];

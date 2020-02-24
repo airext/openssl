@@ -22,8 +22,8 @@
 
     NSLog(@"[ANX] Attempt to compute SHA256 from %s", input.bytes);
 
-    unsigned char* digest = [self sha256FromString:input.bytes];
-    int length = (int)strlen((char*)digest);
+    uint32_t length;
+    unsigned char* digest = [self sha256FromBytes:input.bytes inputLength:input.length outputLength:&length];
 
     NSLog(@"[ANX] digest computed '%s' with length '%i'", digest, length);
 

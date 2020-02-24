@@ -86,6 +86,7 @@
 /* Begin PBXFileReference section */
 		2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-iOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-iOS/Pods-ANXOpenSSL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		505EB2242403E4230044335E /* data.bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data.bin.h; sourceTree = "<group>"; };
 		5087A40A23958483006C153D /* libANXOpenSSL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libANXOpenSSL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087A43223959CBB006C153D /* ANXOpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ANXOpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087A43523959CBB006C153D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +178,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		505EB21E2403E2F80044335E /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				505EB21F2403E3050044335E /* sha256 */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		505EB21F2403E3050044335E /* sha256 */ = {
+			isa = PBXGroup;
+			children = (
+				505EB2242403E4230044335E /* data.bin.h */,
+			);
+			path = sha256;
+			sourceTree = "<group>";
+		};
 		5087A3F6239581A4006C153D = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +293,7 @@
 		5087A4672397C3D8006C153D /* ANXOpenSSLTest */ = {
 			isa = PBXGroup;
 			children = (
+				505EB21E2403E2F80044335E /* Samples */,
 				5087A4682397C3D8006C153D /* AppDelegate.h */,
 				5087A4692397C3D8006C153D /* AppDelegate.m */,
 				5087A46B2397C3D8006C153D /* ViewController.h */,

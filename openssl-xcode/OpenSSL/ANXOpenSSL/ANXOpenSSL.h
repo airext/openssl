@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - SHA
 
+- (unsigned char*)sha256FromBytes:(nonnull unsigned const char*)input inputLength:(size_t)inputLength outputLength:(uint32_t*)outputLength;
 - (unsigned char*)sha256FromString:(nonnull const unsigned char*)string;
 
 #pragma mark - HMAC
