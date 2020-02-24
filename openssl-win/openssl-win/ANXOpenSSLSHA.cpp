@@ -22,8 +22,8 @@ FREObject ANXOpenSSLSHA::computeSHA256(FREObject bytes) {
 
     _OutputDebugString(L"[ANX] Attempt to compute SHA256 from %s", input.bytes);
 
-    unsigned char* digest = ANXOpenSSL::getInstance().sha256FromString(input.bytes);
-    int length = (int)strlen((char*)digest);
+    uint32_t length;
+    unsigned char* digest = ANXOpenSSL::getInstance().sha256FromBytes(input.bytes, input.length, &length);
 
     _OutputDebugString(L"[ANX] digest computed '%s' with length '%i'", digest, length);
 

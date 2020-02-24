@@ -203,6 +203,35 @@ unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, const uns
 
 #pragma region SHA
 
+unsigned char* ANXOpenSSL::sha256FromBytes(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
+    unsigned char md_value[SHA256_DIGEST_LENGTH];
+    unsigned int md_len;
+
+    const EVP_MD *md = EVP_sha256();
+
+    EVP_MD_CTX* ctx = EVP_MD_CTX_create();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, input, inputLength);
+    EVP_DigestFinal_ex(ctx, md_value, &md_len);
+    EVP_MD_CTX_cleanup(ctx);
+
+    *outputLength = SHA256_DIGEST_LENGTH * 2;
+
+    char* buffer = (char*)malloc(sizeof(unsigned char*) * (*outputLength));
+
+    unsigned int i, j;
+    for (i = 0, j = 0; i < md_len; i++, j+=2) {
+#ifdef __APPLE__
+        sprintf(buffer + j, "%02x", md_value[i]);
+#endif
+#if defined(_WIN32) || defined(_WIN64)
+        sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
+#endif
+    }
+
+    return (unsigned char*)buffer;
+}
+
 unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
 
     unsigned char md_value[SHA256_DIGEST_LENGTH];
