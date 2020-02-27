@@ -10,7 +10,6 @@ jobs:
     env:
       air-sdk-path: ${{ env.HOME }}\air_sdk
       air-sdk-version: "32.0"
-      visual-studio-path: "C:/Program Files (x86)/Microsoft Visual Studio/2017"
 
     steps:
     - uses: actions/checkout@v2
@@ -42,7 +41,9 @@ jobs:
         echo ====
     - name: Test Visual Studio
       run: |
-        echo ${{ env.visual-studio-path }}
+        cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017"
+        ls
+        echo =======
     - name: Build Script
       working-directory: build
       run: |
