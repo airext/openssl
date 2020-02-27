@@ -34,6 +34,7 @@ jobs:
         New-Item -Name ".\air_sdk" -ItemType "directory" -Force | Out-Null
         Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk-version}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
         Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath "${{ env.air-sdk-path }}" | Out-Null
+        echo AIR SDK expanded into "${{ env.air-sdk-path }}"
     - name: Copy keystore.p12
       id: copy_keystore
       uses: timheuer/base64-to-file@v1.0.3
