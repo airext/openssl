@@ -10,7 +10,7 @@ jobs:
     env:
       air-sdk-path: ${{ github.workspace }}\air_sdk
       air-sdk-version: "32.0"
-      visual-studio-path: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019"
+      visual-studio-path: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise"
 
     steps:
     - uses: actions/checkout@v2
@@ -34,12 +34,6 @@ jobs:
       with: 
         fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
-    - name: Set AIR_SDK Environment variable
-      run: |
-        echo AIRSDK=${{ env.air-sdk-path }}
-        echo ====
-        ls
-        echo ====
     - name: Test Visual Studio
       run: |
         cd "C:\Program Files (x86)"
@@ -63,7 +57,7 @@ jobs:
         echo ====
         ls
         echo ====
-        ant -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio="${{ env.visual-studio-path }}" -Dis.debug=false
+        ant -noinput -buildfile build.xml -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio="${{ env.visual-studio-path }}" -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
