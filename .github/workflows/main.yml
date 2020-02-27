@@ -27,12 +27,11 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
     - name: Copy keystore.p12
+      id: copy_keystore
       uses: timheuer/base64-to-file@v1.0.3
       with: 
         fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
-    - name: Move keystore.p12 to build directory
-      run: mv keystore.p12 build
     - name: Set AIR_SDK Environment variable
       run: |
         $env:AIR_SDK="$(pwd)\air_sdk"
@@ -41,10 +40,11 @@ jobs:
       working-directory: build
       run: |
         echo AIRSDK=${env:AIR_SDK}
+        echo keystore.p12=${{ steps.copy_keystore.outputs.filePath }}
         echo ====
         ls
         echo ====
-        ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=keystore.p12 -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
+        ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
