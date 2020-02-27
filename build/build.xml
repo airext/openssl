@@ -23,9 +23,6 @@
     <!--=====================================================================-->
 
     <target name="all" depends="ios,osx,air,package" description="Full build of extension">
-        <exec executable="java">
-            <arg value="-version" />
-        </exec>
     </target>
 
     <!--=====================================================================-->
@@ -43,7 +40,7 @@
         <!-- iOS -->
 
         <!-- Build iOS part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
+        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphoneos' />
             <arg line="-scheme ANX${product.name}-iOS"/>
@@ -57,7 +54,7 @@
         <!-- iOS-Simulator -->
 
         <!-- Build iOS-simulator part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
+        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphonesimulator' />
             <arg line="-scheme ANX${product.name}-iOS"/>
@@ -87,7 +84,7 @@
         <!-- iOS -->
 
         <!-- Build iOS part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}">
+        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
             <arg line="-scheme ANX${product.name}-macOS"/>
@@ -116,14 +113,14 @@
         <condition property="win.configuration" value="Debug" else="Release">
             <equals arg1="${is.debug}" arg2="true" />
         </condition>
-        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Clean' />
         </exec>
     </target>
 
     <target name="win32">
         <echo>Building with configuration ${win.configuration}</echo>
-        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x86"' />
         </exec>
         <copy file="${win.project.dir}/x86/${win.configuration}/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
@@ -134,7 +131,7 @@
 
     <target name="win64">
         <echo>Building with configuration ${win.configuration}</echo>
-        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x64"' />
         </exec>
         <copy file="${win.project.dir}/x64/${win.configuration}/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
@@ -167,7 +164,7 @@
         </pathconvert>
 
         <!-- Compile .SWC library -->
-        <exec executable="java" failonerror="true">
+        <exec executable="java" failonerror="true" logerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
             <arg line='-debug=${is.debug}' />
             <arg line='-source-path ${air.project.dir}/src/main'/>
@@ -219,7 +216,7 @@
         </pathconvert>
 
         <!-- Compile .SWC library -->
-        <exec executable="java" failonerror="true">
+        <exec executable="java" failonerror="true" logerror="true">
             <arg line='-jar ${air.sdk}/lib/compc-cli.jar' />
             <arg line='-debug=${is.debug}' />
             <arg line='-source-path+=${air.project.dir}/src/default'/>
@@ -246,7 +243,7 @@
     <target name="package" description="Create the extension package">
 
         <!-- Package ANE file-->
-        <exec executable="java" failonerror="true" dir="temp">
+        <exec executable="java" failonerror="true" dir="temp" logerror="true">
             <arg line="-Dhttps.protocols=TLSv1.1,TLSv1.2" />
             <arg line='-jar ${air.sdk}/lib/adt.jar' />
             <arg line="-package"/>
@@ -288,7 +285,7 @@
     </target>
 
     <target name="test">
-        <exec executable="java">
+        <exec executable="java" logerror="true">
             <arg line="-version" />
         </exec>
     </target>
@@ -296,7 +293,7 @@
     <target name="package.on.win" description="Create the extension package" depends="air, win">
 
         <!-- Package ANE file-->
-        <exec executable="java" failonerror="true" dir="temp">
+        <exec executable="java" failonerror="true" dir="temp" logerror="true">
             <arg line="-Dhttps.protocols=TLSv1.1,TLSv1.2" />
             <arg line='-jar ${air.sdk}/lib/adt.jar' />
             <arg line="-package"/>
