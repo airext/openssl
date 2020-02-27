@@ -28,40 +28,20 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
-    - name: Copy keystore.p12
-      id: copy_keystore
-      uses: timheuer/base64-to-file@v1.0.3
-      with: 
-        fileName: keystore.p12
-        encodedString: ${{ secrets.keystore }}
-    - name: Test Visual Studio
-      run: |
-        cd "C:\Program Files (x86)"
-        ls
-        echo ====
-        cd "C:\Program Files (x86)\Microsoft Visual Studio"
-        ls
-        echo ====
-        cd "C:\Program Files (x86)\Microsoft Visual Studio 14.0"
-        ls
-        echo ====
-        cd "${{ env.visual-studio-path }}"
-        ls
-        echo =======
-    - name: Build Script
-      working-directory: build
-      run: |
-        echo AIRSDK=${{ github.workspace }}\air_sdk
-        echo AIRSDK=${{ env.air-sdk-path }}
-        echo keystore.p12=${{ steps.copy_keystore.outputs.filePath }}
-        echo ====
-        ls
-        echo ====
-        ant -noinput -buildfile build.xml -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio="${{ env.visual-studio-path }}" -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         New-Item -Name ".\air_sdk" -ItemType "directory" -Force | Out-Null
         Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk-version}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
         Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath "${{ env.air-sdk-path }}" | Out-Null
+    - name: Copy keystore.p12
+      id: copy_keystore
+      uses: timheuer/base64-to-file@v1.0.3
+      with: 
+        fileName: keystore.p12
+        encodedString: ${{ secrets.keystore }}
+    - name: Build Script
+      working-directory: build
+      run: |
+        ant -noinput -buildfile build.xml -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio="${{ env.visual-studio-path }}" -Dis.debug=false package.on.win
 
