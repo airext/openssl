@@ -44,7 +44,13 @@ jobs:
       run: |
         cd "C:\Program Files (x86)"
         ls
-        echo #####
+        echo ====
+        cd "C:\Program Files (x86)\Microsoft Visual Studio"
+        ls
+        echo ====
+        cd "C:\Program Files (x86)\Microsoft Visual Studio 14.0"
+        ls
+        echo ====
         cd "${{ env.visual-studio-path }}"
         ls
         echo =======
