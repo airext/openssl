@@ -24,10 +24,12 @@ jobs:
         cache-name: cache-air-sdk
       with:
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk }}
+        path: air_sdk
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk }}
           ${{ runner.os }}-build-${{ env.cache-name }}
     - name: Install AIR SDK If Needed
+      if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         If(!(Test-Path ".\air_sdk"))
         {
