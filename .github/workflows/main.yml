@@ -8,7 +8,7 @@ jobs:
     runs-on: [windows-latest]
 
     env:
-      air-sdk: 32.0
+      air-sdk-version: "32.0"
 
     steps:
     - uses: actions/checkout@v2
@@ -23,10 +23,10 @@ jobs:
       env:
         cache-name: cache-air-sdk
       with:
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
         path: air_sdk
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk }}
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
     - name: Install AIR SDK If Needed
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
@@ -34,7 +34,7 @@ jobs:
         If(!(Test-Path ".\air_sdk"))
         {
           New-Item -Name ".\air_sdk" -ItemType "directory" -Force | Out-Null
-          Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
+          Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk-version}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
           Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath ".\air_sdk" | Out-Null
         }
         $env:AIR_SDK="$(pwd)\air_sdk"
