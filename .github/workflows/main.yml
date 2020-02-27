@@ -16,8 +16,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Run a one-line script
-      run: echo Hello, world!
     - name: Cache AIR SDK
       uses: actions/cache@v1
       env:
@@ -28,11 +26,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
-    - name: Copy keystore.file
+    - name: Copy keystore.p12
       uses: timheuer/base64-to-file@v1.0.3
       with: 
-        fileName: build/keystore.p12
+        fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
+    - name: Move keystore.p12 to build directory
+      run: mv keystore.p12 build
     - name: Set AIR_SDK Environment variable
       run: |
         $env:AIR_SDK="$(pwd)\air_sdk"
