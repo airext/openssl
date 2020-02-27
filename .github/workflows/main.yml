@@ -8,8 +8,9 @@ jobs:
     runs-on: [windows-latest]
 
     env:
-      air-sdk-path: ${{ env.HOME }}\air_sdk
+      air-sdk-path: ${{ github.workspace }}\air_sdk
       air-sdk-version: "32.0"
+      visual-studio-path: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017"
 
     steps:
     - uses: actions/checkout@v2
@@ -41,13 +42,14 @@ jobs:
         echo ====
     - name: Test Visual Studio
       run: |
-        cd "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017"
+        cd ${{ env.visual-studio-path }}
         ls
         echo =======
     - name: Build Script
       working-directory: build
       run: |
-        echo AIRSDK=${{ env.HOME }}\air_sdk
+        echo AIRSDK=${{ github.workspace }}\air_sdk
+        echo AIRSDK=${{ env.air-sdk-path }}
         echo keystore.p12=${{ steps.copy_keystore.outputs.filePath }}
         echo ====
         ls
