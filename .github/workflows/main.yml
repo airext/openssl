@@ -41,6 +41,9 @@ jobs:
       with: 
         fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
+    - name: Build Win32
+      run: |
+        & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv" openssl-win\openssl-win.sln /Build "Release|x86"
     - name: Build Script
       working-directory: build
       run: ant -debug -verbose -noinput "-Dair.sdk=${{ env.air-sdk-path }}" "-Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }}" "-Dkeystore.password=${{ secrets.password }}" "-Dvisual.studio=${{ env.visual-studio-path }}" "-Dis.debug=false" package.on.win
