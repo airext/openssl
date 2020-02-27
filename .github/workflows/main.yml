@@ -8,7 +8,9 @@ jobs:
     runs-on: [windows-latest]
 
     env:
+      air-sdk-path: ${{ env.HOME }}\air_sdk
       air-sdk-version: "32.0"
+      visual-studio-path: "C:\Program Files (x86)\Microsoft Visual Studio\2017"
 
     steps:
     - uses: actions/checkout@v2
@@ -22,7 +24,7 @@ jobs:
         cache-name: cache-air-sdk
       with:
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
-        path: ${{ env.HOME }}\air_sdk
+        path: ${{ env.air-sdk-path }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
@@ -34,11 +36,13 @@ jobs:
         encodedString: ${{ secrets.keystore }}
     - name: Set AIR_SDK Environment variable
       run: |
-        $env:AIR_SDK="$(pwd)\air_sdk"
-        echo AIRSDK=${env:AIR_SDK}
+        echo AIRSDK=${{ env.air-sdk-path }}
         echo ====
         ls
         echo ====
+    - name: Test Visual Studio
+      run: |
+        echo ${{ env.visual-studio-path }}
     - name: Build Script
       working-directory: build
       run: |
@@ -47,11 +51,11 @@ jobs:
         echo ====
         ls
         echo ====
-        ant -noinput -Dair.sdk=${{ env.HOME }}\air_sdk -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
+        ant -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio=${{ env.visual-studio-path }} -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         New-Item -Name ".\air_sdk" -ItemType "directory" -Force | Out-Null
         Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk-version}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
-        Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath ".\air_sdk" | Out-Null
+        Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath "${{ env.air-sdk-path }}" | Out-Null
 
