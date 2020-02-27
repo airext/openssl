@@ -42,7 +42,7 @@ jobs:
         echo ====
     - name: Test Visual Studio
       run: |
-        cd ${{ env.visual-studio-path }}
+        cd "${{ env.visual-studio-path }}"
         ls
         echo =======
     - name: Build Script
@@ -54,7 +54,7 @@ jobs:
         echo ====
         ls
         echo ====
-        ant -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio=${{ env.visual-studio-path }} -Dis.debug=false
+        ant -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dvisual.studio="${{ env.visual-studio-path }}" -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
