@@ -116,14 +116,14 @@
         <condition property="win.configuration" value="Debug" else="Release">
             <equals arg1="${is.debug}" arg2="true" />
         </condition>
-        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
             <arg line='openssl-win.sln /Clean' />
         </exec>
     </target>
 
     <target name="win32">
         <echo>Building with configuration ${win.configuration}</echo>
-        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x86"' />
         </exec>
         <copy file="${win.project.dir}/x86/${win.configuration}/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
@@ -134,7 +134,7 @@
 
     <target name="win64">
         <echo>Building with configuration ${win.configuration}</echo>
-        <exec executable="${visual.studio}/Community/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
+        <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x64"' />
         </exec>
         <copy file="${win.project.dir}/x64/${win.configuration}/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />

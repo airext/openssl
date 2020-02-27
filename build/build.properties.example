@@ -12,7 +12,7 @@ keystore.password =
 android.sdk = /Users/max/Library/Android/sdk
 
 # Locatoin of the Visual Studio
-visual.studio = C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio/2019
+visual.studio = C:/Program\ Files\ (x86)/Microsoft\ Visual\ Studio/2019/Community
 
 # Location of the AIR SDK
 air.sdk = /Users/max/sdks/air/27.0.0
