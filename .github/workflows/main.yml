@@ -28,21 +28,27 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
+    - name: Copy keystore.file
+      uses: timheuer/base64-to-file@v1.0.3
+      with: 
+        fileName: build/keystore.p12
+        encodedString: ${{ secrets.keystore }}
     - name: Set AIR_SDK Environment variable
-      run: $env:AIR_SDK="$(pwd)\air_sdk"
+      run: |
+        $env:AIR_SDK="$(pwd)\air_sdk"
+        echo AIRSDK=${env:AIR_SDK}
     - name: Build Script
       working-directory: build
       run: |
-        echo ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=../keystore.p12 -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
-        ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=../keystore.p12 -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
+        echo AIRSDK=${env:AIR_SDK}
+        echo ====
+        ls
+        echo ====
+        ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=keystore.p12 -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         New-Item -Name ".\air_sdk" -ItemType "directory" -Force | Out-Null
         Invoke-WebRequest "http://airdownload.adobe.com/air/win/download/${env:air-sdk-version}/AIRSDK_Compiler.zip" -OutFile ".\AIRSDK_Compiler.zip"
         Expand-Archive -Path ".\AIRSDK_Compiler.zip" -DestinationPath ".\air_sdk" | Out-Null
-    - name: Copy keystore.file
-      uses: timheuer/base64-to-file@v1.0.3
-      with: 
-        fileName: keystore.p12
-        encodedString: ${{ secrets.keystore }}
+
