@@ -22,7 +22,7 @@ jobs:
         cache-name: cache-air-sdk
       with:
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
-        path: air_sdk
+        path: ${{ env.HOME }}\air_sdk
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
@@ -36,15 +36,18 @@ jobs:
       run: |
         $env:AIR_SDK="$(pwd)\air_sdk"
         echo AIRSDK=${env:AIR_SDK}
+        echo ====
+        ls
+        echo ====
     - name: Build Script
       working-directory: build
       run: |
-        echo AIRSDK=${env:AIR_SDK}
+        echo AIRSDK=${{ env.HOME }}\air_sdk
         echo keystore.p12=${{ steps.copy_keystore.outputs.filePath }}
         echo ====
         ls
         echo ====
-        ant -noinput -buildfile build.xml -Dair.sdk=${env:AIR_SDK} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
+        ant -noinput -Dair.sdk=${{ env.HOME }}\air_sdk -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false
     - name: Download AIR SDK
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
