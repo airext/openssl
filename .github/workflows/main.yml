@@ -42,5 +42,5 @@ jobs:
         encodedString: ${{ secrets.keystore }}
     - name: Build Script
       working-directory: build
-      run: ant -debug -verbose -Dair.sdk="${{ env.air-sdk-path }}" -Dis.debug=false package.on.win
+      run: ant -debug -verbose -Dair.sdk=${{ env.air-sdk-path }} -Dis.debug=false package.on.win
 
