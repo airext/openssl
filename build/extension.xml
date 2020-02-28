@@ -1,42 +1,42 @@
 <extension xmlns="http://ns.adobe.com/air/extension/32.0">
   <id>com.github.airext.OpenSSL</id>
-  <versionNumber>0.0.47</versionNumber>
+  <versionNumber>0.1.46</versionNumber>
   <platforms>
-    <platform name="iPhone-ARM">
-      <applicationDeployment>
-        <nativeLibrary>libANXOpenSSL.a</nativeLibrary>
-        <initializer>ANXOpenSSLInitializer</initializer>
-        <finalizer>ANXOpenSSLFinalizer</finalizer>
-      </applicationDeployment>
-    </platform>
-    <platform name="iPhone-x86">
-      <applicationDeployment>
-        <nativeLibrary>libANXOpenSSLSimulator.a</nativeLibrary>
-        <initializer>ANXOpenSSLInitializer</initializer>
-        <finalizer>ANXOpenSSLFinalizer</finalizer>
-      </applicationDeployment>
-    </platform>
-    <platform name="MacOS-x86-64">
-      <applicationDeployment>
-        <nativeLibrary>ANXOpenSSL.framework</nativeLibrary>
-        <initializer>ANXOpenSSLInitializer</initializer>
-        <finalizer>ANXOpenSSLFinalizer</finalizer>
-      </applicationDeployment>
-    </platform>
-<!--    <platform name="Windows-x86">-->
+<!--    <platform name="iPhone-ARM">-->
 <!--      <applicationDeployment>-->
-<!--        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>-->
+<!--        <nativeLibrary>libANXOpenSSL.a</nativeLibrary>-->
 <!--        <initializer>ANXOpenSSLInitializer</initializer>-->
 <!--        <finalizer>ANXOpenSSLFinalizer</finalizer>-->
 <!--      </applicationDeployment>-->
 <!--    </platform>-->
-<!--    <platform name="Windows-x86-64">-->
+<!--    <platform name="iPhone-x86">-->
 <!--      <applicationDeployment>-->
-<!--        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>-->
+<!--        <nativeLibrary>libANXOpenSSLSimulator.a</nativeLibrary>-->
 <!--        <initializer>ANXOpenSSLInitializer</initializer>-->
 <!--        <finalizer>ANXOpenSSLFinalizer</finalizer>-->
 <!--      </applicationDeployment>-->
 <!--    </platform>-->
+<!--    <platform name="MacOS-x86-64">-->
+<!--      <applicationDeployment>-->
+<!--        <nativeLibrary>ANXOpenSSL.framework</nativeLibrary>-->
+<!--        <initializer>ANXOpenSSLInitializer</initializer>-->
+<!--        <finalizer>ANXOpenSSLFinalizer</finalizer>-->
+<!--      </applicationDeployment>-->
+<!--    </platform>-->
+    <platform name="Windows-x86">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="Windows-x86-64">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
     <platform name="default">
       <applicationDeployment/>
     </platform>
