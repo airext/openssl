@@ -25,6 +25,11 @@
     uint32_t length;
     unsigned char* digest = [self sha256FromBytes:input.bytes inputLength:input.length outputLength:&length];
 
+    defer(^{
+        NSLog(@"[ANX] Freeing digest bytes.");
+        free(digest);
+    });
+
     NSLog(@"[ANX] digest computed '%s' with length '%i'", digest, length);
 
     NSLog(@"[ANX] Attempt to release input byte array");
