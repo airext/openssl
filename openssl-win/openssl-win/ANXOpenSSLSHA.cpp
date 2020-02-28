@@ -9,6 +9,7 @@
 #include "ANXOpenSSLSHA.h"
 #include "ANXOpenSSL.h"
 #include "ANXOpenSSLUtils.h"
+#include "ANXOpenSSLDefer.h"
 #include "ANXOpenSSLConversionRoutines.h"
 
 FREObject ANXOpenSSLSHA::computeSHA256(FREObject bytes) {
@@ -24,6 +25,11 @@ FREObject ANXOpenSSLSHA::computeSHA256(FREObject bytes) {
 
     uint32_t length;
     unsigned char* digest = ANXOpenSSL::getInstance().sha256FromBytes(input.bytes, input.length, &length);
+
+    defer {
+        _OutputDebugString(L"[ANX] Freeing digest bytes.");
+        free(digest);
+    };
 
     _OutputDebugString(L"[ANX] digest computed '%s' with length '%i'", digest, length);
 

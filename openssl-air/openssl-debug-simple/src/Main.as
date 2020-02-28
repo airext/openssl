@@ -3,6 +3,8 @@ package {
 import com.github.airext.OpenSSL;
 
 import flash.display.Sprite;
+import flash.utils.ByteArray;
+import flash.utils.setInterval;
 
 public class Main extends Sprite {
     public function Main() {
@@ -17,6 +19,17 @@ public class Main extends Sprite {
 
         new PlainButton(this, {label:"OpenSSL Version", y: 100, w: 200}, function(): void {
             trace(OpenSSL.nativeVersion);
+        });
+
+        new PlainButton(this, {label:"OpenSSL Memory Test", y: 150, w: 200}, function(): void {
+            function test(): void {
+                for (var i: int = 0; i < 100; i++) {
+                    var bytes: ByteArray = new ByteArray();
+                    bytes.writeUTFBytes("abc123abc123abc123abc123abc123abc123abc123abc123");
+                    OpenSSL.shared.sha256Compute(bytes);
+                }
+            }
+            setInterval(test, 20);
         });
 
     }

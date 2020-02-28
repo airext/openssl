@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ANXOpenSSL (SHA)
 
-- (FREObject)computeSHA256:(FREObject)bytes;
+- (nullable FREObject)computeSHA256:(FREObject)bytes;
 
 @end
 
