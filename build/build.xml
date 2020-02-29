@@ -291,6 +291,11 @@
     <target name="package" description="Create the extension package">
         <descriptor.prepare />
 
+        <echo>Build directory listing:</echo>
+        <exec executable="find" dir=".">
+            <arg line="." />
+        </exec>
+
         <!-- Package ANE file-->
         <exec executable="java" failonerror="true" dir="temp" logerror="true">
             <arg line="-Dhttps.protocols=TLSv1.1,TLSv1.2" />
