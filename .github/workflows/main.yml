@@ -20,6 +20,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Cache AIR SDK
+      id: cache-air-sdk
       uses: actions/cache@v1
       env:
         cache-name: cache-air-sdk
@@ -64,6 +65,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Cache AIR SDK
+      id: cache-air-sdk
       uses: actions/cache@v1
       env:
         cache-name: cache-air-sdk
@@ -74,6 +76,7 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.air-sdk-version }}
           ${{ runner.os }}-build-${{ env.cache-name }}
     - name: Download AIR SDK
+      if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         mkdir -p ${{ env.air-sdk-path }}
         wget -O AIRSDK_Compiler.tbz2 https://airdownload.adobe.com/air/mac/download/${{ env.air-sdk-version }}/AIRSDK_Compiler.tbz2
