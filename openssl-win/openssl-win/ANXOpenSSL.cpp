@@ -207,27 +207,32 @@ unsigned char* ANXOpenSSL::sha256FromBytes(const unsigned char* input, uint32_t 
     unsigned char md_value[SHA256_DIGEST_LENGTH];
     unsigned int md_len;
 
-    const EVP_MD *md = EVP_sha256();
+    const EVP_MD* md = EVP_sha256();
 
     EVP_MD_CTX* ctx = EVP_MD_CTX_create();
     EVP_DigestInit_ex(ctx, md, NULL);
     EVP_DigestUpdate(ctx, input, inputLength);
     EVP_DigestFinal_ex(ctx, md_value, &md_len);
-    EVP_MD_CTX_cleanup(ctx);
+    EVP_MD_CTX_destroy(ctx);
 
-    *outputLength = SHA256_DIGEST_LENGTH * 2;
+    *outputLength = md_len * 2;
 
-    char* buffer = (char*)malloc(sizeof(unsigned char*) * (*outputLength));
+    char* buffer = (char *)malloc(sizeof(char) * (*outputLength) + 1);
 
-    unsigned int i, j;
-    for (i = 0, j = 0; i < md_len; i++, j+=2) {
+    int offset = 0;
+    for (int i = 0; i < md_len; i++) {
 #ifdef __APPLE__
-        sprintf(buffer + j, "%02x", md_value[i]);
+        int count = sprintf(buffer + offset, "%02x", md_value[i]);
+#elif defined(_WIN32) || defined(_WIN64)
+        int count = sprintf_s(buffer + offset, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
 #endif
-#if defined(_WIN32) || defined(_WIN64)
-        sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
-#endif
+        if (count == -1) {
+            return NULL;
+        }
+        offset += count;
     }
+
+    buffer[*outputLength] = '\0';
 
     return (unsigned char*)buffer;
 }
