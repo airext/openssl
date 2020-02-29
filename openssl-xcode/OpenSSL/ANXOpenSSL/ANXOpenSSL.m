@@ -230,16 +230,22 @@ static ANXOpenSSL* _sharedInstance = nil;
     EVP_DigestInit_ex(ctx, md, NULL);
     EVP_DigestUpdate(ctx, input, inputLength);
     EVP_DigestFinal_ex(ctx, md_value, &md_len);
-    EVP_MD_CTX_cleanup(ctx);
+    EVP_MD_CTX_destroy(ctx);
 
-    *outputLength = SHA256_DIGEST_LENGTH * 2;
+    *outputLength = md_len * 2;
 
-    char* buffer = malloc(sizeof(unsigned char*) * (*outputLength));
+    char* buffer = malloc(sizeof(char) * (*outputLength) + 1);
 
-    unsigned int i, j;
-    for (i = 0, j = 0; i < md_len; i++, j+=2) {
-        sprintf(buffer + j, "%02x", md_value[i]);
+    int offset = 0;
+    for (int i = 0; i < md_len; i++) {
+        int count = sprintf(buffer + offset, "%02x", md_value[i]);
+        if (count == -1) {
+            return nil;
+        }
+        offset += count;
     }
+
+    buffer[*outputLength] = '\0';
 
     return (unsigned char*)buffer;
 }
