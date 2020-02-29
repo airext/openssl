@@ -79,9 +79,9 @@ jobs:
       if: steps.cache-air-sdk.outputs.cache-hit != 'true'
       run: |
         mkdir -p ${{ env.air-sdk-path }}
-        wget -O AIRSDK_Compiler.tbz2 https://airdownload.adobe.com/air/mac/download/latest/AIRSDK_Compiler.tbz2
-        tar -xjf AIRSDK_Compiler.tbz2 -C ${{ env.air-sdk-path }}
-        echo AIR SDK expanded into "${{ env.air-sdk-path }}"
+        wget -O AIRSDK_Compiler.dmg https://airdownload.adobe.com/air/mac/download/${{ env.air-sdk-version }}/AIRSDK_Compiler.dmg
+        hdiutil attach AIRSDK_Compiler.dmg -nobrowse
+        cp -rf /Volumes/AIR\ SDK/* ${{ env.air-sdk-path }}
     - name: Install ANT
       run: brew install ant
     - name: Copy keystore.p12
