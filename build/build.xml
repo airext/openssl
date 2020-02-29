@@ -23,8 +23,8 @@
 
     <macrodef name="pod.install">
         <sequential>
-            <exec executable="sh" dir="${xcode.project.dir}">
-                <arg line="pod install" />
+            <exec executable="pod" dir="${xcode.project.dir}">
+                <arg line="install" />
             </exec>
         </sequential>
     </macrodef>
@@ -100,7 +100,7 @@
         <!-- iOS -->
 
         <!-- Build iOS part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${osx.project.dir}" logerror="true">
+        <exec executable="xcodebuild" failonerror="true" dir="${xcode.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
             <arg line="-scheme ANX${product.name}-macOS"/>
