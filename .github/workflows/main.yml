@@ -101,6 +101,37 @@ jobs:
     - name: Build Script
       working-directory: build
       run: ant -debug -verbose -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false -Dbuild.number=${{ github.run_number }}
+    - name: Create Release
+      id: create-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload ANE Release Asset
+      id: upload-release-ane 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: ./bin/com.github.airext.OpenSSL.ane
+        asset_name: com.github.airext.OpenSSL.ane
+        asset_content_type: application/vnd.adobe.air-native-extension-package+zip
+    - name: Upload SWC Release Asset
+      id: upload-release-swc 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: ./bin/com.github.airext.OpenSSL.swc
+        asset_name: com.github.airext.OpenSSL.swc
+        asset_content_type: application/zip
+
 
 
 
