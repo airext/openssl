@@ -311,6 +311,8 @@
             <arg line="-platform iPhone-ARM -platformoptions ../platform-ios.xml -C ios/ ."/>
             <arg line="-platform iPhone-x86 -platformoptions ../platform-ios.xml -C ios-simulator/ ."/>
             <arg line="-platform MacOS-x86-64 -C osx/ ."/>
+            <arg line="-platform Windows-x86 -C win32/ ."/>
+            <arg line="-platform Windows-x86-64 -C win64/ ."/>
             <arg line="-platform default -C default/ ."/>
         </exec>
 
@@ -356,8 +358,6 @@
             <arg line="-platform iPhone-ARM -platformoptions ../platform-ios.xml -C ios/ ."/>
             <arg line="-platform iPhone-x86 -platformoptions ../platform-ios.xml -C ios-simulator/ ."/>
             <arg line="-platform MacOS-x86-64 -C osx/ ."/>
-            <arg line="-platform Windows-x86 -C win32/ ."/>
-            <arg line="-platform Windows-x86-64 -C win64/ ."/>
             <arg line="-platform default -C default/ ."/>
         </exec>
 
