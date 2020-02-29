@@ -11,6 +11,7 @@
         import mx.managers.CursorManager;
 
         import org.flexunit.internals.TraceListener;
+        import org.flexunit.listeners.AirCIListener;
 
         import org.flexunit.runner.FlexUnitCore;
 
@@ -22,6 +23,7 @@
             //Listener for the UI
             core.addListener(uiListener);
             core.addListener(new TraceListener());
+            core.addListener(new AirCIListener());
 
             core.run(Tests);
 
