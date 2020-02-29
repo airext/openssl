@@ -9,14 +9,25 @@
     <property name="product.name" value="OpenSSL" />
     <property name="extension.id" value="com.github.airext.OpenSSL" />
 
-    <property name="ios.project.dir" value="../${project.name}-xcode/${product.name}" />
-    <property name="osx.project.dir" value="../${project.name}-xcode/${product.name}" />
+    <property name="xcode.project.dir" value="../${project.name}-xcode/${product.name}" />
     <property name="air.project.dir" value="../${project.name}-air/${project.name}" />
     <property name="air-debug.project.dir" value="../${project.name}-air/${project.name}-debug" />
     <property name="android.project.dir" value="../${project.name}-android/${project.name}" />
     <property name="win.project.dir" value="../${project.name}-win" />
 
 	<property file="build.properties"/>
+
+    <!--=====================================================================-->
+    <!--                               Macros                                -->
+    <!--=====================================================================-->
+
+    <macrodef name="pod.install">
+        <sequential>
+            <exec executable="sh" dir="${xcode.project.dir}">
+                <arg line="pod install" />
+            </exec>
+        </sequential>
+    </macrodef>
 
     <!--=====================================================================-->
     <!--                             Build All                               -->
@@ -29,10 +40,13 @@
     <!--                          Build iOS Library                          -->
     <!--=====================================================================-->
 
+
 	<target name="ios" description="Build iOS Library">
         <condition property="ios.configuration" value="Debug" else="Release">
             <equals arg1="${is.debug}" arg2="true" />
         </condition>
+
+        <pod.install />
 
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/ios/build/"/>
@@ -40,7 +54,7 @@
         <!-- iOS -->
 
         <!-- Build iOS part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
+        <exec executable="xcodebuild" failonerror="true" dir="${xcode.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphoneos' />
             <arg line="-scheme ANX${product.name}-iOS"/>
@@ -54,7 +68,7 @@
         <!-- iOS-Simulator -->
 
         <!-- Build iOS-simulator part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
+        <exec executable="xcodebuild" failonerror="true" dir="${xcode.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk iphonesimulator' />
             <arg line="-scheme ANX${product.name}-iOS"/>
@@ -78,13 +92,15 @@
             <equals arg1="${is.debug}" arg2="true" />
         </condition>
 
+        <pod.install />
+
         <!-- Create temporary directory for iOS artifacts -->
         <mkdir dir="temp/osx/build/"/>
 
         <!-- iOS -->
 
         <!-- Build iOS part of the extension -->
-        <exec executable="xcodebuild" failonerror="true" dir="${ios.project.dir}" logerror="true">
+        <exec executable="xcodebuild" failonerror="true" dir="${osx.project.dir}" logerror="true">
             <arg line='-workspace ${product.name}.xcworkspace'/>
             <arg line='-sdk macosx' />
             <arg line="-scheme ANX${product.name}-macOS"/>
