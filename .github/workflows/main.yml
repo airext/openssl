@@ -98,6 +98,11 @@ jobs:
       with:
         name: ANXOpenSSL64.dll
         path: build/temp/win64/ANXOpenSSL.dll
+    - name: Install Dependences
+      run: |
+        cd openssl-xcode/OpenSSL
+        pod install
+      shell: bash
     - name: Build Script
       working-directory: build
       run: ant -debug -verbose -noinput -Dair.sdk=${{ env.air-sdk-path }} -Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }} -Dkeystore.password=${{ secrets.password }} -Dis.debug=false -Dbuild.number=${{ github.run_number }}
