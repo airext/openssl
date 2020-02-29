@@ -93,11 +93,11 @@ jobs:
     - uses: actions/download-artifact@v1
       with:
         name: ANXOpenSSL32.dll
-        path: build/temp/win32/ANXOpenSSL.dll
+        path: build/temp/win32
     - uses: actions/download-artifact@v1
       with:
         name: ANXOpenSSL64.dll
-        path: build/temp/win64/ANXOpenSSL.dll
+        path: build/temp/win64
     - name: Install Dependences
       run: |
         cd openssl-xcode/OpenSSL
