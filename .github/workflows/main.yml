@@ -82,6 +82,8 @@ jobs:
         wget -O AIRSDK_Compiler.tbz2 https://airdownload.adobe.com/air/mac/download/latest/AIRSDK_Compiler.tbz2
         tar -xjf AIRSDK_Compiler.tbz2 -C ${{ env.air-sdk-path }}
         echo AIR SDK expanded into "${{ env.air-sdk-path }}"
+    - name: Install ANT
+      run: brew install ant
     - name: Copy keystore.p12
       id: copy_keystore
       uses: timheuer/base64-to-file@v1.0.3
