@@ -237,10 +237,43 @@
     </target>
 
     <!--=====================================================================-->
+    <!--                         Update Descriptor                           -->
+    <!--=====================================================================-->
+
+    <macrodef name="descriptor.prepare">
+        <sequential>
+            <copy file="extension.xml" tofile="temp/extension.xml" overwrite="true" />
+            <replaceregexp file="temp/extension.xml" match="(.description.)(.*)(.\/description.)" replace="\1Build ${build.number}\3" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="descriptor.prepare.for.win">
+        <sequential>
+            <copy file="extension.xml" tofile="temp/extension.xml" overwrite="true" />
+            <replaceregexp file="temp/extension.xml" match="(.description.)(.*)(.\/description.)" replace="\1Build ${build.number}\3" />
+            <replaceregexp file="temp/extension.xml" match='.platform name="iPhone-ARM"..*?.\/platform.' replace="" flags="gsm" />
+            <replaceregexp file="temp/extension.xml" match='.platform name="iPhone-x86"..*?.\/platform.' replace="" flags="gsm" />
+            <replaceregexp file="temp/extension.xml" match='.platform name="MacOS-x86-64"..*?.\/platform.' replace="" flags="gsm" />
+            <replaceregexp file="temp/extension.xml" match='^\s*$' replace="" flags="gsm" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="descriptor.prepare.for.mac">
+        <sequential>
+            <copy file="extension.xml" tofile="temp/extension.xml" overwrite="true" />
+            <replaceregexp file="temp/extension.xml" match="(.description.)(.*)(.\/description.)" replace="\1Build ${build.number}\3" />
+            <replaceregexp file="temp/extension.xml" match='.platform name="Windows-x86"..*?.\/platform.' replace="" flags="gsm" />
+            <replaceregexp file="temp/extension.xml" match='.platform name="Windows-x86-64"..*?.\/platform.' replace="" flags="gsm" />
+            <replaceregexp file="temp/extension.xml" match='^\s*$' replace="" flags="gsm" />
+        </sequential>
+    </macrodef>
+
+    <!--=====================================================================-->
     <!--                         Package ANE file                            -->
     <!--=====================================================================-->
 
     <target name="package" description="Create the extension package">
+        <descriptor.prepare />
 
         <!-- Package ANE file-->
         <exec executable="java" failonerror="true" dir="temp" logerror="true">
@@ -257,7 +290,7 @@
             <arg line="-target"/>
             <arg line="ane"/>
             <arg line="${project.name}.ane"/>
-            <arg line="../extension.xml"/>
+            <arg line="extension.xml"/>
             <arg line="-swc swc/default/${project.name}.swc"/>
             <arg line="-platform iPhone-ARM -platformoptions ../platform-ios.xml -C ios/ ."/>
             <arg line="-platform iPhone-x86 -platformoptions ../platform-ios.xml -C ios-simulator/ ."/>
@@ -281,16 +314,11 @@
         <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
 
         <!-- Remove temporary directory -->
-         <delete dir="temp"/>
+        <delete dir="temp"/>
     </target>
 
-    <target name="test">
-        <exec executable="java" logerror="true">
-            <arg line="-version" />
-        </exec>
-    </target>
-
-    <target name="package.on.win" description="Create the extension package" depends="air, win">
+    <target name="package.on.mac" description="Create the extension package" depends="ios,osx,air">
+        <descriptor.prepare.for.mac />
 
         <!-- Package ANE file-->
         <exec executable="java" failonerror="true" dir="temp" logerror="true">
@@ -307,7 +335,54 @@
             <arg line="-target"/>
             <arg line="ane"/>
             <arg line="${project.name}.ane"/>
-            <arg line="../extension.xml"/>
+            <arg line="extension.xml"/>
+            <arg line="-swc swc/default/${project.name}.swc"/>
+            <arg line="-platform iPhone-ARM -platformoptions ../platform-ios.xml -C ios/ ."/>
+            <arg line="-platform iPhone-x86 -platformoptions ../platform-ios.xml -C ios-simulator/ ."/>
+            <arg line="-platform MacOS-x86-64 -C osx/ ."/>
+            <arg line="-platform Windows-x86 -C win32/ ."/>
+            <arg line="-platform Windows-x86-64 -C win64/ ."/>
+            <arg line="-platform default -C default/ ."/>
+        </exec>
+
+        <!-- Move packaged .ANE file to /bin directory -->
+        <move file="temp/${project.name}.ane" tofile="../bin/${extension.id}.ane" force="true" />
+
+        <!-- Move default .SWC library to /bin directory -->
+        <copy file="temp/swc/default/${project.name}.swc" tofile="../bin/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug/ane/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-debug-simple/ane/${extension.id}.swc" force="true" />
+
+        <copy file="../bin/${extension.id}.ane" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.ane" force="true" />
+        <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
+
+        <!-- Remove temporary directory -->
+         <delete dir="temp"/>
+    </target>
+
+    <target name="package.on.win" description="Create the extension package" depends="win, air">
+        <descriptor.prepare.for.win />
+
+        <!-- Package ANE file-->
+        <exec executable="java" failonerror="true" dir="temp" logerror="true">
+            <arg line="-Dhttps.protocols=TLSv1.1,TLSv1.2" />
+            <arg line='-jar ${air.sdk}/lib/adt.jar' />
+            <arg line="-package"/>
+            <arg line="-storetype"/>
+            <arg line="pkcs12"/>
+            <arg line="-keystore"/>
+            <arg line="${keystore.file}"/>
+            <arg line="-storepass"/>
+            <arg line="${keystore.password}"/>
+            <arg line="-tsa http://timestamp.entrust.net/TSS/JavaHttpTS"/>
+            <arg line="-target"/>
+            <arg line="ane"/>
+            <arg line="${project.name}.ane"/>
+            <arg line="extension.xml"/>
             <arg line="-swc swc/default/${project.name}.swc"/>
             <arg line="-platform Windows-x86 -C win32/ ."/>
             <arg line="-platform Windows-x86-64 -C win64/ ."/>
