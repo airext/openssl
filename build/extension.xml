@@ -1,6 +1,7 @@
 <extension xmlns="http://ns.adobe.com/air/extension/32.0">
   <id>com.github.airext.OpenSSL</id>
-  <versionNumber>0.0.47</versionNumber>
+  <versionNumber>0.2.47</versionNumber>
+  <description>Build 0</description>
   <platforms>
     <platform name="iPhone-ARM">
       <applicationDeployment>
@@ -23,20 +24,20 @@
         <finalizer>ANXOpenSSLFinalizer</finalizer>
       </applicationDeployment>
     </platform>
-<!--    <platform name="Windows-x86">-->
-<!--      <applicationDeployment>-->
-<!--        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>-->
-<!--        <initializer>ANXOpenSSLInitializer</initializer>-->
-<!--        <finalizer>ANXOpenSSLFinalizer</finalizer>-->
-<!--      </applicationDeployment>-->
-<!--    </platform>-->
-<!--    <platform name="Windows-x86-64">-->
-<!--      <applicationDeployment>-->
-<!--        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>-->
-<!--        <initializer>ANXOpenSSLInitializer</initializer>-->
-<!--        <finalizer>ANXOpenSSLFinalizer</finalizer>-->
-<!--      </applicationDeployment>-->
-<!--    </platform>-->
+    <platform name="Windows-x86">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="Windows-x86-64">
+      <applicationDeployment>
+        <nativeLibrary>ANXOpenSSL.dll</nativeLibrary>
+        <initializer>ANXOpenSSLInitializer</initializer>
+        <finalizer>ANXOpenSSLFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
     <platform name="default">
       <applicationDeployment/>
     </platform>
