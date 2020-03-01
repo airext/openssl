@@ -429,4 +429,60 @@
         <delete dir="temp"/>
     </target>
 
+
+    <!--=====================================================================-->
+    <!--                            Unit Tests                               -->
+    <!--=====================================================================-->
+
+    <target name="test.on.mac">
+
+        <property name="tests.project.dir" value="../${project.name}-air/openssl-tests-flex" />
+
+        <fileset id="app.ane.anes" dir="${tests.project.dir}/ane">
+            <include name="**/*.ane" />
+        </fileset>
+
+        <pathconvert property="app.ane.anes" refid="app.ane.anes" pathsep="," />
+
+        <java jar="${air.sdk}/lib/mxmlc-cli.jar" fork="true" failonerror="true">
+            <arg value="+configname=airmobile"/>
+            <arg line="-load-config ${air.sdk}/frameworks/air-config.xml" />
+            <arg line='-source-path+=${tests.project.dir}/src'/>
+            <arg value="-library-path+=${tests.project.dir}/lib"/>
+            <arg value="-external-library-path+=${app.ane.anes}"/>
+            <arg value="-output=${tests.project.dir}/bin/flash/Main.swf"/>
+            <arg value="${tests.project.dir}/src/TestRunner.as"/>
+        </java>
+
+        <copy file="${tests.project.dir}/bin/flash/Main.swf" tofile="flash/Main.swf" />
+        <copy todir="flash/assets">
+            <fileset dir="${tests.project.dir}/assets" />
+        </copy>
+        <copy todir="flash/extensions">
+            <fileset dir="${tests.project.dir}/ane">
+                <include name="*.ane" />
+            </fileset>
+        </copy>
+        <copy file="${tests.project.dir}/Main-app.xml" tofile="flash/Main-app.xml" />
+        <replaceregexp file="flash/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
+
+        <java jar="${air.sdk}/lib/adt.jar" dir="flash" fork="true" failonerror="true">
+            <arg line="-package"/>
+            <arg line="-storetype pkcs12"/>
+            <arg line="-keystore ${keystore.file}"/>
+            <arg line="-storepass ${keystore.password}"/>
+            <arg line="-target bundle"/>
+            <arg line="OpenSSLTests.app" />
+            <arg line="Main-app.xml" />
+            <arg line="Main.swf" />
+            <arg line="-C assets " />
+            <arg line="-extdir extensions" />
+        </java>
+
+        <exec executable="open" dir="flash">
+            <arg line="-a OpenSSLTests.app" />
+        </exec>
+
+    </target>
+
 </project>
