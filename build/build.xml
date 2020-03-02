@@ -485,4 +485,71 @@
 
     </target>
 
+
+    <target name="test.on.win">
+
+        <property name="tests.project.dir" value="../${project.name}-air/openssl-tests-flex" />
+
+        <fileset id="app.ane.anes" dir="${tests.project.dir}/ane">
+            <include name="**/*.ane" />
+        </fileset>
+
+        <pathconvert property="app.ane.anes" refid="app.ane.anes" pathsep="," />
+
+        <java jar="${air.sdk}/lib/mxmlc-cli.jar" fork="true" failonerror="true">
+            <arg value="+configname=airmobile"/>
+            <arg line="-load-config ${air.sdk}/frameworks/air-config.xml" />
+            <arg line='-source-path+=${tests.project.dir}/src'/>
+            <arg value="-library-path+=${tests.project.dir}/lib"/>
+            <arg value="-external-library-path+=${app.ane.anes}"/>
+            <arg value="-output=${tests.project.dir}/bin/test/Main.swf"/>
+            <arg value="${tests.project.dir}/src/TestRunner.as"/>
+        </java>
+
+        <copy file="${tests.project.dir}/bin/test/Main.swf" tofile="test/Main.swf" />
+        <copy todir="test/assets">
+            <fileset dir="${tests.project.dir}/assets" />
+        </copy>
+        <copy todir="test/extensions">
+            <fileset dir="${tests.project.dir}/ane">
+                <include name="*.ane" />
+            </fileset>
+        </copy>
+        <copy file="${tests.project.dir}/Main-app.xml" tofile="test/Main-app.xml" />
+        <replaceregexp file="test/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
+
+        <java jar="${air.sdk}/lib/adt.jar" dir="test" fork="true" failonerror="true">
+            <arg line="-package"/>
+            <arg line="-storetype pkcs12"/>
+            <arg line="-keystore ${keystore.file}"/>
+            <arg line="-storepass ${keystore.password}"/>
+            <arg line="-target bundle"/>
+            <arg line="OpenSSLTests" />
+            <arg line="Main-app.xml" />
+            <arg line="Main.swf" />
+            <arg line="-C assets ." />
+            <arg line="-extdir extensions" />
+        </java>
+
+        <exec executable="powershell" dir="test">
+            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ." />
+        </exec>
+
+        <waitfor maxwait="2" maxwaitunit="minute">
+            <or>
+                <available file="test/tests_success.txt" />
+                <available file="test/tests_failure.txt" />
+            </or>
+        </waitfor>
+
+        <fail>
+            <condition>
+                <not>
+                    <available file="test/tests_success.txt" />
+                </not>
+            </condition>
+        </fail>
+
+    </target>
+
 </project>
