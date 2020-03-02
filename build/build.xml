@@ -556,7 +556,7 @@
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="2" maxwaitunit="minute">
+        <waitfor maxwait="10" maxwaitunit="minute">
             <or>
                 <available file="test/tests_success.txt" />
                 <available file="test/tests_failure.txt" />
