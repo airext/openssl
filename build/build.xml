@@ -502,7 +502,6 @@
 
     </target>
 
-
     <target name="test.on.win">
 
         <property name="tests.project.dir" value="../${project.name}-air/openssl-tests-flex" />
@@ -549,11 +548,11 @@
         </java>
 
         <pathconvert targetos="windows" property="tests.working.dir">
-            <path path="." />
+            <path path="test" />
         </pathconvert>
 
         <exec executable="powershell" dir="test">
-            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ${tests.working.dir}" />
+            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
 
         <waitfor maxwait="2" maxwaitunit="minute">
