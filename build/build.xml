@@ -426,7 +426,7 @@
         <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
 
         <!-- Remove temporary directory -->
-        <delete dir="temp"/>
+<!--        <delete dir="temp"/>-->
     </target>
 
 
