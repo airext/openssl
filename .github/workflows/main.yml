@@ -45,7 +45,7 @@ jobs:
         encodedString: ${{ secrets.keystore }}
     - name: Build Script
       working-directory: build
-      run: ant -debug -verbose -noinput "-Dair.sdk=${{ env.air-sdk-path }}" "-Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }}" "-Dkeystore.password=${{ secrets.password }}" "-Dvisual.studio=${{ env.visual-studio-path }}" "-Dis.debug=false" "-Dbuild.number=${{ github.run_number }}" win
+      run: ant -debug -verbose -noinput "-Dair.sdk=${{ env.air-sdk-path }}" "-Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }}" "-Dkeystore.password=${{ secrets.password }}" "-Dvisual.studio=${{ env.visual-studio-path }}" "-Dis.debug=false" "-Dbuild.number=${{ github.run_number }}" package.on.win
     - name: Unit Tests
       id: unit-tests
       working-directory: build
