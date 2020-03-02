@@ -51,6 +51,7 @@ jobs:
       working-directory: build
       run: ant -debug -verbose -noinput "-Dair.sdk=${{ env.air-sdk-path }}" "-Dkeystore.file=${{ steps.copy_keystore.outputs.filePath }}" "-Dkeystore.password=${{ secrets.password }}" "-Dvisual.studio=${{ env.visual-studio-path }}" "-Dis.debug=false" "-Dbuild.number=${{ github.run_number }}" test.on.win
     - name: Upload Tests Failure Detail
+      if: failure()
       uses: actions/upload-artifact@v1
       with:
         name: tests_failure.txt
