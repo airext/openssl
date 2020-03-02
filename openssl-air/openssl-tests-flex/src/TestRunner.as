@@ -4,15 +4,14 @@
 package {
 import com.github.airext.flexunit.listener.CIFileListener;
 import com.github.airext.openssl.test.Tests;
+import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
 
 import flash.display.Sprite;
 import flash.events.UncaughtErrorEvent;
 import flash.text.TextField;
 
 import org.flexunit.internals.TraceListener;
-import org.flexunit.listeners.VisualDebuggerListener;
 import org.flexunit.runner.FlexUnitCore;
-import org.flexunit.runner.notification.RunListener;
 
 public class TestRunner extends Sprite {
 
@@ -22,6 +21,7 @@ public class TestRunner extends Sprite {
         super();
 
         var handler: Function = function(message: String): void {
+            trace(message);
             tf.text += message + "\n";
         };
 
@@ -29,7 +29,6 @@ public class TestRunner extends Sprite {
 
         core.addListener(new CIFileListener(handler));
         core.addListener(new TraceListener());
-        core.addListener(new RunListener());
 
         core.run(Tests);
 
@@ -40,7 +39,9 @@ public class TestRunner extends Sprite {
         tf.height = stage.stageHeight;
         addChild(tf);
 
-        tf.text += "Tests started";
+        tf.text += "Tests started\n";
+
+        tf.text += "TestSuiteRSA: " + TestSuiteRSA + "\n";
 
         loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(event: UncaughtErrorEvent): void {
             tf.text += event.error + "\n";

@@ -10,6 +10,8 @@ import flash.filesystem.File;
 import flash.filesystem.FileMode;
 import flash.filesystem.FileStream;
 
+import org.flexunit.experimental.theories.internals.ParameterizedAssertionError;
+
 import org.flexunit.runner.IDescription;
 import org.flexunit.runner.Result;
 import org.flexunit.runner.notification.Failure;
@@ -74,7 +76,9 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
         } else {
             var failureContent: String = "";
             for each (var failure: Failure in result.failures) {
-                failureContent += failure.message + "\n";
+                failureContent += failure.testHeader + "\n";
+                failureContent += "\t" + failure.message + "\n";
+                failureContent += "\t\t" + (failure.exception is ParameterizedAssertionError ? ParameterizedAssertionError(failure.exception).targetException.message : failure.exception.message) + "\n";
             }
             writeToFailureResultFile(failureContent);
         }
