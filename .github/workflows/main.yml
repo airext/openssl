@@ -1,6 +1,9 @@
-name: CI
+name: release
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 env:
   air-sdk-path: ${{ github.workspace }}\air_sdk
