@@ -563,8 +563,8 @@
             </or>
         </waitfor>
 
-        <exec executable="dir" dir=".">
-            <arg line="/s /b /o:gn" />
+        <exec executable="powershell">
+            <arg line="Get-ChildItem -Path . –Recurse" />
         </exec>
 
         <fail>
