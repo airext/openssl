@@ -54,7 +54,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: tests_failure.txt
-        path: test/tests_success.txt
+        path: build/test/tests_failure.txt
     - uses: actions/upload-artifact@v1
       with:
         name: ANXOpenSSL32.dll
