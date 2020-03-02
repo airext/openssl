@@ -450,23 +450,23 @@
             <arg line='-source-path+=${tests.project.dir}/src'/>
             <arg value="-library-path+=${tests.project.dir}/lib"/>
             <arg value="-external-library-path+=${app.ane.anes}"/>
-            <arg value="-output=${tests.project.dir}/bin/flash/Main.swf"/>
+            <arg value="-output=${tests.project.dir}/bin/test/Main.swf"/>
             <arg value="${tests.project.dir}/src/TestRunner.as"/>
         </java>
 
-        <copy file="${tests.project.dir}/bin/flash/Main.swf" tofile="flash/Main.swf" />
-        <copy todir="flash/assets">
+        <copy file="${tests.project.dir}/bin/test/Main.swf" tofile="test/Main.swf" />
+        <copy todir="test/assets">
             <fileset dir="${tests.project.dir}/assets" />
         </copy>
-        <copy todir="flash/extensions">
+        <copy todir="test/extensions">
             <fileset dir="${tests.project.dir}/ane">
                 <include name="*.ane" />
             </fileset>
         </copy>
-        <copy file="${tests.project.dir}/Main-app.xml" tofile="flash/Main-app.xml" />
-        <replaceregexp file="flash/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
+        <copy file="${tests.project.dir}/Main-app.xml" tofile="test/Main-app.xml" />
+        <replaceregexp file="test/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
 
-        <java jar="${air.sdk}/lib/adt.jar" dir="flash" fork="true" failonerror="true">
+        <java jar="${air.sdk}/lib/adt.jar" dir="test" fork="true" failonerror="true">
             <arg line="-package"/>
             <arg line="-storetype pkcs12"/>
             <arg line="-keystore ${keystore.file}"/>
@@ -479,8 +479,10 @@
             <arg line="-extdir extensions" />
         </java>
 
-        <exec executable="open" dir="flash">
-            <arg line="-a OpenSSLTests.app" />
+        <makeurl file="./test" property="tests.working.dir" />
+
+        <exec executable="open" dir="test">
+            <arg line="-a OpenSSLTests.app ${tests.working.dir}" />
         </exec>
 
         <waitfor maxwait="2" maxwaitunit="minute">
@@ -544,8 +546,10 @@
             <arg line="-extdir extensions" />
         </java>
 
+        <makeurl file="./test" property="tests.working.dir" />
+
         <exec executable="powershell" dir="test">
-            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ." />
+            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ${tests.working.dir}" />
         </exec>
 
         <waitfor maxwait="2" maxwaitunit="minute">

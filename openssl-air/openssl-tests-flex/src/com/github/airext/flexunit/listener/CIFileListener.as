@@ -113,8 +113,8 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
     // MARK: - Handlers
 
     private function onInvoke(event: InvokeEvent): void {
-        handler("currentDirectory: " + event.currentDirectory.nativePath);
-        currentDirectory = event.currentDirectory;
+        handler("invoke arguments: " + event.arguments);
+        currentDirectory = new File(event.arguments[0]);
     }
 }
 }
