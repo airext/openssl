@@ -480,7 +480,7 @@
         </java>
 
         <pathconvert targetos="unix" property="tests.working.dir">
-            <path path="." />
+            <path path="test" />
         </pathconvert>
 
         <exec executable="open" dir="test">
@@ -489,14 +489,14 @@
 
         <waitfor maxwait="2" maxwaitunit="minute">
             <or>
-                <available file="tests/tests_success.txt" />
-                <available file="tests/tests_failure.txt" />
+                <available file="test/tests_success.txt" />
+                <available file="test/tests_failure.txt" />
             </or>
         </waitfor>
 
         <fail>
             <condition>
-                <available file="tests/tests_failure.txt" />
+                <available file="test/tests_failure.txt" />
             </condition>
         </fail>
 
@@ -555,7 +555,7 @@
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="10" maxwaitunit="minute">
+        <waitfor maxwait="4" maxwaitunit="minute">
             <or>
                 <available file="test/tests_success.txt" />
                 <available file="test/tests_failure.txt" />
