@@ -563,6 +563,10 @@
             </or>
         </waitfor>
 
+        <exec executable="dir" dir=".">
+            <arg line="/s /b /o:gn" />
+        </exec>
+
         <fail>
             <condition>
                 <not>
