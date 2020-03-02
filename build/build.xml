@@ -475,13 +475,26 @@
             <arg line="OpenSSLTests.app" />
             <arg line="Main-app.xml" />
             <arg line="Main.swf" />
-            <arg line="-C assets " />
+            <arg line="-C assets ." />
             <arg line="-extdir extensions" />
         </java>
 
         <exec executable="open" dir="flash">
             <arg line="-a OpenSSLTests.app" />
         </exec>
+
+        <waitfor maxwait="2" maxwaitunit="minute">
+            <or>
+                <available file="tests/tests_success.txt" />
+                <available file="tests/tests_failure.txt" />
+            </or>
+        </waitfor>
+
+        <fail>
+            <condition>
+                <available file="tests/tests_failure.txt" />
+            </condition>
+        </fail>
 
     </target>
 
