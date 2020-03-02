@@ -479,7 +479,9 @@
             <arg line="-extdir extensions" />
         </java>
 
-        <makeurl file="./test" property="tests.working.dir" />
+        <pathconvert targetos="unix" property="tests.working.dir">
+            <path path="." />
+        </pathconvert>
 
         <exec executable="open" dir="test">
             <arg line="-a OpenSSLTests.app ${tests.working.dir}" />
@@ -546,7 +548,9 @@
             <arg line="-extdir extensions" />
         </java>
 
-        <makeurl file="./test" property="tests.working.dir" />
+        <pathconvert targetos="windows" property="tests.working.dir">
+            <path path="." />
+        </pathconvert>
 
         <exec executable="powershell" dir="test">
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ${tests.working.dir}" />
