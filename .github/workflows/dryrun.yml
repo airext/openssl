@@ -1,6 +1,6 @@
 name: dryrun
 
-on: [push]
+on: [push, pull_request]
 
 env:
   air-sdk-path: ${{ github.workspace }}\air_sdk
