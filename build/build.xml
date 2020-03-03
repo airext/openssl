@@ -426,7 +426,7 @@
         <copy file="../bin/${extension.id}.swc" tofile="../${project.name}-air/${project.name}-tests-flex/ane/${extension.id}.swc" force="true" />
 
         <!-- Remove temporary directory -->
-        <delete dir="temp"/>
+<!--        <delete dir="temp"/>-->
     </target>
 
 
@@ -450,23 +450,23 @@
             <arg line='-source-path+=${tests.project.dir}/src'/>
             <arg value="-library-path+=${tests.project.dir}/lib"/>
             <arg value="-external-library-path+=${app.ane.anes}"/>
-            <arg value="-output=${tests.project.dir}/bin/flash/Main.swf"/>
+            <arg value="-output=${tests.project.dir}/bin/test/Main.swf"/>
             <arg value="${tests.project.dir}/src/TestRunner.as"/>
         </java>
 
-        <copy file="${tests.project.dir}/bin/flash/Main.swf" tofile="flash/Main.swf" />
-        <copy todir="flash/assets">
+        <copy file="${tests.project.dir}/bin/test/Main.swf" tofile="test/Main.swf" />
+        <copy todir="test/assets">
             <fileset dir="${tests.project.dir}/assets" />
         </copy>
-        <copy todir="flash/extensions">
+        <copy todir="test/extensions">
             <fileset dir="${tests.project.dir}/ane">
                 <include name="*.ane" />
             </fileset>
         </copy>
-        <copy file="${tests.project.dir}/Main-app.xml" tofile="flash/Main-app.xml" />
-        <replaceregexp file="flash/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
+        <copy file="${tests.project.dir}/Main-app.xml" tofile="test/Main-app.xml" />
+        <replaceregexp file="test/Main-app.xml" match="(.content.)(.*)(.\/content.)" replace="\1Main.swf\3" />
 
-        <java jar="${air.sdk}/lib/adt.jar" dir="flash" fork="true" failonerror="true">
+        <java jar="${air.sdk}/lib/adt.jar" dir="test" fork="true" failonerror="true">
             <arg line="-package"/>
             <arg line="-storetype pkcs12"/>
             <arg line="-keystore ${keystore.file}"/>
@@ -479,25 +479,28 @@
             <arg line="-extdir extensions" />
         </java>
 
-        <exec executable="open" dir="flash">
-            <arg line="-a OpenSSLTests.app" />
+        <pathconvert targetos="unix" property="tests.working.dir">
+            <path path="test" />
+        </pathconvert>
+
+        <exec executable="open" dir="test">
+            <arg line="-a OpenSSLTests.app ${tests.working.dir}" />
         </exec>
 
         <waitfor maxwait="2" maxwaitunit="minute">
             <or>
-                <available file="tests/tests_success.txt" />
-                <available file="tests/tests_failure.txt" />
+                <available file="test/tests_success.txt" />
+                <available file="test/tests_failure.txt" />
             </or>
         </waitfor>
 
         <fail>
             <condition>
-                <available file="tests/tests_failure.txt" />
+                <available file="test/tests_failure.txt" />
             </condition>
         </fail>
 
     </target>
-
 
     <target name="test.on.win">
 
@@ -544,16 +547,24 @@
             <arg line="-extdir extensions" />
         </java>
 
+        <pathconvert targetos="windows" property="tests.working.dir">
+            <path path="test" />
+        </pathconvert>
+
         <exec executable="powershell" dir="test">
-            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe -WorkingDirectory ." />
+            <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="2" maxwaitunit="minute">
+        <waitfor maxwait="4" maxwaitunit="minute">
             <or>
                 <available file="test/tests_success.txt" />
                 <available file="test/tests_failure.txt" />
             </or>
         </waitfor>
+
+        <exec executable="powershell">
+            <arg line="Get-ChildItem -Path . –Recurse" />
+        </exec>
 
         <fail>
             <condition>
