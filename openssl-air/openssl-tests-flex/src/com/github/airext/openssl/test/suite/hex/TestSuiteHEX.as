@@ -12,6 +12,7 @@ import com.github.airext.openssl.test.suite.hex.theory.TheoryStringsHEX;
 public class TestSuiteHEX {
 
     public var bytesTheory: TheoryBytesHEX;
+
     public var stringsTheory: TheoryStringsHEX;
 
     public var specialCases: SpecialCases;

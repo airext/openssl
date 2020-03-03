@@ -15,10 +15,10 @@ public class Tests {
         super();
     }
 
-//    public var rsa: TestSuiteRSA;
-//
-//    public var sha: TestSuiteSHA;
-//
+    public var rsa: TestSuiteRSA;
+
+    public var sha: TestSuiteSHA;
+
     public var hex: TestSuiteHEX;
 
     public var issues: IssuesTestSuite;
