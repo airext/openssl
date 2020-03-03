@@ -20,6 +20,13 @@ public class TestRunner extends Sprite {
     public function TestRunner() {
         super();
 
+        var tf: TextField = new TextField();
+        tf.x = 0;
+        tf.y = 0;
+        tf.width = stage.stageWidth;
+        tf.height = stage.stageHeight;
+        addChild(tf);
+
         var handler: Function = function(message: String): void {
             trace(message);
             tf.text += message + "\n";
@@ -32,19 +39,10 @@ public class TestRunner extends Sprite {
 
         core.run(Tests);
 
-        var tf: TextField = new TextField();
-        tf.x = 0;
-        tf.y = 0;
-        tf.width = stage.stageWidth;
-        tf.height = stage.stageHeight;
-        addChild(tf);
-
-        tf.text += "Tests started\n";
-
-        tf.text += "TestSuiteRSA: " + TestSuiteRSA + "\n";
+        handler("Tests started");
 
         loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(event: UncaughtErrorEvent): void {
-            tf.text += event.error + "\n";
+            handler("ERROR: " + event.error);
         });
 
     }
