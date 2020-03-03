@@ -487,16 +487,16 @@
             <arg line="-a OpenSSLTests.app ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="8" maxwaitunit="minute">
+        <waitfor maxwait="6" maxwaitunit="minute">
             <or>
-                <available file="test/tests_success.txt" />
-                <available file="test/tests_failure.txt" />
+                <available file="${tests.working.dir}/tests_success.txt" />
+                <available file="${tests.working.dir}/tests_failure.txt" />
             </or>
         </waitfor>
 
         <fail>
             <condition>
-                <available file="test/tests_failure.txt" />
+                <available file="${tests.working.dir}/tests_failure.txt" />
             </condition>
         </fail>
 
@@ -555,10 +555,10 @@
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="12" maxwaitunit="minute">
+        <waitfor maxwait="8" maxwaitunit="minute">
             <or>
-                <available file="test/tests_success.txt" />
-                <available file="test/tests_failure.txt" />
+                <available file="${tests.working.dir}/tests_success.txt" />
+                <available file="${tests.working.dir}/tests_failure.txt" />
             </or>
         </waitfor>
 
@@ -569,7 +569,7 @@
         <fail>
             <condition>
                 <not>
-                    <available file="test/tests_success.txt" />
+                    <available file="${tests.working.dir}/tests_success.txt" />
                 </not>
             </condition>
         </fail>
