@@ -213,17 +213,6 @@
     }
 
     return result;
-
-//    NSMutableString *hex = [NSMutableString new];
-//    for (NSInteger i = 0; i < inputLength; i++) {
-//        [hex appendFormat:@"%02x", input[i]];
-//        NSLog(@"[ANX] input[i]=%c", input[i]);
-//        NSLog(@"[ANX] hex so far: %@", hex);
-//    }
-//
-//    NSLog(@"[ANX converted: %@]", hex);
-//
-//    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:hex];
 }
 
 - (FREObject)hexDecodeString:(FREObject)string {

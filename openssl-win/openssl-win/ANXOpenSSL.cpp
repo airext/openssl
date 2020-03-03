@@ -282,20 +282,26 @@ unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t 
 
     *outputLength = inputLength * 2;
 
-    char* output = (char*)malloc(sizeof(unsigned char*) * (*outputLength));
+    char* buffer = (char*)malloc(sizeof(char) * (*outputLength) + 1);
 
-    unsigned int i, j;
-    for (i = 0, j = 0; i < inputLength; i++, j+=2) {
+    int offset = 0;
+    for (int i = 0; i < inputLength; i++) {
 #ifdef __APPLE__
-        sprintf(output + j, "%02x", input[i]);
+        int count = sprintf(buffer + offset, "%02x", input[i]);
 #elif defined(_WIN32) || defined(_WIN64)
-        sprintf_s(output + j, *outputLength, "%02x", input[i]);
+        int count = sprintf_s(buffer + offset, *outputLength, "%02x", input[i]);
 #endif
+        if (count == -1) {
+            return NULL;
+        }
+        offset += count;
     }
 
-    _OutputDebugString(L"[ANX] output: %s with length: %i", output, *outputLength);
+    buffer[*outputLength] = '\0';
 
-    return (unsigned char*)output;
+    _OutputDebugString(L"[ANX] output: %s with length: %i", buffer, *outputLength);
+
+    return (unsigned char*)buffer;
 }
 
 unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
@@ -306,26 +312,25 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         return NULL;
     }
 
+    char* string = (char*)input;
+
     *outputLength = inputLength / 2;
-    unsigned char* output = (unsigned char*)malloc(sizeof(unsigned char*) * *outputLength);
+    char* output = (char*)malloc(sizeof(char) * (*outputLength));
 
-    char buffer[2];
-
-    for (unsigned int i = 0, j = 0; i < *outputLength; i++, j += 2) {
-        buffer[0] = input[j];
-        buffer[1] = input[j+1];
-        int hex = 0;
+    for (int i = 0; i < *outputLength; i++) {
 #ifdef __APPLE__
-        sscanf(buffer, "%x", &hex);
+        int result = sscanf(string, "%2hhx", &output[i]);
 #elif defined(_WIN32) || defined(_WIN64)
-        sscanf_s(buffer, "%x", &hex);
+        int result = sscanf_s(string, "%2hhx", &output[i]);
 #endif
-        output[i] = (unsigned char)hex;
+        if (result == -1) {
+            _OutputDebugString(L"[ANX] OF received");
+            return NULL;
+        }
+        string += 2;
     }
 
-    _OutputDebugString(L"[ANX] output: %s", output);
-
-    return output;
+    return (unsigned char*)output;
 }
 
 #pragma endregion

@@ -5,10 +5,12 @@ package com.github.airext.openssl.test.suite.hex.theory {
 import com.github.airext.OpenSSL;
 import com.github.airext.openssl.test.helper.StringGenerator;
 
+import flash.debugger.enterDebugger;
+
 import org.flexunit.asserts.assertEquals;
 
 [RunWith("org.flexunit.experimental.theories.Theories")]
-public class TheoryHEX {
+public class TheoryStringsHEX {
 
     [DataPoints]
     [ArrayElementType("String")]
@@ -18,6 +20,10 @@ public class TheoryHEX {
     public function run(input: String): void {
         var encoded: String = OpenSSL.shared.hexFromString(input);
         var decoded: String = OpenSSL.shared.hexToString(encoded);
+
+        if (input != decoded) {
+            enterDebugger();
+        }
 
         assertEquals(input, decoded);
     }
