@@ -5,6 +5,7 @@ package com.github.airext.openssl.test.suite.hex.theory {
 import com.github.airext.OpenSSL;
 import com.github.airext.openssl.test.helper.ByteArrayGenerator;
 import com.github.airext.openssl.test.helper.StringGenerator;
+import com.github.airext.openssl.test.helper.Variants;
 
 import flash.debugger.enterDebugger;
 import flash.utils.ByteArray;
@@ -16,7 +17,7 @@ public class TheoryBytesHEX {
 
     [DataPoints]
     [ArrayElementType("flash.utils.ByteArray")]
-    public static var data: Array = ByteArrayGenerator.generateMany(1000, 32, 2048);
+    public static var data: Array = ByteArrayGenerator.generateMany(Variants.generatingDataCount, 32, 2048);
 
     [Theory]
     public function run(input: ByteArray): void {

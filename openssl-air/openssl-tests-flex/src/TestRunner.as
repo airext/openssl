@@ -4,6 +4,7 @@
 package {
 import com.github.airext.flexunit.listener.CIFileListener;
 import com.github.airext.openssl.test.Tests;
+import com.github.airext.openssl.test.helper.Variants;
 import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
 
 import flash.desktop.NativeApplication;
@@ -25,6 +26,8 @@ public class TestRunner extends Sprite {
 
     public function TestRunner() {
         super();
+
+        Variants.generatingDataCount = 256;
 
         var tf: TextField = new TextField();
         tf.x = 0;
