@@ -3,6 +3,7 @@
  */
 package com.github.airext.openssl.test {
 import com.github.airext.openssl.test.suite.hex.TestSuiteHEX;
+import com.github.airext.openssl.test.suite.issue.IssuesTestSuite;
 import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
 import com.github.airext.openssl.test.suite.sha.TestSuiteSHA;
 
@@ -14,10 +15,12 @@ public class Tests {
         super();
     }
 
-    public var rsa: TestSuiteRSA;
-
-    public var sha: TestSuiteSHA;
-
+//    public var rsa: TestSuiteRSA;
+//
+//    public var sha: TestSuiteSHA;
+//
     public var hex: TestSuiteHEX;
+
+    public var issues: IssuesTestSuite;
 }
 }
