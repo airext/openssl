@@ -6,6 +6,7 @@ import com.github.airext.OpenSSL;
 import com.github.airext.openssl.test.data.KeyPair;
 import com.github.airext.openssl.test.data.TestData;
 import com.github.airext.openssl.test.helper.ByteArrayGenerator;
+import com.github.airext.openssl.test.helper.Variants;
 
 import flash.utils.ByteArray;
 
@@ -16,7 +17,7 @@ public class TheoryRSA {
 
     [DataPoints]
     [ArrayElementType("flash.utils.ByteArray")]
-    public static var data: Array = ByteArrayGenerator.generateMany(1000, 32, 245);
+    public static var data: Array = ByteArrayGenerator.generateMany(Variants.generatingDataCount, 32, 245);
 
     [DataPoints]
     [ArrayElementType("com.github.airext.openssl.test.data.KeyPair")]

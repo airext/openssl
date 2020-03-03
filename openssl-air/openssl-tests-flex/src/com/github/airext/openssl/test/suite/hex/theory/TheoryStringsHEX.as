@@ -4,6 +4,7 @@
 package com.github.airext.openssl.test.suite.hex.theory {
 import com.github.airext.OpenSSL;
 import com.github.airext.openssl.test.helper.StringGenerator;
+import com.github.airext.openssl.test.helper.Variants;
 
 import flash.debugger.enterDebugger;
 
@@ -14,7 +15,7 @@ public class TheoryStringsHEX {
 
     [DataPoints]
     [ArrayElementType("String")]
-    public static var data: Array = StringGenerator.generateMany(1000, 32, 245);
+    public static var data: Array = StringGenerator.generateMany(Variants.generatingDataCount, 32, 245);
 
     [Theory]
     public function run(input: String): void {
