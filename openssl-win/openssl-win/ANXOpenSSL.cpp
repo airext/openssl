@@ -227,6 +227,8 @@ unsigned char* ANXOpenSSL::sha256FromBytes(const unsigned char* input, uint32_t 
         int count = sprintf_s(buffer + offset, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
 #endif
         if (count == -1) {
+            _OutputDebugString(L"[ANX] EOF received, return NULL");
+            free(buffer);
             return NULL;
         }
         offset += count;
@@ -255,11 +257,16 @@ unsigned char* ANXOpenSSL::sha256FromString(const unsigned char* string) {
     unsigned int i, j;
     for (i = 0, j = 0; i < md_len; i++, j+=2) {
 #ifdef __APPLE__
-        sprintf(buffer + j, "%02x", md_value[i]);
+        int count = sprintf(buffer + j, "%02x", md_value[i]);
 #endif
 #if defined(_WIN32) || defined(_WIN64)
-        sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
+        int count = sprintf_s(buffer + j, SHA256_DIGEST_LENGTH * 2, "%02x", md_value[i]);
 #endif
+        if (count == -1) {
+            _OutputDebugString(L"[ANX] EOF received, return NULL");
+            free(buffer);
+            return NULL;
+        }
     }
 
     return (unsigned char*)buffer;
@@ -292,6 +299,8 @@ unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t 
         int count = sprintf_s(buffer + offset, *outputLength, "%02x", input[i]);
 #endif
         if (count == -1) {
+            _OutputDebugString(L"[ANX] EOF received, return NULL");
+            free(buffer);
             return NULL;
         }
         offset += count;
@@ -324,7 +333,8 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         int result = sscanf_s(string, "%2hhx", &output[i]);
 #endif
         if (result == -1) {
-            _OutputDebugString(L"[ANX] OF received");
+            _OutputDebugString(L"[ANX] EOF received, return NULL");
+            free(output);
             return NULL;
         }
         string += 2;

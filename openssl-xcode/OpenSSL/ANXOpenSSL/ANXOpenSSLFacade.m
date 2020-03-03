@@ -10,8 +10,9 @@
 #import "ANXOpenSSL.h"
 #import "ANXOpenSSL+RSA.h"
 #import "ANXOpenSSL+AES.h"
-#import "ANXOpenSSL+Utils.h"
+#import "ANXOpenSSL+Base64.h"
 #import "ANXOpenSSL+SHA.h"
+#import "ANXOpenSSL+HEX.h"
 #import "ANXOpenSSL+HMAC.h"
 #import "ANXOpenSSLConversionRoutines.h"
 
@@ -311,7 +312,7 @@ FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, 
 }
 
 FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"35"];
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"36"];
 }
 
 #pragma mark - ContextInitialize/ContextFinalizer

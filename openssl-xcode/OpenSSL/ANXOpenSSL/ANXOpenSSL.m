@@ -292,7 +292,9 @@ static ANXOpenSSL* _sharedInstance = nil;
     for (int i = 0; i < inputLength; i++) {
         int count = sprintf(buffer + offset, "%02x", input[i]);
         if (count == -1) {
-            return nil;
+            NSLog(@"[ANX] EOF received, return NULL");
+            free(buffer);
+            return NULL;
         }
         offset += count;
     }
@@ -321,7 +323,8 @@ static ANXOpenSSL* _sharedInstance = nil;
     for (int i = 0; i < *outputLength; i++) {
         int result = sscanf(string, "%2hhx", &output[i]);
         if (result == -1) {
-            NSLog(@"[ANX] EOF received");
+            NSLog(@"[ANX] EOF received, return NULL");
+            free(output);
             return NULL;
         }
         string += 2;
