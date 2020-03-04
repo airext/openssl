@@ -13,7 +13,7 @@ import flash.utils.ByteArray;
 import org.flexunit.asserts.assertEquals;
 
 [RunWith("org.flexunit.experimental.theories.Theories")]
-public class TheoryRSA {
+public class BytesTheory {
 
     [DataPoints]
     [ArrayElementType("flash.utils.ByteArray")]

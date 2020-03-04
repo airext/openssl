@@ -13,7 +13,7 @@ import org.flexunit.asserts.assertEquals;
 import org.flexunit.runner.external.IExternalDependencyLoader;
 
 [RunWith("org.flexunit.experimental.theories.Theories")]
-public class SamplesSHA256 {
+public class SamplesTheory {
 
     public static var samplesLoader: IExternalDependencyLoader = new SHA256SamplesLoader();
 

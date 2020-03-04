@@ -5,7 +5,7 @@ package {
 import com.github.airext.flexunit.listener.CIFileListener;
 import com.github.airext.openssl.test.Tests;
 import com.github.airext.openssl.test.helper.Variants;
-import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
+import com.github.airext.openssl.test.suite.rsa.RSATestSuite;
 
 import flash.desktop.NativeApplication;
 

@@ -8,7 +8,7 @@ import flash.utils.ByteArray;
 
 import org.flexunit.asserts.assertEquals;
 
-public class TestSHA {
+public class SpecialCases {
 
     // MARK: - Data
 

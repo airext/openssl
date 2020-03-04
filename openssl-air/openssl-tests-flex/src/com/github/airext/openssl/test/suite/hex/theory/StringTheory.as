@@ -11,7 +11,7 @@ import flash.debugger.enterDebugger;
 import org.flexunit.asserts.assertEquals;
 
 [RunWith("org.flexunit.experimental.theories.Theories")]
-public class TheoryStringsHEX {
+public class StringTheory {
 
     [DataPoints]
     [ArrayElementType("String")]

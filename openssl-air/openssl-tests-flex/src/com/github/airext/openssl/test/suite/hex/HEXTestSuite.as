@@ -4,16 +4,16 @@
 package com.github.airext.openssl.test.suite.hex {
 import com.github.airext.openssl.test.suite.hex.test.DecodeOddString;
 import com.github.airext.openssl.test.suite.hex.theory.SpecialCases;
-import com.github.airext.openssl.test.suite.hex.theory.TheoryBytesHEX;
-import com.github.airext.openssl.test.suite.hex.theory.TheoryStringsHEX;
+import com.github.airext.openssl.test.suite.hex.theory.BytesTheory;
+import com.github.airext.openssl.test.suite.hex.theory.StringTheory;
 
 [Suite]
 [RunWith("org.flexunit.runners.Suite")]
-public class TestSuiteHEX {
+public class HEXTestSuite {
 
-    public var bytesTheory: TheoryBytesHEX;
+    public var bytesTheory: BytesTheory;
 
-    public var stringsTheory: TheoryStringsHEX;
+    public var stringsTheory: StringTheory;
 
     public var specialCases: SpecialCases;
 
