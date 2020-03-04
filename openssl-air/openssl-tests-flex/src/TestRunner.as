@@ -4,10 +4,17 @@
 package {
 import com.github.airext.flexunit.listener.CIFileListener;
 import com.github.airext.openssl.test.Tests;
+import com.github.airext.openssl.test.helper.Variants;
 import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
 
+import flash.desktop.NativeApplication;
+
 import flash.display.Sprite;
+import flash.events.InvokeEvent;
 import flash.events.UncaughtErrorEvent;
+import flash.filesystem.File;
+import flash.filesystem.FileMode;
+import flash.filesystem.FileStream;
 import flash.text.TextField;
 
 import org.flexunit.internals.TraceListener;
@@ -20,17 +27,7 @@ public class TestRunner extends Sprite {
     public function TestRunner() {
         super();
 
-        var handler: Function = function(message: String): void {
-            trace(message);
-            tf.text += message + "\n";
-        };
-
-        core = new FlexUnitCore();
-
-        core.addListener(new CIFileListener(handler));
-        core.addListener(new TraceListener());
-
-        core.run(Tests);
+        Variants.generatingDataCount = 256;
 
         var tf: TextField = new TextField();
         tf.x = 0;
@@ -39,12 +36,36 @@ public class TestRunner extends Sprite {
         tf.height = stage.stageHeight;
         addChild(tf);
 
-        tf.text += "Tests started\n";
+        var logFile: File;
 
-        tf.text += "TestSuiteRSA: " + TestSuiteRSA + "\n";
+        var log: Function = function(...args): void {
+            trace(args);
+            tf.text += args + "\n";
+            tf.scrollV = tf.maxScrollV;
+
+            if (logFile) {
+                var fs: FileStream = new FileStream();
+                fs.open(logFile, FileMode.APPEND);
+                fs.writeUTFBytes(String(args) + "\n");
+                fs.close();
+            }
+        };
+
+        core = new FlexUnitCore();
+
+        core.addListener(new CIFileListener(log));
+        core.addListener(new TraceListener());
+
+        core.run(Tests);
+
+        log("Tests started");
 
         loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(event: UncaughtErrorEvent): void {
-            tf.text += event.error + "\n";
+            log("ERROR: " + event.error);
+        });
+
+        NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, function(event: InvokeEvent): void {
+            logFile = new File(event.arguments[0]).resolvePath("tests_log.txt")
         });
 
     }

@@ -4,7 +4,7 @@
     <option name="IOSSimulatorDevice" value="" />
     <option name="IOSSimulatorSdkPath" value="" />
     <option name="adlOptions" value="" />
-    <option name="airProgramParameters" value="" />
+    <option name="airProgramParameters" value="C:\Users\max\dev\airext\openssl\openssl-air\build\test" />
     <option name="appDescriptorForEmulator" value="Android" />
     <option name="clearAppDataOnEachLaunch" value="true" />
     <option name="debugTransport" value="USB" />

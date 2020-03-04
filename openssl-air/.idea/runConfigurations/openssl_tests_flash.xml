@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="openssl-tests" type="FlashRunConfigurationType">
-    <option name="BCName" value="openssl-tests" />
+  <configuration default="false" name="openssl-tests-flash" type="FlashRunConfigurationType">
+    <option name="BCName" value="openssl-tests-flash" />
     <option name="IOSSimulatorDevice" value="" />
     <option name="IOSSimulatorSdkPath" value="" />
     <option name="adlOptions" value="" />
-    <option name="airProgramParameters" value="" />
+    <option name="airProgramParameters" value="$PROJECT_DIR$/../build/test" />
     <option name="appDescriptorForEmulator" value="Android" />
     <option name="clearAppDataOnEachLaunch" value="true" />
     <option name="debugTransport" value="USB" />
@@ -24,7 +24,7 @@
       </LauncherParameters>
     </option>
     <option name="mobileRunTarget" value="Emulator" />
-    <option name="moduleName" value="openssl-tests" />
+    <option name="moduleName" value="openssl-tests-flex" />
     <option name="overriddenMainClass" value="" />
     <option name="overriddenOutputFileName" value="" />
     <option name="overrideMainClass" value="false" />

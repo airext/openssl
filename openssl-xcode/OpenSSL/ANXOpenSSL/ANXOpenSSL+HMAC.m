@@ -32,8 +32,9 @@
 
     NSLog(@"[ANX] Attempt to convert bytes to HEX string.");
 
-    int length = (int)strlen((char*)hmac);
-    unsigned char* digest = [self hexEncodeString:hmac inputLength:length outputLength:&length];
+    int inputLength = (int)strlen((char*)hmac);
+    uint32_t outputLength;
+    unsigned char* digest = [self hexEncodeString:hmac inputLength:inputLength outputLength:&outputLength];
 
     NSLog(@"[ANX] Attempt to release input byte array");
 
@@ -49,7 +50,7 @@
 
     NSLog(@"[ANX] Attempt to create output byte array");
 
-    FREObject result = [ANXOpenSSLConversionRoutines createByteArrayWithLength:length];
+    FREObject result = [ANXOpenSSLConversionRoutines createByteArrayWithLength:outputLength];
     if (result == NULL) {
         return NULL;
     }
@@ -63,7 +64,7 @@
 
     NSLog(@"[ANX] Attempt to copy encrypted data into output byte array");
 
-    memcpy(output.bytes, digest, length);
+    memcpy(output.bytes, digest, outputLength);
 
     NSLog(@"[ANX] attempt to release output byte array");
 

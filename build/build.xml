@@ -484,19 +484,27 @@
         </pathconvert>
 
         <exec executable="open" dir="test">
-            <arg line="-a OpenSSLTests.app ${tests.working.dir}" />
+            <arg line="-a ${tests.working.dir}/OpenSSLTests.app ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="2" maxwaitunit="minute">
+        <echo>Waiting for unit tests app...</echo>
+        <waitfor maxwait="5" maxwaitunit="minute">
             <or>
-                <available file="test/tests_success.txt" />
-                <available file="test/tests_failure.txt" />
+                <available file="${tests.working.dir}/tests_success.txt" />
+                <available file="${tests.working.dir}/tests_failure.txt" />
             </or>
         </waitfor>
 
+        <echo>Build directory listing:</echo>
+        <exec executable="find" dir="${tests.working.dir}">
+            <arg line="." />
+        </exec>
+
         <fail>
             <condition>
-                <available file="test/tests_failure.txt" />
+                <not>
+                    <available file="${tests.working.dir}/tests_success.txt" />
+                </not>
             </condition>
         </fail>
 
@@ -555,7 +563,7 @@
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
 
-        <waitfor maxwait="4" maxwaitunit="minute">
+        <waitfor maxwait="5" maxwaitunit="minute">
             <or>
                 <available file="test/tests_success.txt" />
                 <available file="test/tests_failure.txt" />
