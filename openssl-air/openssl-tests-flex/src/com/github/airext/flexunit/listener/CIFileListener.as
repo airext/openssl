@@ -19,6 +19,7 @@ import org.flexunit.runner.notification.Failure;
 import org.flexunit.runner.notification.IAsyncCompletionRunListener;
 
 import skein.utils.delay.callLater;
+import skein.utils.delay.delayToTimeout;
 
 public class CIFileListener extends EventDispatcher implements IAsyncCompletionRunListener {
 
@@ -87,7 +88,7 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
             handler("FAILURE: " + failureContent);
         }
 
-        NativeApplication.nativeApplication.exit();
+//        NativeApplication.nativeApplication.exit();
     }
 
     public function testStarted(description: IDescription): void {
