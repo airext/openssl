@@ -18,6 +18,9 @@ import org.flexunit.runner.notification.Failure;
 
 import org.flexunit.runner.notification.IAsyncCompletionRunListener;
 
+import skein.utils.delay.callLater;
+import skein.utils.delay.delayToTimeout;
+
 public class CIFileListener extends EventDispatcher implements IAsyncCompletionRunListener {
 
     private var successFileName: String;
@@ -44,7 +47,7 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
         try {
             writeToFile(currentDirectory.resolvePath(successFileName), content);
         } catch (error: Error) {
-            handler("error: " + error);
+            handler("Error: " + error);
         }
 
     }
@@ -53,11 +56,11 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
         try {
             writeToFile(currentDirectory.resolvePath(failureFileName), content);
         } catch (error: Error) {
-            handler("error: " + error);
+            handler("Error: " + error);
         }
     }
 
-    private function writeToFile(file: File, content: String): void {
+    private static function writeToFile(file: File, content: String): void {
         var fs: FileStream = new FileStream();
         fs.open(file, FileMode.WRITE);
         fs.writeUTFBytes(content);
@@ -67,12 +70,13 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
     // MARK: - IAsyncCompletionRunListener
 
     public function testRunStarted(description: IDescription): void {
-        handler("test run started: " + description.displayName);
+        handler("test run started: " + (description ? description.displayName : null));
     }
 
     public function testRunFinished(result: Result): void {
         if (result.failureCount == 0) {
             writeToSuccessResultFile("OK");
+            handler("SUCCESS: All Tests Passed");
         } else {
             var failureContent: String = "";
             for each (var failure: Failure in result.failures) {
@@ -81,29 +85,30 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
                 failureContent += "\t\t" + (failure.exception is ParameterizedAssertionError ? ParameterizedAssertionError(failure.exception).targetException.message : failure.exception.message) + "\n";
             }
             writeToFailureResultFile(failureContent);
+            handler("FAILURE: " + failureContent);
         }
 
-        NativeApplication.nativeApplication.exit();
+//        NativeApplication.nativeApplication.exit();
     }
 
     public function testStarted(description: IDescription): void {
-        handler("started: " + description.displayName);
+        handler("started: " + (description ? description.displayName : null));
     }
 
     public function testFinished(description: IDescription): void {
-        handler("finished: " + description.displayName);
+        handler("finished: " + (description ? description.displayName : null));
     }
 
     public function testFailure(failure: Failure): void {
-        handler("test failure: " + failure.message);
+        handler("test failure: " + (failure ? failure.message : null));
     }
 
     public function testAssumptionFailure(failure: Failure): void {
-        handler("test failure: " + failure.message);
+        handler("test failure: " + (failure ? failure.message : null));
     }
 
     public function testIgnored(description: IDescription): void {
-        handler("test ignored: " + description.displayName);
+        handler("test ignored: " + (description ? description.displayName : null));
     }
 
     public function get complete(): Boolean {
@@ -114,6 +119,7 @@ public class CIFileListener extends EventDispatcher implements IAsyncCompletionR
 
     private function onInvoke(event: InvokeEvent): void {
         handler("invoke arguments: " + event.arguments);
+        handler("invoke argument count: " + event.arguments.length);
         currentDirectory = new File(event.arguments[0]);
     }
 }

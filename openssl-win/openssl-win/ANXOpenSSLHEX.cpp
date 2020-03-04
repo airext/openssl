@@ -24,6 +24,12 @@ FREObject ANXOpenSSLHEX::hexEncodeString(FREObject string) {
     uint32_t outputLength;
     unsigned char* output = ANXOpenSSL::getInstance().hexEncodeString(input, inputLength, &outputLength);
 
+    _OutputDebugString(L"[ANX] Encoded: %s", output);
+
+    if (!output) {
+        return NULL;
+    }
+
     defer {
         free(output);
     };
@@ -45,6 +51,12 @@ FREObject ANXOpenSSLHEX::hexDecodeString(FREObject string) {
 
     uint32_t outputLength;
     unsigned char *output = ANXOpenSSL::getInstance().hexDecodeString(input, inputLength, &outputLength);
+
+    _OutputDebugString(L"[ANX] Decoded: %s", output);
+
+    if (!output) {
+        return NULL;
+    }
 
     defer {
         free(output);
@@ -73,6 +85,10 @@ FREObject ANXOpenSSLHEX::hexEncodeBytes(FREObject bytes) {
     unsigned char* output = ANXOpenSSL::getInstance().hexEncodeString(input.bytes, input.length, &outputLength);
 
     _OutputDebugString(L"[ANX] Encoded: %s", output);
+
+    if (!output) {
+        return NULL;
+    }
 
     defer {
         free(output);
@@ -106,7 +122,11 @@ FREObject ANXOpenSSLHEX::hexDecodeBytes(FREObject bytes) {
     uint32_t outputLength;
     unsigned char *decoded = ANXOpenSSL::getInstance().hexDecodeString(input, inputLength, &outputLength);
 
-    _OutputDebugString(L"[ANX] Decoded");
+    _OutputDebugString(L"[ANX] Decoded: %s", decoded);
+
+    if (!decoded) {
+        return NULL;
+    }
 
     defer {
         free(decoded);

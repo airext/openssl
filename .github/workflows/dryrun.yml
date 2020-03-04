@@ -56,6 +56,12 @@ jobs:
       with:
         name: tests_failure_on_win.txt
         path: build/test/tests_failure.txt
+    - name: Upload Unit Tests Logs
+      if: always()
+      uses: actions/upload-artifact@v1
+      with:
+        name: tests_logs_on_win.txt
+        path: build/test/tests_log.txt
 
   test-on-mac:
     runs-on: [macos-latest]
@@ -104,5 +110,10 @@ jobs:
       with:
         name: tests_failure_on_mac.txt
         path: build/test/tests_failure.txt
-   
+    - name: Upload Unit Tests Logs
+      if: always()
+      uses: actions/upload-artifact@v1
+      with:
+        name: tests_logs_on_mac.txt
+        path: build/test/tests_log.txt
    

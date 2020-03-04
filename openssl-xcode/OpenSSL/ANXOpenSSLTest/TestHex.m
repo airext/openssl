@@ -17,7 +17,12 @@
 
     unsigned char* encoded = [ANXOpenSSL.sharedInstance hexEncodeString:original inputLength:(int)strlen((const char*)original) outputLength:&encodedLength];
 
+    uint32_t decodedLength;
+    unsigned char* decoded = [ANXOpenSSL.sharedInstance hexDecodeString:encoded inputLength:(int)strlen((const char*)encoded) outputLength:&decodedLength];
+
     printf("encoded = %s\n", encoded);
+    printf("decoded = %s\n", decoded);
+    printf("decodedLength = %i\n", decodedLength);
 }
 
 @end

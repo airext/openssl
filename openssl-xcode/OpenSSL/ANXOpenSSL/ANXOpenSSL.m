@@ -286,16 +286,24 @@ static ANXOpenSSL* _sharedInstance = nil;
 
     *outputLength = inputLength * 2;
 
-    char* output = malloc(sizeof(unsigned char*) * (*outputLength));
+    char* buffer = malloc(sizeof(char) * (*outputLength) + 1);
 
-    unsigned int i, j;
-    for (i = 0, j = 0; i < inputLength; i++, j+=2) {
-        sprintf(output + j, "%02x", input[i]);
+    int offset = 0;
+    for (int i = 0; i < inputLength; i++) {
+        int count = sprintf(buffer + offset, "%02x", input[i]);
+        if (count == -1) {
+            NSLog(@"[ANX] EOF received, return NULL");
+            free(buffer);
+            return NULL;
+        }
+        offset += count;
     }
 
-    NSLog(@"[ANX] output: %s", output);
+    buffer[*outputLength] = '\0';
 
-    return (unsigned char*)output;
+    NSLog(@"[ANX] output: %s", buffer);
+
+    return (unsigned char*)buffer;
 }
 
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
@@ -307,22 +315,22 @@ static ANXOpenSSL* _sharedInstance = nil;
         return NULL;
     }
 
+    char* string = (char*)input;
+
     *outputLength = inputLength / 2;
-    unsigned char* output = malloc(sizeof(unsigned char*) * (*outputLength));
+    char* output = malloc(sizeof(char) * (*outputLength));
 
-    char buffer[2];
-
-    for (int i = 0, j = 0; i < *outputLength; i++, j += 2) {
-        buffer[0] = input[j];
-        buffer[1] = input[j+1];
-        int hex = 0;
-        sscanf(buffer, "%x", &hex);
-        output[i] = (unsigned char)hex;
+    for (int i = 0; i < *outputLength; i++) {
+        int result = sscanf(string, "%2hhx", &output[i]);
+        if (result == -1) {
+            NSLog(@"[ANX] EOF received, return NULL");
+            free(output);
+            return NULL;
+        }
+        string += 2;
     }
 
-    NSLog(@"[ANX] output: %s", output);
-
-    return output;
+    return (unsigned char*)output;
 }
 
 @end
