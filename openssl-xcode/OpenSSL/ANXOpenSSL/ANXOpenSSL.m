@@ -7,7 +7,7 @@
 
 #import "ANXOpenSSL.h"
 #import "ANXOpenSSLUtils.h"
-#import "airext_hex_util.h"
+#import "airext_hex.h"
 
 @implementation ANXOpenSSL
 
@@ -294,6 +294,11 @@ static ANXOpenSSL* _sharedInstance = nil;
 
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
     NSLog(@"[ANX] input: %s", input);
+
+    if (inputLength % 2 != 0) {
+        NSLog(@"[ANX] input has odd length, return NULL");
+        return NULL;
+    }
 
     unsigned char* output;
 
