@@ -7,7 +7,7 @@
 //  Copied from https://nachtimwald.com/2017/09/24/hex-encode-and-decode-in-c/
 //
 
-#include "airext_hex_util.h"
+#include "airext_hex.h"
 #include <stdlib.h>
 #include <string.h>
 

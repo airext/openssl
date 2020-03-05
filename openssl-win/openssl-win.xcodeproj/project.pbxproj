@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		509BED74241154FA00F77731 /* airext_hex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BED72241154FA00F77731 /* airext_hex.cpp */; };
 		50A3AF9023D341FD0000ADB3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AF8F23D341FD0000ADB3 /* main.cpp */; };
 		50A3AFA423D344310000ADB3 /* ANXOpenSSL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFA223D344300000ADB3 /* ANXOpenSSL.cpp */; };
 		50A3AFA823D345050000ADB3 /* ANXOpenSSLUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AFA623D345050000ADB3 /* ANXOpenSSLUtils.cpp */; };
@@ -36,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		1A261B7C681F1946B3605FFE /* Pods_openssl_win_debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_openssl_win_debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		509BED72241154FA00F77731 /* airext_hex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = airext_hex.cpp; path = "openssl-win/airext_hex.cpp"; sourceTree = "<group>"; };
+		509BED73241154FA00F77731 /* airext_hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = airext_hex.h; path = "openssl-win/airext_hex.h"; sourceTree = "<group>"; };
 		50A3AF8C23D341FD0000ADB3 /* openssl-win-debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "openssl-win-debug"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A3AF8F23D341FD0000ADB3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		50A3AFA123D3440D0000ADB3 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "openssl-win/FlashRuntimeExtensions.h"; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		50A3AFA023D343FD0000ADB3 /* Windows Files */ = {
 			isa = PBXGroup;
 			children = (
+				509BED72241154FA00F77731 /* airext_hex.cpp */,
+				509BED73241154FA00F77731 /* airext_hex.h */,
 				50A3AFA123D3440D0000ADB3 /* FlashRuntimeExtensions.h */,
 				50A3AFA223D344300000ADB3 /* ANXOpenSSL.cpp */,
 				50A3AFA323D344310000ADB3 /* ANXOpenSSL.h */,
@@ -243,6 +248,7 @@
 				50AE174F23D4AF2B0096E9C1 /* ANXOpenSSLSHA.cpp in Sources */,
 				50A3AFB223D345E20000ADB3 /* ANXOpenSSLConversionRoutines.cpp in Sources */,
 				50A3AF9023D341FD0000ADB3 /* main.cpp in Sources */,
+				509BED74241154FA00F77731 /* airext_hex.cpp in Sources */,
 				50A3AFB323D345E20000ADB3 /* ANXOpenSSLAES.cpp in Sources */,
 				50AE175D23D78E270096E9C1 /* ANXOpenSSLHMAC.cpp in Sources */,
 				50A3AFB523D345E20000ADB3 /* ANXOpenSSLBase64.cpp in Sources */,
