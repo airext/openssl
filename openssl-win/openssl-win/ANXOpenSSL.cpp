@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ANXOpenSSL.h"
+#include "airext_hex.h"
 
 #pragma region Common
 
@@ -287,58 +288,24 @@ unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLe
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
     _OutputDebugString(L"[ANX] input: %s with length: %i", input, inputLength);
 
+    char* output = airext_bin2hex(input, inputLength);
+
     *outputLength = inputLength * 2;
 
-    char* buffer = (char*)malloc(sizeof(char) * (*outputLength) + 1);
-
-    int offset = 0;
-    for (int i = 0; i < inputLength; i++) {
-#ifdef __APPLE__
-        int count = sprintf(buffer + offset, "%02x", input[i]);
-#elif defined(_WIN32) || defined(_WIN64)
-        int count = sprintf_s(buffer + offset, *outputLength, "%02x", input[i]);
-#endif
-        if (count == -1) {
-            _OutputDebugString(L"[ANX] EOF received, return NULL");
-            free(buffer);
-            return NULL;
-        }
-        offset += count;
-    }
-
-    buffer[*outputLength] = '\0';
-
-    _OutputDebugString(L"[ANX] output: %s with length: %i", buffer, *outputLength);
-
-    return (unsigned char*)buffer;
+    return (unsigned char*)output;
 }
 
 unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
     _OutputDebugString(L"[ANX] input: %s", input);
-
+    
     if (inputLength % 2 != 0) {
         _OutputDebugString(L"[ANX] input has odd length, return NULL");
         return NULL;
     }
 
-    char* string = (char*)input;
+    unsigned char* output;
 
-    *outputLength = inputLength / 2;
-    char* output = (char*)malloc(sizeof(char) * (*outputLength));
-
-    for (int i = 0; i < *outputLength; i++) {
-#ifdef __APPLE__
-        int result = sscanf(string, "%2hhx", &output[i]);
-#elif defined(_WIN32) || defined(_WIN64)
-        int result = sscanf_s(string, "%2hhx", &output[i]);
-#endif
-        if (result == -1) {
-            _OutputDebugString(L"[ANX] EOF received, return NULL");
-            free(output);
-            return NULL;
-        }
-        string += 2;
-    }
+    *outputLength = (uint32_t)airext_hex2bin((char*)input, &output);
 
     return (unsigned char*)output;
 }
