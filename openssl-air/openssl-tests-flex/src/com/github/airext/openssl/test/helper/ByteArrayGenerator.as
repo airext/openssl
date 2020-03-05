@@ -10,7 +10,8 @@ public class ByteArrayGenerator {
         var result: Array = [];
         while (count--) {
             var length: int = minLength + (maxLength - minLength) * Math.random();
-            result[result.length] = generate(length);
+//            result[result.length] = generate(length);
+            result[result.length] = generateByteArray(minLength, maxLength);
         }
         return result;
     }
@@ -22,6 +23,20 @@ public class ByteArrayGenerator {
         }
         bytes.position = 0;
         return bytes;
+    }
+
+    public static function generateByteArray(minLength: int, maxLength: int): ByteArray {
+        var cLength:int = minLength + int(Math.random()*(maxLength - minLength));
+
+        var bArray:ByteArray = new ByteArray();
+
+        while(bArray.length < cLength){
+            bArray.writeFloat(Math.random())
+        }
+
+        if(bArray.length > cLength) bArray.length = cLength;
+
+        return bArray
     }
 }
 }
