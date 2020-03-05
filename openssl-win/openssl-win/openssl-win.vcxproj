@@ -303,6 +303,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="airext_hex.h" />
     <ClInclude Include="ANXOpenSSL.h" />
     <ClInclude Include="ANXOpenSSLAES.h" />
     <ClInclude Include="ANXOpenSSLBase64.h" />
@@ -318,6 +319,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="airext_hex.cpp" />
     <ClCompile Include="ANXOpenSSL.cpp" />
     <ClCompile Include="ANXOpenSSLAES.cpp" />
     <ClCompile Include="ANXOpenSSLBase64.cpp" />

@@ -54,6 +54,9 @@
     <ClInclude Include="ANXOpenSSLHMAC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="airext_hex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -87,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ANXOpenSSLHMAC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="airext_hex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
