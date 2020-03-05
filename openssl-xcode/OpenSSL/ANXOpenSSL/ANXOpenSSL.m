@@ -7,6 +7,7 @@
 
 #import "ANXOpenSSL.h"
 #import "ANXOpenSSLUtils.h"
+#import "airext_hex_util.h"
 
 @implementation ANXOpenSSL
 
@@ -284,51 +285,19 @@ static ANXOpenSSL* _sharedInstance = nil;
 - (unsigned char*)hexEncodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
     NSLog(@"[ANX] input: %s", input);
 
+    char* output = airext_bin2hex(input, inputLength);
+
     *outputLength = inputLength * 2;
 
-    char* buffer = malloc(sizeof(char) * (*outputLength) + 1);
-
-    int offset = 0;
-    for (int i = 0; i < inputLength; i++) {
-        int count = sprintf(buffer + offset, "%02x", input[i]);
-        if (count == -1) {
-            NSLog(@"[ANX] EOF received, return NULL");
-            free(buffer);
-            return NULL;
-        }
-        offset += count;
-    }
-
-    buffer[*outputLength] = '\0';
-
-    NSLog(@"[ANX] output: %s", buffer);
-
-    return (unsigned char*)buffer;
+    return (unsigned char*)output;
 }
 
 - (unsigned char*)hexDecodeString:(nonnull const unsigned char*)input inputLength:(uint32_t)inputLength outputLength:(uint32_t*)outputLength {
-
     NSLog(@"[ANX] input: %s", input);
 
-    if (inputLength % 2 != 0) {
-        NSLog(@"[ANX] input has odd length, return NULL");
-        return NULL;
-    }
+    unsigned char* output;
 
-    char* string = (char*)input;
-
-    *outputLength = inputLength / 2;
-    char* output = malloc(sizeof(char) * (*outputLength));
-
-    for (int i = 0; i < *outputLength; i++) {
-        int result = sscanf(string, "%2hhx", &output[i]);
-        if (result == -1) {
-            NSLog(@"[ANX] EOF received, return NULL");
-            free(output);
-            return NULL;
-        }
-        string += 2;
-    }
+    *outputLength = (uint32_t)airext_hex2bin((char*)input, &output);
 
     return (unsigned char*)output;
 }
