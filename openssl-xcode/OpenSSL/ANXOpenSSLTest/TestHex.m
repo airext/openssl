@@ -6,23 +6,46 @@
 //
 
 #import "TestHex.h"
+#import "BytesGenerator.h"
+
+static NSTimer* _timer;
 
 @implementation TestHex
 
 + (void)test_ane {
 
-    const unsigned char original[] = "Hello World";
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    } else {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            for (NSInteger i = 0; i < 200; i++) {
 
-    uint32_t encodedLength;
+                unsigned char* bytes = [BytesGenerator generateBytesWithLength:1024];
 
-    unsigned char* encoded = [ANXOpenSSL.sharedInstance hexEncodeString:original inputLength:(int)strlen((const char*)original) outputLength:&encodedLength];
+                uint32_t encodedLength;
+                unsigned char* encoded = [ANXOpenSSL.sharedInstance hexEncodeString:(unsigned char*)bytes inputLength:(int)strlen((const char*)bytes) outputLength:&encodedLength];
 
-    uint32_t decodedLength;
-    unsigned char* decoded = [ANXOpenSSL.sharedInstance hexDecodeString:encoded inputLength:(int)strlen((const char*)encoded) outputLength:&decodedLength];
+                uint32_t decodedLength;
+                unsigned char* decoded = [ANXOpenSSL.sharedInstance hexDecodeString:encoded inputLength:(int)strlen((const char*)encoded) outputLength:&decodedLength];
 
-    printf("encoded = %s\n", encoded);
-    printf("decoded = %s\n", decoded);
-    printf("decodedLength = %i\n", decodedLength);
+                if (encoded) {
+                    free(encoded);
+                } else {
+                    NSLog(@"encoded is NULL");
+                }
+
+                if (decoded) {
+                    free(decoded);
+                } else {
+                    NSLog(@"decoded is NULL");
+                }
+
+                free(bytes);
+            }
+            NSLog(@"tick");
+        }];
+    }
 }
 
 @end
