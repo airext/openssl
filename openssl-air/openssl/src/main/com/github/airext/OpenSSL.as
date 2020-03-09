@@ -103,6 +103,35 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  buildNumber
+    //-------------------------------------
+
+    private static var _buildNumber: String;
+
+    public static function get buildNumber(): String {
+        if (_buildNumber == null) {
+            try {
+                var extension_xml: File = ExtensionContext.getExtensionDirectory(EXTENSION_ID).resolvePath("META-INF/ANE/extension.xml");
+                if (extension_xml.exists) {
+                    var stream: FileStream = new FileStream();
+                    stream.open(extension_xml, FileMode.READ);
+
+                    var extension: XML = new XML(stream.readUTFBytes(stream.bytesAvailable));
+                    stream.close();
+
+                    var ns:Namespace = extension.namespace();
+
+                    _buildNumber = extension.ns::description;
+                }
+            } catch (error:Error) {
+                // ignore
+            }
+        }
+
+        return _buildNumber;
+    }
+
+    //-------------------------------------
     //  nativeVersion
     //-------------------------------------
 

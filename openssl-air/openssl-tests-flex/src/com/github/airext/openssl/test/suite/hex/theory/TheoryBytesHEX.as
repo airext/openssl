@@ -17,12 +17,15 @@ public class TheoryBytesHEX {
 
     [DataPoints]
     [ArrayElementType("flash.utils.ByteArray")]
-    public static var data: Array = ByteArrayGenerator.generateMany(Variants.generatingDataCount, 32, 2048);
+    public static var data: Array = ByteArrayGenerator.generateMany(Variants.generatingDataCount, 256, 2048);
 
     [Theory]
     public function run(input: ByteArray): void {
         var encoded: String = OpenSSL.shared.hexFromBytes(input);
         var decoded: ByteArray = OpenSSL.shared.hexToBytes(encoded);
+
+        input.position = 0;
+        decoded.position = 0;
 
         assertEquals(input.readUTFBytes(input.length), decoded.readUTFBytes(decoded.length));
     }
