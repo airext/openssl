@@ -49,6 +49,15 @@ public class OpenSSL extends EventDispatcher {
     }
 
     //-------------------------------------
+    //  buildNumber
+    //-------------------------------------
+
+    public static function get buildNumber(): String {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
+    //-------------------------------------
     //  nativeVersion
     //-------------------------------------
 

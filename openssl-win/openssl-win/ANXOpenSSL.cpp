@@ -218,6 +218,9 @@ unsigned char* ANXOpenSSL::sha256FromBytes(const unsigned char* input, uint32_t 
     *outputLength = md_len * 2;
 
     char* buffer = (char *)malloc(sizeof(char) * (*outputLength) + 1);
+    if (!buffer) {
+        return NULL;
+    }
 
     int offset = 0;
     for (int i = 0; i < md_len; i++) {
@@ -285,32 +288,17 @@ unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLe
 #pragma region HEX
 
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
-    _OutputDebugString(L"[ANX] input: %s with length: %i", input, inputLength);
+    _OutputDebugString(L"[ANX] input with length: %i", inputLength);
 
-    *outputLength = inputLength * 2;
+    BIGNUM* bn = BN_bin2bn(input, inputLength, NULL);
 
-    char* buffer = (char*)malloc(sizeof(char) * (*outputLength) + 1);
+    char* output = BN_bn2hex(bn);
 
-    int offset = 0;
-    for (int i = 0; i < inputLength; i++) {
-#ifdef __APPLE__
-        int count = sprintf(buffer + offset, "%02x", input[i]);
-#elif defined(_WIN32) || defined(_WIN64)
-        int count = sprintf_s(buffer + offset, *outputLength, "%02x", input[i]);
-#endif
-        if (count == -1) {
-            _OutputDebugString(L"[ANX] EOF received, return NULL");
-            free(buffer);
-            return NULL;
-        }
-        offset += count;
-    }
+    *outputLength = (uint32_t)strlen(output);
 
-    buffer[*outputLength] = '\0';
+    BN_free(bn);
 
-    _OutputDebugString(L"[ANX] output: %s with length: %i", buffer, *outputLength);
-
-    return (unsigned char*)buffer;
+    return (unsigned char*)output;
 }
 
 unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
@@ -321,26 +309,22 @@ unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t 
         return NULL;
     }
 
-    char* string = (char*)input;
+    BIGNUM* bn = BN_new();
 
-    *outputLength = inputLength / 2;
-    char* output = (char*)malloc(sizeof(char) * (*outputLength));
-
-    for (int i = 0; i < *outputLength; i++) {
-#ifdef __APPLE__
-        int result = sscanf(string, "%2hhx", &output[i]);
-#elif defined(_WIN32) || defined(_WIN64)
-        int result = sscanf_s(string, "%2hhx", &output[i]);
-#endif
-        if (result == -1) {
-            _OutputDebugString(L"[ANX] EOF received, return NULL");
-            free(output);
-            return NULL;
-        }
-        string += 2;
+    int input_length = BN_hex2bn(&bn, (const char*)input);
+    if (input_length == 0) {
+        return NULL;
     }
 
-    return (unsigned char*)output;
+    unsigned int numOfBytes = BN_num_bytes(bn);
+
+    unsigned char* output = (unsigned char*)OPENSSL_malloc(numOfBytes);
+
+    *outputLength = BN_bn2bin(bn, output);
+
+    BN_free(bn);
+
+    return output;
 }
 
 #pragma endregion
