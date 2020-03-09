@@ -11,6 +11,7 @@
 #include "ANXOpenSSLUtils.h"
 #include "ANXOpenSSLDefer.h"
 #include "ANXOpenSSLConversionRoutines.h"
+#include <openssl/crypto.h>
 
 FREObject ANXOpenSSLHEX::hexEncodeString(FREObject string) {
     const unsigned char* input;
@@ -24,14 +25,14 @@ FREObject ANXOpenSSLHEX::hexEncodeString(FREObject string) {
     uint32_t outputLength;
     unsigned char* output = ANXOpenSSL::getInstance().hexEncodeString(input, inputLength, &outputLength);
 
-    _OutputDebugString(L"[ANX] Encoded: %s", output);
-
     if (!output) {
         return NULL;
     }
 
+    _OutputDebugString(L"[ANX] Encoded: %s", output);
+
     defer {
-        free(output);
+        OPENSSL_free(output);
     };
 
     FREObject result;
@@ -59,7 +60,7 @@ FREObject ANXOpenSSLHEX::hexDecodeString(FREObject string) {
     }
 
     defer {
-        free(output);
+        OPENSSL_free(output);
     };
 
     FREObject result;
@@ -91,7 +92,7 @@ FREObject ANXOpenSSLHEX::hexEncodeBytes(FREObject bytes) {
     }
 
     defer {
-        free(output);
+        OPENSSL_free(output);
     };
 
     _OutputDebugString(L"[ANX] Attempt to release input byte array");
@@ -117,19 +118,19 @@ FREObject ANXOpenSSLHEX::hexDecodeBytes(FREObject bytes) {
         return NULL;
     }
 
-    _OutputDebugString(L"[ANX] Attempt to decode string: %s", input);
+    _OutputDebugString(L"[ANX] Attempt to decode input string with length %i", inputLength);
 
     uint32_t outputLength;
     unsigned char *decoded = ANXOpenSSL::getInstance().hexDecodeString(input, inputLength, &outputLength);
-
-    _OutputDebugString(L"[ANX] Decoded: %s", decoded);
 
     if (!decoded) {
         return NULL;
     }
 
+    _OutputDebugString(L"[ANX] Decoded with length: %i", outputLength);
+
     defer {
-        free(decoded);
+        OPENSSL_free(decoded);
     };
 
     _OutputDebugString(L"[ANX] Attempt to create output byte array");

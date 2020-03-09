@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "ANXOpenSSL.h"
-#include "airext_hex.h"
 
 #pragma region Common
 
@@ -219,6 +218,9 @@ unsigned char* ANXOpenSSL::sha256FromBytes(const unsigned char* input, uint32_t 
     *outputLength = md_len * 2;
 
     char* buffer = (char *)malloc(sizeof(char) * (*outputLength) + 1);
+    if (!buffer) {
+        return NULL;
+    }
 
     int offset = 0;
     for (int i = 0; i < md_len; i++) {
@@ -286,28 +288,43 @@ unsigned char* ANXOpenSSL::hmacFromBytes(const unsigned char *bytes, int bytesLe
 #pragma region HEX
 
 unsigned char* ANXOpenSSL::hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
-    _OutputDebugString(L"[ANX] input: %s with length: %i", input, inputLength);
+    _OutputDebugString(L"[ANX] input with length: %i", inputLength);
 
-    char* output = airext_bin2hex(input, inputLength);
+    BIGNUM* bn = BN_bin2bn(input, inputLength, NULL);
 
-    *outputLength = inputLength * 2;
+    char* output = BN_bn2hex(bn);
+
+    *outputLength = (uint32_t)strlen(output);
+
+    BN_free(bn);
 
     return (unsigned char*)output;
 }
 
 unsigned char* ANXOpenSSL::hexDecodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength) {
     _OutputDebugString(L"[ANX] input: %s", input);
-    
+
     if (inputLength % 2 != 0) {
         _OutputDebugString(L"[ANX] input has odd length, return NULL");
         return NULL;
     }
 
-    unsigned char* output;
+    BIGNUM* bn = BN_new();
 
-    *outputLength = (uint32_t)airext_hex2bin((char*)input, &output);
+    int input_length = BN_hex2bn(&bn, (const char*)input);
+    if (input_length == 0) {
+        return NULL;
+    }
 
-    return (unsigned char*)output;
+    unsigned int numOfBytes = BN_num_bytes(bn);
+
+    unsigned char* output = (unsigned char*)OPENSSL_malloc(numOfBytes);
+
+    *outputLength = BN_bn2bin(bn, output);
+
+    BN_free(bn);
+
+    return output;
 }
 
 #pragma endregion

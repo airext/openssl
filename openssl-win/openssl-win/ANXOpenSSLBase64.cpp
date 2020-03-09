@@ -144,7 +144,7 @@ FREObject ANXOpenSSLBase64::base64DecodeBytes(FREObject bytes)
 
     _OutputDebugString(L"[ANX] Attempt to create output byte array");
 
-    FREObject result = ANXOpenSSLConversionRoutines::createByteArrayWithLength(outputLength);
+    FREObject result = ANXOpenSSLConversionRoutines::createByteArrayWithLength((uint32_t)outputLength);
     if (result == NULL) {
         return NULL;
     }
