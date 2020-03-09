@@ -512,6 +512,8 @@
 
     <target name="test.on.win">
 
+        <delete dir="test" />
+
         <property name="tests.project.dir" value="../${project.name}-air/openssl-tests-flex" />
 
         <fileset id="app.ane.anes" dir="${tests.project.dir}/ane">
@@ -559,9 +561,11 @@
             <path path="test" />
         </pathconvert>
 
+        <echo>Running test app</echo>
         <exec executable="powershell" dir="test">
             <arg line="Start-Process -FilePath OpenSSLTests/OpenSSLTestRunner.exe ${tests.working.dir}" />
         </exec>
+        <echo>Run test app</echo>
 
         <waitfor maxwait="5" maxwaitunit="minute">
             <or>

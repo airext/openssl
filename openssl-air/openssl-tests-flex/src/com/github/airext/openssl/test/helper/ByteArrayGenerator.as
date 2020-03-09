@@ -18,7 +18,7 @@ public class ByteArrayGenerator {
     public static function generate(length: int): ByteArray {
         var bytes: ByteArray = new ByteArray();
         while (length--) {
-            bytes.writeByte(Math.random() * 0xFF);
+            bytes.writeByte(0x20 + Math.random() * (0x7E - 0x20));
         }
         bytes.position = 0;
         return bytes;

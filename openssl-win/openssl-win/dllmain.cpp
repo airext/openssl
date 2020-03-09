@@ -210,7 +210,7 @@ extern "C" {
     }
 
     FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-        return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject("10");
+        return ANXOpenSSLConversionRoutines::convertCharArrayToFREObject("27");
     }
 
 #pragma endregion
