@@ -81,7 +81,7 @@ BOOL ANXOpenSSL::verifyCertificate(const char* certificate, const char* caCertif
 
 unsigned char* ANXOpenSSL::aesEncryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength) {
 
-    unsigned char ciphertext[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc())];
+    unsigned char* ciphertext = new unsigned char[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc())];
 
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
     if (!ctx) {
@@ -116,12 +116,14 @@ unsigned char* ANXOpenSSL::aesEncryptBytes(const unsigned char* input, uint32_t 
     unsigned char* returnValue = (unsigned char*)malloc(ciphertext_len);
     memcpy(returnValue, ciphertext, ciphertext_len);
 
+    delete[] ciphertext;
+
     return returnValue;
 }
 
 unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength) {
 
-    unsigned char plaintext[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc()) + 1];
+    unsigned char* plaintext = new unsigned char[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc()) + 1];
 
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
     if (!ctx) {
@@ -155,6 +157,8 @@ unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, uint32_t 
 
     unsigned char* returnValue = (unsigned char*)malloc(plaintext_len);
     memcpy(returnValue, plaintext, plaintext_len);
+
+    delete[] plaintext;
 
     return returnValue;
 }
