@@ -436,6 +436,8 @@
 
     <target name="test.on.mac">
 
+        <delete dir="test" />
+
         <property name="tests.project.dir" value="../${project.name}-air/openssl-tests-flex" />
 
         <fileset id="app.ane.anes" dir="${tests.project.dir}/ane">
