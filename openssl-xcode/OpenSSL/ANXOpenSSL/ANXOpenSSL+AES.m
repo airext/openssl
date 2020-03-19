@@ -37,14 +37,8 @@
 
     NSLog(@"[ANX] Attempt to encrypt data '%s' with key '%s' and with iv '%s'", input.bytes, key.bytes, iv.bytes);
 
-    int length;
-    unsigned char *encrypted = [self aesEncryptBytes:input.bytes withKey:key.bytes withIV:iv.bytes outLength:&length];
-
-    defer(^{
-        free(encrypted);
-    });
-
-    NSLog(@"[ANX] data encrypted '%s' with length: %i", encrypted, length);
+    uint32_t length;
+    unsigned char *encrypted = [self aesEncryptBytes:input.bytes withLength:input.length withKey:key.bytes withIV:iv.bytes outLength:&length];
 
     NSLog(@"[ANX] Attempt to release input byte array");
 
@@ -64,12 +58,16 @@
         return NULL;
     }
 
-    // check if encryption fails
-
-    if (length == -1) {
-        NSLog(@"[ANX] decryption failed with error: %s", anx_retrieve_openssl_error_queue());
+    if (!encrypted) {
+        NSLog(@"[ANX] Encryption failed with error: %s", anx_retrieve_openssl_error_queue());
         return NULL;
     }
+
+    defer(^{
+        free(encrypted);
+    });
+
+    NSLog(@"[ANX] data encrypted '%s' with length: %i", encrypted, length);
 
     NSLog(@"[ANX] Attempt to create output byte array");
 
@@ -125,14 +123,8 @@
 
     NSLog(@"[ANX] Attempt to decrypt data '%s' with key '%s' and with iv '%s'", input.bytes, key.bytes, iv.bytes);
 
-    int length;
-    unsigned char *decrypted = [self aesDecryptBytes:input.bytes withKey:key.bytes withIV:iv.bytes outLength:&length];
-
-    defer(^{
-        free(decrypted);
-    });
-
-    NSLog(@"[ANX] data decrypted '%s' with length: %i", decrypted, length);
+    uint32_t length;
+    unsigned char *decrypted = [self aesDecryptBytes:input.bytes withLength:input.length withKey:key.bytes withIV:iv.bytes outLength:&length];
 
     NSLog(@"[ANX] Attempt to release input byte array");
 
@@ -152,12 +144,16 @@
         return NULL;
     }
 
-    // check if decryption fails
-
-    if (length == -1) {
+    if (!decrypted) {
         NSLog(@"[ANX] decryption failed with error: %s", anx_retrieve_openssl_error_queue());
         return NULL;
     }
+
+    defer(^{
+        free(decrypted);
+    });
+
+    NSLog(@"[ANX] data decrypted '%s' with length: %i", decrypted, length);
 
     NSLog(@"[ANX] Attempt to create output byte array");
 

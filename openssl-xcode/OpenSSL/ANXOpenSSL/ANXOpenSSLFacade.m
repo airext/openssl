@@ -312,7 +312,7 @@ FREObject ANXOpenSSLTest(FREContext context, void* functionData, uint32_t argc, 
 }
 
 FREObject ANXOpenBuildVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"36"];
+    return [ANXOpenSSLConversionRoutines convertNSStringToFREObject:@"38"];
 }
 
 #pragma mark - ContextInitialize/ContextFinalizer

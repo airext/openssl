@@ -37,8 +37,8 @@ public:
     BOOL verifyCertificate(const char* certificate, const char* caCertificate);
 
 public:
-    unsigned char* aesEncryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength);
-    unsigned char* aesDecryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength);
+    unsigned char* aesEncryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength);
+    unsigned char* aesDecryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength);
 
 public:
     unsigned char* hexEncodeString(const unsigned char* input, uint32_t inputLength, uint32_t* outputLength);

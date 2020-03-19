@@ -31,14 +31,8 @@ FREObject ANXOpenSSLAES::aesEncrypt(FREObject data, FREObject keyParam, FREObjec
 
     _OutputDebugString(L"[ANX] Attempt to encrypt data '%s' with key '%s' and with iv '%s'", input.bytes, key.bytes, iv.bytes);
 
-    int length;
-    unsigned char* encrypted =  ANXOpenSSL::getInstance().aesEncryptBytes(input.bytes, key.bytes, iv.bytes, &length);
-
-    defer {
-        free(encrypted);
-    };
-
-    _OutputDebugString(L"[ANX] data encrypted '%s' with length: %i", encrypted, length);
+    uint32_t length;
+    unsigned char* encrypted =  ANXOpenSSL::getInstance().aesEncryptBytes(input.bytes, input.length, key.bytes, iv.bytes, &length);
 
     _OutputDebugString(L"[ANX] Attempt to release input byte array");
 
@@ -58,12 +52,16 @@ FREObject ANXOpenSSLAES::aesEncrypt(FREObject data, FREObject keyParam, FREObjec
         return NULL;
     }
 
-    // check if encryption fails
-
-    if (length == -1) {
+    if (!encrypted) {
         _OutputDebugString(L"[ANX] decryption failed with error: %s", anx_retrieve_openssl_error_queue());
         return NULL;
     }
+
+    defer {
+        free(encrypted);
+    };
+
+    _OutputDebugString(L"[ANX] data encrypted '%s' with length: %i", encrypted, length);
 
     _OutputDebugString(L"[ANX] Attempt to create output byte array");
 
@@ -119,8 +117,8 @@ FREObject ANXOpenSSLAES::aesDecrypt(FREObject data, FREObject keyParam, FREObjec
 
     _OutputDebugString(L"[ANX] Attempt to decrypt data '%s' with key '%s' and with iv '%s'", input.bytes, key.bytes, iv.bytes);
 
-    int length;
-    unsigned char* decrypted = ANXOpenSSL::getInstance().aesDecryptBytes(input.bytes, key.bytes, iv.bytes, &length);
+    uint32_t length;
+    unsigned char* decrypted = ANXOpenSSL::getInstance().aesDecryptBytes(input.bytes, input.length, key.bytes, iv.bytes, &length);
 
     defer {
         free(decrypted);

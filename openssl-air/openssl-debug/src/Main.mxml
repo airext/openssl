@@ -64,7 +64,7 @@
 
         private function aesEncryptTapped(): void {
             var data: ByteArray = new ByteArray();
-            data.writeUTFBytes("The quick brown fox jumps over the lazy dog");
+            data.writeUTFBytes("The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. 1");
             var key: ByteArray = new ByteArray();
             key.writeUTFBytes("01234567890123456789012345678901");
             var iv: ByteArray = new ByteArray();

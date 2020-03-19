@@ -77,124 +77,84 @@ BOOL ANXOpenSSL::verifyCertificate(const char* certificate, const char* caCertif
 
 #pragma region AES
 
-unsigned char* ANXOpenSSL::aesEncryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength) {
+/// AES implementation based on https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption
 
-    int inputLength = (int)strlen((char*)input);
+unsigned char* ANXOpenSSL::aesEncryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength) {
 
-    EVP_CIPHER_CTX *ctx;
+    unsigned char ciphertext[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc())];
 
-    int len;
-
-    int ciphertext_len;
-
-    unsigned char ciphertext[128];
-
-    /* Create and initialise the context */
-    if (!(ctx = EVP_CIPHER_CTX_new())) {
+    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
         _OutputDebugString(L"[ANX] ERROR: aesEncryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    /*
-     * Initialise the encryption operation. IMPORTANT - ensure you use a key
-     * and IV size appropriate for your cipher
-     * In this example we are using 256 bit AES (i.e. a 256 bit key). The
-     * IV size for *most* modes is the same as the block size. For AES this
-     * is 128 bits
-     */
     if (EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesEncryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    /*
-     * Provide the message to be encrypted, and obtain the encrypted output.
-     * EVP_EncryptUpdate can be called multiple times if necessary
-     */
+    int len;
     if (EVP_EncryptUpdate(ctx, ciphertext, &len, input, inputLength) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesEncryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    ciphertext_len = len;
+    int ciphertext_len = len;
 
-    /*
-     * Finalise the encryption. Further ciphertext bytes may be written at
-     * this stage.
-     */
     if (EVP_EncryptFinal_ex(ctx, ciphertext + len, &len) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesEncryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
     ciphertext_len += len;
 
-    /* Clean up */
     EVP_CIPHER_CTX_free(ctx);
 
     *outLength = ciphertext_len;
 
     unsigned char* returnValue = (unsigned char*)malloc(ciphertext_len);
-    if (returnValue) {
-        memcpy(returnValue, ciphertext, ciphertext_len);
-    }
+    memcpy(returnValue, ciphertext, ciphertext_len);
 
     return returnValue;
 }
 
-unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, const unsigned char* key, const unsigned char* iv, int* outLength) {
+unsigned char* ANXOpenSSL::aesDecryptBytes(const unsigned char* input, uint32_t inputLength, const unsigned char* key, const unsigned char* iv, uint32_t* outLength) {
 
-    int inputLength = (int)strlen((char*)input);
+    unsigned char plaintext[inputLength + EVP_CIPHER_block_size(EVP_aes_256_cbc()) + 1];
 
-    EVP_CIPHER_CTX *ctx;
-
-    int len;
-
-    int plaintext_len;
-
-    unsigned char plaintext[128];
-
-    /* Create and initialise the context */
-    if (!(ctx = EVP_CIPHER_CTX_new())) {
+    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
         _OutputDebugString(L"[ANX] ERROR: aesDecryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    /*
-     * Initialise the decryption operation. IMPORTANT - ensure you use a key
-     * and IV size appropriate for your cipher
-     * In this example we are using 256 bit AES (i.e. a 256 bit key). The
-     * IV size for *most* modes is the same as the block size. For AES this
-     * is 128 bits
-     */
     if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesDecryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    /*
-     * Provide the message to be decrypted, and obtain the plaintext output.
-     * EVP_DecryptUpdate can be called multiple times if necessary.
-     */
+    int len;
     if (EVP_DecryptUpdate(ctx, plaintext, &len, input, inputLength) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesDecryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
-    plaintext_len = len;
+    int plaintext_len = len;
 
-    /*
-     * Finalise the decryption. Further plaintext bytes may be written at
-     * this stage.
-     */
     if (EVP_DecryptFinal_ex(ctx, plaintext + len, &len) != 1) {
         _OutputDebugString(L"[ANX] ERROR: aesDecryptBytes: %s", ERR_error_string(ERR_get_error(), NULL));
+        return nullptr;
     }
 
     plaintext_len += len;
 
-    /* Clean up */
     EVP_CIPHER_CTX_free(ctx);
 
     *outLength = plaintext_len;
 
     unsigned char* returnValue = (unsigned char*)malloc(plaintext_len);
-    if (returnValue) {
-        memcpy(returnValue, plaintext, plaintext_len);
-    }
+    memcpy(returnValue, plaintext, plaintext_len);
 
     return returnValue;
 }

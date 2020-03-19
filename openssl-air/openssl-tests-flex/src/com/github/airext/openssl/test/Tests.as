@@ -2,6 +2,7 @@
  * Created by max.rozdobudko@gmail.com on 02.02.2020.
  */
 package com.github.airext.openssl.test {
+import com.github.airext.openssl.test.suite.aes.AESTestSuite;
 import com.github.airext.openssl.test.suite.hex.TestSuiteHEX;
 import com.github.airext.openssl.test.suite.issue.IssuesTestSuite;
 import com.github.airext.openssl.test.suite.rsa.TestSuiteRSA;
@@ -14,6 +15,8 @@ public class Tests {
     public function Tests() {
         super();
     }
+
+    public var aes: AESTestSuite;
 
     public var rsa: TestSuiteRSA;
 
