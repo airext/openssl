@@ -48,6 +48,11 @@ FREObject ANXOpenSSL_computeSha256(FREContext context, void* functionData, uint3
     return ANXOpenSSLMain_computeSha256(context, functionData, argc, argv);
 }
 
+FREObject ANXOpenSSL_hmacCompute(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_hmacCompute");
+    return ANXOpenSSLMain_hmacCompute(context, functionData, argc, argv);
+}
+
 #pragma mark API
 
 FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -354,6 +359,7 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSL_aesEncrypt },
         { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSL_aesDecrypt },
         { (const uint8_t *) "computeSHA256", NULL, &ANXOpenSSL_computeSha256},
+        { (const uint8_t*) "hmacCompute", NULL, &ANXOpenSSL_hmacCompute},
 
 
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
@@ -369,7 +375,7 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
 //        { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
         { (const uint8_t*)"sha256Compute", NULL, &ANXOpenSSLComputeSHA256 },
-        { (const uint8_t*)"hmacCompute", NULL, &ANXOpenSSLHMACCompute },
+//        { (const uint8_t*)"hmacCompute", NULL, &ANXOpenSSLHMACCompute },
 
         { (const uint8_t*)"base64EncodeString", NULL, &ANXOpenSSLBase64EncodeString },
         { (const uint8_t*)"base64DecodeString", NULL, &ANXOpenSSLBase64DecodeString },

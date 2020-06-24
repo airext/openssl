@@ -134,7 +134,7 @@ public class OpenSSL extends EventDispatcher {
     //  HMAC
     //-------------------------------------
 
-    public function hmacCompute(data: ByteArray, hashFunction: Object, key: ByteArray): ByteArray {
+    public function hmacCompute(data: ByteArray, key: ByteArray): ByteArray {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
