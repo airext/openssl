@@ -42,21 +42,19 @@ extern "C" {
 
 # pragma mark - AES
 
-    FREObject aesEncrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+    FREObject ANXOpenSSLMain_aesEncrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_aesEncrypt");
         AESCrypt *ac = new AESCrypt();
-
         FREObject o = ac->AesEncrypt(argv[0], argv[1], argv[2]);
         delete ac;
-
         return o;
     }
 
-    FREObject aesDecrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
-
+    FREObject ANXOpenSSLMain_aesDecrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_aesDecrypt");
         AESCrypt *ac = new AESCrypt();
         FREObject o = ac->AesDecrypt(argv[0], argv[1], argv[2]);
         delete ac;
-
         return o;
     }
 

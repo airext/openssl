@@ -182,10 +182,22 @@ public class OpenSSL extends EventDispatcher {
     //-------------------------------------
 
     public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        if (key.length != 32) {
+            throw new Error("Key must be 32 bytes long");
+        }
+        if (iv.length != 16) {
+            throw new Error("IV must be 16 bytes long");
+        }
         return context.call("aesEncrypt", data, key, iv) as ByteArray;
     }
 
     public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
+        if (key.length != 32) {
+            throw new Error("Key must be 32 bytes long");
+        }
+        if (iv.length != 16) {
+            throw new Error("IV must be 16 bytes long");
+        }
         return context.call("aesDecrypt", data, key, iv) as ByteArray;
     }
 

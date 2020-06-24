@@ -1,6 +1,6 @@
 <extension xmlns="http://ns.adobe.com/air/extension/32.0">
   <id>com.github.airext.OpenSSL</id>
-  <versionNumber>0.2.55</versionNumber>
+  <versionNumber>0.2.56</versionNumber>
   <description>Build 0</description>
   <platforms>
     <platform name="iPhone-ARM">
