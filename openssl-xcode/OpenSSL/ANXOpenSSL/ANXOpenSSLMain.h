@@ -18,6 +18,9 @@ extern "C" {
 FREObject ANXOpenSSLMain_rsaEncrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject ANXOpenSSLMain_rsaDecrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 
+FREObject ANXOpenSSLMain_aesEncrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject ANXOpenSSLMain_aesDecrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+
 #ifdef __cplusplus
 }
 #endif

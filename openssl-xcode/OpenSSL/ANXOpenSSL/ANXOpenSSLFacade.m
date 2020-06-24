@@ -21,17 +21,26 @@
 
 @end
 
-#pragma mark New API
+#pragma mark - New API
 
 FREObject ANXOpenSSL_rsaEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
     NSLog(@"ANXOpenSSL_rsaEncrypt");
-    printf("[ANX]Hello World");
     return ANXOpenSSLMain_rsaEncrypt(context, functionData, argc, argv);
 }
 
 FREObject ANXOpenSSL_rsaDecrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
     NSLog(@"ANXOpenSSL_rsaDecrypt");
     return ANXOpenSSLMain_rsaDecrypt(context, functionData, argc, argv);
+}
+
+FREObject ANXOpenSSL_aesEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_aesEncrypt");
+    return ANXOpenSSLMain_aesEncrypt(context, functionData, argc, argv);
+}
+
+FREObject ANXOpenSSL_aesDecrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_aesDecrypt");
+    return ANXOpenSSLMain_aesDecrypt(context, functionData, argc, argv);
 }
 
 #pragma mark API
@@ -337,6 +346,8 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     static FRENamedFunction functions[] = {
         { (const uint8_t*)"rsaEncrypt", NULL, &ANXOpenSSL_rsaEncrypt },
         { (const uint8_t*)"rsaDecrypt", NULL, &ANXOpenSSL_rsaDecrypt },
+        { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSL_aesEncrypt },
+        { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSL_aesDecrypt },
 
 
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
@@ -348,8 +359,8 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*)"rsaDecryptWithPublicKey", NULL, &ANXOpenSSLDecryptWithPublicKey },
         { (const uint8_t*)"verifyCertificate", NULL, &ANXOpenSSLVerifyCertificate },
 
-        { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
-        { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
+//        { (const uint8_t*)"aesEncrypt", NULL, &ANXOpenSSLAESEncrypt },
+//        { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSLAESDecrypt },
 
         { (const uint8_t*)"sha256Compute", NULL, &ANXOpenSSLComputeSHA256 },
         { (const uint8_t*)"hmacCompute", NULL, &ANXOpenSSLHMACCompute },
