@@ -157,6 +157,10 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
+    public function getOpenSSLVersion():String{
+        return context.call("getOpenSSLVersion") as String;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------
@@ -173,8 +177,8 @@ public class OpenSSL extends EventDispatcher {
         return context.call("rsaDecrypt", data, privateKey) as ByteArray;
     }
 
-    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
-        return context.call("verifyCertificate", rootCertificate, certificate);
+    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
+        return context.call("verifyCertificate", rootCA, certificate) as Boolean;
     }
 
     //-------------------------------------

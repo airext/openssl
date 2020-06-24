@@ -83,6 +83,11 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
+    public function getOpenSSLVersion():String{
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------
@@ -102,7 +107,7 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
-    public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {
+    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }

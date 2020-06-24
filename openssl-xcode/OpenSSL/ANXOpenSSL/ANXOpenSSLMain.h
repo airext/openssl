@@ -25,6 +25,9 @@ FREObject ANXOpenSSLMain_computeSha256(FREContext ctx, void* funcData, uint32_t 
 
 FREObject ANXOpenSSLMain_hmacCompute(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 
+FREObject ANXOpenSSLMain_getOpenSSLVersion(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject ANXOpenSSLMain_verifyCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+
 #ifdef __cplusplus
 }
 #endif
