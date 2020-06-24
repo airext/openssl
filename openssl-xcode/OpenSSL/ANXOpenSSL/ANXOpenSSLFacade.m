@@ -78,6 +78,11 @@ FREObject ANXOpenSSL_parseCertificateSerial(FREContext context, void* functionDa
     return ANXOpenSSLMain_parseCertificateSerial(context, functionData, argc, argv);
 }
 
+FREObject ANXOpenSSL_PBKDF2_HMAC_SHA_256(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_PBKDF2_HMAC_SHA_256");
+    return ANXOpenSSLMain_PBKDF2_HMAC_SHA_256(context, functionData, argc, argv);
+}
+
 #pragma mark API
 
 FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -390,6 +395,7 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*) "extractPublicKey", NULL, &ANXOpenSSL_extractPublicKey},
         { (const uint8_t*) "parseCertificate", NULL, &ANXOpenSSL_parseCertificate},
         { (const uint8_t*) "parseCertificateSerial", NULL, &ANXOpenSSL_parseCertificateSerial},
+        { (const uint8_t*) "pbkdf2Compute", NULL, &ANXOpenSSL_PBKDF2_HMAC_SHA_256},
 
 
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },

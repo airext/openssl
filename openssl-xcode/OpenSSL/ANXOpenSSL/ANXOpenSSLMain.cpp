@@ -95,16 +95,47 @@ extern "C" {
     }
 
     FREObject ANXOpenSSLMain_extractPublicKey(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_extractPublicKey");
         return Utils::extractPublicKey(argv[0]);
     }
 
     FREObject ANXOpenSSLMain_parseCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_parseCertificate");
         return Utils::parseCertificate(argv[0]);
 
     }
 
     FREObject ANXOpenSSLMain_parseCertificateSerial(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_parseCertificateSerial");
         return Utils::parseCertificateSerial(argv[0]);
+    }
+
+    FREObject ANXOpenSSLMain_PBKDF2_HMAC_SHA_256(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_PBKDF2_HMAC_SHA_256");
+        FREByteArray pass;
+        FREByteArray salt;
+        FREByteArray ivByteArray;
+        int retVal;
+
+        retVal = FREAcquireByteArray(argv[0], &pass);
+        if ((FRE_OK != retVal))
+            return NULL;
+        retVal = FREAcquireByteArray(argv[1], &salt);
+        if ((FRE_OK != retVal))
+            return NULL;
+        FREReleaseByteArray(argv[0]);
+        FREReleaseByteArray(argv[1]);
+        uint32_t iterationCount;
+        uint32_t outputCount;
+
+        FREResult result = FREGetObjectAsUint32(argv[2], &iterationCount);
+        if ((FRE_OK != retVal))
+            return NULL;
+        result = FREGetObjectAsUint32(argv[3], &outputCount);
+        if ((FRE_OK != retVal))
+            return NULL;
+
+        return Utils::PBKDF2_HMAC_SHA_256((const char *)pass.bytes,pass.length,salt.bytes,salt.length,iterationCount,outputCount);
     }
 
 }
