@@ -94,4 +94,8 @@ extern "C" {
         return o;
     }
 
+    FREObject ANXOpenSSLMain_extractPublicKey(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        return Utils::extractPublicKey(argv[0]);
+    }
+
 }
