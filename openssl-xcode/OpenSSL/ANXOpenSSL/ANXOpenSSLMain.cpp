@@ -98,4 +98,13 @@ extern "C" {
         return Utils::extractPublicKey(argv[0]);
     }
 
+    FREObject ANXOpenSSLMain_parseCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        return Utils::parseCertificate(argv[0]);
+
+    }
+
+    FREObject ANXOpenSSLMain_parseCertificateSerial(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        return Utils::parseCertificateSerial(argv[0]);
+    }
+
 }
