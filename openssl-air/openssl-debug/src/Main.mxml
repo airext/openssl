@@ -149,7 +149,7 @@
             log(OpenSSL.shared.getBuildVersion());
         }
 
-        private function verifyTapped(rootCertificate: String, certificate: String): void {
+        private function verifyTapped(rootCertificate: ByteArray, certificate: ByteArray): void {
             if (OpenSSL.shared.verifyCertificate(rootCertificate, certificate)) {
                 log("certifcate is valid");
             } else {
@@ -176,8 +176,8 @@
         <layout:Spacer width="280" height="2" />
         <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
         <f:Button label="RSA Encrypt" triggered="rsaEncryptTapped()" />
-        <f:Button label="Verify Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeCertificate)" />
-        <f:Button label="Verify Fake Certificate" triggered="verifyTapped(Constants.acmeRootCertificate, Constants.acmeFakeCertificate)" />
+        <f:Button label="Verify Certificate" triggered="verifyTapped(getBytes(File.applicationDirectory.resolvePath('certificates/ACME Inc. CA - Root Certificate.crt')), getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')))" />
+        <f:Button label="Verify Fake Certificate" triggered="verifyTapped(getBytes(File.applicationDirectory.resolvePath('certificates/FakeServer1 - Certificate.crt')), getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')))" />
         <!--    RSA    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="AES Encrypt" triggered="aesEncryptTapped()" />

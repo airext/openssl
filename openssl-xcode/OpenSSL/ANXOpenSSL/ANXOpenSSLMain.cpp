@@ -81,4 +81,17 @@ extern "C" {
         return o;
     }
 
+#pragma mark - Utils
+
+    FREObject ANXOpenSSLMain_getOpenSSLVersion(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_getOpenSSLVersion");
+        return Utils::getOpenSSLVersion();
+    }
+
+    FREObject ANXOpenSSLMain_verifyCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_verifyCertificate");
+        FREObject o = Utils::verifyCertificate(argv[1], argv[0]);
+        return o;
+    }
+
 }

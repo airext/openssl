@@ -53,6 +53,16 @@ FREObject ANXOpenSSL_hmacCompute(FREContext context, void* functionData, uint32_
     return ANXOpenSSLMain_hmacCompute(context, functionData, argc, argv);
 }
 
+FREObject ANXOpenSSL_getOpenSSLVersion(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_getOpenSSLVersion");
+    return ANXOpenSSLMain_getOpenSSLVersion(context, functionData, argc, argv);
+}
+
+FREObject ANXOpenSSL_verifyCertificate(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_verifyCertificate");
+    return ANXOpenSSLMain_verifyCertificate(context, functionData, argc, argv);
+}
+
 #pragma mark API
 
 FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
@@ -360,6 +370,8 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*)"aesDecrypt", NULL, &ANXOpenSSL_aesDecrypt },
         { (const uint8_t *) "computeSHA256", NULL, &ANXOpenSSL_computeSha256},
         { (const uint8_t*) "hmacCompute", NULL, &ANXOpenSSL_hmacCompute},
+        { (const uint8_t*) "getOpenSSLVersion", NULL, &ANXOpenSSL_getOpenSSLVersion},
+        { (const uint8_t*) "verifyCertificate", NULL, &ANXOpenSSL_verifyCertificate},
 
 
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
