@@ -88,6 +88,11 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
+    public function extractPublicKey(certificate: ByteArray): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------

@@ -161,6 +161,15 @@ public class OpenSSL extends EventDispatcher {
         return context.call("getOpenSSLVersion") as String;
     }
 
+    public function extractPublicKey(certificate: ByteArray): ByteArray {
+        var data: ByteArray = new ByteArray();
+        var enc:ByteArray = context.call("extractPublicKey", certificate) as ByteArray;
+        data.writeUTFBytes("-----BEGIN PUBLIC KEY-----\r\n" + enc.toString().replace(/\n/g, "\r\n") + "-----END PUBLIC KEY-----\r\n")
+        enc.clear();
+        data.position = 0;
+        return data;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------

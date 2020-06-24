@@ -62,6 +62,10 @@ FREObject ANXOpenSSL_verifyCertificate(FREContext context, void* functionData, u
     NSLog(@"ANXOpenSSL_verifyCertificate");
     return ANXOpenSSLMain_verifyCertificate(context, functionData, argc, argv);
 }
+FREObject ANXOpenSSL_extractPublicKey(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_extractPublicKey");
+    return ANXOpenSSLMain_extractPublicKey(context, functionData, argc, argv);
+}
 
 #pragma mark API
 
@@ -372,6 +376,7 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
         { (const uint8_t*) "hmacCompute", NULL, &ANXOpenSSL_hmacCompute},
         { (const uint8_t*) "getOpenSSLVersion", NULL, &ANXOpenSSL_getOpenSSLVersion},
         { (const uint8_t*) "verifyCertificate", NULL, &ANXOpenSSL_verifyCertificate},
+        { (const uint8_t*) "extractPublicKey", NULL, &ANXOpenSSL_extractPublicKey},
 
 
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },

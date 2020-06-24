@@ -156,6 +156,11 @@
                 log("certifcate is invalid");
             }
         }
+
+        private function extractPublicKeyTapped(): void {
+            var publicKey: ByteArray = OpenSSL.shared.extractPublicKey(getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')));
+            log("Extracted Public Key: " + publicKey.readUTFBytes(publicKey.length));
+        }
         ]]>
     </fx:Script>
 
@@ -172,6 +177,7 @@
         <f:Button label="Is Supported" triggered="isSupportedTapped()" />
         <f:Button label="Extension Version" triggered="extensionVersionTapped()" />
         <f:Button label="OpenSSL Version" triggered="nativeVersionTapped()" />
+        <f:Button label="Extract Public Key" triggered="extractPublicKeyTapped()" />
         <!--    RSA    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
