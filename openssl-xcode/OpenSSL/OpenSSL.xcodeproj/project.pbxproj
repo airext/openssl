@@ -25,6 +25,9 @@
 		502194DF24A3309F00DBDC50 /* AESCrypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194DD24A3309F00DBDC50 /* AESCrypt.cpp */; };
 		502194E024A3309F00DBDC50 /* AESCrypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194DD24A3309F00DBDC50 /* AESCrypt.cpp */; };
 		502194E124A3309F00DBDC50 /* AESCrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 502194DE24A3309F00DBDC50 /* AESCrypt.h */; };
+		502194E424A334EF00DBDC50 /* DigestSha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194E224A334EE00DBDC50 /* DigestSha256.cpp */; };
+		502194E524A334EF00DBDC50 /* DigestSha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194E224A334EE00DBDC50 /* DigestSha256.cpp */; };
+		502194E624A334EF00DBDC50 /* DigestSha256.h in Headers */ = {isa = PBXBuildFile; fileRef = 502194E324A334EE00DBDC50 /* DigestSha256.h */; };
 		5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */; };
 		5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
 		5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
@@ -119,6 +122,8 @@
 		502194D624A2294D00DBDC50 /* RSACrypt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RSACrypt.cpp; sourceTree = "<group>"; };
 		502194DD24A3309F00DBDC50 /* AESCrypt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AESCrypt.cpp; sourceTree = "<group>"; };
 		502194DE24A3309F00DBDC50 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		502194E224A334EE00DBDC50 /* DigestSha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigestSha256.cpp; sourceTree = "<group>"; };
+		502194E324A334EE00DBDC50 /* DigestSha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigestSha256.h; sourceTree = "<group>"; };
 		505EB2242403E4230044335E /* data.bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data.bin.h; sourceTree = "<group>"; };
 		5087A40A23958483006C153D /* libANXOpenSSL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libANXOpenSSL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087A43223959CBB006C153D /* ANXOpenSSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ANXOpenSSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,12 +221,14 @@
 		502194D224A2292F00DBDC50 /* FIles from Win project */ = {
 			isa = PBXGroup;
 			children = (
-				502194DD24A3309F00DBDC50 /* AESCrypt.cpp */,
+				502194E324A334EE00DBDC50 /* DigestSha256.h */,
+				502194E224A334EE00DBDC50 /* DigestSha256.cpp */,
 				502194DE24A3309F00DBDC50 /* AESCrypt.h */,
-				502194D624A2294D00DBDC50 /* RSACrypt.cpp */,
+				502194DD24A3309F00DBDC50 /* AESCrypt.cpp */,
 				502194D524A2294D00DBDC50 /* RSACrypt.h */,
-				502194D424A2294C00DBDC50 /* Utils.cpp */,
+				502194D624A2294D00DBDC50 /* RSACrypt.cpp */,
 				502194D324A2294C00DBDC50 /* Utils.h */,
+				502194D424A2294C00DBDC50 /* Utils.cpp */,
 			);
 			name = "FIles from Win project";
 			sourceTree = "<group>";
@@ -420,6 +427,7 @@
 				5087A49523997A2A006C153D /* ANXOpenSSL+Base64.h in Headers */,
 				5087A48A2398E992006C153D /* ANXOpenSSL+RSA.h in Headers */,
 				502194E124A3309F00DBDC50 /* AESCrypt.h in Headers */,
+				502194E624A334EF00DBDC50 /* DigestSha256.h in Headers */,
 				5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */,
 				50164F37240EA27200EE7AE4 /* ANXOpenSSL+HEX.h in Headers */,
 			);
@@ -629,6 +637,7 @@
 				5087A48723980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				502194D824A2294D00DBDC50 /* Utils.cpp in Sources */,
 				5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
+				502194E424A334EF00DBDC50 /* DigestSha256.cpp in Sources */,
 				5087A48B2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */,
 				509BED7E2411558A00F77731 /* airext_hex.c in Sources */,
 				50AE175623D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */,
@@ -652,6 +661,7 @@
 				5087A48623980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				502194D924A2294D00DBDC50 /* Utils.cpp in Sources */,
 				5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
+				502194E524A334EF00DBDC50 /* DigestSha256.cpp in Sources */,
 				5087A48C2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */,
 				509BED7F2411558A00F77731 /* airext_hex.c in Sources */,
 				50AE175723D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */,

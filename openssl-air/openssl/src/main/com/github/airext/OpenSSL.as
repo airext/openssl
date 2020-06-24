@@ -206,7 +206,7 @@ public class OpenSSL extends EventDispatcher {
     //-------------------------------------
 
     public function sha256Compute(data: ByteArray): ByteArray {
-        return context.call("sha256Compute", data) as ByteArray;
+        return context.call("computeSHA256", data) as ByteArray;
     }
 
     //-------------------------------------

@@ -8,6 +8,7 @@
 #include "ANXOpenSSLMain.h"
 #include "RSACrypt.h"
 #include "AESCrypt.h"
+#include "DigestSha256.h"
 #include "Utils.h"
 #include <os/log.h>
 
@@ -55,6 +56,17 @@ extern "C" {
         AESCrypt *ac = new AESCrypt();
         FREObject o = ac->AesDecrypt(argv[0], argv[1], argv[2]);
         delete ac;
+        return o;
+    }
+
+#pragma mark - SHA
+
+    FREObject ANXOpenSSLMain_computeSha256(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_computeSha256");
+        //memcpy(byteArray.bytes, nativeString, 12);
+        DigestSha256 *dig = new DigestSha256();
+        FREObject o = dig->computeSHA256(argv[0]);
+        delete dig;
         return o;
     }
 
