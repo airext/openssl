@@ -15,10 +15,24 @@
 #import "ANXOpenSSL+HEX.h"
 #import "ANXOpenSSL+HMAC.h"
 #import "ANXOpenSSLConversionRoutines.h"
+#import "ANXOpenSSLMain.h"
 
 @implementation ANXOpenSSLFacade
 
 @end
+
+#pragma mark New API
+
+FREObject ANXOpenSSL_rsaEncrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_rsaEncrypt");
+    printf("[ANX]Hello World");
+    return ANXOpenSSLMain_rsaEncrypt(context, functionData, argc, argv);
+}
+
+FREObject ANXOpenSSL_rsaDecrypt(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    NSLog(@"ANXOpenSSL_rsaDecrypt");
+    return ANXOpenSSLMain_rsaDecrypt(context, functionData, argc, argv);
+}
 
 #pragma mark API
 
@@ -321,6 +335,10 @@ void ANXOpenSSLContextInitializer(void* extData, const uint8_t* ctxType, FRECont
     NSLog(@"ANXOpenSSLContextInitializer");
 
     static FRENamedFunction functions[] = {
+        { (const uint8_t*)"rsaEncrypt", NULL, &ANXOpenSSL_rsaEncrypt },
+        { (const uint8_t*)"rsaDecrypt", NULL, &ANXOpenSSL_rsaDecrypt },
+
+
         { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
         { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
 

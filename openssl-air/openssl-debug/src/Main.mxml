@@ -7,6 +7,7 @@
     <fx:Script>
         <![CDATA[
         import com.airext.openssl.demo.data.Constants;
+        import com.airext.openssl.demo.utils.getBytes;
         import com.github.airext.OpenSSL;
 
         import flash.utils.ByteArray;
@@ -53,8 +54,10 @@
         private function rsaEncryptTapped(): void {
             var data: ByteArray = new ByteArray();
             data.writeUTFBytes("Hello, world!");
-            var encrypted: ByteArray = OpenSSL.shared.rsaEncrypt(data, Constants.publicKey);
-            var decrypted: ByteArray = OpenSSL.shared.rsaDecrypt(encrypted, Constants.privateKey);
+            var publicKey:ByteArray = getBytes(File.applicationDirectory.resolvePath("certificates/Server1 - Public key.pem"))
+            var privateKey:ByteArray = getBytes(File.applicationDirectory.resolvePath("certificates/Server1 - Private key.pem"))
+            var encrypted: ByteArray = OpenSSL.shared.rsaEncrypt(data, publicKey);
+            var decrypted: ByteArray = OpenSSL.shared.rsaDecrypt(encrypted, privateKey);
             log(decrypted.readUTFBytes(decrypted.length));
         }
 

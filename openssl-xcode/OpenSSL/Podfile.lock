@@ -4,15 +4,15 @@ PODS:
   - OpenSSL-Universal/Static (1.0.2.19)
 
 DEPENDENCIES:
-  - OpenSSL-Universal
+  - OpenSSL-Universal (from `/Users/max/dev/tiberiu/crvshlab-OpenSSL`)
 
-SPEC REPOS:
-  trunk:
-    - OpenSSL-Universal
+EXTERNAL SOURCES:
+  OpenSSL-Universal:
+    :path: "/Users/max/dev/tiberiu/crvshlab-OpenSSL"
 
 SPEC CHECKSUMS:
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
 
-PODFILE CHECKSUM: 06fb7db1265d432c2c76b6c8b7a840434551f6dd
+PODFILE CHECKSUM: 54be5504d058c0d49c37361d2bc24a823eeec182
 
 COCOAPODS: 1.9.1
