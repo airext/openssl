@@ -165,12 +165,12 @@ public class OpenSSL extends EventDispatcher {
         return context.call("rsaEncryptWithPrivateKey", input) as ByteArray;
     }
 
-    public function rsaEncrypt(data: ByteArray, publicKey: String): ByteArray {
-        return context.call("rsaEncryptWithPublicKey", data, publicKey) as ByteArray;
+    public function rsaEncrypt(data: ByteArray, publicKey: ByteArray): ByteArray {
+        return context.call("rsaEncrypt", data, publicKey) as ByteArray;
     }
 
-    public function rsaDecrypt(data: ByteArray, privateKey: String): ByteArray {
-        return context.call("rsaDecryptWithPrivateKey", data, privateKey) as ByteArray;
+    public function rsaDecrypt(data: ByteArray, privateKey: ByteArray): ByteArray {
+        return context.call("rsaDecrypt", data, privateKey) as ByteArray;
     }
 
     public function verifyCertificate(rootCertificate: String, certificate: String): Boolean {

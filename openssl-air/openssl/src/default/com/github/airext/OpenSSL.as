@@ -92,12 +92,12 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
-    public function rsaEncrypt(data: ByteArray, publicKey: String): ByteArray {
+    public function rsaEncrypt(data: ByteArray, publicKey: ByteArray): ByteArray {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
 
-    public function rsaDecrypt(data: ByteArray, privateKey: String): ByteArray {
+    public function rsaDecrypt(data: ByteArray, privateKey: ByteArray): ByteArray {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
