@@ -178,6 +178,10 @@ public class OpenSSL extends EventDispatcher {
         return context.call("parseCertificateSerial", certificate) as ByteArray;
     }
 
+    public  function pbkdf2Compute(password: ByteArray, salt: ByteArray, iterations: int, length: int): ByteArray {
+        return context.call("pbkdf2Compute", password, salt, iterations, length) as ByteArray;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------

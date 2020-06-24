@@ -103,6 +103,11 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
+    public  function pbkdf2Compute(password: ByteArray, salt: ByteArray, iterations: int, length: int): ByteArray {
+        trace("OpenSSL is not supported on " + Capabilities.os);
+        return null;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------
