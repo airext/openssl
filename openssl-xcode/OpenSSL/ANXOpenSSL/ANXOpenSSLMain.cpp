@@ -9,6 +9,7 @@
 #include "RSACrypt.h"
 #include "AESCrypt.h"
 #include "DigestSha256.h"
+#include "HmacCompute.h"
 #include "Utils.h"
 #include <os/log.h>
 
@@ -67,6 +68,16 @@ extern "C" {
         DigestSha256 *dig = new DigestSha256();
         FREObject o = dig->computeSHA256(argv[0]);
         delete dig;
+        return o;
+    }
+
+#pragma mark - HMAC
+
+    FREObject ANXOpenSSLMain_hmacCompute(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
+        os_log(OS_LOG_DEFAULT, "[ANX] ANXOpenSSLMain_hmacCompute");
+        HmacCompute *hc = new HmacCompute();
+        FREObject o = hc->hmacCompute(argv[0], argv[1]);
+        delete hc;
         return o;
     }
 

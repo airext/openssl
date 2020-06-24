@@ -23,6 +23,8 @@ FREObject ANXOpenSSLMain_aesDecrypt(FREContext ctx, void* funcData, uint32_t arg
 
 FREObject ANXOpenSSLMain_computeSha256(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 
+FREObject ANXOpenSSLMain_hmacCompute(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+
 #ifdef __cplusplus
 }
 #endif

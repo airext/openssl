@@ -105,7 +105,7 @@
             data.writeUTFBytes("The quick brown fox jumps over the lazy dog");
             var key: ByteArray = new ByteArray();
             key.writeUTFBytes("01234567890123456789012345678901");
-            var hmac: ByteArray = OpenSSL.shared.hmacCompute(data, null, key);
+            var hmac: ByteArray = OpenSSL.shared.hmacCompute(data, key);
             log("HMAC: " + hmac.readUTFBytes(hmac.length));
         }
 
