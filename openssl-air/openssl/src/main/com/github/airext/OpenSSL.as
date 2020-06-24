@@ -170,6 +170,14 @@ public class OpenSSL extends EventDispatcher {
         return data;
     }
 
+    public function parseCertificate(certificate: ByteArray): ByteArray {
+        return context.call("parseCertificate", certificate) as ByteArray;
+    }
+
+    public function parseCertificateSerial(certificate: ByteArray): ByteArray {
+        return context.call("parseCertificateSerial", certificate) as ByteArray;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------

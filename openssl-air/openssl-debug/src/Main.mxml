@@ -161,6 +161,17 @@
             var publicKey: ByteArray = OpenSSL.shared.extractPublicKey(getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')));
             log("Extracted Public Key: " + publicKey.readUTFBytes(publicKey.length));
         }
+
+        private function parseCertificateTapped(): void {
+            var parsed: ByteArray = OpenSSL.shared.parseCertificate(getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')));
+            log("Parsed: " + parsed.readUTFBytes(parsed.length));
+        }
+
+        private function parseCertificateSerialTapped(): void {
+            var parsed: ByteArray = OpenSSL.shared.parseCertificateSerial(getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')));
+            log("Parsed Serial: " + parsed.readUTFBytes(parsed.length));
+        }
+
         ]]>
     </fx:Script>
 
@@ -178,6 +189,8 @@
         <f:Button label="Extension Version" triggered="extensionVersionTapped()" />
         <f:Button label="OpenSSL Version" triggered="nativeVersionTapped()" />
         <f:Button label="Extract Public Key" triggered="extractPublicKeyTapped()" />
+        <f:Button label="Parse Certificate" triggered="parseCertificateTapped()" />
+        <f:Button label="Parse Certificate Serial" triggered="parseCertificateSerialTapped()" />
         <!--    RSA    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />

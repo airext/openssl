@@ -28,6 +28,8 @@ FREObject ANXOpenSSLMain_hmacCompute(FREContext ctx, void* funcData, uint32_t ar
 FREObject ANXOpenSSLMain_getOpenSSLVersion(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject ANXOpenSSLMain_verifyCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 FREObject ANXOpenSSLMain_extractPublicKey(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject ANXOpenSSLMain_parseCertificate(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
+FREObject ANXOpenSSLMain_parseCertificateSerial(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]);
 
 #ifdef __cplusplus
 }
