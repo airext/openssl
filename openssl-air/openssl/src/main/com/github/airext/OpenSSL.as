@@ -131,14 +131,6 @@ public class OpenSSL extends EventDispatcher {
         return _buildNumber;
     }
 
-    //-------------------------------------
-    //  nativeVersion
-    //-------------------------------------
-
-    public static function get nativeVersion(): String {
-        return context.call("version") as String;
-    }
-
     //--------------------------------------------------------------------------
     //
     //  Constructor
@@ -182,13 +174,13 @@ public class OpenSSL extends EventDispatcher {
         return context.call("pbkdf2Compute", password, salt, iterations, length) as ByteArray;
     }
 
+    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
+        return context.call("verifyCertificate", rootCA, certificate) as Boolean;
+    }
+
     //-------------------------------------
     //  RSA
     //-------------------------------------
-
-    public function rsaEncryptWithPrivateKey(input: ByteArray): ByteArray {
-        return context.call("rsaEncryptWithPrivateKey", input) as ByteArray;
-    }
 
     public function rsaEncrypt(data: ByteArray, publicKey: ByteArray): ByteArray {
         return context.call("rsaEncrypt", data, publicKey) as ByteArray;
@@ -196,10 +188,6 @@ public class OpenSSL extends EventDispatcher {
 
     public function rsaDecrypt(data: ByteArray, privateKey: ByteArray): ByteArray {
         return context.call("rsaDecrypt", data, privateKey) as ByteArray;
-    }
-
-    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
-        return context.call("verifyCertificate", rootCA, certificate) as Boolean;
     }
 
     //-------------------------------------
@@ -240,59 +228,6 @@ public class OpenSSL extends EventDispatcher {
 
     public function hmacCompute(data: ByteArray, key: ByteArray): ByteArray {
         return context.call("hmacCompute", data, key) as ByteArray;
-    }
-
-    //-------------------------------------
-    //  Base64
-    //-------------------------------------
-
-    public function base64FromString(string: String): String {
-        return context.call("base64EncodeString", string) as String;
-    }
-
-    public function base64ToString(base64: String): String {
-        return context.call("base64DecodeString", base64) as String;
-
-    }
-
-    public function base64FromBytes(bytes: ByteArray): String {
-        return context.call("base64EncodeBytes", bytes) as String;
-    }
-
-    public function base64ToBytes(base64: String): ByteArray {
-        return context.call("base64DecodeBytes", base64) as ByteArray;
-    }
-
-    //-------------------------------------
-    //  Hex
-    //-------------------------------------
-
-    public function hexFromString(string: String): String {
-        return context.call("hexEncodeString", string) as String;
-    }
-
-    public function hexToString(string: String): String {
-        return context.call("hexDecodeString", string) as String;
-    }
-
-    public function hexFromBytes(bytes: ByteArray): String {
-        return context.call("hexEncodeBytes", bytes) as String;
-    }
-
-    public function hexToBytes(string: String): ByteArray {
-        return context.call("hexDecodeBytes", string) as ByteArray;
-    }
-
-    //-------------------------------------
-    //  Debug Utils
-    //-------------------------------------
-    
-    public function test(bytes: ByteArray): ByteArray {
-        return context.call("test", bytes) as ByteArray;
-    }
-
-    public function getBuildVersion(): String {
-        return context.call("buildVersion") as String;
     }
 
     //--------------------------------------------------------------------------

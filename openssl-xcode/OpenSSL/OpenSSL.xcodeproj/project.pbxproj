@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		18F934B327D18FFA19FC7ED1 /* libPods-ANXOpenSSL-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73938F45A50997871E05061D /* libPods-ANXOpenSSL-iOS.a */; };
 		3D29DF9803DB3FB191CCABB8 /* Pods_ANXOpenSSLTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8487252132414FD455D44D /* Pods_ANXOpenSSLTest.framework */; };
-		50164F37240EA27200EE7AE4 /* ANXOpenSSL+HEX.h in Headers */ = {isa = PBXBuildFile; fileRef = 50164F35240EA27200EE7AE4 /* ANXOpenSSL+HEX.h */; };
-		50164F38240EA27200EE7AE4 /* ANXOpenSSL+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 50164F36240EA27200EE7AE4 /* ANXOpenSSL+HEX.m */; };
-		50164F39240EA27200EE7AE4 /* ANXOpenSSL+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 50164F36240EA27200EE7AE4 /* ANXOpenSSL+HEX.m */; };
 		50164F3F24103C1600EE7AE4 /* BytesGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 50164F3E24103C1600EE7AE4 /* BytesGenerator.m */; };
 		502194CF24A228F900DBDC50 /* ANXOpenSSLMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194CD24A228F900DBDC50 /* ANXOpenSSLMain.cpp */; };
 		502194D024A228F900DBDC50 /* ANXOpenSSLMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 502194CD24A228F900DBDC50 /* ANXOpenSSLMain.cpp */; };
@@ -34,9 +31,6 @@
 		5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */; };
 		5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
 		5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */; };
-		5087A4432395A032006C153D /* ANXOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43F2395A031006C153D /* ANXOpenSSL.m */; };
-		5087A4442395A032006C153D /* ANXOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43F2395A031006C153D /* ANXOpenSSL.m */; };
-		5087A44A2396737E006C153D /* ANXOpenSSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A4452395A045006C153D /* ANXOpenSSL.h */; };
 		5087A4532396E377006C153D /* Adobe AIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4522396E377006C153D /* Adobe AIR.framework */; };
 		5087A4552396E38C006C153D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4542396E38C006C153D /* Cocoa.framework */; };
 		5087A4572396E3B4006C153D /* Adobe AIR_64 in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087A4562396E3B4006C153D /* Adobe AIR_64 */; };
@@ -50,39 +44,12 @@
 		5087A46F2397C3DB006C153D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5087A46E2397C3DB006C153D /* Assets.xcassets */; };
 		5087A4722397C3DB006C153D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5087A4702397C3DB006C153D /* Main.storyboard */; };
 		5087A4752397C3DB006C153D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4742397C3DB006C153D /* main.m */; };
-		5087A47F2397C461006C153D /* ANXOpenSSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A43F2395A031006C153D /* ANXOpenSSL.m */; };
 		5087A4822397C5D3006C153D /* TestRSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4812397C5D3006C153D /* TestRSA.m */; };
-		5087A48523980CDF006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
-		5087A48623980D95006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
-		5087A48723980D95006C153D /* ANXOpenSSLUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */; };
-		5087A48A2398E992006C153D /* ANXOpenSSL+RSA.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A4882398E992006C153D /* ANXOpenSSL+RSA.h */; };
-		5087A48B2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4892398E992006C153D /* ANXOpenSSL+RSA.m */; };
-		5087A48C2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A4892398E992006C153D /* ANXOpenSSL+RSA.m */; };
-		5087A48F23993396006C153D /* ANXOpenSSLDefer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A48D23993396006C153D /* ANXOpenSSLDefer.h */; };
-		5087A49023993396006C153D /* ANXOpenSSLDefer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48E23993396006C153D /* ANXOpenSSLDefer.m */; };
-		5087A49123993396006C153D /* ANXOpenSSLDefer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48E23993396006C153D /* ANXOpenSSLDefer.m */; };
-		5087A49223993396006C153D /* ANXOpenSSLDefer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A48E23993396006C153D /* ANXOpenSSLDefer.m */; };
-		5087A49523997A2A006C153D /* ANXOpenSSL+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 5087A49323997A2A006C153D /* ANXOpenSSL+Base64.h */; };
-		5087A49623997A2A006C153D /* ANXOpenSSL+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A49423997A2A006C153D /* ANXOpenSSL+Base64.m */; };
-		5087A49723997A2A006C153D /* ANXOpenSSL+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A49423997A2A006C153D /* ANXOpenSSL+Base64.m */; };
 		5087A49B239ACC3F006C153D /* TestBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087A49A239ACC3F006C153D /* TestBase64.m */; };
 		509BBE9C23CDBC110001B352 /* TestAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 509BBE9B23CDBC110001B352 /* TestAES.m */; };
-		509BED7D2411558A00F77731 /* airext_hex.h in Headers */ = {isa = PBXBuildFile; fileRef = 509BED7B2411558A00F77731 /* airext_hex.h */; };
-		509BED7E2411558A00F77731 /* airext_hex.c in Sources */ = {isa = PBXBuildFile; fileRef = 509BED7C2411558A00F77731 /* airext_hex.c */; };
-		509BED7F2411558A00F77731 /* airext_hex.c in Sources */ = {isa = PBXBuildFile; fileRef = 509BED7C2411558A00F77731 /* airext_hex.c */; };
-		509BED802411558A00F77731 /* airext_hex.c in Sources */ = {isa = PBXBuildFile; fileRef = 509BED7C2411558A00F77731 /* airext_hex.c */; };
-		50A3AEC023CE63D10000ADB3 /* ANXOpenSSL+AES.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A3AEBE23CE63D10000ADB3 /* ANXOpenSSL+AES.h */; };
-		50A3AEC123CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */; };
-		50A3AEC223CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */; };
 		50A3AECE23D1CBC70000ADB3 /* TestVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A3AECD23D1CBC70000ADB3 /* TestVerify.m */; };
-		50AE174723D493F30096E9C1 /* ANXOpenSSL+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = 50AE174523D493F30096E9C1 /* ANXOpenSSL+SHA.h */; };
-		50AE174823D493F30096E9C1 /* ANXOpenSSL+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE174623D493F30096E9C1 /* ANXOpenSSL+SHA.m */; };
-		50AE174923D493F30096E9C1 /* ANXOpenSSL+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE174623D493F30096E9C1 /* ANXOpenSSL+SHA.m */; };
 		50AE174C23D4975E0096E9C1 /* TestSHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE174B23D4975E0096E9C1 /* TestSHA.m */; };
 		50AE175223D777DD0096E9C1 /* TestHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE175123D777DD0096E9C1 /* TestHMAC.m */; };
-		50AE175523D783DD0096E9C1 /* ANXOpenSSL+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 50AE175323D783DD0096E9C1 /* ANXOpenSSL+HMAC.h */; };
-		50AE175623D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE175423D783DD0096E9C1 /* ANXOpenSSL+HMAC.m */; };
-		50AE175723D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE175423D783DD0096E9C1 /* ANXOpenSSL+HMAC.m */; };
 		50F3F295239D8D400077D3DC /* TestHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F3F294239D8D400077D3DC /* TestHex.m */; };
 /* End PBXBuildFile section */
 
@@ -112,8 +79,6 @@
 /* Begin PBXFileReference section */
 		2E503A764F5735636B3A6F76 /* Pods-ANXOpenSSL-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-iOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-iOS/Pods-ANXOpenSSL-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		36ACEFF7DF1C36863F772D47 /* Pods-ANXOpenSSL-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.release.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		50164F35240EA27200EE7AE4 /* ANXOpenSSL+HEX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+HEX.h"; sourceTree = "<group>"; };
-		50164F36240EA27200EE7AE4 /* ANXOpenSSL+HEX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+HEX.m"; sourceTree = "<group>"; };
 		50164F3A24103A0C00EE7AE4 /* TestData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestData.h; sourceTree = "<group>"; };
 		50164F3D24103C1600EE7AE4 /* BytesGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BytesGenerator.h; sourceTree = "<group>"; };
 		50164F3E24103C1600EE7AE4 /* BytesGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BytesGenerator.m; sourceTree = "<group>"; };
@@ -135,8 +100,6 @@
 		5087A43523959CBB006C153D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLFacade.h; sourceTree = "<group>"; };
 		5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANXOpenSSLFacade.m; sourceTree = "<group>"; };
-		5087A43F2395A031006C153D /* ANXOpenSSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANXOpenSSL.m; sourceTree = "<group>"; };
-		5087A4452395A045006C153D /* ANXOpenSSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSL.h; sourceTree = "<group>"; };
 		5087A4462395A0E8006C153D /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlashRuntimeExtensions.h; path = "ANXOpenSSL-iOS/FlashRuntimeExtensions.h"; sourceTree = SOURCE_ROOT; };
 		5087A4522396E377006C153D /* Adobe AIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Adobe AIR.framework"; sourceTree = "<group>"; };
 		5087A4542396E38C006C153D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -155,32 +118,16 @@
 		5087A4762397C3DB006C153D /* ANXOpenSSLTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ANXOpenSSLTest.entitlements; sourceTree = "<group>"; };
 		5087A4802397C5D3006C153D /* TestRSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRSA.h; sourceTree = "<group>"; };
 		5087A4812397C5D3006C153D /* TestRSA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestRSA.m; sourceTree = "<group>"; };
-		5087A48323980CDF006C153D /* ANXOpenSSLUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLUtils.h; sourceTree = "<group>"; };
-		5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ANXOpenSSLUtils.c; sourceTree = "<group>"; };
-		5087A4882398E992006C153D /* ANXOpenSSL+RSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+RSA.h"; sourceTree = "<group>"; };
-		5087A4892398E992006C153D /* ANXOpenSSL+RSA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+RSA.m"; sourceTree = "<group>"; };
-		5087A48D23993396006C153D /* ANXOpenSSLDefer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANXOpenSSLDefer.h; sourceTree = "<group>"; };
-		5087A48E23993396006C153D /* ANXOpenSSLDefer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANXOpenSSLDefer.m; sourceTree = "<group>"; };
-		5087A49323997A2A006C153D /* ANXOpenSSL+Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+Base64.h"; sourceTree = "<group>"; };
-		5087A49423997A2A006C153D /* ANXOpenSSL+Base64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+Base64.m"; sourceTree = "<group>"; };
 		5087A499239ACC3F006C153D /* TestBase64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBase64.h; sourceTree = "<group>"; };
 		5087A49A239ACC3F006C153D /* TestBase64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestBase64.m; sourceTree = "<group>"; };
 		509BBE9A23CDBC110001B352 /* TestAES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAES.h; sourceTree = "<group>"; };
 		509BBE9B23CDBC110001B352 /* TestAES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAES.m; sourceTree = "<group>"; };
-		509BED7B2411558A00F77731 /* airext_hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = airext_hex.h; sourceTree = "<group>"; };
-		509BED7C2411558A00F77731 /* airext_hex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = airext_hex.c; sourceTree = "<group>"; };
-		50A3AEBE23CE63D10000ADB3 /* ANXOpenSSL+AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+AES.h"; sourceTree = "<group>"; };
-		50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+AES.m"; sourceTree = "<group>"; };
 		50A3AECC23D1CBC70000ADB3 /* TestVerify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVerify.h; sourceTree = "<group>"; };
 		50A3AECD23D1CBC70000ADB3 /* TestVerify.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVerify.m; sourceTree = "<group>"; };
-		50AE174523D493F30096E9C1 /* ANXOpenSSL+SHA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+SHA.h"; sourceTree = "<group>"; };
-		50AE174623D493F30096E9C1 /* ANXOpenSSL+SHA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+SHA.m"; sourceTree = "<group>"; };
 		50AE174A23D4975E0096E9C1 /* TestSHA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestSHA.h; sourceTree = "<group>"; };
 		50AE174B23D4975E0096E9C1 /* TestSHA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSHA.m; sourceTree = "<group>"; };
 		50AE175023D777DD0096E9C1 /* TestHMAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHMAC.h; sourceTree = "<group>"; };
 		50AE175123D777DD0096E9C1 /* TestHMAC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHMAC.m; sourceTree = "<group>"; };
-		50AE175323D783DD0096E9C1 /* ANXOpenSSL+HMAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ANXOpenSSL+HMAC.h"; sourceTree = "<group>"; };
-		50AE175423D783DD0096E9C1 /* ANXOpenSSL+HMAC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ANXOpenSSL+HMAC.m"; sourceTree = "<group>"; };
 		50F3F293239D8D400077D3DC /* TestHex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHex.h; sourceTree = "<group>"; };
 		50F3F294239D8D400077D3DC /* TestHex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHex.m; sourceTree = "<group>"; };
 		6550ECD8E38E98A24CAEFE9D /* Pods-ANXOpenSSL-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANXOpenSSL-macOS.debug.xcconfig"; path = "Target Support Files/Pods-ANXOpenSSL-macOS/Pods-ANXOpenSSL-macOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -291,29 +238,10 @@
 			isa = PBXGroup;
 			children = (
 				502194D224A2292F00DBDC50 /* FIles from Win project */,
-				509BED812411558D00F77731 /* Util */,
-				5087A4452395A045006C153D /* ANXOpenSSL.h */,
-				5087A43F2395A031006C153D /* ANXOpenSSL.m */,
-				5087A4882398E992006C153D /* ANXOpenSSL+RSA.h */,
-				5087A4892398E992006C153D /* ANXOpenSSL+RSA.m */,
-				50A3AEBE23CE63D10000ADB3 /* ANXOpenSSL+AES.h */,
-				50A3AEBF23CE63D10000ADB3 /* ANXOpenSSL+AES.m */,
-				50AE174523D493F30096E9C1 /* ANXOpenSSL+SHA.h */,
-				50AE174623D493F30096E9C1 /* ANXOpenSSL+SHA.m */,
-				50AE175323D783DD0096E9C1 /* ANXOpenSSL+HMAC.h */,
-				50AE175423D783DD0096E9C1 /* ANXOpenSSL+HMAC.m */,
-				5087A49323997A2A006C153D /* ANXOpenSSL+Base64.h */,
-				5087A49423997A2A006C153D /* ANXOpenSSL+Base64.m */,
-				50164F35240EA27200EE7AE4 /* ANXOpenSSL+HEX.h */,
-				50164F36240EA27200EE7AE4 /* ANXOpenSSL+HEX.m */,
 				5087A43D2395A031006C153D /* ANXOpenSSLFacade.h */,
 				5087A43E2395A031006C153D /* ANXOpenSSLFacade.m */,
 				5087A45A2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h */,
 				5087A45B2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m */,
-				5087A48323980CDF006C153D /* ANXOpenSSLUtils.h */,
-				5087A48423980CDF006C153D /* ANXOpenSSLUtils.c */,
-				5087A48D23993396006C153D /* ANXOpenSSLDefer.h */,
-				5087A48E23993396006C153D /* ANXOpenSSLDefer.m */,
 				502194CE24A228F900DBDC50 /* ANXOpenSSLMain.h */,
 				502194CD24A228F900DBDC50 /* ANXOpenSSLMain.cpp */,
 			);
@@ -392,15 +320,6 @@
 			path = ANXOpenSSLTest;
 			sourceTree = "<group>";
 		};
-		509BED812411558D00F77731 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				509BED7C2411558A00F77731 /* airext_hex.c */,
-				509BED7B2411558A00F77731 /* airext_hex.h */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
 		AC4FD4CC051E0B86AFF3C688 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,23 +340,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50AE174723D493F30096E9C1 /* ANXOpenSSL+SHA.h in Headers */,
 				5087A45C2396F5D9006C153D /* ANXOpenSSLConversionRoutines.h in Headers */,
 				502194E924A3379300DBDC50 /* HmacCompute.h in Headers */,
-				509BED7D2411558A00F77731 /* airext_hex.h in Headers */,
-				50AE175523D783DD0096E9C1 /* ANXOpenSSL+HMAC.h in Headers */,
 				502194D124A228F900DBDC50 /* ANXOpenSSLMain.h in Headers */,
-				5087A48F23993396006C153D /* ANXOpenSSLDefer.h in Headers */,
 				502194DA24A2294D00DBDC50 /* RSACrypt.h in Headers */,
-				5087A44A2396737E006C153D /* ANXOpenSSL.h in Headers */,
-				50A3AEC023CE63D10000ADB3 /* ANXOpenSSL+AES.h in Headers */,
 				502194D724A2294D00DBDC50 /* Utils.h in Headers */,
-				5087A49523997A2A006C153D /* ANXOpenSSL+Base64.h in Headers */,
-				5087A48A2398E992006C153D /* ANXOpenSSL+RSA.h in Headers */,
 				502194E124A3309F00DBDC50 /* AESCrypt.h in Headers */,
 				502194E624A334EF00DBDC50 /* DigestSha256.h in Headers */,
 				5087A4402395A032006C153D /* ANXOpenSSLFacade.h in Headers */,
-				50164F37240EA27200EE7AE4 /* ANXOpenSSL+HEX.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,24 +542,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5087A4432395A032006C153D /* ANXOpenSSL.m in Sources */,
 				502194DB24A2294D00DBDC50 /* RSACrypt.cpp in Sources */,
-				5087A49023993396006C153D /* ANXOpenSSLDefer.m in Sources */,
 				502194CF24A228F900DBDC50 /* ANXOpenSSLMain.cpp in Sources */,
-				50A3AEC123CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */,
-				50AE174823D493F30096E9C1 /* ANXOpenSSL+SHA.m in Sources */,
 				5087A45D2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
-				5087A49623997A2A006C153D /* ANXOpenSSL+Base64.m in Sources */,
 				502194DF24A3309F00DBDC50 /* AESCrypt.cpp in Sources */,
-				50164F38240EA27200EE7AE4 /* ANXOpenSSL+HEX.m in Sources */,
-				5087A48723980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				502194D824A2294D00DBDC50 /* Utils.cpp in Sources */,
 				5087A4412395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 				502194E424A334EF00DBDC50 /* DigestSha256.cpp in Sources */,
-				5087A48B2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */,
-				509BED7E2411558A00F77731 /* airext_hex.c in Sources */,
 				502194EA24A3379300DBDC50 /* HmacCompute.cpp in Sources */,
-				50AE175623D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,24 +557,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5087A4442395A032006C153D /* ANXOpenSSL.m in Sources */,
 				502194DC24A2294D00DBDC50 /* RSACrypt.cpp in Sources */,
-				5087A49123993396006C153D /* ANXOpenSSLDefer.m in Sources */,
 				502194D024A228F900DBDC50 /* ANXOpenSSLMain.cpp in Sources */,
-				50A3AEC223CE63D10000ADB3 /* ANXOpenSSL+AES.m in Sources */,
-				50AE174923D493F30096E9C1 /* ANXOpenSSL+SHA.m in Sources */,
 				5087A45E2396F5D9006C153D /* ANXOpenSSLConversionRoutines.m in Sources */,
-				5087A49723997A2A006C153D /* ANXOpenSSL+Base64.m in Sources */,
 				502194E024A3309F00DBDC50 /* AESCrypt.cpp in Sources */,
-				50164F39240EA27200EE7AE4 /* ANXOpenSSL+HEX.m in Sources */,
-				5087A48623980D95006C153D /* ANXOpenSSLUtils.c in Sources */,
 				502194D924A2294D00DBDC50 /* Utils.cpp in Sources */,
 				5087A4422395A032006C153D /* ANXOpenSSLFacade.m in Sources */,
 				502194E524A334EF00DBDC50 /* DigestSha256.cpp in Sources */,
-				5087A48C2398E992006C153D /* ANXOpenSSL+RSA.m in Sources */,
-				509BED7F2411558A00F77731 /* airext_hex.c in Sources */,
 				502194EB24A3379300DBDC50 /* HmacCompute.cpp in Sources */,
-				50AE175723D783DD0096E9C1 /* ANXOpenSSL+HMAC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,17 +575,13 @@
 				50AE174C23D4975E0096E9C1 /* TestSHA.m in Sources */,
 				5087A46D2397C3D8006C153D /* ViewController.m in Sources */,
 				509BBE9C23CDBC110001B352 /* TestAES.m in Sources */,
-				5087A49223993396006C153D /* ANXOpenSSLDefer.m in Sources */,
 				50A3AECE23D1CBC70000ADB3 /* TestVerify.m in Sources */,
 				5087A4752397C3DB006C153D /* main.m in Sources */,
 				5087A4822397C5D3006C153D /* TestRSA.m in Sources */,
 				50AE175223D777DD0096E9C1 /* TestHMAC.m in Sources */,
-				5087A47F2397C461006C153D /* ANXOpenSSL.m in Sources */,
-				5087A48523980CDF006C153D /* ANXOpenSSLUtils.c in Sources */,
 				50F3F295239D8D400077D3DC /* TestHex.m in Sources */,
 				5087A46A2397C3D8006C153D /* AppDelegate.m in Sources */,
 				5087A49B239ACC3F006C153D /* TestBase64.m in Sources */,
-				509BED802411558A00F77731 /* airext_hex.c in Sources */,
 				50164F3F24103C1600EE7AE4 /* BytesGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

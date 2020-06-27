@@ -27,7 +27,6 @@ extern "C" {
         delete rs;
 
         return o;
-
     }
 
     FREObject ANXOpenSSLMain_rsaDecrypt(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {
@@ -39,7 +38,6 @@ extern "C" {
         delete rs;
 
         return o;
-
     }
 
 # pragma mark - AES
