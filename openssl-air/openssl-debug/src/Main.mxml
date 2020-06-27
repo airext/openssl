@@ -31,24 +31,7 @@
         }
 
         private function nativeVersionTapped(): void {
-            log("Extension version is: " + OpenSSL.nativeVersion);
-        }
-
-        private function rsaPrivatelyEncryptTapped(): void {
-            var t: Number = getTimer();
-            var dto: Object = {
-                id: "5de575e7ab273f6b7a87b968",
-                username: "mail@example.com",
-                firstName: "Test",
-                lastName: "Test"
-            };
-            var input: ByteArray = new ByteArray();
-            input.writeObject(dto);
-            log(">>> serialization took", t - getTimer(), "ms");
-            t = getTimer();
-            var output: ByteArray = OpenSSL.shared.rsaEncryptWithPrivateKey(input);
-            log(">>> encryption took" + (getTimer() - t) + "ms");
-            log(output.readUTFBytes(output.length));
+            log("Extension version is: " + OpenSSL.shared.getOpenSSLVersion());
         }
 
         private function rsaEncryptTapped(): void {
@@ -109,46 +92,6 @@
             log("HMAC: " + hmac.readUTFBytes(hmac.length));
         }
 
-        // Base64
-
-        private function encodeDecodeBase64StringTapped(): void {
-            var original: String = "Hello World";
-            var base64: String = OpenSSL.shared.base64FromString(original);
-            var decoded: String = OpenSSL.shared.base64ToString(base64);
-            log(decoded + " = " + original);
-        }
-
-        private function encodeDecodeBase64BytesTapped(): void {
-            var original: String = "Hello World";
-            var input: ByteArray = new ByteArray();
-            input.writeUTFBytes(original);
-            var base64: String = OpenSSL.shared.base64FromBytes(input);
-            var output: ByteArray = OpenSSL.shared.base64ToBytes(base64);
-            var decoded: String = output.readUTFBytes(output.length);
-            log(decoded + " = " + original);
-        }
-
-        private function encodeDecodeHexStringTapped(): void {
-            var original: String = "Hello World";
-            var hex: String = OpenSSL.shared.hexFromString(original);
-            var decoded: String = OpenSSL.shared.hexToString(hex);
-            log(decoded + " = " + original);
-        }
-
-        private function encodeDecodeHexBytesTapped(): void {
-            var original: String = "Hello World";
-            var input: ByteArray = new ByteArray();
-            input.writeUTFBytes(original);
-            var hex: String = OpenSSL.shared.hexFromBytes(input);
-            var output: ByteArray = OpenSSL.shared.hexToBytes(hex);
-            var decoded: String = output.readUTFBytes(output.length);
-            log(decoded + " = " + original);
-        }
-
-        private function getBuildVersionTapped(): void {
-            log(OpenSSL.shared.getBuildVersion());
-        }
-
         private function verifyTapped(rootCertificate: ByteArray, certificate: ByteArray): void {
             if (OpenSSL.shared.verifyCertificate(rootCertificate, certificate)) {
                 log("certifcate is valid");
@@ -193,7 +136,6 @@
         <f:Button label="Parse Certificate Serial" triggered="parseCertificateSerialTapped()" />
         <!--    RSA    -->
         <layout:Spacer width="280" height="2" />
-        <f:Button label="RSA Encrypt Privately" triggered="rsaPrivatelyEncryptTapped()" />
         <f:Button label="RSA Encrypt" triggered="rsaEncryptTapped()" />
         <f:Button label="Verify Certificate" triggered="verifyTapped(getBytes(File.applicationDirectory.resolvePath('certificates/ACME Inc. CA - Root Certificate.crt')), getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')))" />
         <f:Button label="Verify Fake Certificate" triggered="verifyTapped(getBytes(File.applicationDirectory.resolvePath('certificates/FakeServer1 - Certificate.crt')), getBytes(File.applicationDirectory.resolvePath('certificates/Server1 - Certificate.crt')))" />
@@ -207,17 +149,6 @@
         <!--    HMAC    -->
         <layout:Spacer width="280" height="2" />
         <f:Button label="HMAC" triggered="hmacTapped()" />
-        <!--    Base64    -->
-        <layout:Spacer width="280" height="2" />
-        <f:Button label="Encode/Decode Base64 String" triggered="encodeDecodeBase64StringTapped()" />
-        <f:Button label="Encode/Decode Base64 Bytes" triggered="encodeDecodeBase64BytesTapped()" />
-        <!--    HEX    -->
-        <layout:Spacer width="280" height="2" />
-        <f:Button label="Encode/Decode Hex String" triggered="encodeDecodeHexStringTapped()" />
-        <f:Button label="Encode/Decode Hex Bytes" triggered="encodeDecodeHexBytesTapped()" />
-        <layout:Spacer width="280" height="2" />
-        <!--   Debug   -->
-        <f:Button label="Native Build Version" triggered="getBuildVersionTapped()" />
     </f:ScrollContainer>
 
     <f:ScrollText id="outputText" height="100">

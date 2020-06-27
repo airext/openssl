@@ -57,15 +57,6 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
-    //-------------------------------------
-    //  nativeVersion
-    //-------------------------------------
-
-    public static function get nativeVersion(): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
     //--------------------------------------------------------------------------
     //
     //  Constructor
@@ -108,14 +99,14 @@ public class OpenSSL extends EventDispatcher {
         return null;
     }
 
-    //-------------------------------------
-    //  RSA
-    //-------------------------------------
-
-    public function rsaEncryptWithPrivateKey(input: ByteArray): ByteArray {
+    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
+
+    //-------------------------------------
+    //  RSA
+    //-------------------------------------
 
     public function rsaEncrypt(data: ByteArray, publicKey: ByteArray): ByteArray {
         trace("OpenSSL is not supported on " + Capabilities.os);
@@ -123,11 +114,6 @@ public class OpenSSL extends EventDispatcher {
     }
 
     public function rsaDecrypt(data: ByteArray, privateKey: ByteArray): ByteArray {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }
@@ -160,69 +146,6 @@ public class OpenSSL extends EventDispatcher {
     //-------------------------------------
 
     public function hmacCompute(data: ByteArray, key: ByteArray): ByteArray {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    //-------------------------------------
-    //  Base64
-    //-------------------------------------
-
-    public function base64FromString(string: String): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function base64ToString(base64: String): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-
-    }
-
-    public function base64FromBytes(bytes: ByteArray): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function base64ToBytes(base64: String): ByteArray {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    //-------------------------------------
-    //  Hex
-    //-------------------------------------
-
-    public function hexFromString(string: String): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function hexToString(string: String): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function hexFromBytes(bytes: ByteArray): String {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function hexToBytes(string: String): ByteArray {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    //-------------------------------------
-    //  Debug Utils
-    //-------------------------------------
-
-    public function test(bytes: ByteArray): ByteArray {
-        trace("OpenSSL is not supported on " + Capabilities.os);
-        return null;
-    }
-
-    public function getBuildVersion(): String {
         trace("OpenSSL is not supported on " + Capabilities.os);
         return null;
     }

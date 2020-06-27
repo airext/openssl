@@ -14,7 +14,7 @@ extern "C" {
 
 #pragma region Common
 
-    FREObject ANXOpenSSLIsSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    FREObject ANXOpenSSL_isSupported(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
         _OutputDebugString(L"ANXOpenSSLIsSupported");
         FREObject result;
         FRENewObjectFromBool(1, &result);
@@ -221,7 +221,7 @@ extern "C" {
         _OutputDebugString(L"ANXOpenSSLContextInitializer");
 
         static FRENamedFunction functions[] = {
-            { (const uint8_t*)"isSupported", NULL, &ANXOpenSSLIsSupported },
+            { (const uint8_t*)"isSupported", NULL, &ANXOpenSSL_isSupported },
             { (const uint8_t*)"version", NULL, &ANXOpenSSLVersion },
 
             { (const uint8_t*)"rsaEncryptWithPublicKey", NULL, &ANXOpenSSLEncryptWithPublicKey },
