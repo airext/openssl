@@ -33,7 +33,7 @@
     <!--                             Build All                               -->
     <!--=====================================================================-->
 
-    <target name="all" depends="ios,osx,air,package" description="Full build of extension">
+    <target name="all" depends="ios,osx,air,win.copy.binaries,package" description="Full build of extension">
     </target>
 
     <!--=====================================================================-->
@@ -121,14 +121,16 @@
     <!--                        Build Windows Library                        -->
     <!--=====================================================================-->
 
-    <target name="win" depends="win.clean, win32, win64">
-
+    <target name="win" depends="win.config, win.clean, win32, win64">
     </target>
 
-    <target name="win.clean">
+    <target name="win.config">
         <condition property="win.configuration" value="Debug" else="Release">
             <equals arg1="${is.debug}" arg2="true" />
         </condition>
+    </target>
+
+    <target name="win.clean">
         <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Clean' />
         </exec>
@@ -139,7 +141,7 @@
         <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x86"' />
         </exec>
-        <copy file="${win.project.dir}/x86/${win.configuration}/openssl-win.dll" tofile="temp/win32/ANXOpenSSL.dll" />
+        <copy file="${win.project.dir}/x86/${win.configuration}/openssl-win.dll" tofile="temp/win32/ANEOpenSSL.dll" />
         <copy todir="temp/win32">
             <fileset dir="${win.project.dir}/vendor/win32" includes="**/**" />
         </copy>
@@ -150,7 +152,23 @@
         <exec executable="${visual.studio}/Common7/IDE/devenv" dir="${win.project.dir}" failonerror="true" logerror="true">
             <arg line='openssl-win.sln /Build "${win.configuration}|x64"' />
         </exec>
-        <copy file="${win.project.dir}/x64/${win.configuration}/openssl-win.dll" tofile="temp/win64/ANXOpenSSL.dll" />
+        <copy file="${win.project.dir}/x64/${win.configuration}/ANEOpenSSL.dll" tofile="temp/win64/ANEOpenSSL.dll" />
+        <copy todir="temp/win64">
+            <fileset dir="${win.project.dir}/vendor/win64" includes="**/**" />
+        </copy>
+    </target>
+
+    <target name="win.copy.binaries" depends="win.config, win32.copy.binary, win64.copy.binary" />
+
+    <target name="win32.copy.binary">
+        <copy file="${win.project.dir}/x86/${win.configuration}/ANEOpenSSL.dll" tofile="temp/win32/ANEOpenSSL.dll" />
+        <copy todir="temp/win32">
+            <fileset dir="${win.project.dir}/vendor/win32" includes="**/**" />
+        </copy>
+    </target>
+
+    <target name="win64.copy.binary">
+        <copy file="${win.project.dir}/x64/${win.configuration}/ANEOpenSSL.dll" tofile="temp/win64/ANEOpenSSL.dll" />
         <copy todir="temp/win64">
             <fileset dir="${win.project.dir}/vendor/win64" includes="**/**" />
         </copy>
