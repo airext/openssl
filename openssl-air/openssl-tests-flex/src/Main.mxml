@@ -45,8 +45,7 @@
 
     <s:HGroup padding="6" horizontalAlign="right" width="100%">
         <s:Label text="Extension version {OpenSSL.extensionVersion} {OpenSSL.buildNumber}" />
-        <s:Label text="Native version {OpenSSL.shared.getBuildVersion()}" />
-        <s:Label text="OpenSSL version {OpenSSL.nativeVersion}" />
+        <s:Label text="OpenSSL version {OpenSSL.shared.getOpenSSLVersion()}" />
         <s:Spacer width="100%" />
         <s:Button label="Run" enabled="{uiListener}" click="startTestProcess()" />
     </s:HGroup>
