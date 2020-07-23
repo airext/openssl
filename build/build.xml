@@ -65,6 +65,9 @@
         <!-- Copy iOS native part for iOS platform -->
 		<copy file="temp/ios/build/${ios.configuration}-iphoneos/libANX${product.name}.a" tofile="temp/ios/libANX${product.name}.a" overwrite="true"/>
 
+        <copy file="${xcode.project.dir}/../Vendor/OpenSSL-Universal/ios/lib/libssl.a" tofile="temp/ios/libssl.a" overwrite="true" />
+        <copy file="${xcode.project.dir}/../Vendor/OpenSSL-Universal/ios/lib/libcrypto.a" tofile="temp/ios/libcrypto.a" overwrite="true" />
+
         <!-- iOS-Simulator -->
 
         <!-- Build iOS-simulator part of the extension -->
@@ -78,6 +81,9 @@
 
         <!-- Copy iOS native part for iOS-Simulator platform -->
         <copy file="temp/ios/build/${ios.configuration}-iphonesimulator/libANX${product.name}.a" tofile="temp/ios-simulator/libANX${product.name}Simulator.a" overwrite="true"/>
+
+        <copy file="${xcode.project.dir}/../Vendor/OpenSSL-Universal/ios/lib/libssl.a" tofile="temp/ios-simulator/libssl.a" overwrite="true" />
+        <copy file="${xcode.project.dir}/../Vendor/OpenSSL-Universal/ios/lib/libcrypto.a" tofile="temp/ios-simulator/libcrypto.a" overwrite="true" />
 
         <!-- Remove temporary directory for iOS artifacts -->
 		<delete dir="temp/ios/build/"/>

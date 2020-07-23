@@ -27,7 +27,7 @@
         }
 
         private function extensionVersionTapped(): void {
-            log("Extension version is: " + OpenSSL.extensionVersion);
+            log("Extension version is: " + OpenSSL.extensionVersion + " " + OpenSSL.buildNumber);
         }
 
         private function nativeVersionTapped(): void {

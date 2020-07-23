@@ -30,7 +30,7 @@
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/Default@2x~iphone.png" path-in-package="Default@2x~iphone.png" />
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/Default~iphone.png" path-in-package="Default~iphone.png" />
           </files-to-package>
-          <AirSigningOptions keystore-path="$USER_HOME$/cert/rozd/max.rozdobudko.apple.dev.p12" provisioning-profile-path="$USER_HOME$/cert/rozd/whateverdev.mobileprovision" />
+          <AirSigningOptions keystore-path="$USER_HOME$/cert/rozd/development.p12" provisioning-profile-path="$USER_HOME$/cert/rozd/whateverdev.mobileprovision" />
         </packaging-ios>
       </configuration>
       <configuration name="openssl-debug-desktop" target-platform="Desktop" main-class="Main" output-file="openssl-debug-desktop.swf" output-folder="$MODULE_DIR$/bin/desktop">
