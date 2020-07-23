@@ -44,14 +44,6 @@ jobs:
       with: 
         fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
-    - uses: actions/download-artifact@v1
-      with:
-        name: ANXOpenSSL32.dll
-        path: build/temp/win32
-    - uses: actions/download-artifact@v1
-      with:
-        name: ANXOpenSSL64.dll
-        path: build/temp/win64
     - name: Install Dependences
       run: |
         cd openssl-xcode/OpenSSL

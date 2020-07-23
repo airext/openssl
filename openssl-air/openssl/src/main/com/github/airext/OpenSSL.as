@@ -52,6 +52,9 @@ public class OpenSSL extends EventDispatcher {
     //  isSupported
     //-------------------------------------
 
+    /**
+     * Indicates if the ANE is supported on current platform.
+     */
     public static function get isSupported(): Boolean {
         return context != null && context.call("isSupported");
     }
@@ -62,6 +65,9 @@ public class OpenSSL extends EventDispatcher {
 
     private static var instance: OpenSSL;
 
+    /**
+     * Shared instance of OpenSSL class.
+     */
     public static function get shared(): OpenSSL {
         if (instance == null) {
             new OpenSSL();
@@ -76,8 +82,7 @@ public class OpenSSL extends EventDispatcher {
     private static var _extensionVersion: String = null;
 
     /**
-     * Returns version of extension
-     * @return extension version
+     * Version of the extension
      */
     public static function get extensionVersion(): String {
         if (_extensionVersion == null) {
@@ -108,6 +113,9 @@ public class OpenSSL extends EventDispatcher {
 
     private static var _buildNumber: String;
 
+    /**
+     * Extension's build number that is usually set on CI side
+     */
     public static function get buildNumber(): String {
         if (_buildNumber == null) {
             try {
@@ -149,10 +157,19 @@ public class OpenSSL extends EventDispatcher {
     //
     //--------------------------------------------------------------------------
 
-    public function getOpenSSLVersion():String{
+    /**
+     * Returns version of OpenSSL library
+     * @return Version of OpenSSL on current platform
+     */
+    public function getOpenSSLVersion(): String {
         return context.call("getOpenSSLVersion") as String;
     }
 
+    /**
+     * Extracts public key from the specified <code>certificate</code>
+     * @param certificate UTF bytes of the certificate in PEM format
+     * @return UTF bytes of the public key in PEM format
+     */
     public function extractPublicKey(certificate: ByteArray): ByteArray {
         var data: ByteArray = new ByteArray();
         var enc:ByteArray = context.call("extractPublicKey", certificate) as ByteArray;
@@ -162,30 +179,68 @@ public class OpenSSL extends EventDispatcher {
         return data;
     }
 
+    /**
+     * Extracts the subject of the specified <code>certificate</code>
+     * @param certificate is UTF bytes of the certificate in PEM format
+     * @return UTF bytes of the certificate subject
+     */
     public function parseCertificate(certificate: ByteArray): ByteArray {
         return context.call("parseCertificate", certificate) as ByteArray;
     }
 
+    /**
+     * Extracts the serial of the specified <code>certificate</code>
+     * @param certificate is UTF bytes of the certificate in PEM format
+     * @return UTF bytes of the certificate serial in decimal (big integer) format, written as a string
+     */
     public function parseCertificateSerial(certificate: ByteArray): ByteArray {
         return context.call("parseCertificateSerial", certificate) as ByteArray;
     }
 
-    public  function pbkdf2Compute(password: ByteArray, salt: ByteArray, iterations: int, length: int): ByteArray {
-        return context.call("pbkdf2Compute", password, salt, iterations, length) as ByteArray;
-    }
-
+    /**
+     * Verifies the specified <code>certificate</code> against the specified <code>rootCA</code> certificate
+     * @param rootCA UTF bytes of the CA (Certification Authority) certificate in PEM format
+     * @param certificate UTF bytes of the certificate to be verified in PEM format
+     * @return <code>true</code> if the <code>certificate</code> was issued by <code>rootCA</code> or <code>false</code> otherwise
+     */
     public function verifyCertificate(rootCA: ByteArray, certificate: ByteArray): Boolean {
         return context.call("verifyCertificate", rootCA, certificate) as Boolean;
+    }
+
+    /**
+     * Hashes the specified <code>password</code> along with the specified <code>salt</code>, over the number of <code>iterations</code>.
+     * The resulting hash will have the specified <code>length</code>.
+     * The hashing function used is SHA256
+     * @param password
+     * @param salt
+     * @param iterations
+     * @param length
+     * @return UTF bytes of the hash in hex format
+     */
+    public  function pbkdf2Compute(password: ByteArray, salt: ByteArray, iterations: int, length: int): ByteArray {
+        return context.call("pbkdf2Compute", password, salt, iterations, length) as ByteArray;
     }
 
     //-------------------------------------
     //  RSA
     //-------------------------------------
 
+    /**
+     * Encrypts <code>data</code> using the specified <code>publicKey</code>
+     * @param data must be maximum 245 bytes
+     * @param publicKey UTF bytes of the public key in PEM format. The public key can be obtained from a certificate using <code>extractPublicKey()</code> function
+     * @return encrypted byte array
+     */
     public function rsaEncrypt(data: ByteArray, publicKey: ByteArray): ByteArray {
         return context.call("rsaEncrypt", data, publicKey) as ByteArray;
     }
 
+    /**
+     * decrypts <code>data</code> using the specified <code>privateKey</code>
+     * @param data encrypted data
+     * @param privateKey UTF bytes of the private key in PEM format
+     * @return decrypted byte array
+     */
     public function rsaDecrypt(data: ByteArray, privateKey: ByteArray): ByteArray {
         return context.call("rsaDecrypt", data, privateKey) as ByteArray;
     }
@@ -194,6 +249,13 @@ public class OpenSSL extends EventDispatcher {
     //  AES
     //-------------------------------------
 
+    /**
+     * Encrypts <code>data</code> with the specified <code>key</code> and initialization vector <code>iv</code>
+     * @param data data to encrypt
+     * @param key must be 256bit
+     * @param iv must be 128bit
+     * @return encrypted byte array
+     */
     public function aesEncrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
         if (key.length != 32) {
             throw new Error("Key must be 32 bytes long");
@@ -204,6 +266,13 @@ public class OpenSSL extends EventDispatcher {
         return context.call("aesEncrypt", data, key, iv) as ByteArray;
     }
 
+    /**
+     * Decrypts <code>data</code> with the specified <code>key</code> and initialization vector <code>iv</code>
+     * @param data data to decrypt
+     * @param key must be 256bit
+     * @param iv must be 128bit
+     * @return decrypted byte array
+     */
     public function aesDecrypt(data: ByteArray, key: ByteArray, iv: ByteArray): ByteArray {
         if (key.length != 32) {
             throw new Error("Key must be 32 bytes long");
@@ -218,6 +287,11 @@ public class OpenSSL extends EventDispatcher {
     //  SHA
     //-------------------------------------
 
+    /**
+     * Hashes the specified <code>data</code> using SHA256
+     * @param data data to hash
+     * @return UTF bytes of the hash in hex format
+     */
     public function sha256Compute(data: ByteArray): ByteArray {
         return context.call("computeSHA256", data) as ByteArray;
     }
@@ -226,6 +300,12 @@ public class OpenSSL extends EventDispatcher {
     //  HMAC
     //-------------------------------------
 
+    /**
+     * Hashes the specified <code>data</code> using the specified <code>key</code> and SHA256
+     * @param data data to hash
+     * @param key
+     * @return UTF bytes of the hash in hex format
+     */
     public function hmacCompute(data: ByteArray, key: ByteArray): ByteArray {
         return context.call("hmacCompute", data, key) as ByteArray;
     }
