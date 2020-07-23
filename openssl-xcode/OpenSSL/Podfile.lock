@@ -4,15 +4,15 @@ PODS:
   - OpenSSL-Universal/Static (1.0.2.19)
 
 DEPENDENCIES:
-  - OpenSSL-Universal
+  - OpenSSL-Universal (from `../Vendor/OpenSSL-Universal`)
 
-SPEC REPOS:
-  trunk:
-    - OpenSSL-Universal
+EXTERNAL SOURCES:
+  OpenSSL-Universal:
+    :path: "../Vendor/OpenSSL-Universal"
 
 SPEC CHECKSUMS:
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
 
-PODFILE CHECKSUM: 06fb7db1265d432c2c76b6c8b7a840434551f6dd
+PODFILE CHECKSUM: 50b358c0131d77fbe26a780d5c363017cdf654db
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

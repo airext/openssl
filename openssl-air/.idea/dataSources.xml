@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="ACME Inc. CA (password acme)" uuid="ed518da0-233e-4db2-9b56-fc8756d2f946">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/openssl-debug/assets/certificates/ACME Inc. CA (password acme).xdb</jdbc-url>
+    </data-source>
+  </component>
+</project>
