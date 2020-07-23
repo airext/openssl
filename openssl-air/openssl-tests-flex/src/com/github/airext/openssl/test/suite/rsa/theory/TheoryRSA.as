@@ -6,7 +6,10 @@ import com.github.airext.OpenSSL;
 import com.github.airext.openssl.test.data.KeyPair;
 import com.github.airext.openssl.test.data.TestData;
 import com.github.airext.openssl.test.helper.ByteArrayGenerator;
+import com.github.airext.openssl.test.helper.FileUtils;
 import com.github.airext.openssl.test.helper.Variants;
+
+import flash.filesystem.File;
 
 import flash.utils.ByteArray;
 
@@ -22,7 +25,10 @@ public class TheoryRSA {
     [DataPoints]
     [ArrayElementType("com.github.airext.openssl.test.data.KeyPair")]
     public static var keyPairs: Array = [
-        TestData.keyPairs4096[0]
+        new KeyPair(
+            FileUtils.readBytes(File.applicationDirectory.resolvePath("certificates/Server1 - Public key.pem")),
+            FileUtils.readBytes(File.applicationDirectory.resolvePath("certificates/Server1 - Private key.pem"))
+        )
     ];
 
     [Theory]
