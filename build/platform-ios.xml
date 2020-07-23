@@ -7,7 +7,8 @@
         <option>-ios_version_min 12.0</option>
     </linkerOptions>
 
-    <!--<packagedDependencies>-->
-        <!--<packagedDependency></packagedDependency>-->
-    <!--</packagedDependencies>-->
+    <packagedDependencies>
+        <packagedDependency>libssl.a</packagedDependency>
+        <packagedDependency>libcrypto.a</packagedDependency>
+    </packagedDependencies>
 </platform>

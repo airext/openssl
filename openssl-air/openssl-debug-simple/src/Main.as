@@ -18,7 +18,7 @@ public class Main extends Sprite {
         });
 
         new PlainButton(this, {label:"OpenSSL Version", y: 100, w: 200}, function(): void {
-            trace(OpenSSL.nativeVersion);
+            trace(OpenSSL.shared.getOpenSSLVersion());
         });
 
         new PlainButton(this, {label:"OpenSSL Memory Test", y: 150, w: 200}, function(): void {
