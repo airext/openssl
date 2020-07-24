@@ -1,6 +1,11 @@
 name: dryrun
 
-on: [push, pull_request]
+on: 
+  push:
+    branches-ignore:
+      - 'master'
+  pull_request:
+    branches: '*'
 
 env:
   air-sdk-path: ${{ github.workspace }}\air_sdk
