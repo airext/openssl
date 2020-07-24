@@ -62,14 +62,20 @@ jobs:
       with:
         name: tests_failure_on_mac.txt
         path: build/test/tests_failure.txt
+    - name: Get version number
+      id: version_number
+      uses: mavrosxristoforos/get-xml-info@1.0
+      with:
+        xml_file: ./build/extension.xml
+        xpath: '/extension/versionNumber/text()'
     - name: Create Release
       id: create-release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 0.2.${{ github.run_number }}
-        release_name: Release 0.2.${{ github.run_number }}
+        tag_name: ${{ steps.vesion_number.outputs.info }}
+        release_name: ${{ steps.vesion_number.outputs.info }} build ${{ github.run_number }}
         draft: false
         prerelease: false
     - name: Upload ANE Release Asset
