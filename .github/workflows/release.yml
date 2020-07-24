@@ -67,7 +67,7 @@ jobs:
       uses: mavrosxristoforos/get-xml-info@1.0
       with:
         xml-file: ./build/extension.xml
-        xpath: '/extension/versionNumber/text()'
+        xpath: '//versionNumber/text()'
     - name: Create Release
       id: create-release
       uses: actions/create-release@v1
