@@ -42,6 +42,8 @@ Set iOS minimum version to 12.0 in iPhone InfoAdditions:
 
 ### API
 
+Full documentation can be found [here](https://airext.github.io/openssl/)
+
 #### Shared Instance
 
 Use `OpenSSL.shared` to obtain singleton instance of OpenSSL class.
