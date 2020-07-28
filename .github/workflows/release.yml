@@ -2,7 +2,7 @@ name: release
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 env:
@@ -41,7 +41,7 @@ jobs:
     - name: Copy keystore.p12
       id: copy_keystore
       uses: timheuer/base64-to-file@v1.0.3
-      with: 
+      with:
         fileName: keystore.p12
         encodedString: ${{ secrets.keystore }}
     - name: Install Dependences
@@ -63,7 +63,7 @@ jobs:
         name: tests_failure_on_mac.txt
         path: build/test/tests_failure.txt
     - name: Get version number
-      id: version_number
+      id: get-version-number
       uses: mavrosxristoforos/get-xml-info@1.0
       with:
         xml-file: ./build/extension.xml
@@ -74,12 +74,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.vesion_number.outputs.info }}.${{ github.run_number }}
-        release_name: ${{ steps.vesion_number.outputs.info }} build ${{ github.run_number }}
+        tag_name: ${{ steps.get-version-number.outputs.info }}+${{ github.run_number }}
+        release_name: ${{ steps.get-version-number.outputs.info }}+${{ github.run_number }}
         draft: false
         prerelease: false
     - name: Upload ANE Release Asset
-      id: upload-release-ane 
+      id: upload-release-ane
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -89,7 +89,7 @@ jobs:
         asset_name: com.github.airext.OpenSSL.ane
         asset_content_type: application/vnd.adobe.air-native-extension-package+zip
     - name: Upload SWC Release Asset
-      id: upload-release-swc 
+      id: upload-release-swc
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
