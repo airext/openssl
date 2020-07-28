@@ -72,6 +72,6 @@ Use `OpenSSL.shared` to obtain singleton instance of OpenSSL class.
 * `OpenSSL.shared.getOpenSSLVersion()` returns the version of the OpenSSL library used
 
 ### Contributors
-* Tiberiu Stefan
+* https://github.com/htmiel
 * Zeljko Janketic
-* Max Rozdobudko
+* https://github.com/rozd
