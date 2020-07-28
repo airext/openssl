@@ -15,6 +15,7 @@
     - [AES](#aes)
     - [Certificates](#certificates)
     - [Utils](#utils)
+  - [Contributors](#contributors)
     
 ### Setup
 
@@ -69,3 +70,8 @@ Use `OpenSSL.shared` to obtain singleton instance of OpenSSL class.
 
 #### Utils
 * `OpenSSL.shared.getOpenSSLVersion()` returns the version of the OpenSSL library used
+
+### Contributors
+* Tiberiu Stefan
+* Zeljko Janketic
+* Max Rozdobudko
